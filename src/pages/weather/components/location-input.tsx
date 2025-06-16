@@ -73,13 +73,6 @@ export function LocationInput({ onLocationSubmit, loading }: LocationInputProps)
     setLngInput('');
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent, action: () => void) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      action();
-    }
-  };
-
   return (
     <SpaceBetween size="l">
       <Grid gridDefinition={[{ colspan: { default: 12, xs: 12, s: 8, m: 6, l: 4 } }]}>
@@ -95,7 +88,6 @@ export function LocationInput({ onLocationSubmit, loading }: LocationInputProps)
                 setCityInput(detail.value);
                 setInputError(null);
               }}
-              onKeyDown={event => handleKeyPress(event, handleCitySearch)}
               placeholder="e.g., San Francisco, London, Tokyo"
               disabled={loading || searchLoading}
             />
@@ -125,7 +117,6 @@ export function LocationInput({ onLocationSubmit, loading }: LocationInputProps)
               setLatInput(detail.value);
               setInputError(null);
             }}
-            onKeyDown={event => handleKeyPress(event, handleCoordinatesSubmit)}
             placeholder="37.7749"
             disabled={loading || searchLoading}
             type="number"
@@ -139,7 +130,6 @@ export function LocationInput({ onLocationSubmit, loading }: LocationInputProps)
               setLngInput(detail.value);
               setInputError(null);
             }}
-            onKeyDown={event => handleKeyPress(event, handleCoordinatesSubmit)}
             placeholder="-122.4194"
             disabled={loading || searchLoading}
             type="number"

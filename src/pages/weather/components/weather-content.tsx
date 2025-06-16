@@ -13,6 +13,7 @@ import Box from '@cloudscape-design/components/box';
 import { LocationInput } from './location-input';
 import { CurrentWeather } from './current-weather';
 import { WeatherForecast } from './weather-forecast';
+import { ForecastRibbon } from './forecast-ribbon';
 import { WeatherData, LocationData } from '../types';
 import { fetchWeatherData } from '../services/weather-service';
 
@@ -99,6 +100,7 @@ export function WeatherContent({ loadHelpPanelContent }: WeatherContentProps) {
       {weatherData && location && !loading && (
         <Grid gridDefinition={[{ colspan: 12 }]}>
           <SpaceBetween size="l">
+            <ForecastRibbon dailyData={weatherData.daily} loading={loading} />
             <CurrentWeather data={weatherData.current} location={location.name} loading={loading} />
             <WeatherForecast
               hourlyData={weatherData.hourly}

@@ -57,6 +57,13 @@ export function formatDate(isoString: string): string {
   });
 }
 
+export function formatDateShort(isoString: string): string {
+  const date = new Date(isoString);
+  return date.toLocaleDateString('en-US', {
+    weekday: 'short',
+  });
+}
+
 export function getWindDirection(degrees: number): string {
   const directions = [
     'N',

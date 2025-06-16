@@ -52,17 +52,22 @@ export function ForecastRibbon({ dailyData, loading }: ForecastRibbonProps) {
             key={index}
             textAlign="center"
             padding="m"
-            className={`forecast-day ${index === 0 ? 'forecast-day--today' : ''}`}
             css={{
               borderRadius: '12px',
               border: index === 0 ? '2px solid #0073bb' : '1px solid #e9ebed',
               backgroundColor: index === 0 ? '#f2f9ff' : '#ffffff',
               transition: 'all 0.2s ease',
-              '&:hover': {
-                backgroundColor: '#f8f9fa',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-              },
+              cursor: 'pointer',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.backgroundColor = '#f8f9fa';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.backgroundColor = index === 0 ? '#f2f9ff' : '#ffffff';
+              e.currentTarget.style.transform = 'none';
+              e.currentTarget.style.boxShadow = 'none';
             }}
           >
             <SpaceBetween size="xs">

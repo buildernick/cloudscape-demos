@@ -25,7 +25,7 @@ import { Navigation } from '../commons';
 const lineChartData = [
   {
     title: 'Site 1',
-    type: 'line',
+    type: 'line' as const,
     data: [
       { x: new Date('2024-01-01'), y: 10 },
       { x: new Date('2024-01-02'), y: 15 },
@@ -44,7 +44,7 @@ const lineChartData = [
   },
   {
     title: 'Site 2',
-    type: 'line',
+    type: 'line' as const,
     data: [
       { x: new Date('2024-01-01'), y: 8 },
       { x: new Date('2024-01-02'), y: 12 },
@@ -67,7 +67,7 @@ const lineChartData = [
 const barChartData = [
   {
     title: 'Site 1',
-    type: 'bar',
+    type: 'bar' as const,
     data: [
       { x: 'x1', y: 45 },
       { x: 'x2', y: 65 },

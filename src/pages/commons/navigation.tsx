@@ -8,6 +8,11 @@ const navHeader = { text: 'Service', href: '#/' };
 export const navItems: SideNavigationProps['items'] = [
   {
     type: 'section',
+    text: 'Dashboards',
+    items: [{ type: 'link', text: 'Network Dashboard', href: '#/network-dashboard' }],
+  },
+  {
+    type: 'section',
     text: 'Reports and analytics',
     items: [
       { type: 'link', text: 'Distributions', href: '#/distributions' },

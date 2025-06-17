@@ -21,11 +21,11 @@ import { IconProps } from '@cloudscape-design/components/icon';
 import { CustomAppLayout } from '../commons/common-components';
 import { Navigation } from '../commons';
 
-// Mock data for the area chart
-const areaChartData = [
+// Mock data for the line chart (area-style)
+const lineChartData = [
   {
     title: 'Site 1',
-    type: 'area',
+    type: 'line',
     data: [
       { x: new Date('2024-01-01'), y: 10 },
       { x: new Date('2024-01-02'), y: 15 },
@@ -44,7 +44,7 @@ const areaChartData = [
   },
   {
     title: 'Site 2',
-    type: 'area',
+    type: 'line',
     data: [
       { x: new Date('2024-01-01'), y: 8 },
       { x: new Date('2024-01-02'), y: 12 },

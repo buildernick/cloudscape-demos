@@ -319,18 +319,19 @@ export function App() {
 
           {/* Charts Section */}
           <Grid gridDefinition={[{ colspan: 6 }, { colspan: 6 }]}>
-            {/* Area Chart */}
+            {/* Line Chart */}
             <Container>
-              <AreaChart
-                series={areaChartData}
+              <LineChart
+                series={lineChartData}
                 xDomain={[new Date('2024-01-01'), new Date('2024-01-12')]}
                 yDomain={[0, 35]}
+                xScaleType="time"
                 i18nStrings={{
                   filterLabel: 'Filter displayed data',
                   filterPlaceholder: 'Filter data',
                   filterSelectedAriaLabel: 'selected',
                   legendAriaLabel: 'Legend',
-                  chartAriaRoleDescription: 'area chart',
+                  chartAriaRoleDescription: 'line chart',
                   xTickFormatter: e => e.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
                   yTickFormatter: e => e.toString(),
                 }}

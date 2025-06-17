@@ -12,7 +12,7 @@ import Pagination from '@cloudscape-design/components/pagination';
 import Flashbar from '@cloudscape-design/components/flashbar';
 import Grid from '@cloudscape-design/components/grid';
 import Container from '@cloudscape-design/components/container';
-import AreaChart from '@cloudscape-design/components/area-chart';
+import LineChart from '@cloudscape-design/components/line-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
 import Table from '@cloudscape-design/components/table';
 import Box from '@cloudscape-design/components/box';

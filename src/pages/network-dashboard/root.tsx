@@ -231,7 +231,7 @@ const columnDefinitions = [
 
 export function App() {
   const [toolsOpen, setToolsOpen] = useState(false);
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<typeof tableItems>([]);
   const [filteringText, setFilteringText] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const appLayout = useRef<AppLayoutProps.Ref>(null);

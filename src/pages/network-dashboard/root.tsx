@@ -19,7 +19,7 @@ import Box from '@cloudscape-design/components/box';
 import { IconProps } from '@cloudscape-design/components/icon';
 
 import { CustomAppLayout } from '../commons/common-components';
-import { Navigation } from '../commons';
+import SideNavigation from '@cloudscape-design/components/side-navigation';
 
 // Mock data for the line chart (area-style)
 const lineChartData = [

@@ -19,6 +19,7 @@ import TextFilter from '@cloudscape-design/components/text-filter';
 
 import { Navigation } from '../commons';
 import { CustomAppLayout } from '../commons/common-components';
+import { AlertBanner } from './components/alert-banner';
 
 // Mock data for network traffic area chart
 const networkTrafficSeries = [

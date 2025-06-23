@@ -264,7 +264,17 @@ export function App() {
               </Box>
             </SpaceBetween>
           }
-          notifications={<Flashbar items={flashbarItems} />}
+          notifications={
+            !warningDismissed && (
+              <AlertBanner
+                type="warning"
+                message="This is a warning message"
+                dismissible={true}
+                onDismiss={() => setWarningDismissed(true)}
+                dismissLabel="Dismiss"
+              />
+            )
+          }
         >
           <SpaceBetween size="l">
             {/* Search bar */}

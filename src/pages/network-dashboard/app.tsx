@@ -243,19 +243,6 @@ export function App() {
     },
   );
 
-  const flashbarItems = warningDismissed
-    ? []
-    : [
-        {
-          type: 'warning' as const,
-          content: 'This is a warning message',
-          dismissible: true,
-          dismissLabel: 'Dismiss',
-          onDismiss: () => setWarningDismissed(true),
-          id: 'warning-message',
-        },
-      ];
-
   return (
     <CustomAppLayout
       content={

@@ -14,9 +14,7 @@ import SpaceBetween from '@cloudscape-design/components/space-between';
 import TextFilter from '@cloudscape-design/components/text-filter';
 
 import { Navigation } from '../commons';
-import { NetworkTrafficChart } from './components/network-traffic-chart';
-import { CreditUsageChart } from './components/credit-usage-chart';
-import { DevicesTable } from './components/devices-table';
+import { NetworkTrafficChart, CreditUsageChart, DevicesTable } from './components';
 
 export function NetworkDashboardApp() {
   const [filterText, setFilterText] = useState('');

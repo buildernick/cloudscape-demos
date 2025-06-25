@@ -2,7 +2,6 @@
 // SPDX-License-Identifier: MIT-0
 import React from 'react';
 
-import Box from '@cloudscape-design/components/box';
 import Button from '@cloudscape-design/components/button';
 import Icon from '@cloudscape-design/components/icon';
 import SpaceBetween from '@cloudscape-design/components/space-between';
@@ -71,11 +70,17 @@ export function AlertBanner({ type = 'warning', dismissible = false, onDismiss, 
     >
       <SpaceBetween direction="horizontal" size="xs" alignItems="center">
         <Icon name={getIconName()} size="normal" />
-        <Box color="inherit" fontSize="body-m" fontWeight="normal">
-          <span style={{ color: getTextColor(), fontFamily: 'Inter, -apple-system, Roboto, Helvetica, sans-serif' }}>
-            {children}
-          </span>
-        </Box>
+        <span
+          style={{
+            color: getTextColor(),
+            fontFamily: 'Inter, -apple-system, Roboto, Helvetica, sans-serif',
+            fontSize: '14px',
+            fontWeight: '400',
+            lineHeight: '22px',
+          }}
+        >
+          {children}
+        </span>
       </SpaceBetween>
       {dismissible && onDismiss && (
         <Button variant="inline-link" onClick={onDismiss}>

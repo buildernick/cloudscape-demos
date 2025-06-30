@@ -337,7 +337,14 @@ export function App() {
                   <SpaceBetween direction="vertical" size="m">
                     {paginatedJobs.map(job => (
                       <Container key={job.id}>
-                        <ColumnLayout columns={4} variant="text-grid">
+                        <div
+                          style={{
+                            display: 'grid',
+                            gridTemplateColumns: '2fr 2fr 1fr 1fr',
+                            gap: '16px',
+                            alignItems: 'center',
+                          }}
+                        >
                           <SpaceBetween direction="vertical" size="xs">
                             <Box fontWeight="bold">{job.title}</Box>
                             <Box fontSize="body-s" color="text-body-secondary">
@@ -349,7 +356,7 @@ export function App() {
                             {job.status.charAt(0).toUpperCase() + job.status.slice(1)}
                           </Badge>
                           <Button variant="link">Apply Now</Button>
-                        </ColumnLayout>
+                        </div>
                       </Container>
                     ))}
                   </SpaceBetween>

@@ -220,7 +220,7 @@ export function App() {
             <Grid gridDefinition={[{ colspan: 6 }, { colspan: 6 }]}>
               {/* Network Traffic Chart */}
               <Container header={<Header variant="h2">Network traffic</Header>}>
-                <AreaChart
+                <LineChart
                   series={networkTrafficSeries}
                   xDomain={networkTrafficData.map(item => item.day)}
                   yDomain={[0, 200]}
@@ -229,13 +229,9 @@ export function App() {
                   hideLegend={false}
                   xTitle="Day"
                   yTitle=""
-                  ariaLabel="Network traffic area chart"
+                  ariaLabel="Network traffic line chart"
                   statusType="finished"
-                  detailPopoverFooter={() => (
-                    <Box>
-                      <Box variant="small">Performance goal</Box>
-                    </Box>
-                  )}
+                  xScaleType="categorical"
                 />
               </Container>
 

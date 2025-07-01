@@ -8,7 +8,7 @@ import ContentLayout from '@cloudscape-design/components/content-layout';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import Grid from '@cloudscape-design/components/grid';
 import Container from '@cloudscape-design/components/container';
-import AreaChart from '@cloudscape-design/components/area-chart';
+import LineChart from '@cloudscape-design/components/line-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
 import Table from '@cloudscape-design/components/table';
 import Box from '@cloudscape-design/components/box';

@@ -62,7 +62,6 @@ const creditUsageSeries = [
     title: 'Site 1',
     type: 'bar' as const,
     data: creditUsageData.map(item => ({ x: item.day, y: item.usage })),
-    color: '#688AE8',
   },
 ];
 

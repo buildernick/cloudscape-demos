@@ -36,13 +36,13 @@ const networkTrafficData = [
 const networkTrafficSeries = [
   {
     title: 'Site 1',
-    type: 'area' as const,
+    type: 'line' as const,
     data: networkTrafficData.map(item => ({ x: item.day, y: item.site1 })),
     color: '#688AE8',
   },
   {
     title: 'Site 2',
-    type: 'area' as const,
+    type: 'line' as const,
     data: networkTrafficData.map(item => ({ x: item.day, y: item.site2 })),
     color: '#C33D69',
   },

@@ -247,6 +247,7 @@ export function App() {
                   yTitle=""
                   ariaLabel="Credit usage bar chart"
                   statusType="finished"
+                  xScaleType="categorical"
                 />
               </Container>
             </Grid>

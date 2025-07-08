@@ -445,9 +445,9 @@ export default function NetworkDashboard() {
                   </Header>
                 }
               >
-                <div className="devices-table">
+                                <div className="devices-table">
                   <Table
-                  columnDefinitions={columnDefinitions}
+                    columnDefinitions={columnDefinitions}
                   items={paginatedDevices}
                   loadingText="Loading devices"
                   selectedItems={selectedItems}

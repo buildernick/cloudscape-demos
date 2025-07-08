@@ -236,245 +236,47 @@ export default function NetworkDashboard() {
     currentPageIndex * itemsPerPage,
   );
 
-    return (
+  return (
     <div className="network-dashboard">
       <AppLayout
         navigationHide
         toolsHide
         content={
-        <ContentLayout
-          header={
-            <SpaceBetween size="m">
-              <BreadcrumbGroup
-                items={[
-                  { text: 'Service', href: '#' },
-                  { text: 'Administrative Dashboard', href: '#' },
-                ]}
-              />
-              <Header
-                variant="h1"
-                description="Network Traffic, Credit Usage, and Your Devices"
-                actions={
-                  <Button variant="primary" iconAlign="right" iconName="external">
-                    Refresh Data
-                  </Button>
-                }
-              >
-                Network Administration Dashboard
-              </Header>
-                            <Grid gridDefinition={[{ colspan: { default: 12, xs: 12, s: 12, m: 8, l: 8, xl: 8 } }, { colspan: { default: 12, xs: 12, s: 12, m: 4, l: 4, xl: 4 } }]}>
-                <TextFilter
-                  filteringText={filterText}
-                  filteringPlaceholder="Placeholder"
-                  filteringAriaLabel="Filter devices"
-                  onChange={({ detail }) => {
-                    setFilterText(detail.filteringText);
-                    setCurrentPageIndex(1);
-                  }}
-                />
-                <Pagination
-                  currentPageIndex={currentPageIndex}
-                  onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
-                  pagesCount={Math.ceil(filteredDevices.length / itemsPerPage)}
-                  ariaLabels={{
-                    nextPageLabel: 'Next page',
-                    previousPageLabel: 'Previous page',
-                    pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
-                  }}
-                />
-              </Grid>
-            </SpaceBetween>
-          }
-        >
-          <SpaceBetween size="l">
-            {showWarning && (
-              <Flashbar
-                items={[
-                  {
-                    type: 'warning',
-                    content: 'This is a warning message',
-                    dismissible: true,
-                    onDismiss: () => setShowWarning(false),
-                    dismissLabel: 'Dismiss',
-                  },
-                ]}
-              />
-            )}
-
-                        <Grid gridDefinition={[{ colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } }, { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } }]} className="charts-grid">
-              <Container header={<Header variant="h2">Network traffic</Header>}>
-                <AreaChart
-                  series={networkTrafficSeries}
-                  xDomain={[new Date(2024, 0, 1), new Date(2024, 0, 12)]}
-                  yDomain={[0, 100]}
-                  i18nStrings={{
-                    filterLabel: 'Filter displayed data',
-                    filterPlaceholder: 'Filter data',
-                    filterSelectedAriaLabel: 'selected',
-                    legendAriaLabel: 'Legend',
-                    chartAriaRoleDescription: 'area chart',
-                    xTickFormatter: e =>
-                      e
-                        .toLocaleDateString('en-US', {
-                          month: 'short',
-                          day: 'numeric',
-                          timeZone: 'UTC',
-                        })
-                        .split(',')
-                        .join('\n'),
-                    yTickFormatter: function numberFormatter(e) {
-                      return Math.abs(e) >= 1e9
-                        ? (e / 1e9).toFixed(1).replace(/\.0$/, '') + 'G'
-                        : Math.abs(e) >= 1e6
-                          ? (e / 1e6).toFixed(1).replace(/\.0$/, '') + 'M'
-                          : Math.abs(e) >= 1e3
-                            ? (e / 1e3).toFixed(1).replace(/\.0$/, '') + 'K'
-                            : e.toFixed(2);
-                    },
-                  }}
-                  ariaLabel="Network traffic area chart"
-                  errorText="Error loading data."
-                  height={300}
-                  hideFilter
-                  hideLegend={false}
-                  loadingText="Loading chart"
-                  recoveryText="Retry"
-                  xScaleType="time"
-                  xTitle="Day"
-                  yTitle=""
-                  empty={
-                    <Box textAlign="center" color="inherit">
-                      <b>No data available</b>
-                      <Box variant="p" color="inherit">
-                        There is no data available
-                      </Box>
-                    </Box>
-                  }
-                  noMatch={
-                    <Box textAlign="center" color="inherit">
-                      <b>No matching data</b>
-                      <Box variant="p" color="inherit">
-                        Try different filter settings
-                      </Box>
-                    </Box>
-                  }
-                />
-              </Container>
-
-              <Container header={<Header variant="h2">Credit Usage</Header>}>
-                <BarChart
-                  series={[
-                    {
-                      title: 'Site 1',
-                      type: 'bar',
-                      data: creditUsageData,
-                      color: '#688AE8',
-                    },
+          <ContentLayout
+            header={
+              <SpaceBetween size="m">
+                <BreadcrumbGroup
+                  items={[
+                    { text: 'Service', href: '#' },
+                    { text: 'Administrative Dashboard', href: '#' },
                   ]}
-                  xDomain={creditUsageData.map(d => d.x)}
-                  yDomain={[0, 300]}
-                  i18nStrings={{
-                    filterLabel: 'Filter displayed data',
-                    filterPlaceholder: 'Filter data',
-                    filterSelectedAriaLabel: 'selected',
-                    legendAriaLabel: 'Legend',
-                    chartAriaRoleDescription: 'bar chart',
-                    yTickFormatter: function numberFormatter(e) {
-                      return Math.abs(e) >= 1e9
-                        ? (e / 1e9).toFixed(1).replace(/\.0$/, '') + 'G'
-                        : Math.abs(e) >= 1e6
-                          ? (e / 1e6).toFixed(1).replace(/\.0$/, '') + 'M'
-                          : Math.abs(e) >= 1e3
-                            ? (e / 1e3).toFixed(1).replace(/\.0$/, '') + 'K'
-                            : e.toFixed(2);
-                    },
-                  }}
-                  ariaLabel="Credit usage bar chart"
-                  errorText="Error loading data."
-                  height={300}
-                  hideFilter
-                  hideLegend={false}
-                  loadingText="Loading chart"
-                  recoveryText="Retry"
-                  xScaleType="categorical"
-                  xTitle="Day"
-                  yTitle=""
-                  empty={
-                    <Box textAlign="center" color="inherit">
-                      <b>No data available</b>
-                      <Box variant="p" color="inherit">
-                        There is no data available
-                      </Box>
-                    </Box>
-                  }
-                  noMatch={
-                    <Box textAlign="center" color="inherit">
-                      <b>No matching data</b>
-                      <Box variant="p" color="inherit">
-                        Try different filter settings
-                      </Box>
-                    </Box>
-                  }
                 />
-              </Container>
-            </ColumnLayout>
-
-            <Container
-              header={
                 <Header
-                  variant="h2"
-                  description="Devices on your local network"
+                  variant="h1"
+                  description="Network Traffic, Credit Usage, and Your Devices"
                   actions={
                     <Button variant="primary" iconAlign="right" iconName="external">
-                      Add Device
+                      Refresh Data
                     </Button>
                   }
                 >
-                  My Devices
+                  Network Administration Dashboard
                 </Header>
-              }
-            >
-              <Table
-                columnDefinitions={columnDefinitions}
-                items={paginatedDevices}
-                loadingText="Loading devices"
-                selectedItems={selectedItems}
-                onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
-                selectionType="multi"
-                trackBy="id"
-                empty={
-                  <Box margin={{ vertical: 'xs' }} textAlign="center" color="inherit">
-                    <b>No devices</b>
-                    <Box padding={{ bottom: 's' }} variant="p" color="inherit">
-                      No devices to display.
-                    </Box>
-                    <Button>Add device</Button>
-                  </Box>
-                }
-                filter={
+                <Grid
+                  gridDefinition={[
+                    { colspan: { default: 12, xs: 12, s: 12, m: 8, l: 8, xl: 8 } },
+                    { colspan: { default: 12, xs: 12, s: 12, m: 4, l: 4, xl: 4 } },
+                  ]}
+                >
                   <TextFilter
                     filteringText={filterText}
+                    filteringPlaceholder="Placeholder"
+                    filteringAriaLabel="Filter devices"
                     onChange={({ detail }) => {
                       setFilterText(detail.filteringText);
                       setCurrentPageIndex(1);
                     }}
-                    filteringPlaceholder="Find devices"
-                    filteringAriaLabel="Filter devices"
-                    countText={`${filteredDevices.length} matches`}
                   />
-                }
-                header={
-                  <Header
-                    counter={
-                      selectedItems.length
-                        ? `(${selectedItems.length}/${filteredDevices.length})`
-                        : `(${filteredDevices.length})`
-                    }
-                  >
-                    Devices
-                  </Header>
-                }
-                pagination={
                   <Pagination
                     currentPageIndex={currentPageIndex}
                     onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
@@ -485,12 +287,221 @@ export default function NetworkDashboard() {
                       pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
                     }}
                   />
+                </Grid>
+              </SpaceBetween>
+            }
+          >
+            <SpaceBetween size="l">
+              {showWarning && (
+                <Flashbar
+                  items={[
+                    {
+                      type: 'warning',
+                      content: 'This is a warning message',
+                      dismissible: true,
+                      onDismiss: () => setShowWarning(false),
+                      dismissLabel: 'Dismiss',
+                    },
+                  ]}
+                />
+              )}
+
+              <Grid
+                gridDefinition={[
+                  { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
+                  { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
+                ]}
+                className="charts-grid"
+              >
+                <Container header={<Header variant="h2">Network traffic</Header>}>
+                  <AreaChart
+                    series={networkTrafficSeries}
+                    xDomain={[new Date(2024, 0, 1), new Date(2024, 0, 12)]}
+                    yDomain={[0, 100]}
+                    i18nStrings={{
+                      filterLabel: 'Filter displayed data',
+                      filterPlaceholder: 'Filter data',
+                      filterSelectedAriaLabel: 'selected',
+                      legendAriaLabel: 'Legend',
+                      chartAriaRoleDescription: 'area chart',
+                      xTickFormatter: e =>
+                        e
+                          .toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            timeZone: 'UTC',
+                          })
+                          .split(',')
+                          .join('\n'),
+                      yTickFormatter: function numberFormatter(e) {
+                        return Math.abs(e) >= 1e9
+                          ? (e / 1e9).toFixed(1).replace(/\.0$/, '') + 'G'
+                          : Math.abs(e) >= 1e6
+                            ? (e / 1e6).toFixed(1).replace(/\.0$/, '') + 'M'
+                            : Math.abs(e) >= 1e3
+                              ? (e / 1e3).toFixed(1).replace(/\.0$/, '') + 'K'
+                              : e.toFixed(2);
+                      },
+                    }}
+                    ariaLabel="Network traffic area chart"
+                    errorText="Error loading data."
+                    height={300}
+                    hideFilter
+                    hideLegend={false}
+                    loadingText="Loading chart"
+                    recoveryText="Retry"
+                    xScaleType="time"
+                    xTitle="Day"
+                    yTitle=""
+                    empty={
+                      <Box textAlign="center" color="inherit">
+                        <b>No data available</b>
+                        <Box variant="p" color="inherit">
+                          There is no data available
+                        </Box>
+                      </Box>
+                    }
+                    noMatch={
+                      <Box textAlign="center" color="inherit">
+                        <b>No matching data</b>
+                        <Box variant="p" color="inherit">
+                          Try different filter settings
+                        </Box>
+                      </Box>
+                    }
+                  />
+                </Container>
+
+                <Container header={<Header variant="h2">Credit Usage</Header>}>
+                  <BarChart
+                    series={[
+                      {
+                        title: 'Site 1',
+                        type: 'bar',
+                        data: creditUsageData,
+                        color: '#688AE8',
+                      },
+                    ]}
+                    xDomain={creditUsageData.map(d => d.x)}
+                    yDomain={[0, 300]}
+                    i18nStrings={{
+                      filterLabel: 'Filter displayed data',
+                      filterPlaceholder: 'Filter data',
+                      filterSelectedAriaLabel: 'selected',
+                      legendAriaLabel: 'Legend',
+                      chartAriaRoleDescription: 'bar chart',
+                      yTickFormatter: function numberFormatter(e) {
+                        return Math.abs(e) >= 1e9
+                          ? (e / 1e9).toFixed(1).replace(/\.0$/, '') + 'G'
+                          : Math.abs(e) >= 1e6
+                            ? (e / 1e6).toFixed(1).replace(/\.0$/, '') + 'M'
+                            : Math.abs(e) >= 1e3
+                              ? (e / 1e3).toFixed(1).replace(/\.0$/, '') + 'K'
+                              : e.toFixed(2);
+                      },
+                    }}
+                    ariaLabel="Credit usage bar chart"
+                    errorText="Error loading data."
+                    height={300}
+                    hideFilter
+                    hideLegend={false}
+                    loadingText="Loading chart"
+                    recoveryText="Retry"
+                    xScaleType="categorical"
+                    xTitle="Day"
+                    yTitle=""
+                    empty={
+                      <Box textAlign="center" color="inherit">
+                        <b>No data available</b>
+                        <Box variant="p" color="inherit">
+                          There is no data available
+                        </Box>
+                      </Box>
+                    }
+                    noMatch={
+                      <Box textAlign="center" color="inherit">
+                        <b>No matching data</b>
+                        <Box variant="p" color="inherit">
+                          Try different filter settings
+                        </Box>
+                      </Box>
+                    }
+                  />
+                </Container>
+              </Grid>
+
+              <Container
+                header={
+                  <Header
+                    variant="h2"
+                    description="Devices on your local network"
+                    actions={
+                      <Button variant="primary" iconAlign="right" iconName="external">
+                        Add Device
+                      </Button>
+                    }
+                  >
+                    My Devices
+                  </Header>
                 }
-              />
-            </Container>
-                    </SpaceBetween>
-        </ContentLayout>
-      }
+              >
+                <Table
+                  columnDefinitions={columnDefinitions}
+                  items={paginatedDevices}
+                  loadingText="Loading devices"
+                  selectedItems={selectedItems}
+                  onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
+                  selectionType="multi"
+                  trackBy="id"
+                  empty={
+                    <Box margin={{ vertical: 'xs' }} textAlign="center" color="inherit">
+                      <b>No devices</b>
+                      <Box padding={{ bottom: 's' }} variant="p" color="inherit">
+                        No devices to display.
+                      </Box>
+                      <Button>Add device</Button>
+                    </Box>
+                  }
+                  filter={
+                    <TextFilter
+                      filteringText={filterText}
+                      onChange={({ detail }) => {
+                        setFilterText(detail.filteringText);
+                        setCurrentPageIndex(1);
+                      }}
+                      filteringPlaceholder="Find devices"
+                      filteringAriaLabel="Filter devices"
+                      countText={`${filteredDevices.length} matches`}
+                    />
+                  }
+                  header={
+                    <Header
+                      counter={
+                        selectedItems.length
+                          ? `(${selectedItems.length}/${filteredDevices.length})`
+                          : `(${filteredDevices.length})`
+                      }
+                    >
+                      Devices
+                    </Header>
+                  }
+                  pagination={
+                    <Pagination
+                      currentPageIndex={currentPageIndex}
+                      onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
+                      pagesCount={Math.ceil(filteredDevices.length / itemsPerPage)}
+                      ariaLabels={{
+                        nextPageLabel: 'Next page',
+                        previousPageLabel: 'Previous page',
+                        pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
+                      }}
+                    />
+                  }
+                />
+              </Container>
+            </SpaceBetween>
+          </ContentLayout>
+        }
       />
     </div>
   );

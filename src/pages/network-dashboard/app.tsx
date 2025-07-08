@@ -33,10 +33,25 @@ const networkTrafficData = [
   { x: 'x12', y: 40 },
 ];
 
+const networkTrafficSeries2 = [
+  { x: 'x1', y: 25 },
+  { x: 'x2', y: 35 },
+  { x: 'x3', y: 30 },
+  { x: 'x4', y: 28 },
+  { x: 'x5', y: 38 },
+  { x: 'x6', y: 45 },
+  { x: 'x7', y: 42 },
+  { x: 'x8', y: 39 },
+  { x: 'x9', y: 43 },
+  { x: 'x10', y: 48 },
+  { x: 'x11', y: 52 },
+  { x: 'x12', y: 50 },
+];
+
 const creditUsageData = [
   { x: 'x1', y: 65 },
-  { x: 'x2', y: 85 },
-  { x: 'x3', y: 75 },
+  { x: 'x2', y: 95 },
+  { x: 'x3', y: 85 },
   { x: 'x4', y: 45 },
   { x: 'x5', y: 78 },
 ];

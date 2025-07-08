@@ -196,24 +196,26 @@ export function App() {
                 Network Administration Dashboard
               </Header>
 
-              <Grid gridDefinition={[{ colspan: { default: 12, xs: 12, s: 12, m: 8, l: 8, xl: 8 } }]}>
-                <TextFilter
-                  filteringText={filterText}
-                  filteringPlaceholder="Placeholder"
-                  filteringAriaLabel="Filter devices"
-                  onChange={({ detail }) => setFilterText(detail.filteringText)}
-                />
-              </Grid>
+              <SpaceBetween size="m" direction="horizontal">
+                <Grid gridDefinition={[{ colspan: { default: 12, xs: 12, s: 12, m: 8, l: 8, xl: 8 } }]}>
+                  <TextFilter
+                    filteringText={filterText}
+                    filteringPlaceholder="Placeholder"
+                    filteringAriaLabel="Filter devices"
+                    onChange={({ detail }) => setFilterText(detail.filteringText)}
+                  />
+                </Grid>
 
-              <Pagination
-                currentPageIndex={1}
-                pagesCount={5}
-                ariaLabels={{
-                  nextPageLabel: 'Next page',
-                  previousPageLabel: 'Previous page',
-                  pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
-                }}
-              />
+                <Pagination
+                  currentPageIndex={1}
+                  pagesCount={5}
+                  ariaLabels={{
+                    nextPageLabel: 'Next page',
+                    previousPageLabel: 'Previous page',
+                    pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
+                  }}
+                />
+              </SpaceBetween>
             </SpaceBetween>
           }
         >

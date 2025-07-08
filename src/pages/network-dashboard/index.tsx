@@ -14,7 +14,6 @@ import Container from '@cloudscape-design/components/container';
 import Table from '@cloudscape-design/components/table';
 import Box from '@cloudscape-design/components/box';
 import Grid from '@cloudscape-design/components/grid';
-import ColumnLayout from '@cloudscape-design/components/column-layout';
 import Flashbar from '@cloudscape-design/components/flashbar';
 import AreaChart from '@cloudscape-design/components/area-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
@@ -190,7 +189,12 @@ const columnDefinitions = [
     id: 'status',
     header: 'Status',
     cell: (item: any) => (
-      <Box color={item.status === 'Active' ? 'text-status-success' : 'text-status-error'}>{item.status}</Box>
+      <Box
+        color={item.status === 'Active' ? 'text-status-success' : 'text-status-error'}
+        className={item.status === 'Active' ? 'device-status-active' : 'device-status-inactive'}
+      >
+        {item.status}
+      </Box>
     ),
     sortingField: 'status',
     width: 100,
@@ -313,7 +317,7 @@ export default function NetworkDashboard() {
                 ]}
                 className="charts-grid"
               >
-                <Container header={<Header variant="h2">Network traffic</Header>}>
+                <Container header={<Header variant="h2">Network traffic</Header>} className="chart-container">
                   <AreaChart
                     series={networkTrafficSeries}
                     xDomain={[new Date(2024, 0, 1), new Date(2024, 0, 12)]}
@@ -372,7 +376,7 @@ export default function NetworkDashboard() {
                   />
                 </Container>
 
-                <Container header={<Header variant="h2">Credit Usage</Header>}>
+                <Container header={<Header variant="h2">Credit Usage</Header>} className="chart-container">
                   <BarChart
                     series={[
                       {
@@ -430,7 +434,7 @@ export default function NetworkDashboard() {
                 </Container>
               </Grid>
 
-                            <Container
+              <Container
                 header={
                   <Header
                     variant="h2"
@@ -445,60 +449,61 @@ export default function NetworkDashboard() {
                   </Header>
                 }
               >
-                                <div className="devices-table">
+                <div className="devices-table">
                   <Table
                     columnDefinitions={columnDefinitions}
-                  items={paginatedDevices}
-                  loadingText="Loading devices"
-                  selectedItems={selectedItems}
-                  onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
-                  selectionType="multi"
-                  trackBy="id"
-                  empty={
-                    <Box margin={{ vertical: 'xs' }} textAlign="center" color="inherit">
-                      <b>No devices</b>
-                      <Box padding={{ bottom: 's' }} variant="p" color="inherit">
-                        No devices to display.
+                    items={paginatedDevices}
+                    loadingText="Loading devices"
+                    selectedItems={selectedItems}
+                    onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
+                    selectionType="multi"
+                    trackBy="id"
+                    empty={
+                      <Box margin={{ vertical: 'xs' }} textAlign="center" color="inherit">
+                        <b>No devices</b>
+                        <Box padding={{ bottom: 's' }} variant="p" color="inherit">
+                          No devices to display.
+                        </Box>
+                        <Button>Add device</Button>
                       </Box>
-                      <Button>Add device</Button>
-                    </Box>
-                  }
-                  filter={
-                    <TextFilter
-                      filteringText={filterText}
-                      onChange={({ detail }) => {
-                        setFilterText(detail.filteringText);
-                        setCurrentPageIndex(1);
-                      }}
-                      filteringPlaceholder="Find devices"
-                      filteringAriaLabel="Filter devices"
-                      countText={`${filteredDevices.length} matches`}
-                    />
-                  }
-                  header={
-                    <Header
-                      counter={
-                        selectedItems.length
-                          ? `(${selectedItems.length}/${filteredDevices.length})`
-                          : `(${filteredDevices.length})`
-                      }
-                    >
-                      Devices
-                    </Header>
-                  }
-                  pagination={
-                    <Pagination
-                      currentPageIndex={currentPageIndex}
-                      onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
-                      pagesCount={Math.ceil(filteredDevices.length / itemsPerPage)}
-                      ariaLabels={{
-                        nextPageLabel: 'Next page',
-                        previousPageLabel: 'Previous page',
-                        pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
-                      }}
-                    />
-                  }
-                />
+                    }
+                    filter={
+                      <TextFilter
+                        filteringText={filterText}
+                        onChange={({ detail }) => {
+                          setFilterText(detail.filteringText);
+                          setCurrentPageIndex(1);
+                        }}
+                        filteringPlaceholder="Find devices"
+                        filteringAriaLabel="Filter devices"
+                        countText={`${filteredDevices.length} matches`}
+                      />
+                    }
+                    header={
+                      <Header
+                        counter={
+                          selectedItems.length
+                            ? `(${selectedItems.length}/${filteredDevices.length})`
+                            : `(${filteredDevices.length})`
+                        }
+                      >
+                        Devices
+                      </Header>
+                    }
+                    pagination={
+                      <Pagination
+                        currentPageIndex={currentPageIndex}
+                        onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
+                        pagesCount={Math.ceil(filteredDevices.length / itemsPerPage)}
+                        ariaLabels={{
+                          nextPageLabel: 'Next page',
+                          previousPageLabel: 'Previous page',
+                          pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
+                        }}
+                      />
+                    }
+                  />
+                </div>
               </Container>
             </SpaceBetween>
           </ContentLayout>

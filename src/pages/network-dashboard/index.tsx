@@ -14,7 +14,7 @@ import Container from '@cloudscape-design/components/container';
 import Table from '@cloudscape-design/components/table';
 import Box from '@cloudscape-design/components/box';
 import Grid from '@cloudscape-design/components/grid';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import AlertBanner from './components/AlertBanner';
 import AreaChart from '@cloudscape-design/components/area-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
 import './network-dashboard.scss';

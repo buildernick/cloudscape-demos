@@ -15,7 +15,7 @@ import BarChart from '@cloudscape-design/components/bar-chart';
 import Table from '@cloudscape-design/components/table';
 import TextFilter from '@cloudscape-design/components/text-filter';
 import Pagination from '@cloudscape-design/components/pagination';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import { WarningBanner } from './components/warning-banner';
 
 // Mock data for the charts
 const networkTrafficData = [

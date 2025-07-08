@@ -430,7 +430,7 @@ export default function NetworkDashboard() {
                 </Container>
               </Grid>
 
-              <Container
+                            <Container
                 header={
                   <Header
                     variant="h2"
@@ -445,7 +445,8 @@ export default function NetworkDashboard() {
                   </Header>
                 }
               >
-                <Table
+                <div className="devices-table">
+                  <Table
                   columnDefinitions={columnDefinitions}
                   items={paginatedDevices}
                   loadingText="Loading devices"

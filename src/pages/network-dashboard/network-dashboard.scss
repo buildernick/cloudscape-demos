@@ -1,16 +1,12 @@
 // Network Dashboard Responsive Styles
 
 .network-dashboard {
-  // Charts Grid Responsive Layout
+  // Charts Grid Layout - Always on one row
   .charts-grid {
     gap: 1rem;
 
     @media (max-width: 768px) {
       gap: 0.75rem;
-
-      .awsui-grid-column {
-        grid-column: span 12 !important;
-      }
     }
 
     @media (max-width: 480px) {

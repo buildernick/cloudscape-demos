@@ -247,7 +247,7 @@ export function App() {
                     {
                       title: 'Site 2',
                       type: 'area',
-                      data: networkTrafficData.map(point => ({ x: point.x, y: point.y + 10 })),
+                      data: networkTrafficSeries2,
                       color: '#C33D69',
                     },
                   ]}
@@ -262,6 +262,13 @@ export function App() {
                   statusType="finished"
                   empty={<Box textAlign="center">No data available</Box>}
                   noMatch={<Box textAlign="center">No matching data</Box>}
+                  additionalFilters={
+                    <SpaceBetween size="xs" direction="horizontal">
+                      <Box fontSize="body-s" color="text-status-info">
+                        Performance goal
+                      </Box>
+                    </SpaceBetween>
+                  }
                 />
               </Container>
 

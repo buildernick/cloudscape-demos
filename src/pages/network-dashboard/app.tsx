@@ -291,16 +291,10 @@ export function App() {
         >
           <SpaceBetween size="l">
             {showWarning && (
-              <Flashbar
-                items={[
-                  {
-                    type: 'warning',
-                    content: 'This is a warning message',
-                    dismissible: true,
-                    onDismiss: () => setShowWarning(false),
-                    buttonText: 'Dismiss',
-                  },
-                ]}
+              <WarningBanner
+                message="This is a warning message"
+                onDismiss={() => setShowWarning(false)}
+                dismissText="Dismiss"
               />
             )}
 

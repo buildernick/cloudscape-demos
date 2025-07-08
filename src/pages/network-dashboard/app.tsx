@@ -182,22 +182,22 @@ const deviceData = [
 
 const columnDefinitions = [
   {
-    id: 'name',
+    id: 'deviceName',
     header: 'Device Name',
-    cell: (item: any) => item.name,
-    sortingField: 'name',
+    cell: (item: any) => item.deviceName,
+    sortingField: 'deviceName',
   },
   {
-    id: 'type',
-    header: 'Type',
-    cell: (item: any) => item.type,
-    sortingField: 'type',
+    id: 'deviceType',
+    header: 'Device Type',
+    cell: (item: any) => item.deviceType,
+    sortingField: 'deviceType',
   },
   {
-    id: 'ip',
+    id: 'ipAddress',
     header: 'IP Address',
-    cell: (item: any) => item.ip,
-    sortingField: 'ip',
+    cell: (item: any) => item.ipAddress,
+    sortingField: 'ipAddress',
   },
   {
     id: 'status',

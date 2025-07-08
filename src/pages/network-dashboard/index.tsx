@@ -261,7 +261,12 @@ export default function NetworkDashboard() {
               >
                 Network Administration Dashboard
               </Header>
-              <SpaceBetween size="s" direction="horizontal">
+              <Grid
+                gridDefinition={[
+                  { colspan: { default: 12, xs: 12, s: 12, m: 8, l: 8, xl: 8 } },
+                  { colspan: { default: 12, xs: 12, s: 12, m: 4, l: 4, xl: 4 } },
+                ]}
+              >
                 <TextFilter
                   filteringText={filterText}
                   filteringPlaceholder="Placeholder"
@@ -281,7 +286,7 @@ export default function NetworkDashboard() {
                     pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
                   }}
                 />
-              </SpaceBetween>
+              </Grid>
             </SpaceBetween>
           }
         >

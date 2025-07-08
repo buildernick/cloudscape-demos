@@ -1,0 +1,40 @@
+// Network Dashboard Responsive Styles
+
+.network-dashboard {
+  .charts-grid {
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      gap: 0.75rem;
+    }
+  }
+
+  .chart-container {
+    min-height: 300px;
+
+    @media (max-width: 480px) {
+      min-height: 250px;
+    }
+  }
+
+  .devices-table {
+    overflow-x: auto;
+  }
+
+  .device-status-active {
+    color: #16a34a !important;
+    font-weight: 500;
+  }
+
+  .device-status-inactive {
+    color: #dc2626 !important;
+    font-weight: 500;
+  }
+}
+
+// Global responsive adjustments for this page
+@media (max-width: 768px) {
+  .awsui-grid {
+    grid-template-columns: 1fr !important;
+  }
+}

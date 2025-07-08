@@ -233,9 +233,9 @@ export function App() {
 
   const filteredItems = deviceData.filter(
     item =>
-      item.name.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.type.toLowerCase().includes(filterText.toLowerCase()) ||
-      item.ip.includes(filterText),
+      item.deviceName.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.deviceType.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.ipAddress.includes(filterText),
   );
 
   return (

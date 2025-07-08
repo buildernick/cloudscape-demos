@@ -391,21 +391,12 @@ export function App() {
                 selectionType="multi"
                 selectedItems={selectedItems}
                 onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
-                header={<Header counter={`(${filteredItems.length})`}>Devices</Header>}
                 empty={
                   <Box textAlign="center" color="inherit">
                     <Box variant="p" color="inherit">
                       No devices found
                     </Box>
                   </Box>
-                }
-                filter={
-                  <TextFilter
-                    filteringText={filterText}
-                    filteringPlaceholder="Find devices"
-                    filteringAriaLabel="Filter devices"
-                    onChange={({ detail }) => setFilterText(detail.filteringText)}
-                  />
                 }
                 pagination={
                   <Pagination

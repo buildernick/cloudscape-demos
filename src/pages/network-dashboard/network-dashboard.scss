@@ -1,0 +1,212 @@
+// Network Dashboard Responsive Styles
+
+.network-dashboard {
+  // Charts Grid Layout - Always on one row
+  .charts-grid {
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 480px) {
+      gap: 0.5rem;
+    }
+  }
+
+  // Chart Container Responsive Heights
+  .chart-container {
+    .awsui-area-chart,
+    .awsui-bar-chart {
+      min-height: 300px;
+
+      @media (max-width: 768px) {
+        min-height: 250px;
+      }
+
+      @media (max-width: 480px) {
+        min-height: 200px;
+      }
+    }
+  }
+
+  // Devices Table Responsive
+  .devices-table {
+    overflow-x: auto;
+
+    .awsui-table {
+      min-width: 900px;
+
+      @media (max-width: 768px) {
+        min-width: 800px;
+      }
+
+      @media (max-width: 480px) {
+        min-width: 700px;
+        font-size: 0.875rem;
+      }
+    }
+
+    // Improve table readability on mobile
+    @media (max-width: 480px) {
+      .awsui-table-cell {
+        padding: 8px 4px;
+      }
+
+      .awsui-table-header-cell {
+        padding: 8px 4px;
+        font-size: 0.8125rem;
+      }
+    }
+  }
+
+  // Device Status Styling
+  .device-status-active {
+    color: #16a34a !important;
+    font-weight: 500;
+  }
+
+  .device-status-inactive {
+    color: #dc2626 !important;
+    font-weight: 500;
+  }
+
+  // Header Controls Responsive
+  .awsui-grid {
+    @media (max-width: 768px) {
+      gap: 0.5rem;
+
+      // Make header controls stack on mobile
+      .awsui-grid-column:first-child {
+        grid-column: span 12 !important;
+      }
+
+      .awsui-grid-column:last-child {
+        grid-column: span 12 !important;
+
+        .awsui-pagination {
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  // Responsive Breadcrumbs
+  .awsui-breadcrumb-group {
+    @media (max-width: 480px) {
+      .awsui-breadcrumb-item {
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  // Responsive Headers
+  .awsui-header {
+    @media (max-width: 768px) {
+      .awsui-header-title {
+        font-size: 1.75rem;
+      }
+
+      .awsui-header-description {
+        font-size: 0.875rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .awsui-header-title {
+        font-size: 1.5rem;
+      }
+
+      .awsui-header-actions {
+        margin-top: 0.5rem;
+
+        .awsui-button {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  // Responsive Container Spacing
+  .awsui-container {
+    @media (max-width: 768px) {
+      .awsui-container-header {
+        padding: 1rem;
+
+        .awsui-header-actions {
+          .awsui-button {
+            font-size: 0.875rem;
+            padding: 0.375rem 0.75rem;
+          }
+        }
+      }
+
+      .awsui-container-content {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .awsui-container-header {
+        padding: 0.75rem;
+      }
+
+      .awsui-container-content {
+        padding: 0.75rem;
+      }
+    }
+  }
+
+  // Responsive Flashbar
+  .awsui-flashbar {
+    @media (max-width: 480px) {
+      .awsui-flashbar-item {
+        padding: 0.75rem;
+
+        .awsui-flashbar-content {
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+
+  // Ensure text doesn't overflow on small screens
+  .awsui-table-cell,
+  .awsui-table-header-cell {
+    @media (max-width: 480px) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 120px;
+    }
+  }
+
+  // Better button spacing on mobile
+  .awsui-button-group {
+    @media (max-width: 480px) {
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .awsui-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+// Global responsive improvements for this specific page
+body:has(.network-dashboard) {
+  @media (max-width: 768px) {
+    .awsui-app-layout-content {
+      padding: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .awsui-app-layout-content {
+      padding: 0.25rem;
+    }
+  }
+}

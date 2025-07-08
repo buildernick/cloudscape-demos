@@ -18,7 +18,7 @@ import ColumnLayout from '@cloudscape-design/components/column-layout';
 import Flashbar from '@cloudscape-design/components/flashbar';
 import AreaChart from '@cloudscape-design/components/area-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
-import styles from './styles.module.scss';
+import './network-dashboard.scss';
 
 // Mock data for network traffic chart
 const networkTrafficData = [

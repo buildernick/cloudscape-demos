@@ -297,17 +297,9 @@ export default function NetworkDashboard() {
           >
             <SpaceBetween size="l">
               {showWarning && (
-                <Flashbar
-                  items={[
-                    {
-                      type: 'warning',
-                      content: 'This is a warning message',
-                      dismissible: true,
-                      onDismiss: () => setShowWarning(false),
-                      dismissLabel: 'Dismiss',
-                    },
-                  ]}
-                />
+                <AlertBanner type="warning" dismissible={true} onDismiss={() => setShowWarning(false)}>
+                  This is a warning message
+                </AlertBanner>
               )}
 
               <Grid

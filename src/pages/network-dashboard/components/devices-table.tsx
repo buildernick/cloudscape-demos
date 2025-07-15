@@ -137,48 +137,68 @@ const deviceData = [
 
 export function DevicesTable() {
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
+  const [filteringText, setFilteringText] = useState('');
+
+  const filteredItems = useMemo(() => {
+    return deviceData.filter(item =>
+      Object.values(item).some(value => value.toString().toLowerCase().includes(filteringText.toLowerCase())),
+    );
+  }, [filteringText]);
+
+  const getStatusBadgeType = (status: string) => {
+    switch (status.toLowerCase()) {
+      case 'online':
+        return 'success';
+      case 'offline':
+        return 'error';
+      case 'warning':
+        return 'warning';
+      default:
+        return 'info';
+    }
+  };
 
   const columnDefinitions = [
     {
       id: 'name',
-      header: 'Column header',
+      header: 'Device Name',
       cell: (item: any) => item.name,
       sortingField: 'name',
       isRowHeader: true,
     },
     {
       id: 'type',
-      header: 'Column header',
+      header: 'Device Type',
       cell: (item: any) => item.type,
       sortingField: 'type',
     },
     {
       id: 'status',
-      header: 'Column header',
-      cell: (item: any) => item.status,
+      header: 'Status',
+      cell: (item: any) => <Badge color={getStatusBadgeType(item.status)}>{item.status}</Badge>,
       sortingField: 'status',
     },
     {
       id: 'location',
-      header: 'Column header',
+      header: 'Location',
       cell: (item: any) => item.location,
       sortingField: 'location',
     },
     {
       id: 'usage',
-      header: 'Column header',
+      header: 'Data Usage',
       cell: (item: any) => item.usage,
       sortingField: 'usage',
     },
     {
       id: 'performance',
-      header: 'Column header',
+      header: 'Performance',
       cell: (item: any) => item.performance,
       sortingField: 'performance',
     },
     {
       id: 'lastSeen',
-      header: 'Column header',
+      header: 'Last Seen',
       cell: (item: any) => item.lastSeen,
       sortingField: 'lastSeen',
     },

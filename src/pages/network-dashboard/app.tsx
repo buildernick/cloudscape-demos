@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 import AppLayout from '@cloudscape-design/components/app-layout';
-import Breadcrumb from '@cloudscape-design/components/breadcrumb';
+import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Button from '@cloudscape-design/components/button';
 import Container from '@cloudscape-design/components/container';
 import ContentLayout from '@cloudscape-design/components/content-layout';

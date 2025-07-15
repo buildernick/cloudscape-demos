@@ -42,7 +42,12 @@ export function Content() {
       </Grid>
 
       {/* Charts */}
-      <Grid gridDefinition={[{ colspan: { default: 6, xs: 12 } }, { colspan: { default: 6, xs: 12 } }]}>
+      <Grid
+        gridDefinition={[
+          { colspan: { default: 6, s: 6, m: 6, l: 6, xl: 6, xs: 12 } },
+          { colspan: { default: 6, s: 6, m: 6, l: 6, xl: 6, xs: 12 } },
+        ]}
+      >
         <NetworkTrafficChart />
         <CreditUsageChart />
       </Grid>

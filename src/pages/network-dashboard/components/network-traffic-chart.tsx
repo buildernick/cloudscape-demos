@@ -24,6 +24,24 @@ const networkTrafficData = [
 ];
 
 export function NetworkTrafficChart() {
+  const chartSeries = useMemo(
+    () => [
+      {
+        title: 'Site 1',
+        type: 'area' as const,
+        data: networkTrafficData.map(item => ({ x: item.x, y: item.y1 })),
+        color: '#ec7211',
+      },
+      {
+        title: 'Site 2',
+        type: 'area' as const,
+        data: networkTrafficData.map(item => ({ x: item.x, y: item.y2 })),
+        color: '#5294cf',
+      },
+    ],
+    [],
+  );
+
   return (
     <Container
       header={
@@ -33,20 +51,7 @@ export function NetworkTrafficChart() {
       }
     >
       <AreaChart
-        series={[
-          {
-            title: 'Site 1',
-            type: 'area',
-            data: networkTrafficData.map(item => ({ x: item.x, y: item.y1 })),
-            color: '#ec7211',
-          },
-          {
-            title: 'Site 2',
-            type: 'area',
-            data: networkTrafficData.map(item => ({ x: item.x, y: item.y2 })),
-            color: '#5294cf',
-          },
-        ]}
+        series={chartSeries}
         xDomain={[networkTrafficData[0].x, networkTrafficData[networkTrafficData.length - 1].x]}
         yDomain={[0, 200]}
         i18nStrings={{

@@ -220,50 +220,69 @@ export function DevicesTable() {
         </Header>
       }
     >
-      <Table
-        columnDefinitions={columnDefinitions}
-        items={sampleDevices}
-        loadingText="Loading devices"
-        selectionType="multi"
-        trackBy="id"
-        empty={
-          <Box margin={{ vertical: 'xs' }} textAlign="center" color="inherit">
-            <SpaceBetween size="m">
-              <b>No devices</b>
-              <Button>Add Device</Button>
-            </SpaceBetween>
-          </Box>
-        }
-        selectedItems={selectedItems}
-        onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
-        ariaLabels={{
-          selectionGroupLabel: 'Items selection',
-          allItemsSelectionLabel: ({ selectedItems }) =>
-            `${selectedItems.length} ${selectedItems.length === 1 ? 'item' : 'items'} selected`,
-          itemSelectionLabel: ({ selectedItems }, item) => {
-            const isItemSelected = selectedItems.filter(i => i.id === item.id).length;
-            return `${item.name} is ${isItemSelected ? '' : 'not'} selected`;
-          },
-        }}
-        header={
-          <Header
-            counter={
-              selectedItems.length ? `(${selectedItems.length}/${sampleDevices.length})` : `(${sampleDevices.length})`
-            }
-            actions={
-              <SpaceBetween direction="horizontal" size="xs">
-                <Button disabled={selectedItems.length === 0}>Configure</Button>
-                <Button disabled={selectedItems.length === 0}>Remove</Button>
-                <Button variant="primary" iconName="add-plus">
-                  Add Device
-                </Button>
+      <SpaceBetween size="l">
+        <TextFilter
+          filteringText={filteringText}
+          filteringPlaceholder="Find devices by name, type, location..."
+          filteringAriaLabel="Filter devices"
+          countText={`${filteredItems.length} ${filteredItems.length === 1 ? 'match' : 'matches'}`}
+          onChange={({ detail }) => setFilteringText(detail.filteringText)}
+        />
+        <Table
+          columnDefinitions={columnDefinitions}
+          items={filteredItems}
+          loadingText="Loading devices"
+          selectionType="multi"
+          trackBy="id"
+          sortingDisabled={false}
+          empty={
+            <Box margin={{ vertical: 'xs' }} textAlign="center" color="inherit">
+              <SpaceBetween size="m">
+                <b>No devices found</b>
+                <Button>Add Device</Button>
               </SpaceBetween>
-            }
-          >
-            Devices
-          </Header>
-        }
-      />
+            </Box>
+          }
+          filter={
+            <TextFilter
+              filteringText={filteringText}
+              filteringPlaceholder="Find devices"
+              filteringAriaLabel="Filter devices"
+              countText={`${filteredItems.length} ${filteredItems.length === 1 ? 'match' : 'matches'}`}
+              onChange={({ detail }) => setFilteringText(detail.filteringText)}
+            />
+          }
+          selectedItems={selectedItems}
+          onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
+          ariaLabels={{
+            selectionGroupLabel: 'Items selection',
+            allItemsSelectionLabel: ({ selectedItems }) =>
+              `${selectedItems.length} ${selectedItems.length === 1 ? 'item' : 'items'} selected`,
+            itemSelectionLabel: ({ selectedItems }, item) => {
+              const isItemSelected = selectedItems.filter(i => i.id === item.id).length;
+              return `${item.name} is ${isItemSelected ? '' : 'not'} selected`;
+            },
+          }}
+          header={
+            <Header
+              counter={
+                selectedItems.length ? `(${selectedItems.length}/${filteredItems.length})` : `(${filteredItems.length})`
+              }
+              actions={
+                <SpaceBetween direction="horizontal" size="xs">
+                  <Button disabled={selectedItems.length === 0}>Configure</Button>
+                  <Button disabled={selectedItems.length === 0}>Remove</Button>
+                  <Button variant="primary" iconName="add-plus">
+                    Add Device
+                  </Button>
+                </SpaceBetween>
+              }
+            >
+              Devices
+            </Header>
+          }
+        />
+      </SpaceBetween>
     </Container>
   );
 }

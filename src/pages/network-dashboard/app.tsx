@@ -5,6 +5,8 @@ import React, { useRef, useState } from 'react';
 import { AppLayoutProps } from '@cloudscape-design/components/app-layout';
 import Button from '@cloudscape-design/components/button';
 import SpaceBetween from '@cloudscape-design/components/space-between';
+import Modal from '@cloudscape-design/components/modal';
+import Box from '@cloudscape-design/components/box';
 
 import { Breadcrumbs, HelpPanelProvider, Notifications } from '../commons';
 import { CustomAppLayout } from '../commons/common-components';

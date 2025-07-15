@@ -17,6 +17,18 @@ const creditUsageData = [
 ];
 
 export function CreditUsageChart() {
+  const chartSeries = useMemo(
+    () => [
+      {
+        title: 'Site 1',
+        type: 'bar' as const,
+        data: creditUsageData,
+        color: '#5294cf',
+      },
+    ],
+    [],
+  );
+
   return (
     <Container
       header={
@@ -26,14 +38,7 @@ export function CreditUsageChart() {
       }
     >
       <BarChart
-        series={[
-          {
-            title: 'Site 1',
-            type: 'bar',
-            data: creditUsageData,
-            color: '#5294cf',
-          },
-        ]}
+        series={chartSeries}
         xDomain={creditUsageData.map(item => item.x)}
         yDomain={[0, 70]}
         i18nStrings={{

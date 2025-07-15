@@ -32,7 +32,7 @@ export function App() {
         <ContentLayout
           header={
             <SpaceBetween size="m">
-              <Breadcrumb
+              <BreadcrumbGroup
                 items={[
                   { text: 'Service', href: '#' },
                   { text: 'Administrative Dashboard', href: '#' },

@@ -72,6 +72,32 @@ export function App() {
         onToolsChange={({ detail }) => setToolsOpen(detail.open)}
         notifications={<Notifications />}
       />
+
+      <Modal
+        onDismiss={handleRefreshCancel}
+        visible={showRefreshConfirm}
+        header="Confirm refresh"
+        closeAriaLabel="Close modal"
+        footer={
+          <Box float="right">
+            <SpaceBetween direction="horizontal" size="xs">
+              <Button variant="link" onClick={handleRefreshCancel}>
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={handleRefreshConfirm}>
+                Refresh
+              </Button>
+            </SpaceBetween>
+          </Box>
+        }
+      >
+        <SpaceBetween size="m">
+          <Box variant="span">
+            Are you sure you want to refresh the dashboard data? This will reload all network traffic, credit usage, and
+            device information.
+          </Box>
+        </SpaceBetween>
+      </Modal>
     </HelpPanelProvider>
   );
 }

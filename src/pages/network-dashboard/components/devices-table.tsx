@@ -139,17 +139,16 @@ export function DevicesTable() {
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
   const [filteringText, setFilteringText] = useState('');
 
-  const filteredItems = useMemo(() => {
+    const filteredItems = useMemo(() => {
     if (!filteringText.trim()) {
       return deviceData;
     }
     const searchText = filteringText.toLowerCase();
-    return deviceData.filter(
-      item =>
-        item.name.toLowerCase().includes(searchText) ||
-        item.type.toLowerCase().includes(searchText) ||
-        item.status.toLowerCase().includes(searchText) ||
-        item.location.toLowerCase().includes(searchText),
+    return deviceData.filter(item =>
+      item.name.toLowerCase().includes(searchText) ||
+      item.type.toLowerCase().includes(searchText) ||
+      item.status.toLowerCase().includes(searchText) ||
+      item.location.toLowerCase().includes(searchText)
     );
   }, [filteringText]);
 
@@ -228,38 +227,30 @@ export function DevicesTable() {
         </Header>
       }
     >
-      <SpaceBetween size="l">
-        <TextFilter
-          filteringText={filteringText}
-          filteringPlaceholder="Find devices by name, type, location..."
-          filteringAriaLabel="Filter devices"
-          countText={`${filteredItems.length} ${filteredItems.length === 1 ? 'match' : 'matches'}`}
-          onChange={({ detail }) => setFilteringText(detail.filteringText)}
-        />
-        <Table
-          columnDefinitions={columnDefinitions}
-          items={filteredItems}
-          loadingText="Loading devices"
-          selectionType="multi"
-          trackBy="id"
-          sortingDisabled={false}
-          empty={
-            <Box margin={{ vertical: 'xs' }} textAlign="center" color="inherit">
-              <SpaceBetween size="m">
-                <b>No devices found</b>
-                <Button>Add Device</Button>
-              </SpaceBetween>
-            </Box>
-          }
-          filter={
-            <TextFilter
-              filteringText={filteringText}
-              filteringPlaceholder="Find devices"
-              filteringAriaLabel="Filter devices"
-              countText={`${filteredItems.length} ${filteredItems.length === 1 ? 'match' : 'matches'}`}
-              onChange={({ detail }) => setFilteringText(detail.filteringText)}
-            />
-          }
+            <Table
+        columnDefinitions={columnDefinitions}
+        items={filteredItems}
+        loadingText="Loading devices"
+        selectionType="multi"
+        trackBy="id"
+        sortingDisabled={false}
+        empty={
+          <Box margin={{ vertical: 'xs' }} textAlign="center" color="inherit">
+            <SpaceBetween size="m">
+              <b>No devices found</b>
+              <Button>Add Device</Button>
+            </SpaceBetween>
+          </Box>
+        }
+        filter={
+          <TextFilter
+            filteringText={filteringText}
+            filteringPlaceholder="Find devices by name, type, location..."
+            filteringAriaLabel="Filter devices"
+            countText={`${filteredItems.length} ${filteredItems.length === 1 ? 'match' : 'matches'}`}
+            onChange={({ detail }) => setFilteringText(detail.filteringText)}
+          />
+        }
           selectedItems={selectedItems}
           onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
           ariaLabels={{

@@ -19,12 +19,27 @@ import '@cloudscape-design/global-styles/dark-mode-utils.css';
 export function App() {
   const [toolsOpen, setToolsOpen] = useState(false);
   const [toolsContent, setToolsContent] = useState<React.ReactNode>(() => <NetworkDashboardMainInfo />);
+  const [showRefreshConfirm, setShowRefreshConfirm] = useState(false);
   const appLayout = useRef<AppLayoutProps.Ref>(null);
 
   const handleToolsContentChange = (content: React.ReactNode) => {
     setToolsOpen(true);
     setToolsContent(content);
     appLayout.current?.focusToolsClose();
+  };
+
+  const handleRefreshClick = () => {
+    setShowRefreshConfirm(true);
+  };
+
+  const handleRefreshConfirm = () => {
+    setShowRefreshConfirm(false);
+    // Add actual refresh logic here
+    console.log('Refreshing dashboard data...');
+  };
+
+  const handleRefreshCancel = () => {
+    setShowRefreshConfirm(false);
   };
 
   return (

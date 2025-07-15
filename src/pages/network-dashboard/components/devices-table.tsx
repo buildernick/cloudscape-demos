@@ -139,16 +139,17 @@ export function DevicesTable() {
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
   const [filteringText, setFilteringText] = useState('');
 
-    const filteredItems = useMemo(() => {
+  const filteredItems = useMemo(() => {
     if (!filteringText.trim()) {
       return deviceData;
     }
     const searchText = filteringText.toLowerCase();
-    return deviceData.filter(item =>
-      item.name.toLowerCase().includes(searchText) ||
-      item.type.toLowerCase().includes(searchText) ||
-      item.status.toLowerCase().includes(searchText) ||
-      item.location.toLowerCase().includes(searchText)
+    return deviceData.filter(
+      item =>
+        item.name.toLowerCase().includes(searchText) ||
+        item.type.toLowerCase().includes(searchText) ||
+        item.status.toLowerCase().includes(searchText) ||
+        item.location.toLowerCase().includes(searchText),
     );
   }, [filteringText]);
 
@@ -227,7 +228,7 @@ export function DevicesTable() {
         </Header>
       }
     >
-            <Table
+      <Table
         columnDefinitions={columnDefinitions}
         items={filteredItems}
         loadingText="Loading devices"
@@ -251,37 +252,36 @@ export function DevicesTable() {
             onChange={({ detail }) => setFilteringText(detail.filteringText)}
           />
         }
-          selectedItems={selectedItems}
-          onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
-          ariaLabels={{
-            selectionGroupLabel: 'Items selection',
-            allItemsSelectionLabel: ({ selectedItems }) =>
-              `${selectedItems.length} ${selectedItems.length === 1 ? 'item' : 'items'} selected`,
-            itemSelectionLabel: ({ selectedItems }, item) => {
-              const isItemSelected = selectedItems.filter(i => i.id === item.id).length;
-              return `${item.name} is ${isItemSelected ? '' : 'not'} selected`;
-            },
-          }}
-          header={
-            <Header
-              counter={
-                selectedItems.length ? `(${selectedItems.length}/${filteredItems.length})` : `(${filteredItems.length})`
-              }
-              actions={
-                <SpaceBetween direction="horizontal" size="xs">
-                  <Button disabled={selectedItems.length === 0}>Configure</Button>
-                  <Button disabled={selectedItems.length === 0}>Remove</Button>
-                  <Button variant="primary" iconName="add-plus">
-                    Add Device
-                  </Button>
-                </SpaceBetween>
-              }
-            >
-              Devices
-            </Header>
-          }
-        />
-      </SpaceBetween>
+        selectedItems={selectedItems}
+        onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
+        ariaLabels={{
+          selectionGroupLabel: 'Items selection',
+          allItemsSelectionLabel: ({ selectedItems }) =>
+            `${selectedItems.length} ${selectedItems.length === 1 ? 'item' : 'items'} selected`,
+          itemSelectionLabel: ({ selectedItems }, item) => {
+            const isItemSelected = selectedItems.filter(i => i.id === item.id).length;
+            return `${item.name} is ${isItemSelected ? '' : 'not'} selected`;
+          },
+        }}
+        header={
+          <Header
+            counter={
+              selectedItems.length ? `(${selectedItems.length}/${filteredItems.length})` : `(${filteredItems.length})`
+            }
+            actions={
+              <SpaceBetween direction="horizontal" size="xs">
+                <Button disabled={selectedItems.length === 0}>Configure</Button>
+                <Button disabled={selectedItems.length === 0}>Remove</Button>
+                <Button variant="primary" iconName="add-plus">
+                  Add Device
+                </Button>
+              </SpaceBetween>
+            }
+          >
+            Devices
+          </Header>
+        }
+      />
     </Container>
   );
 }

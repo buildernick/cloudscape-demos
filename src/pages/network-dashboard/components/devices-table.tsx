@@ -140,8 +140,16 @@ export function DevicesTable() {
   const [filteringText, setFilteringText] = useState('');
 
   const filteredItems = useMemo(() => {
-    return deviceData.filter(item =>
-      Object.values(item).some(value => value.toString().toLowerCase().includes(filteringText.toLowerCase())),
+    if (!filteringText.trim()) {
+      return deviceData;
+    }
+    const searchText = filteringText.toLowerCase();
+    return deviceData.filter(
+      item =>
+        item.name.toLowerCase().includes(searchText) ||
+        item.type.toLowerCase().includes(searchText) ||
+        item.status.toLowerCase().includes(searchText) ||
+        item.location.toLowerCase().includes(searchText),
     );
   }, [filteringText]);
 

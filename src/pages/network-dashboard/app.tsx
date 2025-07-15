@@ -10,13 +10,14 @@ import ContentLayout from '@cloudscape-design/components/content-layout';
 import Grid from '@cloudscape-design/components/grid';
 import Header from '@cloudscape-design/components/header';
 import Input from '@cloudscape-design/components/input';
-import Flashbar from '@cloudscape-design/components/flashbar';
+
 import Pagination from '@cloudscape-design/components/pagination';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 
 import CreditUsageChart from './components/credit-usage-chart';
 import DevicesTable from './components/devices-table';
 import NetworkTrafficChart from './components/network-traffic-chart';
+import WarningMessage from './components/warning-message';
 
 import '@cloudscape-design/global-styles/dark-mode-utils.css';
 
@@ -49,16 +50,7 @@ export function App() {
               >
                 Network Administration Dashboard
               </Header>
-              <Flashbar
-                items={[
-                  {
-                    type: 'warning',
-                    content: 'This is a warning message',
-                    dismissible: true,
-                    buttonText: 'Dismiss',
-                  },
-                ]}
-              />
+              <WarningMessage message="This is a warning message" />
             </SpaceBetween>
           }
         >

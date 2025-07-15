@@ -9,7 +9,7 @@ import Header from '@cloudscape-design/components/header';
 import Link from '@cloudscape-design/components/link';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 
-import { HelpPanelContext } from '../../commons';
+import { useHelpPanel } from '../../commons';
 
 interface NetworkDashboardHeaderProps {
   actions?: React.ReactNode;
@@ -24,8 +24,6 @@ export function NetworkDashboardHeader({ actions }: NetworkDashboardHeaderProps)
 }
 
 export function NetworkDashboardMainInfo() {
-  const { setHelpPanelContent } = React.useContext(HelpPanelContext);
-
   return (
     <Box variant="h2" padding="l">
       <SpaceBetween size="l">

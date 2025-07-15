@@ -36,7 +36,7 @@ export function NetworkDashboardMainInfo() {
 
         <div>
           <Box variant="h3">Key Features</Box>
-          <Box variant="p">
+          <Box>
             <ul>
               <li>Real-time network traffic monitoring</li>
               <li>Credit usage tracking with performance goals</li>

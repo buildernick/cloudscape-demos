@@ -50,7 +50,7 @@ export function App() {
           <SpaceBetween size="m">
             <NetworkDashboardHeader
               actions={
-                <Button variant="primary" iconName="refresh">
+                <Button variant="primary" iconName="refresh" onClick={handleRefreshClick}>
                   Refresh Data
                 </Button>
               }

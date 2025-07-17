@@ -196,8 +196,8 @@ export function Content() {
         <SpaceBetween size="l">
           <TextFilter
             filteringText={searchValue}
-            filteringPlaceholder="Find devices"
-            filteringAriaLabel="Filter devices"
+            filteringPlaceholder="Find users"
+            filteringAriaLabel="Filter users"
             onChange={({ detail }) => handleSearchChange(detail.filteringText)}
           />
 

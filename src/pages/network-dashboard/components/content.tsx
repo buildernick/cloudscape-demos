@@ -119,15 +119,16 @@ export function Content() {
   const handleSearchChange = (value: string) => {
     setSearchValue(value);
     if (value === '') {
-      setFilteredItems(deviceData);
+      setFilteredItems(userData);
     } else {
       setFilteredItems(
-        deviceData.filter(
+        userData.filter(
           item =>
             item.name.toLowerCase().includes(value.toLowerCase()) ||
-            item.type.toLowerCase().includes(value.toLowerCase()) ||
+            item.email.toLowerCase().includes(value.toLowerCase()) ||
             item.status.toLowerCase().includes(value.toLowerCase()) ||
-            item.ipAddress.includes(value),
+            item.location.city.toLowerCase().includes(value.toLowerCase()) ||
+            item.location.country.toLowerCase().includes(value.toLowerCase()),
         ),
       );
     }

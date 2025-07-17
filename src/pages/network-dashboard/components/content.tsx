@@ -209,11 +209,11 @@ export function Content() {
             trackBy="id"
             empty={
               <Box textAlign="center" color="inherit">
-                <b>No devices</b>
+                <b>No users</b>
                 <Box padding={{ bottom: 's' }} variant="p" color="inherit">
-                  No devices found matching your search criteria.
+                  No users found matching your search criteria.
                 </Box>
-                <Button>Add Device</Button>
+                <Button>Add User</Button>
               </Box>
             }
             selectedItems={selectedItems}

@@ -154,7 +154,7 @@ export function Content() {
           onChange={({ detail }) => handleSearchChange(detail.value)}
           value={searchValue}
           type="search"
-          placeholder="Search devices, IP addresses, or status..."
+          placeholder="Search users, emails, locations, or status..."
         />
       </Container>
 

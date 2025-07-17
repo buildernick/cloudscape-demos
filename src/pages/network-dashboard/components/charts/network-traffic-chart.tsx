@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import AreaChart from '@cloudscape-design/components/area-chart';
 import Box from '@cloudscape-design/components/box';

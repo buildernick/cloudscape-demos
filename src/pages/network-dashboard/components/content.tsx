@@ -204,7 +204,7 @@ export function Content() {
           <Table
             columnDefinitions={columnDefinitions}
             items={currentItems}
-            loadingText="Loading devices"
+            loadingText="Loading users"
             selectionType="multi"
             trackBy="id"
             empty={

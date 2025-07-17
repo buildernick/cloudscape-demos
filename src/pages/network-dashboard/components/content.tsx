@@ -78,8 +78,10 @@ const columnDefinitions = [
 export function Content() {
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
   const [searchValue, setSearchValue] = useState('');
-  const [filteredItems, setFilteredItems] = useState(deviceData);
+  const [userData, setUserData] = useState<any[]>([]);
+  const [filteredItems, setFilteredItems] = useState<any[]>([]);
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   const handleSearchChange = (value: string) => {
     setSearchValue(value);

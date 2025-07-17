@@ -19,54 +19,10 @@ import TextFilter from '@cloudscape-design/components/text-filter';
 import { NetworkTrafficChart } from './charts/network-traffic-chart';
 import { CreditUsageChart } from './charts/credit-usage-chart';
 
-// Mock data for the device table
-const deviceData = [
-  {
-    id: '1',
-    name: 'Router-01',
-    type: 'Router',
-    status: 'Online',
-    ipAddress: '192.168.1.1',
-    lastSeen: '2 minutes ago',
-    bandwidth: '1.2 Gbps',
-  },
-  {
-    id: '2',
-    name: 'Switch-Main',
-    type: 'Switch',
-    status: 'Online',
-    ipAddress: '192.168.1.2',
-    lastSeen: '1 minute ago',
-    bandwidth: '850 Mbps',
-  },
-  {
-    id: '3',
-    name: 'AP-Office-1',
-    type: 'Access Point',
-    status: 'Warning',
-    ipAddress: '192.168.1.101',
-    lastSeen: '5 minutes ago',
-    bandwidth: '320 Mbps',
-  },
-  {
-    id: '4',
-    name: 'Firewall-Edge',
-    type: 'Firewall',
-    status: 'Online',
-    ipAddress: '192.168.1.254',
-    lastSeen: '30 seconds ago',
-    bandwidth: '2.1 Gbps',
-  },
-  {
-    id: '5',
-    name: 'Server-DB-01',
-    type: 'Server',
-    status: 'Offline',
-    ipAddress: '192.168.1.10',
-    lastSeen: '2 hours ago',
-    bandwidth: 'N/A',
-  },
-];
+// Device types and statuses for random assignment
+const deviceTypes = ['Router', 'Switch', 'Access Point', 'Firewall', 'Server'];
+const deviceStatuses = ['Online', 'Warning', 'Offline'];
+const bandwidthOptions = ['1.2 Gbps', '850 Mbps', '320 Mbps', '2.1 Gbps', '750 Mbps', 'N/A'];
 
 const columnDefinitions = [
   {

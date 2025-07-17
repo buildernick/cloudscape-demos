@@ -17,18 +17,6 @@ const networkTrafficData = [
 ];
 
 export function NetworkTrafficChart() {
-  useEffect(() => {
-    // Suppress ResizeObserver loop errors
-    const resizeObserverErrDiv = document.getElementById('webpack-dev-server-client-overlay-div');
-    const resizeObserverErr = document.getElementById('webpack-dev-server-client-overlay');
-    if (resizeObserverErr) {
-      resizeObserverErr.setAttribute('style', 'display: none');
-    }
-    if (resizeObserverErrDiv) {
-      resizeObserverErrDiv.setAttribute('style', 'display: none');
-    }
-  }, []);
-
   return (
     <AreaChart
       series={[

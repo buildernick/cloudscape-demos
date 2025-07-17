@@ -83,6 +83,39 @@ export function Content() {
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch('https://randomuser.me/api/?results=20');
+        const data = await response.json();
+
+        // Transform randomuser.me data to match our table structure
+        const transformedUsers = data.results.map((user: any, index: number) => ({
+          id: user.login.uuid,
+          name: `${user.name.first} ${user.name.last}`,
+          email: user.email,
+          phone: user.phone,
+          location: {
+            city: user.location.city,
+            country: user.location.country,
+          },
+          status: deviceStatuses[Math.floor(Math.random() * deviceStatuses.length)],
+          registered: user.registered,
+          picture: user.picture.thumbnail,
+        }));
+
+        setUserData(transformedUsers);
+        setFilteredItems(transformedUsers);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
   const handleSearchChange = (value: string) => {
     setSearchValue(value);
     if (value === '') {

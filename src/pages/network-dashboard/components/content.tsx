@@ -232,9 +232,10 @@ export function Content() {
                   </SpaceBetween>
                 }
               >
-                Devices
+                Users
               </Header>
             }
+            loading={loading}
             pagination={
               <Pagination
                 currentPageIndex={currentPageIndex}

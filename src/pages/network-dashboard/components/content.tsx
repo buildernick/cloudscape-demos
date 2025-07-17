@@ -27,15 +27,27 @@ const bandwidthOptions = ['1.2 Gbps', '850 Mbps', '320 Mbps', '2.1 Gbps', '750 M
 const columnDefinitions = [
   {
     id: 'name',
-    header: 'Device Name',
-    cell: (item: any) => <Link href={`#/device/${item.id}`}>{item.name}</Link>,
+    header: 'User Name',
+    cell: (item: any) => <Link href={`#/user/${item.id}`}>{item.name}</Link>,
     sortingField: 'name',
   },
   {
-    id: 'type',
-    header: 'Type',
-    cell: (item: any) => item.type,
-    sortingField: 'type',
+    id: 'email',
+    header: 'Email',
+    cell: (item: any) => item.email,
+    sortingField: 'email',
+  },
+  {
+    id: 'phone',
+    header: 'Phone',
+    cell: (item: any) => item.phone,
+    sortingField: 'phone',
+  },
+  {
+    id: 'location',
+    header: 'Location',
+    cell: (item: any) => `${item.location.city}, ${item.location.country}`,
+    sortingField: 'location',
   },
   {
     id: 'status',
@@ -56,22 +68,10 @@ const columnDefinitions = [
     sortingField: 'status',
   },
   {
-    id: 'ipAddress',
-    header: 'IP Address',
-    cell: (item: any) => item.ipAddress,
-    sortingField: 'ipAddress',
-  },
-  {
-    id: 'lastSeen',
-    header: 'Last Seen',
-    cell: (item: any) => item.lastSeen,
-    sortingField: 'lastSeen',
-  },
-  {
-    id: 'bandwidth',
-    header: 'Bandwidth',
-    cell: (item: any) => item.bandwidth,
-    sortingField: 'bandwidth',
+    id: 'registered',
+    header: 'Registered',
+    cell: (item: any) => new Date(item.registered.date).toLocaleDateString(),
+    sortingField: 'registered',
   },
 ];
 

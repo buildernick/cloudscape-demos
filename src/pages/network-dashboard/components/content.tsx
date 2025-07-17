@@ -152,7 +152,7 @@ export function Content() {
   return (
     <SpaceBetween size="l">
       {/* Warning Banner */}
-      <Alert type="warning" dismissible>
+      <Alert type="error" dismissible>
         High network traffic detected on Router-01. Consider load balancing to improve performance.
       </Alert>
 

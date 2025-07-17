@@ -181,15 +181,15 @@ export function Content() {
         </Container>
       </ColumnLayout>
 
-      {/* Device Management Section */}
+      {/* User Management Section */}
       <Container
         header={
           <Header
             variant="h2"
-            description="Devices on your local network"
-            actions={<Button variant="primary">Add Device</Button>}
+            description="Users on your network"
+            actions={<Button variant="primary">Add User</Button>}
           >
-            My Devices
+            Network Users
           </Header>
         }
       >

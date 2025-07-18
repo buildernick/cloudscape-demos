@@ -106,22 +106,28 @@ export default function ChartControls({ settings, onSettingsChange }: ChartContr
         <SpaceBetween size="l">
           <Header variant="h3">Credit Usage Chart</Header>
           <Grid gridDefinition={[{ colspan: 6 }, { colspan: 6 }]}>
-            <FormField label="Chart Type">
+            <div>
+              <Box variant="p" fontWeight="bold" margin={{ bottom: 'xs' }}>
+                Chart Type
+              </Box>
               <Select
                 selectedOption={chartTypeOptions.find(option => option.value === settings.creditUsageType) || null}
                 onChange={({ detail }) => handleCreditUsageTypeChange(detail.selectedOption.value!)}
                 options={chartTypeOptions}
                 placeholder="Select chart type"
               />
-            </FormField>
-            <FormField label="Time Range">
+            </div>
+            <div>
+              <Box variant="p" fontWeight="bold" margin={{ bottom: 'xs' }}>
+                Time Range
+              </Box>
               <Select
                 selectedOption={timeRangeOptions.find(option => option.value === settings.creditUsageTimeRange) || null}
                 onChange={({ detail }) => handleCreditUsageTimeRangeChange(detail.selectedOption.value!)}
                 options={timeRangeOptions}
                 placeholder="Select time range"
               />
-            </FormField>
+            </div>
           </Grid>
         </SpaceBetween>
       </Grid>

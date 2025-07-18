@@ -1,6 +1,6 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Button from '@cloudscape-design/components/button';
 import Container from '@cloudscape-design/components/container';
@@ -8,97 +8,34 @@ import Header from '@cloudscape-design/components/header';
 import Pagination from '@cloudscape-design/components/pagination';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import Table from '@cloudscape-design/components/table';
+import Spinner from '@cloudscape-design/components/spinner';
+import StatusIndicator from '@cloudscape-design/components/status-indicator';
 
-const deviceData = [
-  {
-    id: '1',
-    device: 'Device Name',
-    column1: 'Cell Value',
-    column2: 'Cell Value',
-    column3: 'Cell Value',
-    column4: 'Cell Value',
-    column5: 'Cell Value',
-    column6: 'Cell Value',
-    column7: 'Cell Value',
-  },
-  {
-    id: '2',
-    device: 'Device Name',
-    column1: 'Cell Value',
-    column2: 'Cell Value',
-    column3: 'Cell Value',
-    column4: 'Cell Value',
-    column5: 'Cell Value',
-    column6: 'Cell Value',
-    column7: 'Cell Value',
-  },
-  {
-    id: '3',
-    device: 'Device Name',
-    column1: 'Cell Value',
-    column2: 'Cell Value',
-    column3: 'Cell Value',
-    column4: 'Cell Value',
-    column5: 'Cell Value',
-    column6: 'Cell Value',
-    column7: 'Cell Value',
-  },
-  {
-    id: '4',
-    device: 'Device Name',
-    column1: 'Cell Value',
-    column2: 'Cell Value',
-    column3: 'Cell Value',
-    column4: 'Cell Value',
-    column5: 'Cell Value',
-    column6: 'Cell Value',
-    column7: 'Cell Value',
-  },
-  {
-    id: '5',
-    device: 'Device Name',
-    column1: 'Cell Value',
-    column2: 'Cell Value',
-    column3: 'Cell Value',
-    column4: 'Cell Value',
-    column5: 'Cell Value',
-    column6: 'Cell Value',
-    column7: 'Cell Value',
-  },
-  {
-    id: '6',
-    device: 'Device Name',
-    column1: 'Cell Value',
-    column2: 'Cell Value',
-    column3: 'Cell Value',
-    column4: 'Cell Value',
-    column5: 'Cell Value',
-    column6: 'Cell Value',
-    column7: 'Cell Value',
-  },
-  {
-    id: '7',
-    device: 'Device Name',
-    column1: 'Cell Value',
-    column2: 'Cell Value',
-    column3: 'Cell Value',
-    column4: 'Cell Value',
-    column5: 'Cell Value',
-    column6: 'Cell Value',
-    column7: 'Cell Value',
-  },
-  {
-    id: '8',
-    device: 'Device Name',
-    column1: 'Cell Value',
-    column2: 'Cell Value',
-    column3: 'Cell Value',
-    column4: 'Cell Value',
-    column5: 'Cell Value',
-    column6: 'Cell Value',
-    column7: 'Cell Value',
-  },
-];
+interface UserDevice {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  location: string;
+  gender: string;
+  nationality: string;
+  registeredDate: string;
+  picture: string;
+}
+
+const generateRandomDeviceType = () => {
+  const deviceTypes = ['Laptop', 'Desktop', 'Mobile', 'Tablet', 'Router', 'Smart TV', 'IoT Device'];
+  return deviceTypes[Math.floor(Math.random() * deviceTypes.length)];
+};
+
+const generateRandomIPAddress = () => {
+  return `192.168.1.${Math.floor(Math.random() * 254) + 1}`;
+};
+
+const generateRandomStatus = () => {
+  const statuses = ['Online', 'Offline', 'Idle'];
+  return statuses[Math.floor(Math.random() * statuses.length)];
+};
 
 const columnDefinitions = [
   {

@@ -37,7 +37,7 @@ export function App() {
           </SpaceBetween>
         }
         breadcrumbs={
-          <Breadcrumbs
+          <CustomBreadcrumbs
             items={[
               { text: 'Service', href: '#/' },
               { text: 'Administrative Dashboard', href: '#/network-dashboard' },

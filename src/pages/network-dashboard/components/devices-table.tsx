@@ -157,19 +157,54 @@ export default function DevicesTable() {
 
   const paginatedItems = deviceData.slice((currentPageIndex - 1) * itemsPerPage, currentPageIndex * itemsPerPage);
 
+  if (loading) {
+    return (
+      <Container
+        header={
+          <Header variant="h2" description="Loading network devices...">
+            My Devices
+          </Header>
+        }
+      >
+        <div style={{ textAlign: 'center', padding: '40px' }}>
+          <Spinner size="large" />
+        </div>
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container
+        header={
+          <Header variant="h2" description="Error loading devices">
+            My Devices
+          </Header>
+        }
+      >
+        <div style={{ textAlign: 'center', padding: '40px' }}>
+          <StatusIndicator type="error">Failed to load device data: {error}</StatusIndicator>
+          <div style={{ marginTop: '16px' }}>
+            <Button onClick={() => window.location.reload()}>Retry</Button>
+          </div>
+        </div>
+      </Container>
+    );
+  }
+
   return (
     <Container
       header={
         <Header
           variant="h2"
-          description="Devices on your local network"
+          description="Network devices and their owners"
           actions={
             <Button variant="primary" iconName="add-plus">
               Add Device
             </Button>
           }
         >
-          My Devices
+          My Devices ({deviceData.length})
         </Header>
       }
     >
@@ -184,7 +219,7 @@ export default function DevicesTable() {
           selectAllLabel: 'Select all devices',
           itemSelectionLabel: ({ selectedItems }, item) => {
             const isItemSelected = selectedItems.filter(i => i.id === item.id).length;
-            return `${item.device} is ${isItemSelected ? 'selected' : 'not selected'}`;
+            return `${item.name} is ${isItemSelected ? 'selected' : 'not selected'}`;
           },
         }}
         pagination={
@@ -201,6 +236,7 @@ export default function DevicesTable() {
         }
         stickyHeader
         variant="embedded"
+        loading={loading}
       />
     </Container>
   );

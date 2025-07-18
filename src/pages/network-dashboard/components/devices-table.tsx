@@ -46,59 +46,65 @@ const columnDefinitions = [
     minWidth: 40,
   },
   {
-    id: 'device',
-    header: 'Column header',
-    cell: (item: any) => item.device,
-    sortingField: 'device',
+    id: 'name',
+    header: 'Device Owner',
+    cell: (item: UserDevice) => (
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <img src={item.picture} alt={item.name} width="32" height="32" style={{ borderRadius: '16px' }} />
+        <span>{item.name}</span>
+      </div>
+    ),
+    sortingField: 'name',
+    minWidth: 180,
+  },
+  {
+    id: 'email',
+    header: 'Email',
+    cell: (item: UserDevice) => item.email,
+    sortingField: 'email',
+    minWidth: 200,
+  },
+  {
+    id: 'phone',
+    header: 'Phone',
+    cell: (item: UserDevice) => item.phone,
+    sortingField: 'phone',
+    minWidth: 140,
+  },
+  {
+    id: 'deviceType',
+    header: 'Device Type',
+    cell: (item: UserDevice) => generateRandomDeviceType(),
     minWidth: 120,
   },
   {
-    id: 'column1',
-    header: 'Column header',
-    cell: (item: any) => item.column1,
-    sortingField: 'column1',
+    id: 'ipAddress',
+    header: 'IP Address',
+    cell: (item: UserDevice) => generateRandomIPAddress(),
     minWidth: 120,
   },
   {
-    id: 'column2',
-    header: 'Column header',
-    cell: (item: any) => item.column2,
-    sortingField: 'column2',
-    minWidth: 120,
+    id: 'location',
+    header: 'Location',
+    cell: (item: UserDevice) => item.location,
+    sortingField: 'location',
+    minWidth: 150,
   },
   {
-    id: 'column3',
-    header: 'Column header',
-    cell: (item: any) => item.column3,
-    sortingField: 'column3',
-    minWidth: 120,
+    id: 'status',
+    header: 'Status',
+    cell: (item: UserDevice) => {
+      const status = generateRandomStatus();
+      const type = status === 'Online' ? 'success' : status === 'Offline' ? 'error' : 'warning';
+      return <StatusIndicator type={type}>{status}</StatusIndicator>;
+    },
+    minWidth: 100,
   },
   {
-    id: 'column4',
-    header: 'Column header',
-    cell: (item: any) => item.column4,
-    sortingField: 'column4',
-    minWidth: 120,
-  },
-  {
-    id: 'column5',
-    header: 'Column header',
-    cell: (item: any) => item.column5,
-    sortingField: 'column5',
-    minWidth: 120,
-  },
-  {
-    id: 'column6',
-    header: 'Column header',
-    cell: (item: any) => item.column6,
-    sortingField: 'column6',
-    minWidth: 120,
-  },
-  {
-    id: 'column7',
-    header: 'Column header',
-    cell: (item: any) => item.column7,
-    sortingField: 'column7',
+    id: 'registered',
+    header: 'Registered',
+    cell: (item: UserDevice) => item.registeredDate,
+    sortingField: 'registeredDate',
     minWidth: 120,
   },
 ];

@@ -3,11 +3,11 @@
 import React from 'react';
 
 import Container from '@cloudscape-design/components/container';
-import FormField from '@cloudscape-design/components/form-field';
 import Grid from '@cloudscape-design/components/grid';
 import Header from '@cloudscape-design/components/header';
 import Select from '@cloudscape-design/components/select';
 import SpaceBetween from '@cloudscape-design/components/space-between';
+import Box from '@cloudscape-design/components/box';
 
 export interface ChartSettings {
   networkTrafficType: string;

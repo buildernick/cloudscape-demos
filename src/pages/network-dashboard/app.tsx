@@ -23,6 +23,48 @@ import '@cloudscape-design/global-styles/dark-mode-utils.css';
 export function App() {
   const [searchValue, setSearchValue] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
+  const [chartSettings, setChartSettings] = useState<ChartSettings>({
+    networkTrafficType: 'area',
+    networkTrafficTimeRange: 'lastWeek',
+    creditUsageType: 'bar',
+    creditUsageTimeRange: 'lastWeek',
+  });
+
+  const networkTrafficSeries = [
+    {
+      title: 'Site 1',
+      type: chartSettings.networkTrafficType,
+      data: [{ x: 1, y: 3500 }], // Base data, will be replaced by dynamic data
+      color: '#ec7211',
+    },
+    {
+      title: 'Site 2',
+      type: chartSettings.networkTrafficType,
+      data: [{ x: 1, y: 3200 }], // Base data, will be replaced by dynamic data
+      color: '#2ea597',
+    },
+    {
+      title: 'Performance goal',
+      type: 'threshold',
+      data: [{ x: 1, y: 3800 }], // Base data, will be replaced by dynamic data
+      color: '#000000',
+    },
+  ];
+
+  const creditUsageSeries = [
+    {
+      title: 'Site 1',
+      type: chartSettings.creditUsageType,
+      data: [{ x: 1, y: 850 }], // Base data, will be replaced by dynamic data
+      color: '#5294cf',
+    },
+    {
+      title: 'Performance goal',
+      type: 'threshold',
+      data: [{ x: 1, y: 900 }], // Base data, will be replaced by dynamic data
+      color: '#000000',
+    },
+  ];
 
   return (
     <AppLayout

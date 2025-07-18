@@ -14,9 +14,9 @@ import Flashbar from '@cloudscape-design/components/flashbar';
 import Pagination from '@cloudscape-design/components/pagination';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 
-import CreditUsageChart from './components/credit-usage-chart';
+import ChartControls, { ChartSettings } from './components/chart-controls';
 import DevicesTable from './components/devices-table';
-import NetworkTrafficChart from './components/network-traffic-chart';
+import DynamicChart from './components/dynamic-chart';
 
 import '@cloudscape-design/global-styles/dark-mode-utils.css';
 

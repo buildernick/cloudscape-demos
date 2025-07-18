@@ -19,14 +19,14 @@ const series = [
     title: 'Site 1',
     type: 'bar' as const,
     data: creditUsageData.map(d => ({ x: d.day, y: d.site1 })),
-    valueFormatter: (value: number) => `${value.toLocaleString()} credits`,
+    valueFormatter: (value: number) => (value != null ? `${value.toLocaleString()} credits` : ''),
     color: '#5294cf',
   },
   {
     title: 'Performance goal',
     type: 'threshold' as const,
     data: creditUsageData.map(d => ({ x: d.day, y: d.perfGoal })),
-    valueFormatter: (value: number) => `${value.toLocaleString()} credits`,
+    valueFormatter: (value: number) => (value != null ? `${value.toLocaleString()} credits` : ''),
     color: '#000000',
   },
 ];

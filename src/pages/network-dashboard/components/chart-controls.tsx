@@ -76,15 +76,21 @@ export default function ChartControls({ settings, onSettingsChange }: ChartContr
         <SpaceBetween size="l">
           <Header variant="h3">Network Traffic Chart</Header>
           <Grid gridDefinition={[{ colspan: 6 }, { colspan: 6 }]}>
-            <FormField label="Chart Type">
+            <div>
+              <Box variant="p" fontWeight="bold" margin={{ bottom: 'xs' }}>
+                Chart Type
+              </Box>
               <Select
                 selectedOption={chartTypeOptions.find(option => option.value === settings.networkTrafficType) || null}
                 onChange={({ detail }) => handleNetworkTrafficTypeChange(detail.selectedOption.value!)}
                 options={chartTypeOptions}
                 placeholder="Select chart type"
               />
-            </FormField>
-            <FormField label="Time Range">
+            </div>
+            <div>
+              <Box variant="p" fontWeight="bold" margin={{ bottom: 'xs' }}>
+                Time Range
+              </Box>
               <Select
                 selectedOption={
                   timeRangeOptions.find(option => option.value === settings.networkTrafficTimeRange) || null
@@ -93,7 +99,7 @@ export default function ChartControls({ settings, onSettingsChange }: ChartContr
                 options={timeRangeOptions}
                 placeholder="Select time range"
               />
-            </FormField>
+            </div>
           </Grid>
         </SpaceBetween>
 

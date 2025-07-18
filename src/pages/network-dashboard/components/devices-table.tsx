@@ -110,9 +110,50 @@ const columnDefinitions = [
 ];
 
 export default function DevicesTable() {
-  const [selectedItems, setSelectedItems] = useState<any[]>([]);
+  const [selectedItems, setSelectedItems] = useState<UserDevice[]>([]);
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
+  const [deviceData, setDeviceData] = useState<UserDevice[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const itemsPerPage = 10;
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await fetch(
+          'https://randomuser.me/api/?results=25&inc=name,email,phone,location,gender,nat,registered,picture',
+        );
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch user data');
+        }
+
+        const data = await response.json();
+
+        const transformedData: UserDevice[] = data.results.map((user: any, index: number) => ({
+          id: `device-${index + 1}`,
+          name: `${user.name.first} ${user.name.last}`,
+          email: user.email,
+          phone: user.phone,
+          location: `${user.location.city}, ${user.location.country}`,
+          gender: user.gender,
+          nationality: user.nat,
+          registeredDate: new Date(user.registered.date).toLocaleDateString(),
+          picture: user.picture.thumbnail,
+        }));
+
+        setDeviceData(transformedData);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
   const paginatedItems = deviceData.slice((currentPageIndex - 1) * itemsPerPage, currentPageIndex * itemsPerPage);
 

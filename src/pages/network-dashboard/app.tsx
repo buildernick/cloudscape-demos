@@ -6,7 +6,8 @@ import { AppLayoutProps } from '@cloudscape-design/components/app-layout';
 import Button from '@cloudscape-design/components/button';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 
-import { Breadcrumbs, HelpPanelProvider, Notifications } from '../commons';
+import { HelpPanelProvider, Notifications } from '../commons';
+import { CustomBreadcrumbs } from './components/breadcrumbs';
 import { CustomAppLayout } from '../commons/common-components';
 import { Content } from './components/content';
 import { NetworkDashboardHeader, NetworkDashboardMainInfo } from './components/header';

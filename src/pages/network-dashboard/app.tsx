@@ -128,14 +128,28 @@ export function App() {
               </div>
             </Container>
 
+            <ChartControls settings={chartSettings} onSettingsChange={setChartSettings} />
+
             <Grid
               gridDefinition={[
                 { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
                 { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
               ]}
             >
-              <NetworkTrafficChart />
-              <CreditUsageChart />
+              <DynamicChart
+                title="Network Traffic"
+                chartType={chartSettings.networkTrafficType}
+                timeRange={chartSettings.networkTrafficTimeRange}
+                series={networkTrafficSeries}
+                unit="MB/s"
+              />
+              <DynamicChart
+                title="Credit Usage"
+                chartType={chartSettings.creditUsageType}
+                timeRange={chartSettings.creditUsageTimeRange}
+                series={creditUsageSeries}
+                unit="credits"
+              />
             </Grid>
 
             <DevicesTable />

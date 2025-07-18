@@ -9,6 +9,7 @@ export default function NetworkDashboardDemo() {
     <div style={{ padding: '20px' }}>
       <h1>Network Dashboard</h1>
       <p>Loading dashboard components...</p>
+      <p>Testing imports...</p>
     </div>
   );
 }

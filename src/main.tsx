@@ -10,6 +10,13 @@ import * as FakeServer from './fake-server';
 // @ts-expect-error Global FakeServer assignment
 window.FakeServer = Object.assign({}, FakeServer);
 
+// Suppress ResizeObserver loop errors - common with chart components
+window.addEventListener('error', e => {
+  if (e.message === 'ResizeObserver loop completed with undelivered notifications.') {
+    e.stopImmediatePropagation();
+  }
+});
+
 function App() {
   return <Suspense fallback={<div>Loading...</div>}>{useRoutes(routes)}</Suspense>;
 }

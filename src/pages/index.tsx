@@ -31,6 +31,12 @@ const demos = [
   },
   { route: '/dashboard', title: 'Service Dashboard', description: 'Dashboard layout demo.', category: 'Dashboards' },
   {
+    route: '/network-dashboard',
+    title: 'Network Administration Dashboard',
+    description: 'Network Traffic, Credit Usage, and Device Management.',
+    category: 'Dashboards',
+  },
+  {
     route: '/delete-one-click',
     title: 'One-click Delete',
     description: 'Delete with a single click.',
@@ -127,6 +133,12 @@ const demos = [
     category: 'Tables',
   },
   { route: '/wizard', title: 'Wizard', description: 'Multi-step wizard demo.', category: 'Forms' },
+  {
+    route: '/weather-app',
+    title: 'Simple Weather App',
+    description: 'Weather forecast with current conditions, hourly and 7-day forecasts.',
+    category: 'Applications',
+  },
   { route: '/write-to-s3', title: 'Write to S3', description: 'Write data to Amazon S3.', category: 'Integration' },
 ];
 

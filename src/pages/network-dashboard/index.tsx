@@ -50,7 +50,12 @@ export default function NetworkDashboard() {
                 variant="h1"
                 description="Network Traffic, Credit Usage, and Your Devices"
                 actions={
-                  <Button variant="primary" iconAlign="right" iconName="external">
+                  <Button
+                    variant="primary"
+                    iconAlign="right"
+                    iconName="external"
+                    onClick={() => setShowRefreshModal(true)}
+                  >
                     Refresh Data
                   </Button>
                 }

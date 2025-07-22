@@ -43,27 +43,11 @@ export function NetworkTrafficChart() {
       <AreaChart
         series={series}
         height={300}
-        xDomain={[networkTrafficData[0].x, networkTrafficData[networkTrafficData.length - 1].x]}
-        yDomain={[0, 60]}
         xTitle="Day"
-        yTitle=""
-        legendTitle="Legend"
         statusType="finished"
         hideFilter
-        hideLegend={false}
         ariaLabel="Network traffic over time"
-        ariaDescription="Area chart showing network traffic for Site 1 and Site 2 over time"
-        i18nStrings={{
-          filterLabel: 'Filter displayed data',
-          filterPlaceholder: 'Filter data',
-          filterSelectedAriaLabel: 'selected',
-          legendAriaLabel: 'Legend',
-          chartAriaRoleDescription: 'area chart',
-          xAxisAriaRoleDescription: 'x axis',
-          yAxisAriaRoleDescription: 'y axis',
-        }}
         xScaleType="time"
-        yTickFormatter={value => `${value}%`}
       />
     </Container>
   );

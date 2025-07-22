@@ -38,7 +38,7 @@ const series = [
 
 export function NetworkTrafficChart() {
   return (
-    <Container>
+    <Container className="chart-container" style={{ boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }}>
       <Header variant="h3">Network traffic</Header>
       <AreaChart
         series={series}

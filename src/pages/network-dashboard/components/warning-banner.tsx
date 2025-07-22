@@ -38,11 +38,7 @@ export function WarningBanner({ message, onDismiss }: WarningBannerProps) {
           {message}
         </Box>
       </div>
-      <Button
-        variant="link"
-        onClick={handleDismiss}
-        ariaLabel="Dismiss warning"
-      >
+      <Button variant="link" onClick={handleDismiss} ariaLabel="Dismiss warning">
         <Box fontSize="body-m" fontWeight="bold" color="text-body-secondary">
           Dismiss
         </Box>

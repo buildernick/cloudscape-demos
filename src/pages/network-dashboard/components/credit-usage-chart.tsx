@@ -30,27 +30,11 @@ export function CreditUsageChart() {
       <BarChart
         series={series}
         height={300}
-        xDomain={creditUsageData.map(d => d.x)}
-        yDomain={[0, 100]}
         xTitle="Day"
-        yTitle=""
-        legendTitle="Legend"
         statusType="finished"
         hideFilter
-        hideLegend={false}
         ariaLabel="Credit usage over time"
-        ariaDescription="Bar chart showing credit usage for Site 1 over time"
-        i18nStrings={{
-          filterLabel: 'Filter displayed data',
-          filterPlaceholder: 'Filter data',
-          filterSelectedAriaLabel: 'selected',
-          legendAriaLabel: 'Legend',
-          chartAriaRoleDescription: 'bar chart',
-          xAxisAriaRoleDescription: 'x axis',
-          yAxisAriaRoleDescription: 'y axis',
-        }}
         xScaleType="categorical"
-        yTickFormatter={value => `${value}%`}
       />
     </Container>
   );

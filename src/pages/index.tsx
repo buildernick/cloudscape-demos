@@ -30,6 +30,7 @@ const demos = [
     category: 'Dashboards',
   },
   { route: '/dashboard', title: 'Service Dashboard', description: 'Dashboard layout demo.', category: 'Dashboards' },
+  { route: '/network-dashboard', title: 'Network Administration Dashboard', description: 'Network Traffic, Credit Usage, and Your Devices.', category: 'Dashboards' },
   {
     route: '/delete-one-click',
     title: 'One-click Delete',

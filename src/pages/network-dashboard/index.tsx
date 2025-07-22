@@ -120,6 +120,36 @@ export default function NetworkDashboard() {
               <DevicesTable />
             </Container>
           </SpaceBetween>
+
+          {/* Refresh Confirmation Modal */}
+          <Modal
+            onDismiss={() => setShowRefreshModal(false)}
+            visible={showRefreshModal}
+            size="small"
+            footer={
+              <Box float="right">
+                <SpaceBetween direction="horizontal" size="xs">
+                  <Button variant="link" onClick={() => setShowRefreshModal(false)}>
+                    Cancel
+                  </Button>
+                  <Button variant="primary" onClick={handleRefreshData}>
+                    Refresh Data
+                  </Button>
+                </SpaceBetween>
+              </Box>
+            }
+            header="Confirm Data Refresh"
+          >
+            <SpaceBetween size="m">
+              <Box>
+                Are you sure you want to refresh all dashboard data? This will reload network traffic,
+                credit usage, and device information.
+              </Box>
+              <Box variant="small" color="text-status-info">
+                This action may take a few moments to complete.
+              </Box>
+            </SpaceBetween>
+          </Modal>
         </ContentLayout>
       }
     />

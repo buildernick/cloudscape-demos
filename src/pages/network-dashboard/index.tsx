@@ -19,6 +19,7 @@ import Box from '@cloudscape-design/components/box';
 import { NetworkTrafficChart } from './components/network-traffic-chart';
 import { CreditUsageChart } from './components/credit-usage-chart';
 import { DevicesTable } from './components/devices-table';
+import { WarningBanner } from './components/warning-banner';
 
 export default function NetworkDashboard() {
   const [filterText, setFilterText] = useState('');

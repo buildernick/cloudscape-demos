@@ -126,14 +126,7 @@ export function DevicesTable() {
   const [sortingDescending, setSortingDescending] = useState(false);
 
   const columnDefinitions = [
-    {
-      id: 'selection',
-      header: '',
-      cell: () => <Checkbox />,
-      width: 50,
-      minWidth: 50,
-      sortingDisabled: true,
-    },
+
     {
       id: 'name',
       header: 'Device Name',

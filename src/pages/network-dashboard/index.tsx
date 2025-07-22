@@ -13,6 +13,8 @@ import TextFilter from '@cloudscape-design/components/text-filter';
 import Pagination from '@cloudscape-design/components/pagination';
 import Flashbar from '@cloudscape-design/components/flashbar';
 import Icon from '@cloudscape-design/components/icon';
+import Modal from '@cloudscape-design/components/modal';
+import Box from '@cloudscape-design/components/box';
 
 import { NetworkTrafficChart } from './components/network-traffic-chart';
 import { CreditUsageChart } from './components/credit-usage-chart';

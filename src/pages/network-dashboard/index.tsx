@@ -84,16 +84,7 @@ export default function NetworkDashboard() {
                 </div>
               </Grid>
 
-              <Flashbar
-                items={[
-                  {
-                    type: 'warning',
-                    content: 'This is a warning message',
-                    dismissible: true,
-                    dismissLabel: 'Dismiss',
-                  },
-                ]}
-              />
+              <WarningBanner message="This is a warning message" />
             </SpaceBetween>
           }
         >

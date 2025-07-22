@@ -23,6 +23,13 @@ import styles from './styles.module.scss';
 
 export default function NetworkDashboard() {
   const [filterText, setFilterText] = useState('');
+  const [showRefreshModal, setShowRefreshModal] = useState(false);
+
+  const handleRefreshData = () => {
+    setShowRefreshModal(false);
+    // Here you would typically call your data refresh logic
+    console.log('Refreshing dashboard data...');
+  };
 
   return (
     <AppLayout

@@ -11,7 +11,7 @@ import Container from '@cloudscape-design/components/container';
 import Button from '@cloudscape-design/components/button';
 import TextFilter from '@cloudscape-design/components/text-filter';
 import Pagination from '@cloudscape-design/components/pagination';
-import Flashbar from '@cloudscape-design/components/flashbar';
+
 import Icon from '@cloudscape-design/components/icon';
 import Modal from '@cloudscape-design/components/modal';
 import Box from '@cloudscape-design/components/box';

@@ -25,7 +25,7 @@ const series = [
 
 export function CreditUsageChart() {
   return (
-    <Container>
+    <Container style={{ boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }}>
       <Header variant="h3">Credit Usage</Header>
       <BarChart
         series={series}

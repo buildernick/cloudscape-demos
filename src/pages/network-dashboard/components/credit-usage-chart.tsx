@@ -50,7 +50,7 @@ export function CreditUsageChart() {
           yAxisAriaRoleDescription: 'y axis',
         }}
         xScaleType="categorical"
-        yTickFormatter={(value) => `${value}%`}
+        yTickFormatter={value => `${value}%`}
       />
     </Container>
   );

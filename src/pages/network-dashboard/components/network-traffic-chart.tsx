@@ -63,7 +63,7 @@ export function NetworkTrafficChart() {
           yAxisAriaRoleDescription: 'y axis',
         }}
         xScaleType="time"
-        yTickFormatter={(value) => `${value}%`}
+        yTickFormatter={value => `${value}%`}
       />
     </Container>
   );

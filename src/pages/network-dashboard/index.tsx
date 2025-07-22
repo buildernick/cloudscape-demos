@@ -44,7 +44,7 @@ export default function NetworkDashboard() {
                   { text: 'Administrative Dashboard', href: '#' },
                 ]}
               />
-              
+
               <Header
                 variant="h1"
                 description="Network Traffic, Credit Usage, and Your Devices"
@@ -141,8 +141,8 @@ export default function NetworkDashboard() {
           >
             <SpaceBetween size="m">
               <Box>
-                Are you sure you want to refresh all dashboard data? This will reload network traffic,
-                credit usage, and device information.
+                Are you sure you want to refresh all dashboard data? This will reload network traffic, credit usage, and
+                device information.
               </Box>
               <Box variant="small" color="text-status-info">
                 This action may take a few moments to complete.

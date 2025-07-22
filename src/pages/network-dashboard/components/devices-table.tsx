@@ -126,7 +126,6 @@ export function DevicesTable() {
   const [sortingDescending, setSortingDescending] = useState(false);
 
   const columnDefinitions = [
-
     {
       id: 'name',
       header: 'Device Name',
@@ -175,12 +174,12 @@ export function DevicesTable() {
   const sortedItems = [...mockDevices].sort((a, b) => {
     const aValue = a[sortingColumn as keyof Device];
     const bValue = b[sortingColumn as keyof Device];
-    
+
     if (typeof aValue === 'string' && typeof bValue === 'string') {
       const comparison = aValue.localeCompare(bValue);
       return sortingDescending ? -comparison : comparison;
     }
-    
+
     return 0;
   });
 

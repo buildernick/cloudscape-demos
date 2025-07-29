@@ -6,5 +6,6 @@ export { NetworkDashboardHeader } from './header';
 export { NetworkTrafficChart } from './network-traffic-chart';
 export { CreditUsageChart } from './credit-usage-chart';
 export { DevicesTable } from './devices-table';
+export { AlertBanner } from './alert-banner';
 
 export type { Device } from './devices-table';

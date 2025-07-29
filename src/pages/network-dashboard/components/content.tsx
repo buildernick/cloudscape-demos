@@ -33,13 +33,15 @@ export function Content() {
 
       {/* Filter and Pagination Controls */}
       <Container>
-        <Grid gridDefinition={[{ colspan: { default: 12, xs: 8, s: 6, m: 8, l: 8, xl: 8 } }, { colspan: { default: 12, xs: 4, s: 6, m: 4, l: 4, xl: 4 } }]}>
-          <TextFilter
-            filteringText={filterText}
-            filteringPlaceholder="Placeholder"
-            onChange={({ detail }) => setFilterText(detail.filteringText)}
-          />
-          <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: '8px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '113px' }}>
+          <div style={{ flex: 1 }}>
+            <TextFilter
+              filteringText={filterText}
+              filteringPlaceholder="Placeholder"
+              onChange={({ detail }) => setFilterText(detail.filteringText)}
+            />
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Pagination
               currentPageIndex={currentPageIndex}
               onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
@@ -59,7 +61,7 @@ export function Content() {
               </div>
             </div>
           </div>
-        </Grid>
+        </div>
       </Container>
 
       {/* Charts Grid */}

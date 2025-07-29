@@ -100,7 +100,7 @@ export function App() {
                   variant="h2"
                   description="Devices on your local network"
                   actions={
-                    <Button variant="primary" iconName="add-plus">
+                    <Button variant="primary" iconName="add">
                       Add Device
                     </Button>
                   }

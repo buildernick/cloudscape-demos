@@ -5,13 +5,13 @@ import React, { useState } from 'react';
 import Container from '@cloudscape-design/components/container';
 import Grid from '@cloudscape-design/components/grid';
 import SpaceBetween from '@cloudscape-design/components/space-between';
-import Flashbar from '@cloudscape-design/components/flashbar';
 import TextFilter from '@cloudscape-design/components/text-filter';
 import Pagination from '@cloudscape-design/components/pagination';
 
 import { NetworkTrafficChart } from './network-traffic-chart';
 import { CreditUsageChart } from './credit-usage-chart';
 import { DevicesTable } from './devices-table';
+import { AlertBanner } from './alert-banner';
 
 interface ContentProps {
   refreshKey?: number;

@@ -1,1 +1,5 @@
 When adding new pages make sure to link to them from the homepage in src/pages/index.tsx
+
+When making charts always use cahrts from the package: ShadCN
+- there's good examples to follow in /src/charts
+- ignore all the files in /2024 those are old and we don't do it that way anymore

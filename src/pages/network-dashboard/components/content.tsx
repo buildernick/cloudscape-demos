@@ -13,6 +13,10 @@ import { NetworkTrafficChart } from './network-traffic-chart';
 import { CreditUsageChart } from './credit-usage-chart';
 import { DevicesTable } from './devices-table';
 
+interface ContentProps {
+  key?: number;
+}
+
 export function Content() {
   const [filterText, setFilterText] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);

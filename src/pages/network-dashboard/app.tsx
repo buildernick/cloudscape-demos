@@ -87,28 +87,28 @@ const columnDefinitions = [
   {
     id: 'name',
     header: 'Device Name',
-    cell: (item: any) => item.name,
+    cell: (item: Device) => item.name,
     sortingField: 'name',
   },
   {
     id: 'type',
     header: 'Device Type',
-    cell: (item: any) => item.type,
+    cell: (item: Device) => item.type,
     sortingField: 'type',
   },
   {
     id: 'ip',
     header: 'IP Address',
-    cell: (item: any) => item.ip,
+    cell: (item: Device) => item.ip,
     sortingField: 'ip',
   },
   {
     id: 'status',
     header: 'Status',
-    cell: (item: any) => (
-      <Box 
-        color={item.status === 'Online' ? 'text-status-success' : 
-              item.status === 'Warning' ? 'text-status-warning' : 
+    cell: (item: Device) => (
+      <Box
+        color={item.status === 'Online' ? 'text-status-success' :
+              item.status === 'Warning' ? 'text-status-warning' :
               'text-status-error'}
       >
         {item.status}
@@ -119,19 +119,19 @@ const columnDefinitions = [
   {
     id: 'lastSeen',
     header: 'Last Seen',
-    cell: (item: any) => item.lastSeen,
+    cell: (item: Device) => item.lastSeen,
     sortingField: 'lastSeen',
   },
   {
     id: 'bandwidth',
     header: 'Bandwidth',
-    cell: (item: any) => item.bandwidth,
+    cell: (item: Device) => item.bandwidth,
     sortingField: 'bandwidth',
   },
   {
     id: 'uptime',
     header: 'Uptime',
-    cell: (item: any) => item.uptime,
+    cell: (item: Device) => item.uptime,
     sortingField: 'uptime',
   },
 ];

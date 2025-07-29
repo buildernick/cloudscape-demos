@@ -14,10 +14,10 @@ import { CreditUsageChart } from './credit-usage-chart';
 import { DevicesTable } from './devices-table';
 
 interface ContentProps {
-  key?: number;
+  refreshKey?: number;
 }
 
-export function Content() {
+export function Content({ refreshKey }: ContentProps = {}) {
   const [filterText, setFilterText] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
 

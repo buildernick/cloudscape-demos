@@ -75,7 +75,7 @@ export function Content({ refreshKey }: ContentProps = {}) {
       </Grid>
 
       {/* Devices Table */}
-      <DevicesTable />
+      <DevicesTable refreshKey={refreshKey} />
     </SpaceBetween>
   );
 }

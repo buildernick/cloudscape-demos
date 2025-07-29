@@ -94,11 +94,11 @@ export function NetworkTrafficChart() {
           </div>
           
           {/* X-axis */}
-          <div className="chart-x-axis">
+          <div className={styles.chartXAxis}>
             {chartData.map((data, index) => (
-              <div key={data.x} className="x-axis-label">
-                <div className="axis-tick"></div>
-                <span className="axis-text">{data.x}</span>
+              <div key={data.x} className={styles.xAxisLabel}>
+                <div className={styles.axisTick}></div>
+                <span className={styles.axisText}>{data.x}</span>
               </div>
             ))}
           </div>

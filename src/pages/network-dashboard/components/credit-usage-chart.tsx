@@ -19,7 +19,9 @@ export function CreditUsageChart() {
   return (
     <Container>
       <Box margin={{ bottom: 'm' }}>
-        <Box variant="h3" color="text-label">Credit Usage</Box>
+        <Box variant="h3" color="text-label">
+          Credit Usage
+        </Box>
       </Box>
       <BarChart
         series={[
@@ -36,8 +38,8 @@ export function CreditUsageChart() {
           filterSelectedAriaLabel: 'selected',
           legendAriaLabel: 'Legend',
           chartAriaRoleDescription: 'bar chart',
-          xTickFormatter: (value) => value.toString(),
-          yTickFormatter: (value) => `y${Math.round(value / 50)}`,
+          xTickFormatter: value => value.toString(),
+          yTickFormatter: value => `y${Math.round(value / 50)}`,
         }}
         ariaLabel="Credit usage bar chart"
         height={300}
@@ -72,28 +74,34 @@ export function CreditUsageChart() {
         <Box color="text-body-secondary" fontSize="body-s">
           <span style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span style={{
-                width: '14px',
-                height: '14px',
-                borderRadius: '2px',
-                backgroundColor: '#688AE8'
-              }}></span>
+              <span
+                style={{
+                  width: '14px',
+                  height: '14px',
+                  borderRadius: '2px',
+                  backgroundColor: '#688AE8',
+                }}
+              ></span>
               Site 1
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
               <span style={{ display: 'flex', gap: '2px' }}>
-                <span style={{
-                  width: '6px',
-                  height: '3px',
-                  backgroundColor: '#5F6B7A',
-                  borderRadius: '1px'
-                }}></span>
-                <span style={{
-                  width: '6px',
-                  height: '3px',
-                  backgroundColor: '#5F6B7A',
-                  borderRadius: '1px'
-                }}></span>
+                <span
+                  style={{
+                    width: '6px',
+                    height: '3px',
+                    backgroundColor: '#5F6B7A',
+                    borderRadius: '1px',
+                  }}
+                ></span>
+                <span
+                  style={{
+                    width: '6px',
+                    height: '3px',
+                    backgroundColor: '#5F6B7A',
+                    borderRadius: '1px',
+                  }}
+                ></span>
               </span>
               Performance goal
             </span>

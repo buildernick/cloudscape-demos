@@ -69,7 +69,7 @@ export function App() {
           <Breadcrumbs
             items={[
               { text: 'Service', href: '#/' },
-              { text: 'Administrative Dashboard', href: '#/network-dashboard' }
+              { text: 'Administrative Dashboard', href: '#/network-dashboard' },
             ]}
           />
         }

@@ -25,7 +25,9 @@ const networkTrafficData = [
 export function NetworkTrafficChart() {
   return (
     <Container>
-      <Header variant="h3">Network traffic</Header>
+      <Box margin={{ bottom: 'm' }}>
+        <Box variant="h3" color="text-label">Network traffic</Box>
+      </Box>
       <AreaChart
         series={[
           {
@@ -48,7 +50,7 @@ export function NetworkTrafficChart() {
           filterPlaceholder: 'Filter data',
           filterSelectedAriaLabel: 'selected',
           legendAriaLabel: 'Legend',
-          chartAriaRoleDescription: 'line chart',
+          chartAriaRoleDescription: 'area chart',
           xTickFormatter: (value) => `x${value}`,
           yTickFormatter: (value) => `y${Math.round(value / 50)}`,
         }}
@@ -56,32 +58,10 @@ export function NetworkTrafficChart() {
         height={300}
         hideFilter
         hideLegend={false}
-        additionalFilters={
-          <Box color="text-body-secondary">
-            <span style={{ fontSize: '14px', color: '#5F6B7A' }}>
-              Performance goal: 
-              <span style={{ 
-                display: 'inline-block',
-                width: '12px',
-                height: '3px',
-                backgroundColor: '#5F6B7A',
-                marginLeft: '4px',
-                marginRight: '2px',
-                borderRadius: '1px'
-              }}></span>
-              <span style={{ 
-                display: 'inline-block',
-                width: '6px',
-                height: '3px',
-                backgroundColor: '#5F6B7A',
-                marginLeft: '2px',
-                borderRadius: '1px'
-              }}></span>
-            </span>
-          </Box>
-        }
+        legendTitle="Legend"
         xTitle="Day"
         yTitle=""
+        statusType="finished"
         empty={
           <Box textAlign="center" color="inherit">
             <Box variant="strong" textAlign="center" color="inherit">
@@ -103,6 +83,49 @@ export function NetworkTrafficChart() {
           </Box>
         }
       />
+      <Box margin={{ top: 's' }}>
+        <Box color="text-body-secondary" fontSize="body-s">
+          <span style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{
+                width: '14px',
+                height: '14px',
+                borderRadius: '2px',
+                border: '1px solid #688AE8',
+                backgroundColor: 'rgba(104, 138, 232, 0.4)'
+              }}></span>
+              Site 1
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{
+                width: '14px',
+                height: '14px',
+                borderRadius: '2px',
+                border: '1px solid #C33D69',
+                backgroundColor: 'rgba(195, 61, 105, 0.4)'
+              }}></span>
+              Site 2
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{ display: 'flex', gap: '2px' }}>
+                <span style={{
+                  width: '6px',
+                  height: '3px',
+                  backgroundColor: '#5F6B7A',
+                  borderRadius: '1px'
+                }}></span>
+                <span style={{
+                  width: '6px',
+                  height: '3px',
+                  backgroundColor: '#5F6B7A',
+                  borderRadius: '1px'
+                }}></span>
+              </span>
+              Performance goal
+            </span>
+          </span>
+        </Box>
+      </Box>
     </Container>
   );
 }

@@ -43,7 +43,7 @@ export function App() {
                 variant="h1"
                 description="Network Traffic, Credit Usage, and Your Devices"
                 actions={
-                  <Button variant="primary" iconName="external">
+                  <Button variant="primary" iconName="refresh">
                     Refresh Data
                   </Button>
                 }

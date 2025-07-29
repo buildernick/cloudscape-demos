@@ -91,11 +91,7 @@ export function App() {
                 <Header
                   variant="h2"
                   description="Devices on your local network"
-                  actions={
-                    <Button variant="primary" iconName="add">
-                      Add Device
-                    </Button>
-                  }
+                  actions={<AddDeviceButton />}
                 >
                   My Devices
                 </Header>

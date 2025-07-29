@@ -25,7 +25,7 @@ export function NetworkTrafficChart() {
       <Header variant="h3">Network traffic</Header>
       
       <Box>
-        <div className="network-traffic-chart">
+        <div className={styles.networkTrafficChart}>
           {/* Y-axis */}
           <div className="chart-y-axis">
             {yAxisLabels.reverse().map((label, index) => (

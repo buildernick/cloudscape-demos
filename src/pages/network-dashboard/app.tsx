@@ -88,11 +88,7 @@ export function App() {
 
             <Container
               header={
-                <Header
-                  variant="h2"
-                  description="Devices on your local network"
-                  actions={<AddDeviceButton />}
-                >
+                <Header variant="h2" description="Devices on your local network" actions={<AddDeviceButton />}>
                   My Devices
                 </Header>
               }

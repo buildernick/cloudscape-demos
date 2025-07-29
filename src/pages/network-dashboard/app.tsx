@@ -74,11 +74,7 @@ const columnDefinitions = [
     id: 'picture',
     header: 'Avatar',
     cell: (item: User) => (
-      <img 
-        src={item.picture} 
-        alt={item.name}
-        style={{ width: '40px', height: '40px', borderRadius: '50%' }}
-      />
+      <img src={item.picture} alt={item.name} style={{ width: '40px', height: '40px', borderRadius: '50%' }} />
     ),
   },
   {
@@ -109,10 +105,14 @@ const columnDefinitions = [
     id: 'status',
     header: 'Status',
     cell: (item: User) => (
-      <Box 
-        color={item.status === 'Active' ? 'text-status-success' : 
-              item.status === 'Pending' ? 'text-status-warning' : 
-              'text-status-error'}
+      <Box
+        color={
+          item.status === 'Active'
+            ? 'text-status-success'
+            : item.status === 'Pending'
+              ? 'text-status-warning'
+              : 'text-status-error'
+        }
       >
         {item.status}
       </Box>
@@ -138,7 +138,7 @@ export function App() {
         setLoading(true);
         const response = await fetch('https://randomuser.me/api/?results=20&seed=network-dashboard');
         const data = await response.json();
-        
+
         const transformedUsers: User[] = data.results.map((user: any, index: number) => ({
           id: user.login.uuid,
           name: `${user.name.first} ${user.name.last}`,
@@ -149,7 +149,7 @@ export function App() {
           registered: new Date(user.registered.date).toLocaleDateString(),
           picture: user.picture.medium,
         }));
-        
+
         setUsers(transformedUsers);
       } catch (error) {
         console.error('Failed to fetch users:', error);
@@ -161,36 +161,33 @@ export function App() {
     fetchUsers();
   }, []);
 
-  const { items, actions, filteredItemsCount, collectionProps, filterProps, paginationProps } = useCollection(
-    users,
-    {
-      filtering: {
-        empty: (
-          <Box textAlign="center" color="inherit">
-            <Box variant="strong" textAlign="center" color="inherit">
-              No users
-            </Box>
-            <Box variant="p" padding={{ bottom: 's' }} color="inherit">
-              No users to display.
-            </Box>
+  const { items, actions, filteredItemsCount, collectionProps, filterProps, paginationProps } = useCollection(users, {
+    filtering: {
+      empty: (
+        <Box textAlign="center" color="inherit">
+          <Box variant="strong" textAlign="center" color="inherit">
+            No users
           </Box>
-        ),
-        noMatch: (
-          <Box textAlign="center" color="inherit">
-            <Box variant="strong" textAlign="center" color="inherit">
-              No matches
-            </Box>
-            <Box variant="p" padding={{ bottom: 's' }} color="inherit">
-              We can't find a match.
-            </Box>
+          <Box variant="p" padding={{ bottom: 's' }} color="inherit">
+            No users to display.
           </Box>
-        ),
-      },
-      pagination: { pageSize: 10 },
-      sorting: {},
-      selection: {},
-    }
-  );
+        </Box>
+      ),
+      noMatch: (
+        <Box textAlign="center" color="inherit">
+          <Box variant="strong" textAlign="center" color="inherit">
+            No matches
+          </Box>
+          <Box variant="p" padding={{ bottom: 's' }} color="inherit">
+            We can't find a match.
+          </Box>
+        </Box>
+      ),
+    },
+    pagination: { pageSize: 10 },
+    sorting: {},
+    selection: {},
+  });
 
   return (
     <AppLayout
@@ -207,7 +204,7 @@ export function App() {
                 ]}
                 ariaLabel="Breadcrumbs"
               />
-              
+
               <Header
                 variant="h1"
                 description="Network Traffic, Credit Usage, and Your Users"
@@ -250,13 +247,7 @@ export function App() {
                 { colspan: { default: 12, xxs: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
               ]}
             >
-              <Container
-                header={
-                  <Header variant="h2">
-                    Network traffic
-                  </Header>
-                }
-              >
+              <Container header={<Header variant="h2">Network traffic</Header>}>
                 <LineChart
                   series={[
                     {
@@ -280,8 +271,8 @@ export function App() {
                     filterSelectedAriaLabel: 'selected',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'line chart',
-                    xTickFormatter: (e) => e,
-                    yTickFormatter: (e) => `y${e}`,
+                    xTickFormatter: e => e,
+                    yTickFormatter: e => `y${e}`,
                   }}
                   ariaLabel="Network traffic chart"
                   height={300}
@@ -311,13 +302,7 @@ export function App() {
                 />
               </Container>
 
-              <Container
-                header={
-                  <Header variant="h2">
-                    Credit Usage
-                  </Header>
-                }
-              >
+              <Container header={<Header variant="h2">Credit Usage</Header>}>
                 <BarChart
                   series={[
                     {
@@ -335,8 +320,8 @@ export function App() {
                     filterSelectedAriaLabel: 'selected',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'bar chart',
-                    xTickFormatter: (e) => e,
-                    yTickFormatter: (e) => `y${e}`,
+                    xTickFormatter: e => e,
+                    yTickFormatter: e => `y${e}`,
                   }}
                   ariaLabel="Credit usage chart"
                   height={300}

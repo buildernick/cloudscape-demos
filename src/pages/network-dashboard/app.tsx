@@ -137,7 +137,7 @@ const columnDefinitions = [
 ];
 
 export function App() {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<Device[]>([]);
 
   const { items, actions, filteredItemsCount, collectionProps, filterProps, paginationProps } = useCollection(
     deviceData,

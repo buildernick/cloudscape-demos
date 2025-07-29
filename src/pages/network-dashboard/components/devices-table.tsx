@@ -9,7 +9,7 @@ import SpaceBetween from '@cloudscape-design/components/space-between';
 import Box from '@cloudscape-design/components/box';
 import Badge from '@cloudscape-design/components/badge';
 
-interface Device {
+export interface Device {
   id: string;
   deviceName: string;
   owner: string;

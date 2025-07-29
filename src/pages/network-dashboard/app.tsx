@@ -62,7 +62,7 @@ export function App() {
                 </Button>
               }
             />
-            <Content key={refreshKey} />
+            <Content refreshKey={refreshKey} />
           </SpaceBetween>
         }
         breadcrumbs={

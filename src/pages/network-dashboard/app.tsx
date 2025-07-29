@@ -21,6 +21,7 @@ import { NetworkTrafficChart } from './components/network-traffic-chart';
 import { CreditUsageChart } from './components/credit-usage-chart';
 import { DevicesTable } from './components/devices-table';
 import { WarningBanner } from './components/warning-banner';
+import { AddDeviceButton } from './components/add-device-button';
 
 const breadcrumbItems = [
   { text: 'Service', href: '#' },

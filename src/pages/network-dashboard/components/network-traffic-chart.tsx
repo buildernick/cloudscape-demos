@@ -110,17 +110,17 @@ export function NetworkTrafficChart() {
       </Box>
       
       {/* Legend */}
-      <div className="chart-legend">
-        <div className="legend-item">
-          <div className="legend-color site1"></div>
+      <div className={styles.chartLegend}>
+        <div className={styles.legendItem}>
+          <div className={`${styles.legendColor} ${styles.legendColorSite1}`}></div>
           <span>Site 1</span>
         </div>
-        <div className="legend-item">
-          <div className="legend-color site2"></div>
+        <div className={styles.legendItem}>
+          <div className={`${styles.legendColor} ${styles.legendColorSite2}`}></div>
           <span>Site 2</span>
         </div>
-        <div className="legend-item">
-          <div className="legend-line"></div>
+        <div className={styles.legendItem}>
+          <div className={styles.legendLine}></div>
           <span>Performance goal</span>
         </div>
       </div>

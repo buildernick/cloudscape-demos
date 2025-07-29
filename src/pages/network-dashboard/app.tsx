@@ -58,8 +58,19 @@ const creditUsageData = [
   { x: 'x5', y: 210 },
 ];
 
+interface Device {
+  id: string;
+  name: string;
+  type: string;
+  ip: string;
+  status: 'Online' | 'Offline' | 'Warning';
+  lastSeen: string;
+  bandwidth: string;
+  uptime: string;
+}
+
 // Mock data for devices table
-const deviceData = [
+const deviceData: Device[] = [
   { id: '1', name: 'Router-Main', type: 'Router', ip: '192.168.1.1', status: 'Online', lastSeen: '2 minutes ago', bandwidth: '1 Gbps', uptime: '45 days' },
   { id: '2', name: 'Switch-Office', type: 'Switch', ip: '192.168.1.2', status: 'Online', lastSeen: '5 minutes ago', bandwidth: '100 Mbps', uptime: '32 days' },
   { id: '3', name: 'AP-Conference', type: 'Access Point', ip: '192.168.1.10', status: 'Offline', lastSeen: '2 hours ago', bandwidth: '300 Mbps', uptime: '12 days' },

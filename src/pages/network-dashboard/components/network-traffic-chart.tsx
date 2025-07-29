@@ -1,4 +1,5 @@
 import { Box, Header, SpaceBetween } from '@cloudscape-design/components';
+import styles from './network-traffic-chart.module.css';
 
 // Mock data for the area chart
 const chartData = [

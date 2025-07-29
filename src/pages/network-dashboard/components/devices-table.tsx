@@ -91,7 +91,11 @@ const columnDefinitions = [
   },
 ];
 
-export function DevicesTable() {
+interface DevicesTableProps {
+  refreshKey?: number;
+}
+
+export function DevicesTable({ refreshKey }: DevicesTableProps = {}) {
   const [selectedItems, setSelectedItems] = useState<Device[]>([]);
   const [devices, setDevices] = useState<Device[]>([]);
   const [loading, setLoading] = useState(true);

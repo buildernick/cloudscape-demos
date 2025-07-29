@@ -139,7 +139,7 @@ export function DevicesTable({ refreshKey }: DevicesTableProps = {}) {
 
   useEffect(() => {
     fetchDevices();
-  }, []);
+  }, [refreshKey]);
 
   return (
     <Table

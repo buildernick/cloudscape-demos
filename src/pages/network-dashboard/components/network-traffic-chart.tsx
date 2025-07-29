@@ -27,17 +27,17 @@ export function NetworkTrafficChart() {
       <Box>
         <div className={styles.networkTrafficChart}>
           {/* Y-axis */}
-          <div className="chart-y-axis">
+          <div className={styles.chartYAxis}>
             {yAxisLabels.reverse().map((label, index) => (
-              <div key={label} className="y-axis-label">
-                <span className="axis-text">{label}</span>
-                <div className="grid-line"></div>
+              <div key={label} className={styles.yAxisLabel}>
+                <span className={styles.axisText}>{label}</span>
+                <div className={styles.gridLine}></div>
               </div>
             ))}
           </div>
-          
+
           {/* Chart area with SVG */}
-          <div className="chart-area">
+          <div className={styles.chartArea}>
             <svg width="100%" height="300" viewBox="0 0 600 300">
               {/* Grid lines */}
               {[0, 1, 2, 3, 4, 5].map(i => (

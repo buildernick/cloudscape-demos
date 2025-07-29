@@ -24,11 +24,7 @@ export function Content({ refreshKey }: ContentProps = {}) {
   return (
     <SpaceBetween size="l">
       {/* Warning Alert Banner */}
-      <AlertBanner
-        type="warning"
-        message="This is a warning message"
-        dismissible={true}
-      />
+      <AlertBanner type="warning" message="This is a warning message" dismissible={true} />
 
       {/* Filter and Pagination Controls */}
       <Container>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { 
+import {
   AppLayout,
   Button,
   Container,
@@ -15,7 +15,7 @@ import {
   ColumnLayout,
   StatusIndicator,
   Alert,
-  Link
+  Link,
 } from '@cloudscape-design/components';
 import { NetworkTrafficChart } from './components/network-traffic-chart';
 import { CreditUsageChart } from './components/credit-usage-chart';
@@ -24,7 +24,7 @@ import { WarningBanner } from './components/warning-banner';
 
 const breadcrumbItems = [
   { text: 'Service', href: '#' },
-  { text: 'Administrative Dashboard', href: '#' }
+  { text: 'Administrative Dashboard', href: '#' },
 ];
 
 export function App() {
@@ -50,26 +50,22 @@ export function App() {
               >
                 Network Administration Dashboard
               </Header>
-              
+
               <Grid
                 gridDefinition={[
                   { colspan: { default: 12, xs: 12, s: 8, m: 8, l: 8, xl: 8 } },
-                  { colspan: { default: 12, xs: 12, s: 4, m: 4, l: 4, xl: 4 } }
+                  { colspan: { default: 12, xs: 12, s: 4, m: 4, l: 4, xl: 4 } },
                 ]}
               >
-                <TextFilter
-                  filteringPlaceholder="Placeholder"
-                  filteringText=""
-                  onChange={() => {}}
-                />
+                <TextFilter filteringPlaceholder="Placeholder" filteringText="" onChange={() => {}} />
                 <Box textAlign="right">
-                  <Pagination 
+                  <Pagination
                     currentPageIndex={1}
                     pagesCount={5}
                     ariaLabels={{
                       nextPageLabel: 'Next page',
                       previousPageLabel: 'Previous page',
-                      pageLabel: pageNumber => `Page ${pageNumber} of all pages`
+                      pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
                     }}
                   />
                 </Box>
@@ -78,13 +74,8 @@ export function App() {
           }
         >
           <SpaceBetween size="l">
-            {showBanner && (
-              <WarningBanner 
-                message="This is a warning message"
-                onDismiss={() => setShowBanner(false)}
-              />
-            )}
-            
+            {showBanner && <WarningBanner message="This is a warning message" onDismiss={() => setShowBanner(false)} />}
+
             <ColumnLayout columns={2} borders="vertical">
               <Container>
                 <NetworkTrafficChart />
@@ -94,7 +85,7 @@ export function App() {
               </Container>
             </ColumnLayout>
 
-            <Container 
+            <Container
               header={
                 <Header
                   variant="h2"

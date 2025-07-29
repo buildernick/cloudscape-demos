@@ -17,13 +17,13 @@
   align-items: center;
   gap: 8px;
   font-size: 12px;
-  color: #5F6B7A;
+  color: #5f6b7a;
 }
 
 .gridLine {
   flex: 1;
   height: 1px;
-  background: #E9EBED;
+  background: #e9ebed;
 }
 
 .chartArea {
@@ -47,12 +47,12 @@
 .axisTick {
   width: 1px;
   height: 8px;
-  background: #D1D5DB;
+  background: #d1d5db;
 }
 
 .axisText {
   font-size: 12px;
-  color: #5F6B7A;
+  color: #5f6b7a;
 }
 
 .chartLegend {
@@ -77,22 +77,16 @@
 
 .legendColorSite1 {
   background: rgba(116, 146, 231, 0.4);
-  border: 1px solid #688AE8;
+  border: 1px solid #688ae8;
 }
 
 .legendColorSite2 {
   background: rgba(195, 61, 105, 0.4);
-  border: 1px solid #C33D69;
+  border: 1px solid #c33d69;
 }
 
 .legendLine {
   width: 12px;
   height: 3px;
-  background: repeating-linear-gradient(
-    to right,
-    #5F6B7A 0px,
-    #5F6B7A 3px,
-    transparent 3px,
-    transparent 6px
-  );
+  background: repeating-linear-gradient(to right, #5f6b7a 0px, #5f6b7a 3px, transparent 3px, transparent 6px);
 }

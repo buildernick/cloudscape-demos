@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppLayout from '@cloudscape-design/components/app-layout';
 import ContentLayout from '@cloudscape-design/components/content-layout';
 import Header from '@cloudscape-design/components/header';
@@ -58,57 +58,60 @@ const creditUsageData = [
   { x: 'x5', y: 210 },
 ];
 
-interface Device {
+interface User {
   id: string;
   name: string;
-  type: string;
-  ip: string;
-  status: 'Online' | 'Offline' | 'Warning';
-  lastSeen: string;
-  bandwidth: string;
-  uptime: string;
+  email: string;
+  phone: string;
+  location: string;
+  status: 'Active' | 'Inactive' | 'Pending';
+  registered: string;
+  picture: string;
 }
-
-// Mock data for devices table
-const deviceData: Device[] = [
-  { id: '1', name: 'Router-Main', type: 'Router', ip: '192.168.1.1', status: 'Online', lastSeen: '2 minutes ago', bandwidth: '1 Gbps', uptime: '45 days' },
-  { id: '2', name: 'Switch-Office', type: 'Switch', ip: '192.168.1.2', status: 'Online', lastSeen: '5 minutes ago', bandwidth: '100 Mbps', uptime: '32 days' },
-  { id: '3', name: 'AP-Conference', type: 'Access Point', ip: '192.168.1.10', status: 'Offline', lastSeen: '2 hours ago', bandwidth: '300 Mbps', uptime: '12 days' },
-  { id: '4', name: 'Firewall-Main', type: 'Firewall', ip: '192.168.1.254', status: 'Online', lastSeen: '1 minute ago', bandwidth: '10 Gbps', uptime: '89 days' },
-  { id: '5', name: 'Server-DB', type: 'Server', ip: '192.168.1.100', status: 'Warning', lastSeen: '30 minutes ago', bandwidth: '1 Gbps', uptime: '156 days' },
-  { id: '6', name: 'Printer-Office', type: 'Printer', ip: '192.168.1.200', status: 'Online', lastSeen: '1 hour ago', bandwidth: '10 Mbps', uptime: '8 days' },
-  { id: '7', name: 'Camera-Lobby', type: 'Security Camera', ip: '192.168.1.201', status: 'Online', lastSeen: '3 minutes ago', bandwidth: '50 Mbps', uptime: '67 days' },
-  { id: '8', name: 'NAS-Storage', type: 'NAS', ip: '192.168.1.101', status: 'Online', lastSeen: '10 minutes ago', bandwidth: '1 Gbps', uptime: '234 days' },
-  { id: '9', name: 'Switch-Floor2', type: 'Switch', ip: '192.168.2.1', status: 'Online', lastSeen: '7 minutes ago', bandwidth: '100 Mbps', uptime: '78 days' },
-  { id: '10', name: 'AP-Floor2', type: 'Access Point', ip: '192.168.2.10', status: 'Online', lastSeen: '4 minutes ago', bandwidth: '300 Mbps', uptime: '45 days' },
-];
 
 const columnDefinitions = [
   {
+    id: 'picture',
+    header: 'Avatar',
+    cell: (item: User) => (
+      <img 
+        src={item.picture} 
+        alt={item.name}
+        style={{ width: '40px', height: '40px', borderRadius: '50%' }}
+      />
+    ),
+  },
+  {
     id: 'name',
-    header: 'Device Name',
-    cell: (item: Device) => item.name,
+    header: 'Name',
+    cell: (item: User) => item.name,
     sortingField: 'name',
   },
   {
-    id: 'type',
-    header: 'Device Type',
-    cell: (item: Device) => item.type,
-    sortingField: 'type',
+    id: 'email',
+    header: 'Email',
+    cell: (item: User) => item.email,
+    sortingField: 'email',
   },
   {
-    id: 'ip',
-    header: 'IP Address',
-    cell: (item: Device) => item.ip,
-    sortingField: 'ip',
+    id: 'phone',
+    header: 'Phone',
+    cell: (item: User) => item.phone,
+    sortingField: 'phone',
+  },
+  {
+    id: 'location',
+    header: 'Location',
+    cell: (item: User) => item.location,
+    sortingField: 'location',
   },
   {
     id: 'status',
     header: 'Status',
-    cell: (item: Device) => (
-      <Box
-        color={item.status === 'Online' ? 'text-status-success' :
-              item.status === 'Warning' ? 'text-status-warning' :
+    cell: (item: User) => (
+      <Box 
+        color={item.status === 'Active' ? 'text-status-success' : 
+              item.status === 'Pending' ? 'text-status-warning' : 
               'text-status-error'}
       >
         {item.status}
@@ -117,39 +120,58 @@ const columnDefinitions = [
     sortingField: 'status',
   },
   {
-    id: 'lastSeen',
-    header: 'Last Seen',
-    cell: (item: Device) => item.lastSeen,
-    sortingField: 'lastSeen',
-  },
-  {
-    id: 'bandwidth',
-    header: 'Bandwidth',
-    cell: (item: Device) => item.bandwidth,
-    sortingField: 'bandwidth',
-  },
-  {
-    id: 'uptime',
-    header: 'Uptime',
-    cell: (item: Device) => item.uptime,
-    sortingField: 'uptime',
+    id: 'registered',
+    header: 'Registered',
+    cell: (item: User) => item.registered,
+    sortingField: 'registered',
   },
 ];
 
 export function App() {
-  const [selectedItems, setSelectedItems] = useState<Device[]>([]);
+  const [selectedItems, setSelectedItems] = useState<User[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('https://randomuser.me/api/?results=20&seed=network-dashboard');
+        const data = await response.json();
+        
+        const transformedUsers: User[] = data.results.map((user: any, index: number) => ({
+          id: user.login.uuid,
+          name: `${user.name.first} ${user.name.last}`,
+          email: user.email,
+          phone: user.phone,
+          location: `${user.location.city}, ${user.location.country}`,
+          status: ['Active', 'Inactive', 'Pending'][index % 3] as 'Active' | 'Inactive' | 'Pending',
+          registered: new Date(user.registered.date).toLocaleDateString(),
+          picture: user.picture.medium,
+        }));
+        
+        setUsers(transformedUsers);
+      } catch (error) {
+        console.error('Failed to fetch users:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
   const { items, actions, filteredItemsCount, collectionProps, filterProps, paginationProps } = useCollection(
-    deviceData,
+    users,
     {
       filtering: {
         empty: (
           <Box textAlign="center" color="inherit">
             <Box variant="strong" textAlign="center" color="inherit">
-              No devices
+              No users
             </Box>
             <Box variant="p" padding={{ bottom: 's' }} color="inherit">
-              No devices to display.
+              No users to display.
             </Box>
           </Box>
         ),
@@ -188,7 +210,7 @@ export function App() {
               
               <Header
                 variant="h1"
-                description="Network Traffic, Credit Usage, and Your Devices"
+                description="Network Traffic, Credit Usage, and Your Users"
                 actions={
                   <Button variant="primary" iconAlign="right" iconName="external">
                     Refresh Data
@@ -201,8 +223,8 @@ export function App() {
               <Grid gridDefinition={[{ colspan: { default: 12, xs: 12, s: 12, m: 8, l: 8, xl: 8 } }]}>
                 <TextFilter
                   {...filterProps}
-                  filteringPlaceholder="Placeholder"
-                  filteringAriaLabel="Filter devices"
+                  filteringPlaceholder="Search users..."
+                  filteringAriaLabel="Filter users"
                   countText={`${filteredItemsCount} matches`}
                 />
               </Grid>
@@ -210,8 +232,8 @@ export function App() {
               <Flashbar
                 items={[
                   {
-                    type: 'warning',
-                    content: 'This is a warning message',
+                    type: 'error',
+                    content: 'Critical network alert detected',
                     dismissible: true,
                     buttonText: 'Dismiss',
                   },
@@ -345,19 +367,19 @@ export function App() {
               </Container>
             </Grid>
 
-            {/* Devices Table Section */}
+            {/* Users Table Section */}
             <Container
               header={
                 <Header
                   variant="h2"
-                  description="Devices on your local network"
+                  description="Network users and administrators"
                   actions={
                     <Button variant="primary" iconAlign="right" iconName="external">
-                      Add Device
+                      Add User
                     </Button>
                   }
                 >
-                  My Devices
+                  Network Users
                 </Header>
               }
             >
@@ -365,6 +387,7 @@ export function App() {
                 {...collectionProps}
                 columnDefinitions={columnDefinitions}
                 items={items}
+                loading={loading}
                 selectionType="multi"
                 selectedItems={selectedItems}
                 onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
@@ -378,17 +401,17 @@ export function App() {
                 }
                 variant="container"
                 stickyHeader
-                loadingText="Loading devices"
+                loadingText="Loading users"
                 pagination={<Pagination {...paginationProps} />}
                 empty={
                   <Box textAlign="center" color="inherit">
                     <Box variant="strong" textAlign="center" color="inherit">
-                      No devices
+                      No users
                     </Box>
                     <Box variant="p" padding={{ bottom: 's' }} color="inherit">
-                      No devices to display.
+                      No users to display.
                     </Box>
-                    <Button>Add device</Button>
+                    <Button>Add user</Button>
                   </Box>
                 }
               />

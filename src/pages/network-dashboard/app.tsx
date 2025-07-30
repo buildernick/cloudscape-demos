@@ -19,22 +19,22 @@ export function App() {
     <CustomAppLayout
       content={
         <SpaceBetween size="m">
-          <NetworkDashboardHeader 
+          <NetworkDashboardHeader
             actions={
               <Button variant="primary" iconAlign="right" iconName="external">
                 Refresh Data
               </Button>
-            } 
+            }
           />
           <NetworkDashboardContent />
         </SpaceBetween>
       }
       breadcrumbs={
-        <Breadcrumbs 
+        <Breadcrumbs
           items={[
             { text: 'Service', href: '#/' },
-            { text: 'Administrative Dashboard', href: '#/network-dashboard' }
-          ]} 
+            { text: 'Administrative Dashboard', href: '#/network-dashboard' },
+          ]}
         />
       }
       navigationHide

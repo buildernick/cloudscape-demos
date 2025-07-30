@@ -62,7 +62,7 @@ const series = [
     color: '#688AE8',
   },
   {
-    title: 'Site 2', 
+    title: 'Site 2',
     type: 'area' as const,
     data: networkTrafficData.map(d => ({ x: d.x, y: d.y2 })),
     color: '#C33D69',

@@ -56,20 +56,19 @@ export function NetworkDashboardContent() {
               }}
             />
             <div style={{ width: '2px', height: '32px', backgroundColor: 'var(--color-border-divider-default)' }} />
-            <div style={{ width: '26px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ width: '16px', height: '16px', backgroundColor: 'var(--color-text-interactive-disabled)' }} />
+            <div
+              style={{ width: '26px', height: '32px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              <div
+                style={{ width: '16px', height: '16px', backgroundColor: 'var(--color-text-interactive-disabled)' }}
+              />
             </div>
           </div>
         </Grid>
       </Container>
 
       {/* Charts Section */}
-      <Grid
-        gridDefinition={[
-          { colspan: { default: 12, l: 6 } },
-          { colspan: { default: 12, l: 6 } },
-        ]}
-      >
+      <Grid gridDefinition={[{ colspan: { default: 12, l: 6 } }, { colspan: { default: 12, l: 6 } }]}>
         <NetworkTrafficChart />
         <CreditUsageChart />
       </Grid>

@@ -24,7 +24,7 @@ const devicesData = [
     bandwidth: '100 Mbps',
   },
   {
-    id: '2', 
+    id: '2',
     deviceName: 'Switch-001',
     ipAddress: '192.168.1.2',
     macAddress: '00:11:22:33:44:56',
@@ -147,10 +147,7 @@ export function DevicesTable() {
   const [sortingColumn, setSortingColumn] = useState('deviceName');
 
   const itemsPerPage = 10;
-  const paginatedItems = devicesData.slice(
-    (currentPageIndex - 1) * itemsPerPage,
-    currentPageIndex * itemsPerPage
-  );
+  const paginatedItems = devicesData.slice((currentPageIndex - 1) * itemsPerPage, currentPageIndex * itemsPerPage);
 
   return (
     <Container>
@@ -179,7 +176,9 @@ export function DevicesTable() {
                 </Button>
               </SpaceBetween>
             }
-            counter={selectedItems.length > 0 ? `(${selectedItems.length}/${devicesData.length})` : `(${devicesData.length})`}
+            counter={
+              selectedItems.length > 0 ? `(${selectedItems.length}/${devicesData.length})` : `(${devicesData.length})`
+            }
           >
             My Devices
           </Header>
@@ -211,7 +210,15 @@ export function DevicesTable() {
             cancelLabel="Cancel"
             preferences={{
               pageSize: itemsPerPage,
-              visibleContent: ['deviceName', 'ipAddress', 'macAddress', 'deviceType', 'status', 'lastSeen', 'bandwidth'],
+              visibleContent: [
+                'deviceName',
+                'ipAddress',
+                'macAddress',
+                'deviceType',
+                'status',
+                'lastSeen',
+                'bandwidth',
+              ],
             }}
             onConfirm={({ detail }) => {
               // Handle preferences change

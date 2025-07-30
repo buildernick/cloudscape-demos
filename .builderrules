@@ -1,1 +1,31 @@
 When adding new pages make sure to link to them from the homepage in src/pages/index.tsx
+
+Implement WCAG-compliant, accessible code following these essential requirements:
+
+Semantic Structure:
+• Use semantic HTML elements (nav, main, article, section)
+• Create logical heading hierarchy (h1-h6)
+• Implement proper landmark regions
+
+Interactive Elements:
+• Ensure keyboard navigation support
+• Maintain visible focus indicators
+• Implement proper focus management
+• Support touch and mouse interactions
+
+ARIA Implementation:
+• Add appropriate ARIA landmarks
+• Include descriptive ARIA labels
+• Use ARIA states and properties correctly
+• Implement ARIA live regions for dynamic content
+
+Media and Content:
+• Provide descriptive alt text for images
+• Ensure proper color contrast ratios
+• Support text resizing and zoom
+• Include captions and transcripts for media
+
+Testing Requirements:
+• Verify screen reader compatibility
+• Test with keyboard-only navigation
+• Ensure functionality at 200% zoom

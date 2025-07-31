@@ -114,16 +114,106 @@ const commonChartProps = {
 
 // Sample data for devices table
 const deviceData = [
-  { id: '1', deviceName: 'Router-01', ipAddress: '192.168.1.1', status: 'Online', type: 'Router', location: 'Building A', lastSeen: '2 minutes ago', bandwidth: '1 Gbps' },
-  { id: '2', deviceName: 'Switch-02', ipAddress: '192.168.1.2', status: 'Online', type: 'Switch', location: 'Building A', lastSeen: '5 minutes ago', bandwidth: '100 Mbps' },
-  { id: '3', deviceName: 'AP-03', ipAddress: '192.168.1.3', status: 'Offline', type: 'Access Point', location: 'Building B', lastSeen: '1 hour ago', bandwidth: '300 Mbps' },
-  { id: '4', deviceName: 'Router-04', ipAddress: '192.168.1.4', status: 'Online', type: 'Router', location: 'Building B', lastSeen: '1 minute ago', bandwidth: '1 Gbps' },
-  { id: '5', deviceName: 'Switch-05', ipAddress: '192.168.1.5', status: 'Warning', type: 'Switch', location: 'Building C', lastSeen: '10 minutes ago', bandwidth: '100 Mbps' },
-  { id: '6', deviceName: 'AP-06', ipAddress: '192.168.1.6', status: 'Online', type: 'Access Point', location: 'Building C', lastSeen: '3 minutes ago', bandwidth: '300 Mbps' },
-  { id: '7', deviceName: 'Firewall-07', ipAddress: '192.168.1.7', status: 'Online', type: 'Firewall', location: 'Data Center', lastSeen: '30 seconds ago', bandwidth: '10 Gbps' },
-  { id: '8', deviceName: 'Router-08', ipAddress: '192.168.1.8', status: 'Online', type: 'Router', location: 'Building D', lastSeen: '4 minutes ago', bandwidth: '1 Gbps' },
-  { id: '9', deviceName: 'Switch-09', ipAddress: '192.168.1.9', status: 'Offline', type: 'Switch', location: 'Building D', lastSeen: '2 hours ago', bandwidth: '100 Mbps' },
-  { id: '10', deviceName: 'AP-10', ipAddress: '192.168.1.10', status: 'Online', type: 'Access Point', location: 'Building E', lastSeen: '1 minute ago', bandwidth: '300 Mbps' },
+  {
+    id: '1',
+    deviceName: 'Router-01',
+    ipAddress: '192.168.1.1',
+    status: 'Online',
+    type: 'Router',
+    location: 'Building A',
+    lastSeen: '2 minutes ago',
+    bandwidth: '1 Gbps',
+  },
+  {
+    id: '2',
+    deviceName: 'Switch-02',
+    ipAddress: '192.168.1.2',
+    status: 'Online',
+    type: 'Switch',
+    location: 'Building A',
+    lastSeen: '5 minutes ago',
+    bandwidth: '100 Mbps',
+  },
+  {
+    id: '3',
+    deviceName: 'AP-03',
+    ipAddress: '192.168.1.3',
+    status: 'Offline',
+    type: 'Access Point',
+    location: 'Building B',
+    lastSeen: '1 hour ago',
+    bandwidth: '300 Mbps',
+  },
+  {
+    id: '4',
+    deviceName: 'Router-04',
+    ipAddress: '192.168.1.4',
+    status: 'Online',
+    type: 'Router',
+    location: 'Building B',
+    lastSeen: '1 minute ago',
+    bandwidth: '1 Gbps',
+  },
+  {
+    id: '5',
+    deviceName: 'Switch-05',
+    ipAddress: '192.168.1.5',
+    status: 'Warning',
+    type: 'Switch',
+    location: 'Building C',
+    lastSeen: '10 minutes ago',
+    bandwidth: '100 Mbps',
+  },
+  {
+    id: '6',
+    deviceName: 'AP-06',
+    ipAddress: '192.168.1.6',
+    status: 'Online',
+    type: 'Access Point',
+    location: 'Building C',
+    lastSeen: '3 minutes ago',
+    bandwidth: '300 Mbps',
+  },
+  {
+    id: '7',
+    deviceName: 'Firewall-07',
+    ipAddress: '192.168.1.7',
+    status: 'Online',
+    type: 'Firewall',
+    location: 'Data Center',
+    lastSeen: '30 seconds ago',
+    bandwidth: '10 Gbps',
+  },
+  {
+    id: '8',
+    deviceName: 'Router-08',
+    ipAddress: '192.168.1.8',
+    status: 'Online',
+    type: 'Router',
+    location: 'Building D',
+    lastSeen: '4 minutes ago',
+    bandwidth: '1 Gbps',
+  },
+  {
+    id: '9',
+    deviceName: 'Switch-09',
+    ipAddress: '192.168.1.9',
+    status: 'Offline',
+    type: 'Switch',
+    location: 'Building D',
+    lastSeen: '2 hours ago',
+    bandwidth: '100 Mbps',
+  },
+  {
+    id: '10',
+    deviceName: 'AP-10',
+    ipAddress: '192.168.1.10',
+    status: 'Online',
+    type: 'Access Point',
+    location: 'Building E',
+    lastSeen: '1 minute ago',
+    bandwidth: '300 Mbps',
+  },
 ];
 
 const columnDefinitions = [
@@ -176,11 +266,12 @@ export function App() {
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const [filterText, setFilterText] = useState('');
 
-  const filteredItems = deviceData.filter(item =>
-    item.deviceName.toLowerCase().includes(filterText.toLowerCase()) ||
-    item.ipAddress.toLowerCase().includes(filterText.toLowerCase()) ||
-    item.type.toLowerCase().includes(filterText.toLowerCase()) ||
-    item.location.toLowerCase().includes(filterText.toLowerCase())
+  const filteredItems = deviceData.filter(
+    item =>
+      item.deviceName.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.ipAddress.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.type.toLowerCase().includes(filterText.toLowerCase()) ||
+      item.location.toLowerCase().includes(filterText.toLowerCase()),
   );
 
   const paginatedItems = filteredItems.slice((currentPageIndex - 1) * 10, currentPageIndex * 10);
@@ -192,7 +283,7 @@ export function App() {
       content={
         <SpaceBetween size="l">
           <BreadcrumbGroup items={breadcrumbs} />
-          
+
           <Flashbar
             items={[
               {
@@ -223,7 +314,7 @@ export function App() {
               filteringAriaLabel="Filter devices"
               onChange={({ detail }) => setFilterText(detail.filteringText)}
             />
-            
+
             <Pagination
               currentPageIndex={1}
               pagesCount={5}

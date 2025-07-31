@@ -16,7 +16,6 @@ import TextFilter from '@cloudscape-design/components/text-filter';
 import AreaChart from '@cloudscape-design/components/area-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
 
-
 const breadcrumbs = [
   {
     text: 'Service',
@@ -282,11 +281,7 @@ export function App() {
         <SpaceBetween size="l">
           <BreadcrumbGroup items={breadcrumbs} />
 
-          <Alert
-            type="warning"
-            dismissible
-            onDismiss={() => {}}
-          >
+          <Alert type="warning" dismissible onDismiss={() => {}}>
             This is a warning message
           </Alert>
 

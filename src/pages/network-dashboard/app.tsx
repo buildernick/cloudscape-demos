@@ -31,29 +31,86 @@ const breadcrumbs = [
 ];
 
 // Sample data for network traffic chart
-const networkTrafficData = [
-  { x: 'x1', y1: 3, y2: 4 },
-  { x: 'x2', y1: 4, y2: 5 },
-  { x: 'x3', y1: 6, y2: 4 },
-  { x: 'x4', y1: 8, y2: 6 },
-  { x: 'x5', y1: 7, y2: 8 },
-  { x: 'x6', y1: 5, y2: 7 },
-  { x: 'x7', y1: 4, y2: 6 },
-  { x: 'x8', y1: 6, y2: 5 },
-  { x: 'x9', y1: 8, y2: 7 },
-  { x: 'x10', y1: 9, y2: 8 },
-  { x: 'x11', y1: 7, y2: 6 },
-  { x: 'x12', y1: 5, y2: 4 },
+const networkTrafficSeries = [
+  {
+    title: 'Site 1',
+    type: 'area',
+    data: [
+      { x: 'x1', y: 3 },
+      { x: 'x2', y: 4 },
+      { x: 'x3', y: 6 },
+      { x: 'x4', y: 8 },
+      { x: 'x5', y: 7 },
+      { x: 'x6', y: 5 },
+      { x: 'x7', y: 4 },
+      { x: 'x8', y: 6 },
+      { x: 'x9', y: 8 },
+      { x: 'x10', y: 9 },
+      { x: 'x11', y: 7 },
+      { x: 'x12', y: 5 },
+    ],
+    color: '#688AE8',
+  },
+  {
+    title: 'Site 2',
+    type: 'area',
+    data: [
+      { x: 'x1', y: 4 },
+      { x: 'x2', y: 5 },
+      { x: 'x3', y: 4 },
+      { x: 'x4', y: 6 },
+      { x: 'x5', y: 8 },
+      { x: 'x6', y: 7 },
+      { x: 'x7', y: 6 },
+      { x: 'x8', y: 5 },
+      { x: 'x9', y: 7 },
+      { x: 'x10', y: 8 },
+      { x: 'x11', y: 6 },
+      { x: 'x12', y: 4 },
+    ],
+    color: '#C33D69',
+  },
 ];
 
 // Sample data for credit usage chart
-const creditUsageData = [
-  { x: 'x1', y: 183 },
-  { x: 'x2', y: 257 },
-  { x: 'x3', y: 213 },
-  { x: 'x4', y: 122 },
-  { x: 'x5', y: 210 },
+const creditUsageSeries = [
+  {
+    title: 'Site 1',
+    type: 'bar',
+    data: [
+      { x: 'x1', y: 183 },
+      { x: 'x2', y: 257 },
+      { x: 'x3', y: 213 },
+      { x: 'x4', y: 122 },
+      { x: 'x5', y: 210 },
+    ],
+    color: '#688AE8',
+  },
 ];
+
+const commonChartProps = {
+  loadingText: 'Loading chart',
+  errorText: 'Error loading data.',
+  recoveryText: 'Retry',
+  empty: (
+    <Box textAlign="center" color="inherit">
+      <b>No data available</b>
+    </Box>
+  ),
+  noMatch: (
+    <Box textAlign="center" color="inherit">
+      <b>No matching data</b>
+    </Box>
+  ),
+  i18nStrings: {
+    legendAriaLabel: 'Legend',
+    chartAriaRoleDescription: 'chart',
+    xAxisAriaRoleDescription: 'x axis',
+    yAxisAriaRoleDescription: 'y axis',
+    xTickFormatter: (e: any) => e,
+    yTickFormatter: (e: any) => `y${e}`,
+  },
+};
 
 // Sample data for devices table
 const deviceData = [

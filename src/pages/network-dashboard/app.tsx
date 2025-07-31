@@ -15,9 +15,7 @@ import Pagination from '@cloudscape-design/components/pagination';
 import TextFilter from '@cloudscape-design/components/text-filter';
 import AreaChart from '@cloudscape-design/components/area-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
-import { applyMode, Appearance } from '@cloudscape-design/global-styles';
 
-applyMode(Appearance.Light);
 
 const breadcrumbs = [
   {

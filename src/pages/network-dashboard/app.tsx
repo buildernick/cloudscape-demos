@@ -256,40 +256,20 @@ export function App() {
 
             <Container header={<Header variant="h2">Credit Usage</Header>}>
               <BarChart
-                series={[
-                  {
-                    title: 'Site 1',
-                    type: 'bar',
-                    data: creditUsageData,
-                    color: '#688AE8',
-                  },
-                ]}
-                xDomain={creditUsageData.map(d => d.x)}
+                {...commonChartProps}
+                series={creditUsageSeries}
+                xDomain={['x1', 'x2', 'x3', 'x4', 'x5']}
                 yDomain={[0, 300]}
-                i18nStrings={{
-                  legendAriaLabel: 'Legend',
-                  chartAriaRoleDescription: 'bar chart',
-                  xTickFormatter: e => e,
-                  yTickFormatter: e => `y${Math.floor(e / 50) + 1}`,
-                }}
                 ariaLabel="Credit usage bar chart"
-                errorText="Error loading data."
                 height={300}
-                loadingText="Loading chart"
-                recoveryText="Retry"
                 xScaleType="categorical"
                 xTitle="Day"
                 yTitle=""
-                empty={
-                  <Box textAlign="center" color="inherit">
-                    <b>No data available</b>
-                  </Box>
-                }
-                noMatch={
-                  <Box textAlign="center" color="inherit">
-                    <b>No matching data</b>
-                  </Box>
-                }
+                i18nStrings={{
+                  ...commonChartProps.i18nStrings,
+                  chartAriaRoleDescription: 'bar chart',
+                  yTickFormatter: (e: any) => `y${Math.floor(e / 50) + 1}`,
+                }}
               />
             </Container>
           </Grid>

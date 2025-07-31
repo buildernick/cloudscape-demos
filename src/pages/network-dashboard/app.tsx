@@ -1,24 +1,20 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 import React, { useState } from 'react';
-import {
-  AppLayout,
-  Box,
-  BreadcrumbGroup,
-  Button,
-  Container,
-  Grid,
-  Header,
-  Input,
-  SpaceBetween,
-  Table,
-  Flashbar,
-  Pagination,
-  TextFilter,
-  Checkbox,
-  AreaChart,
-  BarChart,
-} from '@cloudscape-design/components';
+import AppLayout from '@cloudscape-design/components/app-layout';
+import Box from '@cloudscape-design/components/box';
+import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
+import Button from '@cloudscape-design/components/button';
+import Container from '@cloudscape-design/components/container';
+import Grid from '@cloudscape-design/components/grid';
+import Header from '@cloudscape-design/components/header';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+import Table from '@cloudscape-design/components/table';
+import Flashbar from '@cloudscape-design/components/flashbar';
+import Pagination from '@cloudscape-design/components/pagination';
+import TextFilter from '@cloudscape-design/components/text-filter';
+import AreaChart from '@cloudscape-design/components/area-chart';
+import BarChart from '@cloudscape-design/components/bar-chart';
 import { applyMode, Appearance } from '@cloudscape-design/global-styles';
 
 applyMode(Appearance.Light);

@@ -10,7 +10,7 @@ import Grid from '@cloudscape-design/components/grid';
 import Header from '@cloudscape-design/components/header';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import Table from '@cloudscape-design/components/table';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import Alert from '@cloudscape-design/components/alert';
 import Pagination from '@cloudscape-design/components/pagination';
 import TextFilter from '@cloudscape-design/components/text-filter';
 import AreaChart from '@cloudscape-design/components/area-chart';

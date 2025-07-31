@@ -282,16 +282,13 @@ export function App() {
         <SpaceBetween size="l">
           <BreadcrumbGroup items={breadcrumbs} />
 
-          <Flashbar
-            items={[
-              {
-                type: 'warning',
-                content: 'This is a warning message',
-                dismissible: true,
-                id: 'warning-message',
-              },
-            ]}
-          />
+          <Alert
+            type="warning"
+            dismissible
+            onDismiss={() => {}}
+          >
+            This is a warning message
+          </Alert>
 
           <Header
             variant="h1"

@@ -238,46 +238,19 @@ export function App() {
           <Grid gridDefinition={[{ colspan: 6 }, { colspan: 6 }]}>
             <Container header={<Header variant="h2">Network traffic</Header>}>
               <AreaChart
-                series={[
-                  {
-                    title: 'Site 1',
-                    type: 'area',
-                    data: networkTrafficData.map(d => ({ x: d.x, y: d.y1 })),
-                    color: '#688AE8',
-                  },
-                  {
-                    title: 'Site 2',
-                    type: 'area',
-                    data: networkTrafficData.map(d => ({ x: d.x, y: d.y2 })),
-                    color: '#C33D69',
-                  },
-                ]}
-                xDomain={networkTrafficData.map(d => d.x)}
+                {...commonChartProps}
+                series={networkTrafficSeries}
+                xDomain={['x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x9', 'x10', 'x11', 'x12']}
                 yDomain={[0, 10]}
-                i18nStrings={{
-                  legendAriaLabel: 'Legend',
-                  chartAriaRoleDescription: 'area chart',
-                  xTickFormatter: e => e,
-                  yTickFormatter: e => `y${e}`,
-                }}
                 ariaLabel="Network traffic area chart"
-                errorText="Error loading data."
                 height={300}
-                loadingText="Loading chart"
-                recoveryText="Retry"
                 xScaleType="categorical"
                 xTitle="Day"
                 yTitle=""
-                empty={
-                  <Box textAlign="center" color="inherit">
-                    <b>No data available</b>
-                  </Box>
-                }
-                noMatch={
-                  <Box textAlign="center" color="inherit">
-                    <b>No matching data</b>
-                  </Box>
-                }
+                i18nStrings={{
+                  ...commonChartProps.i18nStrings,
+                  chartAriaRoleDescription: 'area chart',
+                }}
               />
             </Container>
 

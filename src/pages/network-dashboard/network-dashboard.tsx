@@ -68,11 +68,7 @@ export function NetworkDashboard() {
                 variant="h1"
                 description="Network Traffic, Credit Usage, and Your Devices"
                 actions={
-                  <Button
-                    variant="primary"
-                    iconName="refresh"
-                    onClick={() => setShowRefreshModal(true)}
-                  >
+                  <Button variant="primary" iconName="refresh" onClick={() => setShowRefreshModal(true)}>
                     Refresh Data
                   </Button>
                 }
@@ -173,8 +169,8 @@ export function NetworkDashboard() {
       >
         <SpaceBetween size="m">
           <Box variant="span">
-            Are you sure you want to refresh all dashboard data? This will reload network traffic, 
-            credit usage, and device information from the servers.
+            Are you sure you want to refresh all dashboard data? This will reload network traffic, credit usage, and
+            device information from the servers.
           </Box>
           <Box variant="small" color="text-status-info">
             This process may take a few moments to complete.

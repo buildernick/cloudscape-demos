@@ -19,5 +19,5 @@ const root = createRoot(container!);
 root.render(
   <BrowserRouter>
     <NetworkDashboardPage />
-  </BrowserRouter>
+  </BrowserRouter>,
 );

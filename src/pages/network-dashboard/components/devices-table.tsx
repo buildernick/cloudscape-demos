@@ -155,9 +155,7 @@ export function DevicesTable() {
   const [filteringText, setFilteringText] = useState('');
 
   const filteredItems = deviceData.filter(item =>
-    Object.values(item).some(value =>
-      value.toString().toLowerCase().includes(filteringText.toLowerCase())
-    )
+    Object.values(item).some(value => value.toString().toLowerCase().includes(filteringText.toLowerCase())),
   );
 
   const itemsPerPage = 10;

@@ -23,6 +23,14 @@ import { DevicesTable } from './components/devices-table';
 export function NetworkDashboard() {
   const [searchValue, setSearchValue] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
+  const [showRefreshModal, setShowRefreshModal] = useState(false);
+
+  const handleRefreshData = () => {
+    // Simulate data refresh
+    console.log('Data refreshed!');
+    setShowRefreshModal(false);
+    // Here you would typically call your data refresh API
+  };
 
   return (
     <AppLayout

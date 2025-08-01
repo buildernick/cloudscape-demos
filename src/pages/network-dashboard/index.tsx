@@ -4,6 +4,8 @@
 import React from 'react';
 import { NetworkDashboard } from './network-dashboard';
 
+import '../../styles/base.scss';
+
 export default function NetworkDashboardPage() {
   return <NetworkDashboard />;
 }

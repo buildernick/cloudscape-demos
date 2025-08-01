@@ -149,6 +149,128 @@ export function NetworkDashboard() {
           </SpaceBetween>
         </ContentLayout>
       }
+      content={
+        <>
+          <ContentLayout
+            defaultPadding
+            header={
+              <Header
+                variant="h1"
+                description="Network Traffic, Credit Usage, and Your Devices"
+                actions={
+                  <Button
+                    variant="primary"
+                    iconName="refresh"
+                    onClick={() => setShowRefreshModal(true)}
+                  >
+                    Refresh Data
+                  </Button>
+                }
+              >
+                Network Administration Dashboard
+              </Header>
+            }
+          >
+            <SpaceBetween size="l">
+              {/* Search and Pagination */}
+              <Container>
+                <Grid
+                  gridDefinition={[
+                    { colspan: { default: 12, xs: 12, s: 8, m: 8, l: 8, xl: 8 } },
+                    { colspan: { default: 12, xs: 12, s: 4, m: 4, l: 4, xl: 4 } },
+                  ]}
+                >
+                  <Input
+                    type="search"
+                    placeholder="Placeholder"
+                    value={searchValue}
+                    onChange={({ detail }) => setSearchValue(detail.value)}
+                  />
+                  <Box textAlign="right">
+                    <Pagination
+                      currentPageIndex={currentPageIndex}
+                      onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
+                      pagesCount={5}
+                      ariaLabels={{
+                        nextPageLabel: 'Next page',
+                        previousPageLabel: 'Previous page',
+                        pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
+                      }}
+                    />
+                    <Box margin={{ left: 's' }} display="inline-block">
+                      <Button iconName="settings" variant="icon" />
+                    </Box>
+                  </Box>
+                </Grid>
+              </Container>
+
+              {/* Charts Section */}
+              <Grid
+                gridDefinition={[
+                  { colspan: { default: 12, s: 12, m: 6, l: 6, xl: 6 } },
+                  { colspan: { default: 12, s: 12, m: 6, l: 6, xl: 6 } },
+                ]}
+              >
+                <Container>
+                  <NetworkTrafficChart />
+                </Container>
+                <Container>
+                  <CreditUsageChart />
+                </Container>
+              </Grid>
+
+              {/* Devices Section */}
+              <Container
+                header={
+                  <Header
+                    variant="h2"
+                    description="Devices on your local network"
+                    actions={
+                      <Button variant="primary" iconName="add-plus">
+                        Add Device
+                      </Button>
+                    }
+                  >
+                    My Devices
+                  </Header>
+                }
+              >
+                <DevicesTable />
+              </Container>
+            </SpaceBetween>
+          </ContentLayout>
+
+          {/* Refresh Confirmation Modal */}
+          <Modal
+            onDismiss={() => setShowRefreshModal(false)}
+            visible={showRefreshModal}
+            size="medium"
+            footer={
+              <Box float="right">
+                <SpaceBetween direction="horizontal" size="xs">
+                  <Button variant="link" onClick={() => setShowRefreshModal(false)}>
+                    Cancel
+                  </Button>
+                  <Button variant="primary" onClick={handleRefreshData}>
+                    Refresh Data
+                  </Button>
+                </SpaceBetween>
+              </Box>
+            }
+            header="Confirm Data Refresh"
+          >
+            <SpaceBetween size="m">
+              <Box variant="span">
+                Are you sure you want to refresh all dashboard data? This will reload network traffic,
+                credit usage, and device information from the servers.
+              </Box>
+              <Box variant="small" color="text-status-info">
+                This process may take a few moments to complete.
+              </Box>
+            </SpaceBetween>
+          </Modal>
+        </>
+      }
     />
   );
 }

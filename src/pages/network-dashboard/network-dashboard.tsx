@@ -26,11 +26,13 @@ export function NetworkDashboard() {
   return (
     <AppLayout
       breadcrumbs={
-        <Breadcrumb
+        <BreadcrumbGroup
           items={[
             { text: 'Service', href: '#' },
             { text: 'Administrative Dashboard', href: '#' },
           ]}
+          expandAriaLabel="Show path"
+          ariaLabel="Breadcrumbs"
         />
       }
       navigationHide

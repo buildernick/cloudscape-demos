@@ -11,7 +11,7 @@ import SpaceBetween from '@cloudscape-design/components/space-between';
 import Flashbar from '@cloudscape-design/components/flashbar';
 import Grid from '@cloudscape-design/components/grid';
 import Container from '@cloudscape-design/components/container';
-import Breadcrumb from '@cloudscape-design/components/breadcrumb';
+import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Input from '@cloudscape-design/components/input';
 import Pagination from '@cloudscape-design/components/pagination';
 import Icon from '@cloudscape-design/components/icon';

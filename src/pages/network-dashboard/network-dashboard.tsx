@@ -48,17 +48,9 @@ export function NetworkDashboard() {
         navigationHide
         toolsHide
         notifications={
-          <Flashbar
-            items={[
-              {
-                type: 'warning',
-                content: 'This is a warning message',
-                dismissible: true,
-                dismissLabel: 'Dismiss',
-                buttonText: 'Dismiss',
-              },
-            ]}
-          />
+          <Alert type="warning" dismissible dismissAriaLabel="Close alert">
+            This is a warning message
+          </Alert>
         }
         content={
           <ContentLayout

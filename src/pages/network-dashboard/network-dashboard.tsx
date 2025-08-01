@@ -15,6 +15,7 @@ import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Input from '@cloudscape-design/components/input';
 import Pagination from '@cloudscape-design/components/pagination';
 import Icon from '@cloudscape-design/components/icon';
+import Modal from '@cloudscape-design/components/modal';
 import { NetworkTrafficChart } from './components/network-traffic-chart';
 import { CreditUsageChart } from './components/credit-usage-chart';
 import { DevicesTable } from './components/devices-table';

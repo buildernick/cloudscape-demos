@@ -264,22 +264,48 @@
     .pupbot-secondary-actions {
       display: flex;
       gap: 12px;
-      
-      button {
+
+      .pupbot-icon-button {
         width: 40px;
         height: 40px;
         border-radius: 50%;
         background: transparent;
         border: none;
         color: #00688D;
-        
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         &:hover {
           background: rgba(0, 104, 141, 0.1);
         }
-        
+
         svg {
           fill: #00688D;
         }
+      }
+    }
+
+    .pupbot-send-button {
+      background: #CCD5DE;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      color: #02080E;
+      font-size: 16px;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &:hover {
+        background: #B1BAC3;
+      }
+
+      svg {
+        fill: #02080E;
       }
     }
   }

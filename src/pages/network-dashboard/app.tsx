@@ -23,7 +23,7 @@ import {
   BarChart,
   TextFilter,
   Badge,
-  Modal
+  Modal,
 } from '@cloudscape-design/components';
 import styles from './styles.module.scss';
 
@@ -36,7 +36,7 @@ const networkDevices = Array.from({ length: 50 }, (_, index) => ({
   status: ['Online', 'Offline', 'Warning'][index % 3],
   lastSeen: `${Math.floor(Math.random() * 60)} minutes ago`,
   bandwidth: `${Math.floor(Math.random() * 100 + 50)} Mbps`,
-  location: ['Living Room', 'Office', 'Kitchen', 'Bedroom', 'Basement'][index % 5]
+  location: ['Living Room', 'Office', 'Kitchen', 'Bedroom', 'Basement'][index % 5],
 }));
 
 // Mock data for network traffic chart - based on Figma design
@@ -52,7 +52,7 @@ const networkTrafficData = [
   { x: 'x9', y1: 8, y2: 3 },
   { x: 'x10', y1: 15, y2: 10 },
   { x: 'x11', y1: 25, y2: 18 },
-  { x: 'x12', y1: 35, y2: 28 }
+  { x: 'x12', y1: 35, y2: 28 },
 ];
 
 // Mock data for credit usage chart
@@ -61,7 +61,7 @@ const creditUsageData = [
   { x: 'x2', y: 85 },
   { x: 'x3', y: 70 },
   { x: 'x4', y: 40 },
-  { x: 'x5', y: 75 }
+  { x: 'x5', y: 75 },
 ];
 
 export default function App() {
@@ -72,24 +72,24 @@ export default function App() {
   const [searchValue, setSearchValue] = useState('');
   const appLayoutRef = useRef<any>();
 
-  const columnDefinitions: TableProps.ColumnDefinition<typeof networkDevices[0]>[] = [
+  const columnDefinitions: TableProps.ColumnDefinition<(typeof networkDevices)[0]>[] = [
     {
       id: 'name',
       header: 'Device Name',
       cell: item => item.name,
-      sortingField: 'name'
+      sortingField: 'name',
     },
     {
       id: 'ipAddress',
       header: 'IP Address',
       cell: item => item.ipAddress,
-      sortingField: 'ipAddress'
+      sortingField: 'ipAddress',
     },
     {
       id: 'deviceType',
       header: 'Device Type',
       cell: item => item.deviceType,
-      sortingField: 'deviceType'
+      sortingField: 'deviceType',
     },
     {
       id: 'status',
@@ -98,26 +98,26 @@ export default function App() {
         const statusType = item.status === 'Online' ? 'success' : item.status === 'Offline' ? 'error' : 'warning';
         return <Badge color={statusType}>{item.status}</Badge>;
       },
-      sortingField: 'status'
+      sortingField: 'status',
     },
     {
       id: 'lastSeen',
       header: 'Last Seen',
       cell: item => item.lastSeen,
-      sortingField: 'lastSeen'
+      sortingField: 'lastSeen',
     },
     {
       id: 'bandwidth',
       header: 'Bandwidth',
       cell: item => item.bandwidth,
-      sortingField: 'bandwidth'
+      sortingField: 'bandwidth',
     },
     {
       id: 'location',
       header: 'Location',
       cell: item => item.location,
-      sortingField: 'location'
-    }
+      sortingField: 'location',
+    },
   ];
 
   const { items, actions, filteredItemsCount, collectionProps, filterProps, paginationProps } = useCollection(
@@ -139,24 +139,24 @@ export default function App() {
               We can't find a match.
             </Box>
           </Box>
-        )
+        ),
       },
       pagination: { pageSize: 10 },
       sorting: {},
-      selection: {}
-    }
+      selection: {},
+    },
   );
 
   return (
     <>
       <TopNavigation
         identity={{
-          href: "#",
-          title: "Service name",
+          href: '#',
+          title: 'Service name',
           logo: {
-            src: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDMiIGhlaWdodD0iMzEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQzIiBoZWlnaHQ9IjMxIiByeD0iMiIgZmlsbD0iIzIzMkYzRSIgc3Ryb2tlPSIjRDFENURCIi8+PHRleHQgeD0iNiIgeT0iMjEiIGZvbnQtZmFtaWx5PSJPcGVuIFNhbnMiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNGQkZCRkIiPkxvZ288L3RleHQ+PC9zdmc+",
-            alt: "Logo"
-          }
+            src: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDMiIGhlaWdodD0iMzEiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjQzIiBoZWlnaHQ9IjMxIiByeD0iMiIgZmlsbD0iIzIzMkYzRSIgc3Ryb2tlPSIjRDFENURCIi8+PHRleHQgeD0iNiIgeT0iMjEiIGZvbnQtZmFtaWx5PSJPcGVuIFNhbnMiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNGQkZCRkIiPkxvZ288L3RleHQ+PC9zdmc+',
+            alt: 'Logo',
+          },
         }}
         search={
           <Input
@@ -169,68 +169,68 @@ export default function App() {
         }
         utilities={[
           {
-            type: "button",
-            text: "Link",
-            href: "https://example.com",
+            type: 'button',
+            text: 'Link',
+            href: 'https://example.com',
             external: true,
-            externalIconAriaLabel: " (opens in a new tab)"
+            externalIconAriaLabel: ' (opens in a new tab)',
           },
           {
-            type: "menu-dropdown",
-            iconName: "notification",
+            type: 'menu-dropdown',
+            iconName: 'notification',
             badge: true,
-            ariaLabel: "Notifications",
-            title: "Notifications",
+            ariaLabel: 'Notifications',
+            title: 'Notifications',
             items: [
               {
-                id: "notifications",
-                text: "View all notifications"
-              }
-            ]
+                id: 'notifications',
+                text: 'View all notifications',
+              },
+            ],
           },
           {
-            type: "menu-dropdown",
-            iconName: "settings",
-            ariaLabel: "Settings",
-            title: "Settings",
+            type: 'menu-dropdown',
+            iconName: 'settings',
+            ariaLabel: 'Settings',
+            title: 'Settings',
             items: [
               {
-                id: "settings-org",
-                text: "Organizational settings"
+                id: 'settings-org',
+                text: 'Organizational settings',
               },
               {
-                id: "settings-project",
-                text: "Project settings"
-              }
-            ]
+                id: 'settings-project',
+                text: 'Project settings',
+              },
+            ],
           },
           {
-            type: "menu-dropdown",
-            text: "Customer name",
-            description: "email@example.com",
-            iconName: "user-profile",
+            type: 'menu-dropdown',
+            text: 'Customer name',
+            description: 'email@example.com',
+            iconName: 'user-profile',
             items: [
               {
-                id: "profile",
-                text: "Profile"
+                id: 'profile',
+                text: 'Profile',
               },
               {
-                id: "preferences",
-                text: "Preferences"
+                id: 'preferences',
+                text: 'Preferences',
               },
               {
-                id: "security",
-                text: "Security"
+                id: 'security',
+                text: 'Security',
               },
               {
-                type: "divider"
+                type: 'divider',
               },
               {
-                id: "signout",
-                text: "Sign out"
-              }
-            ]
-          }
+                id: 'signout',
+                text: 'Sign out',
+              },
+            ],
+          },
         ]}
       />
       <AppLayout
@@ -247,8 +247,8 @@ export default function App() {
               <SpaceBetween size="m">
                 <BreadcrumbGroup
                   items={[
-                    { text: "Service", href: "#" },
-                    { text: "Administrative Dashboard", href: "#" }
+                    { text: 'Service', href: '#' },
+                    { text: 'Administrative Dashboard', href: '#' },
                   ]}
                 />
                 <Header
@@ -267,7 +267,7 @@ export default function App() {
                 >
                   Network Administration Dashboard
                 </Header>
-                
+
                 <Flashbar
                   items={[
                     {
@@ -275,38 +275,32 @@ export default function App() {
                       content: 'This is a warning message',
                       dismissible: true,
                       buttonText: 'Dismiss',
-                      onButtonClick: () => {}
-                    }
+                      onButtonClick: () => {},
+                    },
                   ]}
                 />
 
                 <Grid
                   gridDefinition={[
                     { colspan: { default: 12, xs: 12, s: 6, m: 6, l: 6, xl: 6 } },
-                    { colspan: { default: 12, xs: 12, s: 6, m: 6, l: 6, xl: 6 } }
+                    { colspan: { default: 12, xs: 12, s: 6, m: 6, l: 6, xl: 6 } },
                   ]}
                 >
-                  <Container
-                    header={
-                      <Header variant="h2">
-                        Network traffic
-                      </Header>
-                    }
-                  >
+                  <Container header={<Header variant="h2">Network traffic</Header>}>
                     <AreaChart
                       series={[
                         {
-                          title: "Site 1",
-                          type: "area",
+                          title: 'Site 1',
+                          type: 'area',
                           data: networkTrafficData.map(d => ({ x: d.x, y: d.y1 })),
-                          color: "#688AE8"
+                          color: '#688AE8',
                         },
                         {
-                          title: "Site 2", 
-                          type: "area",
+                          title: 'Site 2',
+                          type: 'area',
                           data: networkTrafficData.map(d => ({ x: d.x, y: d.y2 })),
-                          color: "#C33D69"
-                        }
+                          color: '#C33D69',
+                        },
                       ]}
                       xDomain={[new Date(2024, 0, 1), new Date(2024, 0, 12)]}
                       yDomain={[0, 60]}
@@ -319,21 +313,15 @@ export default function App() {
                     />
                   </Container>
 
-                  <Container
-                    header={
-                      <Header variant="h2">
-                        Credit Usage
-                      </Header>
-                    }
-                  >
+                  <Container header={<Header variant="h2">Credit Usage</Header>}>
                     <BarChart
                       series={[
                         {
-                          title: "Site 1",
-                          type: "bar",
+                          title: 'Site 1',
+                          type: 'bar',
                           data: creditUsageData,
-                          color: "#688AE8"
-                        }
+                          color: '#688AE8',
+                        },
                       ]}
                       xDomain={creditUsageData.map(d => d.x)}
                       yDomain={[0, 100]}
@@ -367,9 +355,7 @@ export default function App() {
               <Table
                 {...collectionProps}
                 selectedItems={selectedItems}
-                onSelectionChange={({ detail }) =>
-                  setSelectedItems(detail.selectedItems)
-                }
+                onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
                 columnDefinitions={columnDefinitions}
                 items={items}
                 loadingText="Loading devices"
@@ -378,10 +364,7 @@ export default function App() {
                 empty={
                   <Box textAlign="center" color="inherit">
                     <b>No devices</b>
-                    <Box
-                      variant="p"
-                      color="inherit"
-                    >
+                    <Box variant="p" color="inherit">
                       No devices to display.
                     </Box>
                   </Box>
@@ -390,7 +373,7 @@ export default function App() {
                   <TextFilter
                     {...filterProps}
                     filteringPlaceholder="Find devices"
-                    countText={filteredItemsCount === 1 ? "1 match" : `${filteredItemsCount} matches`}
+                    countText={filteredItemsCount === 1 ? '1 match' : `${filteredItemsCount} matches`}
                   />
                 }
                 header={
@@ -418,17 +401,10 @@ export default function App() {
         footer={
           <Box float="right">
             <SpaceBetween direction="horizontal" size="xs">
-              <Button
-                variant="link"
-                onClick={() => setShowRefreshModal(false)}
-                className={styles.hideInfoButton}
-              >
+              <Button variant="link" onClick={() => setShowRefreshModal(false)} className={styles.hideInfoButton}>
                 Hide Info
               </Button>
-              <Button
-                variant="normal"
-                onClick={() => setShowRefreshModal(false)}
-              >
+              <Button variant="normal" onClick={() => setShowRefreshModal(false)}>
                 Cancel
               </Button>
               <Button
@@ -446,7 +422,8 @@ export default function App() {
         }
       >
         <div className={styles.modalContent}>
-          This action cannot be undone. Please review the following: When you do this action it will be impossible to undo. All your hard work will be lost. We really recommend that you think this through a little more!
+          This action cannot be undone. Please review the following: When you do this action it will be impossible to
+          undo. All your hard work will be lost. We really recommend that you think this through a little more!
         </div>
       </Modal>
     </>

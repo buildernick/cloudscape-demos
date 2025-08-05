@@ -34,6 +34,111 @@ export default function PupBotChat({ isOpen, onToggle }: PupBotChatProps) {
   const [showQuickActions, setShowQuickActions] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const getCurrentTime = () => {
+    const now = new Date();
+    return now.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true
+    });
+  };
+
+  const sendMessage = () => {
+    if (!message.trim()) return;
+
+    const newUserMessage: Message = {
+      id: Date.now().toString(),
+      text: message.trim(),
+      sender: 'user',
+      timestamp: getCurrentTime()
+    };
+
+    setMessages(prev => [...prev, newUserMessage]);
+    setMessage('');
+    setShowQuickActions(false);
+
+    // Simulate bot response
+    setTimeout(() => {
+      const botResponse = getBotResponse(message.trim());
+      setMessages(prev => [...prev, botResponse]);
+    }, 1000);
+  };
+
+  const getBotResponse = (userMessage: string): Message => {
+    const baseResponse: Omit<Message, 'text' | 'hasAction' | 'actionText'> = {
+      id: (Date.now() + 1).toString(),
+      sender: 'bot',
+      timestamp: getCurrentTime()
+    };
+
+    if (userMessage.toLowerCase().includes('track shipment') || userMessage.toLowerCase().includes('track')) {
+      return {
+        ...baseResponse,
+        text: 'Your shipment for 7EE2411 is scheduled to arrive June 4, 2051 at 10:36 PM.',
+        hasAction: true,
+        actionText: 'View tracking details'
+      };
+    }
+
+    if (userMessage.toLowerCase().includes('mission control')) {
+      return {
+        ...baseResponse,
+        text: 'I\'ve connected you to mission control. They\'ll be with you shortly to assist with your request.'
+      };
+    }
+
+    if (userMessage.toLowerCase().includes('space traffic')) {
+      return {
+        ...baseResponse,
+        text: 'Current space traffic is light. All shipping lanes are clear with no delays expected.'
+      };
+    }
+
+    if (userMessage.toLowerCase().includes('treat rewards')) {
+      return {
+        ...baseResponse,
+        text: 'You have 2,450 Treat Rewards points available! You can redeem them for premium space treats or shipping discounts.'
+      };
+    }
+
+    return {
+      ...baseResponse,
+      text: 'I understand you\'re looking for help. Could you please be more specific about what you need assistance with?'
+    };
+  };
+
+  const handleQuickAction = (action: string) => {
+    const newUserMessage: Message = {
+      id: Date.now().toString(),
+      text: action,
+      sender: 'user',
+      timestamp: getCurrentTime()
+    };
+
+    setMessages(prev => [...prev, newUserMessage]);
+    setShowQuickActions(false);
+
+    setTimeout(() => {
+      const botResponse = getBotResponse(action);
+      setMessages(prev => [...prev, botResponse]);
+    }, 1000);
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
   const rocketIcon = (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
       <path d="M14.77 1.28a6.77 6.77 0 0 1 8.95 8.95l-5.66 5.65a5.43 5.43 0 0 1-.77.7L12 22l-5.29-5.58a5.43 5.43 0 0 1-.77-.7L.28 10.07A6.77 6.77 0 0 1 9.23 1.28l2.77 2.77 2.77-2.77zm-3.84 6.13a1.93 1.93 0 1 0 2.73 2.73 1.93 1.93 0 0 0-2.73-2.73z"

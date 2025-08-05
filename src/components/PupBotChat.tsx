@@ -191,47 +191,94 @@ export default function PupBotChat({ isOpen, onToggle }: PupBotChatProps) {
 
         {/* Chat Content */}
         <div className="pupbot-chat-content">
-          {/* Introduction */}
-          <div className="pupbot-intro">
-            <div className="pupbot-avatar-large">
-              {rocketIcon}
-            </div>
-            <Box variant="h2" textAlign="center">PupBot</Box>
-            <Box variant="p" textAlign="center" color="text-body-secondary">
-              Firefly's virtual assistant for on-demand support
-            </Box>
-            <Button variant="normal">
-              Explore my skills
-            </Button>
-          </div>
-
-          <div className="pupbot-divider" />
-
-          {/* Message */}
-          <div className="pupbot-message">
-            <div className="pupbot-message-content">
-              <div className="pupbot-avatar-small">
-                {rocketIcon}
-              </div>
-              <div className="pupbot-message-body">
-                <div className="pupbot-message-meta">
-                  <span className="pupbot-sender">PupBot</span>
-                  <span className="pupbot-time">9:22 AM</span>
+          {messages.length === 1 && (
+            <>
+              {/* Introduction */}
+              <div className="pupbot-intro">
+                <div className="pupbot-avatar-large">
+                  {rocketIcon}
                 </div>
-                <div className="pupbot-message-bubble">
-                  Welcome, fellow space pup! How can I help you today?
+                <Box variant="h2" textAlign="center">PupBot</Box>
+                <Box variant="p" textAlign="center" color="text-body-secondary">
+                  Firefly's virtual assistant for on-demand support
+                </Box>
+                <Button variant="normal">
+                  Explore my skills
+                </Button>
+              </div>
+
+              <div className="pupbot-divider" />
+            </>
+          )}
+
+          {/* Messages */}
+          <div className="pupbot-messages">
+            {messages.map((msg) => (
+              <div key={msg.id} className={`pupbot-message ${msg.sender === 'user' ? 'pupbot-message-outgoing' : 'pupbot-message-incoming'}`}>
+                <div className="pupbot-message-content">
+                  {msg.sender === 'bot' && (
+                    <div className="pupbot-avatar-small">
+                      {rocketIcon}
+                    </div>
+                  )}
+
+                  <div className="pupbot-message-body">
+                    <div className="pupbot-message-meta">
+                      <span className="pupbot-sender">{msg.sender === 'bot' ? 'PupBot' : 'Nilla'}</span>
+                      <span className="pupbot-time">{msg.timestamp}</span>
+                    </div>
+                    <div className={`pupbot-message-bubble ${msg.sender === 'user' ? 'pupbot-message-bubble-user' : 'pupbot-message-bubble-bot'}`}>
+                      {msg.text.includes('7EE2411') ? (
+                        <span>
+                          Your shipment for <strong>7EE2411</strong> is scheduled to arrive <strong>June 4, 2051</strong> at <strong>10:36 PM</strong>.
+                        </span>
+                      ) : (
+                        msg.text
+                      )}
+                    </div>
+
+                    {msg.hasAction && (
+                      <div className="pupbot-message-action">
+                        <button className="pupbot-action-button pupbot-action-button-inline">
+                          {msg.actionText}
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path d="M4 0C4.55228 0 5 0.447715 5 1C5 1.55228 4.55228 2 4 2H2V12H12V10C12 9.44772 12.4477 9 13 9C13.5523 9 14 9.44772 14 10V12C14 13.1046 13.1046 14 12 14H2C0.89543 14 0 13.1046 0 12V2C0 0.89543 0.89543 0 2 0H4ZM13 0C13.5523 0 14 0.447715 14 1V5C14 5.55228 13.5523 6 13 6C12.4477 6 12 5.55228 12 5V3.414L7.87711 7.53711C7.51662 7.89759 6.94939 7.92532 6.5571 7.6203L6.46289 7.53711C6.07237 7.14658 6.07237 6.51342 6.46289 6.12289L10.584 2H9C8.48716 2 8.06449 1.61396 8.00673 1.11662L8 1C8 0.447715 8.44771 0 9 0H13Z" fill="#00688D"/>
+                          </svg>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
+                  {msg.sender === 'user' && (
+                    <div className="pupbot-avatar-user">
+                      <div className="pupbot-avatar-circle">
+                        <span>N</span>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
-            </div>
+            ))}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Quick Actions */}
-          <div className="pupbot-quick-actions">
-            <button className="pupbot-action-button">Contact mission control</button>
-            <button className="pupbot-action-button">Check space traffic</button>
-            <button className="pupbot-action-button">Track shipment</button>
-            <button className="pupbot-action-button">Redeem Treat Rewards™</button>
-          </div>
+          {showQuickActions && (
+            <div className="pupbot-quick-actions">
+              <button className="pupbot-action-button" onClick={() => handleQuickAction('Contact mission control')}>
+                Contact mission control
+              </button>
+              <button className="pupbot-action-button" onClick={() => handleQuickAction('Check space traffic')}>
+                Check space traffic
+              </button>
+              <button className="pupbot-action-button" onClick={() => handleQuickAction('Track shipment')}>
+                Track shipment
+              </button>
+              <button className="pupbot-action-button" onClick={() => handleQuickAction('Redeem Treat Rewards™')}>
+                Redeem Treat Rewards™
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Message Input */}

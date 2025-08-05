@@ -18,6 +18,7 @@ import Container from '@cloudscape-design/components/container';
 import Icon from '@cloudscape-design/components/icon';
 import Flashbar from '@cloudscape-design/components/flashbar';
 import Link from '@cloudscape-design/components/link';
+import PupBotChat from '../components/PupBotChat';
 
 // Demo definitions with category information
 const demos = [
@@ -137,6 +138,7 @@ export default function Home() {
   const [filterText, setFilterText] = useState('');
   const [activeCategory, setActiveCategory] = useState('All');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
+  const [isChatOpen, setIsChatOpen] = useState(false);
   const itemsPerPage = 12;
 
   // Filter demos based on filter text and selected category
@@ -151,146 +153,149 @@ export default function Home() {
   const paginatedDemos = filteredDemos.slice((currentPageIndex - 1) * itemsPerPage, currentPageIndex * itemsPerPage);
 
   return (
-    <AppLayout
-      navigationHide
-      toolsHide
-      content={
-        <ContentLayout
-          header={
-            <SpaceBetween size="m">
-              <Header
-                variant="h1"
-                actions={
-                  <Button variant="primary" iconAlign="right" iconName="external">
-                    Launch new demo
-                  </Button>
-                }
-              >
-                Cloudscape Design System Demos
-              </Header>
+    <>
+      <AppLayout
+        navigationHide
+        toolsHide
+        content={
+          <ContentLayout
+            header={
+              <SpaceBetween size="m">
+                <Header
+                  variant="h1"
+                  actions={
+                    <Button variant="primary" iconAlign="right" iconName="external">
+                      Launch new demo
+                    </Button>
+                  }
+                >
+                  Cloudscape Design System Demos
+                </Header>
 
-              <Flashbar
-                items={[
+                <Flashbar
+                  items={[
+                    {
+                      type: 'info',
+                      content:
+                        'Welcome to the Cloudscape Design System demo collection. These patterns and components showcase modern cloud application experiences.',
+                      dismissible: true,
+                      buttonText: 'Learn more',
+                      onButtonClick: () => window.open('https://cloudscape.design', '_blank'),
+                    },
+                  ]}
+                />
+              </SpaceBetween>
+            }
+          >
+            <SpaceBetween size="l">
+              <Container>
+                <Box variant="h2">Demo catalog</Box>
+                <Box variant="p" padding={{ bottom: 'm' }}>
+                  Browse {demos.length} examples of Cloudscape Design System patterns and components. Each demo shows
+                  best practices for cloud application experiences.
+                </Box>
+
+                <Grid gridDefinition={[{ colspan: { default: 12, xs: 12, s: 12, m: 8, l: 8, xl: 8 } }]}>
+                  <TextFilter
+                    filteringText={filterText}
+                    filteringPlaceholder="Find demos"
+                    filteringAriaLabel="Filter demos"
+                    countText={`${filteredDemos.length} matches`}
+                    onChange={({ detail }) => {
+                      setFilterText(detail.filteringText);
+                      setCurrentPageIndex(1);
+                    }}
+                  />
+                </Grid>
+              </Container>
+
+              <Tabs
+                tabs={[
                   {
-                    type: 'info',
-                    content:
-                      'Welcome to the Cloudscape Design System demo collection. These patterns and components showcase modern cloud application experiences.',
-                    dismissible: true,
-                    buttonText: 'Learn more',
-                    onButtonClick: () => window.open('https://cloudscape.design', '_blank'),
+                    id: 'All',
+                    label: 'All',
+                    content: null,
                   },
+                  ...categories.map(category => ({
+                    id: category,
+                    label: category,
+                    content: null,
+                  })),
                 ]}
+                activeTabId={activeCategory}
+                onChange={({ detail }) => {
+                  setActiveCategory(detail.activeTabId);
+                  setCurrentPageIndex(1);
+                }}
+              />
+
+              <Cards
+                ariaLabels={{
+                  itemSelectionLabel: (e, n) => `select ${n.title}`,
+                  selectionGroupLabel: 'Demo selection',
+                }}
+                cardDefinition={{
+                  header: item => <Link href={item.route}>{item.title}</Link>,
+                  sections: [
+                    {
+                      id: 'description',
+                      content: item => item.description,
+                    },
+
+                    {
+                      id: 'actions',
+                      content: item => (
+                        <Button href={item.route} iconAlign="right" iconName="external" variant="primary">
+                          Open demo
+                        </Button>
+                      ),
+                    },
+                  ],
+                }}
+                cardsPerRow={[
+                  { cards: 1, minWidth: 0 },
+                  { cards: 2, minWidth: 600 },
+                  { cards: 3, minWidth: 900 },
+                  { cards: 4, minWidth: 1200 },
+                ]}
+                items={paginatedDemos}
+                loadingText="Loading demos"
+                trackBy="title"
+                visibleSections={['description', 'type', 'actions']}
+                empty={
+                  <Box textAlign="center" color="inherit" margin={{ top: 'xxl', bottom: 'xxl' }}>
+                    <Box padding={{ bottom: 's' }} variant="p" color="inherit">
+                      <Icon name="search" size="large" />
+                    </Box>
+                    <Box variant="h3" padding={{ bottom: 'xs' }}>
+                      No demos match the filters
+                    </Box>
+                    <Box variant="p">Try changing the filters or search term</Box>
+                  </Box>
+                }
+                pagination={
+                  <Pagination
+                    currentPageIndex={currentPageIndex}
+                    onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
+                    pagesCount={Math.ceil(filteredDemos.length / itemsPerPage)}
+                    ariaLabels={{
+                      nextPageLabel: 'Next page',
+                      previousPageLabel: 'Previous page',
+                      pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
+                    }}
+                  />
+                }
+                header={
+                  <Header counter={filteredDemos.length > 0 ? `(${filteredDemos.length})` : undefined}>
+                    Available demos
+                  </Header>
+                }
               />
             </SpaceBetween>
-          }
-        >
-          <SpaceBetween size="l">
-            <Container>
-              <Box variant="h2">Demo catalog</Box>
-              <Box variant="p" padding={{ bottom: 'm' }}>
-                Browse {demos.length} examples of Cloudscape Design System patterns and components. Each demo shows best
-                practices for cloud application experiences.
-              </Box>
-
-              <Grid gridDefinition={[{ colspan: { default: 12, xs: 12, s: 12, m: 8, l: 8, xl: 8 } }]}>
-                <TextFilter
-                  filteringText={filterText}
-                  filteringPlaceholder="Find demos"
-                  filteringAriaLabel="Filter demos"
-                  countText={`${filteredDemos.length} matches`}
-                  onChange={({ detail }) => {
-                    setFilterText(detail.filteringText);
-                    setCurrentPageIndex(1);
-                  }}
-                />
-              </Grid>
-            </Container>
-
-            <Tabs
-              tabs={[
-                {
-                  id: 'All',
-                  label: 'All',
-                  content: null,
-                },
-                ...categories.map(category => ({
-                  id: category,
-                  label: category,
-                  content: null,
-                })),
-              ]}
-              activeTabId={activeCategory}
-              onChange={({ detail }) => {
-                setActiveCategory(detail.activeTabId);
-                setCurrentPageIndex(1);
-              }}
-            />
-
-            <Cards
-              ariaLabels={{
-                itemSelectionLabel: (e, n) => `select ${n.title}`,
-                selectionGroupLabel: 'Demo selection',
-              }}
-              cardDefinition={{
-                header: item => <Link href={item.route}>{item.title}</Link>,
-                sections: [
-                  {
-                    id: 'description',
-                    content: item => item.description,
-                  },
-
-                  {
-                    id: 'actions',
-                    content: item => (
-                      <Button href={item.route} iconAlign="right" iconName="external" variant="primary">
-                        Open demo
-                      </Button>
-                    ),
-                  },
-                ],
-              }}
-              cardsPerRow={[
-                { cards: 1, minWidth: 0 },
-                { cards: 2, minWidth: 600 },
-                { cards: 3, minWidth: 900 },
-                { cards: 4, minWidth: 1200 },
-              ]}
-              items={paginatedDemos}
-              loadingText="Loading demos"
-              trackBy="title"
-              visibleSections={['description', 'type', 'actions']}
-              empty={
-                <Box textAlign="center" color="inherit" margin={{ top: 'xxl', bottom: 'xxl' }}>
-                  <Box padding={{ bottom: 's' }} variant="p" color="inherit">
-                    <Icon name="search" size="large" />
-                  </Box>
-                  <Box variant="h3" padding={{ bottom: 'xs' }}>
-                    No demos match the filters
-                  </Box>
-                  <Box variant="p">Try changing the filters or search term</Box>
-                </Box>
-              }
-              pagination={
-                <Pagination
-                  currentPageIndex={currentPageIndex}
-                  onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
-                  pagesCount={Math.ceil(filteredDemos.length / itemsPerPage)}
-                  ariaLabels={{
-                    nextPageLabel: 'Next page',
-                    previousPageLabel: 'Previous page',
-                    pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
-                  }}
-                />
-              }
-              header={
-                <Header counter={filteredDemos.length > 0 ? `(${filteredDemos.length})` : undefined}>
-                  Available demos
-                </Header>
-              }
-            />
-          </SpaceBetween>
-        </ContentLayout>
-      }
-    />
+          </ContentLayout>
+        }
+      />
+      <PupBotChat isOpen={isChatOpen} onToggle={() => setIsChatOpen(!isChatOpen)} />
+    </>
   );
 }

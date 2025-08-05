@@ -1,0 +1,371 @@
+// PupBot Chat Component Styles
+.pupbot-chat-trigger {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+
+  button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 0.2s ease;
+    }
+  }
+}
+
+.pupbot-chat-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  width: 420px;
+  max-height: 80vh;
+  font-family:
+    'Amazon Ember',
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+
+  @media (max-width: 480px) {
+    width: calc(100vw - 32px);
+    right: 16px;
+    bottom: 16px;
+  }
+}
+
+.pupbot-chat-window {
+  background: white;
+  border-radius: 4px;
+  border: 1px solid #ccd5de;
+  box-shadow: 0 2px 4px rgba(11, 12, 12, 0.16);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.pupbot-chat-header {
+  background: #0e171d;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .pupbot-chat-title {
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+  }
+
+  .pupbot-chat-actions {
+    display: flex;
+    gap: 16px;
+
+    .pupbot-header-button {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 8px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      svg {
+        fill: white;
+      }
+    }
+  }
+}
+
+.pupbot-chat-content {
+  padding: 16px;
+  max-height: 520px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pupbot-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+
+  .pupbot-avatar-large {
+    width: 64px;
+    height: 64px;
+    background: #ffceb8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+.pupbot-divider {
+  height: 1px;
+  background: #b1bac3;
+  margin: 0 -16px;
+}
+
+.pupbot-message {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .pupbot-message-content {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+  }
+
+  .pupbot-avatar-small {
+    width: 48px;
+    height: 48px;
+    background: #ffceb8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .pupbot-message-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .pupbot-message-meta {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    .pupbot-sender {
+      font-size: 14px;
+      font-weight: 700;
+      color: #02080e;
+    }
+
+    .pupbot-time {
+      font-size: 14px;
+      color: #575f67;
+    }
+  }
+
+  .pupbot-message-bubble {
+    background: #e9ebef;
+    border: 1px solid #89929a;
+    border-radius: 8px 8px 8px 0;
+    padding: 12px 16px;
+    max-width: 300px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #02080e;
+  }
+}
+
+.pupbot-quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-end;
+
+  .pupbot-action-button {
+    border: 2px solid #00688d;
+    color: #00688d;
+    background: transparent;
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: inherit;
+
+    &:hover {
+      background: rgba(0, 104, 141, 0.1);
+    }
+  }
+}
+
+.pupbot-input-section {
+  background: #f7f6f8;
+
+  .pupbot-input-area {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .pupbot-textarea-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .pupbot-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #6e777f;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 24px;
+    resize: none;
+    outline: none;
+
+    &:focus {
+      border-color: #00688d;
+      box-shadow: 0 0 0 2px rgba(0, 104, 141, 0.2);
+    }
+
+    &::placeholder {
+      color: #575f67;
+    }
+  }
+
+  .pupbot-input-help {
+    font-size: 14px;
+    color: #575f67;
+    line-height: 20px;
+  }
+
+  .pupbot-char-count {
+    font-size: 14px;
+    color: #575f67;
+    line-height: 20px;
+  }
+
+  .pupbot-input-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .pupbot-secondary-actions {
+      display: flex;
+      gap: 12px;
+
+      .pupbot-icon-button {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: transparent;
+        border: none;
+        color: #00688d;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background: rgba(0, 104, 141, 0.1);
+        }
+
+        svg {
+          fill: #00688d;
+        }
+      }
+    }
+
+    .pupbot-send-button {
+      background: #ccd5de;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 16px;
+      color: #02080e;
+      font-size: 16px;
+      font-family: inherit;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &:hover {
+        background: #b1bac3;
+      }
+
+      svg {
+        fill: #02080e;
+      }
+    }
+  }
+
+  .pupbot-disclaimer {
+    padding: 0 16px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #575f67;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .pupbot-chat-container {
+    width: calc(100vw - 32px);
+    max-width: 420px;
+  }
+
+  .pupbot-quick-actions {
+    justify-content: center;
+
+    .pupbot-action-button {
+      flex: 1;
+      min-width: 0;
+      font-size: 14px;
+      padding: 6px 12px;
+    }
+  }
+
+  .pupbot-message-bubble {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pupbot-chat-content {
+    padding: 12px;
+    gap: 16px;
+  }
+
+  .pupbot-intro {
+    gap: 12px;
+  }
+
+  .pupbot-input-area {
+    padding: 12px;
+  }
+
+  .pupbot-quick-actions {
+    .pupbot-action-button {
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+  }
+}

@@ -163,6 +163,8 @@ export default function App() {
             type="search"
             placeholder="Search"
             ariaLabel="Search"
+            value={searchValue}
+            onChange={({ detail }) => setSearchValue(detail.value)}
           />
         }
         utilities={[

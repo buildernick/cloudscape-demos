@@ -61,18 +61,22 @@
   .pupbot-chat-actions {
     display: flex;
     gap: 16px;
-    
-    button {
+
+    .pupbot-header-button {
       background: transparent;
       border: none;
       color: white;
       padding: 8px;
       border-radius: 4px;
-      
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
       &:hover {
         background: rgba(255, 255, 255, 0.1);
       }
-      
+
       svg {
         fill: white;
       }

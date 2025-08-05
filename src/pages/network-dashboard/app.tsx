@@ -69,6 +69,7 @@ export default function App() {
   const [toolsOpen, setToolsOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState<typeof networkDevices>([]);
   const [showRefreshModal, setShowRefreshModal] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
   const appLayoutRef = useRef<any>();
 
   const columnDefinitions: TableProps.ColumnDefinition<typeof networkDevices[0]>[] = [

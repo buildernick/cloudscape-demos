@@ -1,11 +1,20 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Button from '@cloudscape-design/components/button';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import Box from '@cloudscape-design/components/box';
 import './PupBotChat.scss';
+
+interface Message {
+  id: string;
+  text: string;
+  sender: 'user' | 'bot';
+  timestamp: string;
+  hasAction?: boolean;
+  actionText?: string;
+}
 
 interface PupBotChatProps {
   isOpen: boolean;
@@ -14,6 +23,16 @@ interface PupBotChatProps {
 
 export default function PupBotChat({ isOpen, onToggle }: PupBotChatProps) {
   const [message, setMessage] = useState('');
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: '1',
+      text: 'Welcome, fellow space pup! How can I help you today?',
+      sender: 'bot',
+      timestamp: '9:22 AM'
+    }
+  ]);
+  const [showQuickActions, setShowQuickActions] = useState(true);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const rocketIcon = (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

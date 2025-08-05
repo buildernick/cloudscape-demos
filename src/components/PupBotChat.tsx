@@ -103,10 +103,10 @@ export default function PupBotChat({ isOpen, onToggle }: PupBotChatProps) {
 
           {/* Quick Actions */}
           <div className="pupbot-quick-actions">
-            <Button variant="normal">Contact mission control</Button>
-            <Button variant="normal">Check space traffic</Button>
-            <Button variant="normal">Track shipment</Button>
-            <Button variant="normal">Redeem Treat Rewards™</Button>
+            <button className="pupbot-action-button">Contact mission control</button>
+            <button className="pupbot-action-button">Check space traffic</button>
+            <button className="pupbot-action-button">Track shipment</button>
+            <button className="pupbot-action-button">Redeem Treat Rewards™</button>
           </div>
         </div>
 

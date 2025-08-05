@@ -21,8 +21,10 @@ import {
   TableProps,
   AreaChart,
   BarChart,
-  TextFilter
+  TextFilter,
+  Badge
 } from '@cloudscape-design/components';
+import styles from './styles.module.scss';
 
 // Mock data for network devices
 const networkDevices = Array.from({ length: 50 }, (_, index) => ({

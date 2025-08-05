@@ -22,7 +22,8 @@ import {
   AreaChart,
   BarChart,
   TextFilter,
-  Badge
+  Badge,
+  Modal
 } from '@cloudscape-design/components';
 import styles from './styles.module.scss';
 
@@ -67,6 +68,7 @@ export default function App() {
   const [navigationOpen, setNavigationOpen] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
   const [selectedItems, setSelectedItems] = useState<typeof networkDevices>([]);
+  const [showRefreshModal, setShowRefreshModal] = useState(false);
   const appLayoutRef = useRef<any>();
 
   const columnDefinitions: TableProps.ColumnDefinition<typeof networkDevices[0]>[] = [
@@ -250,7 +252,12 @@ export default function App() {
                   variant="h1"
                   description="Network Traffic, Credit Usage, and Your Devices"
                   actions={
-                    <Button variant="primary" iconAlign="right" iconName="external">
+                    <Button
+                      variant="primary"
+                      iconAlign="right"
+                      iconName="external"
+                      onClick={() => setShowRefreshModal(true)}
+                    >
                       Refresh Data
                     </Button>
                   }
@@ -400,6 +407,45 @@ export default function App() {
           </ContentLayout>
         }
       />
+      <Modal
+        onDismiss={() => setShowRefreshModal(false)}
+        visible={showRefreshModal}
+        size="medium"
+        header="Are you sure you want to proceed?"
+        footer={
+          <Box float="right">
+            <SpaceBetween direction="horizontal" size="xs">
+              <Button
+                variant="link"
+                onClick={() => setShowRefreshModal(false)}
+                className={styles.hideInfoButton}
+              >
+                Hide Info
+              </Button>
+              <Button
+                variant="normal"
+                onClick={() => setShowRefreshModal(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                variant="primary"
+                onClick={() => {
+                  setShowRefreshModal(false);
+                  // Add refresh logic here
+                  window.location.reload();
+                }}
+              >
+                Confirm
+              </Button>
+            </SpaceBetween>
+          </Box>
+        }
+      >
+        <div className={styles.modalContent}>
+          This action cannot be undone. Please review the following: When you do this action it will be impossible to undo. All your hard work will be lost. We really recommend that you think this through a little more!
+        </div>
+      </Modal>
     </>
   );
 }

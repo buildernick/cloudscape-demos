@@ -45,17 +45,23 @@ export default function PupBotChat({ isOpen, onToggle }: PupBotChatProps) {
             <span>PupBot</span>
           </div>
           <div className="pupbot-chat-actions">
-            <Button
-              variant="icon"
-              iconName="angle-down"
+            <button
+              className="pupbot-header-button"
               onClick={onToggle}
-              ariaLabel="Minimize chat"
-            />
-            <Button
-              variant="icon"
-              iconName="ellipsis"
-              ariaLabel="More options"
-            />
+              aria-label="Minimize chat"
+            >
+              <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+                <path d="M1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976305 0.683418 -0.0976305 1.31658 0.292893 1.70711L4.29289 5.70711C4.68342 6.09763 5.31658 6.09763 5.70711 5.70711L9.70711 1.70711C10.0976 1.31658 10.0976 0.683418 9.70711 0.292893C9.31658 -0.0976311 8.68342 -0.0976311 8.29289 0.292893L5 3.58579L1.70711 0.292893Z" fill="white"/>
+              </svg>
+            </button>
+            <button
+              className="pupbot-header-button"
+              aria-label="More options"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M20 10C21.1046 10 22 10.8954 22 12C22 13.1046 21.1046 14 20 14C18.8954 14 18 13.1046 18 12C18 10.8954 18.8954 10 20 10ZM12 10C13.1046 10 14 10.8954 14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10ZM4 10C5.10457 10 6 10.8954 6 12C6 13.1046 5.10457 14 4 14C2.89543 14 2 13.1046 2 12C2 10.8954 2.89543 10 4 10Z" fill="white"/>
+              </svg>
+            </button>
           </div>
         </div>
 

@@ -191,8 +191,8 @@ export default function Home() {
               <Container>
                 <Box variant="h2">Demo catalog</Box>
                 <Box variant="p" padding={{ bottom: 'm' }}>
-                  Browse {demos.length} examples of Cloudscape Design System patterns and components. Each demo shows best
-                  practices for cloud application experiences.
+                  Browse {demos.length} examples of Cloudscape Design System patterns and components. Each demo shows
+                  best practices for cloud application experiences.
                 </Box>
 
                 <Grid gridDefinition={[{ colspan: { default: 12, xs: 12, s: 12, m: 8, l: 8, xl: 8 } }]}>
@@ -295,10 +295,7 @@ export default function Home() {
           </ContentLayout>
         }
       />
-      <PupBotChat
-        isOpen={isChatOpen}
-        onToggle={() => setIsChatOpen(!isChatOpen)}
-      />
+      <PupBotChat isOpen={isChatOpen} onToggle={() => setIsChatOpen(!isChatOpen)} />
     </>
   );
 }

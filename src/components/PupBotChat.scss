@@ -190,15 +190,17 @@
   flex-wrap: wrap;
   gap: 12px;
   justify-content: flex-end;
-  
-  button {
+
+  .pupbot-action-button {
     border: 2px solid #00688D;
     color: #00688D;
     background: transparent;
     font-size: 16px;
     padding: 8px 16px;
     border-radius: 4px;
-    
+    cursor: pointer;
+    font-family: inherit;
+
     &:hover {
       background: rgba(0, 104, 141, 0.1);
     }

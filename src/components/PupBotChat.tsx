@@ -291,7 +291,9 @@ export default function PupBotChat({ isOpen, onToggle }: PupBotChatProps) {
                 placeholder="Message Pupbot"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
+                onKeyPress={handleKeyPress}
                 rows={3}
+                maxLength={200}
               />
               <div className="pupbot-input-help">
                 Press SHIFT + ENTER to insert a new line.

@@ -38,20 +38,20 @@ const networkDevices = Array.from({ length: 50 }, (_, index) => ({
   location: ['Living Room', 'Office', 'Kitchen', 'Bedroom', 'Basement'][index % 5]
 }));
 
-// Mock data for network traffic chart
+// Mock data for network traffic chart - based on Figma design
 const networkTrafficData = [
-  { x: new Date(2024, 0, 1), y1: 25, y2: 15 },
-  { x: new Date(2024, 0, 2), y1: 30, y2: 20 },
-  { x: new Date(2024, 0, 3), y1: 35, y2: 25 },
-  { x: new Date(2024, 0, 4), y1: 28, y2: 18 },
-  { x: new Date(2024, 0, 5), y1: 40, y2: 30 },
-  { x: new Date(2024, 0, 6), y1: 45, y2: 35 },
-  { x: new Date(2024, 0, 7), y1: 38, y2: 28 },
-  { x: new Date(2024, 0, 8), y1: 50, y2: 40 },
-  { x: new Date(2024, 0, 9), y1: 42, y2: 32 },
-  { x: new Date(2024, 0, 10), y1: 48, y2: 38 },
-  { x: new Date(2024, 0, 11), y1: 55, y2: 45 },
-  { x: new Date(2024, 0, 12), y1: 52, y2: 42 }
+  { x: 'x1', y1: 35, y2: 25 },
+  { x: 'x2', y1: 30, y2: 20 },
+  { x: 'x3', y1: 32, y2: 22 },
+  { x: 'x4', y1: 28, y2: 18 },
+  { x: 'x5', y1: 25, y2: 15 },
+  { x: 'x6', y1: 20, y2: 12 },
+  { x: 'x7', y1: 15, y2: 8 },
+  { x: 'x8', y1: 10, y2: 5 },
+  { x: 'x9', y1: 8, y2: 3 },
+  { x: 'x10', y1: 15, y2: 10 },
+  { x: 'x11', y1: 25, y2: 18 },
+  { x: 'x12', y1: 35, y2: 28 }
 ];
 
 // Mock data for credit usage chart

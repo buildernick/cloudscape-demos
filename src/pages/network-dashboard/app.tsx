@@ -91,7 +91,10 @@ export default function App() {
     {
       id: 'status',
       header: 'Status',
-      cell: item => item.status,
+      cell: item => {
+        const statusType = item.status === 'Online' ? 'success' : item.status === 'Offline' ? 'error' : 'warning';
+        return <Badge color={statusType}>{item.status}</Badge>;
+      },
       sortingField: 'status'
     },
     {

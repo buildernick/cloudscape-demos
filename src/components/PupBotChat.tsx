@@ -3,7 +3,6 @@
 
 import React, { useState } from 'react';
 import Button from '@cloudscape-design/components/button';
-import Input from '@cloudscape-design/components/input';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import Box from '@cloudscape-design/components/box';
 import './PupBotChat.scss';
@@ -18,7 +17,7 @@ export default function PupBotChat({ isOpen, onToggle }: PupBotChatProps) {
 
   const rocketIcon = (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M14.77 1.28a6.77 6.77 0 0 1 8.95 8.95l-5.66 5.65a5.43 5.43 0 0 1-.77.7L12 22l-5.29-5.58a5.43 5.43 0 0 1-.77-.7L.28 10.07A6.77 6.77 0 0 1 9.23 1.28l2.77 2.77 2.77-2.77zm-3.84 6.13a1.93 1.93 0 1 0 2.73 2.73 1.93 1.93 0 0 0-2.73-2.73z" 
+      <path d="M14.77 1.28a6.77 6.77 0 0 1 8.95 8.95l-5.66 5.65a5.43 5.43 0 0 1-.77.7L12 22l-5.29-5.58a5.43 5.43 0 0 1-.77-.7L.28 10.07A6.77 6.77 0 0 1 9.23 1.28l2.77 2.77 2.77-2.77zm-3.84 6.13a1.93 1.93 0 1 0 2.73 2.73 1.93 1.93 0 0 0-2.73-2.73z"
             fill="#D73502"/>
     </svg>
   );
@@ -28,10 +27,11 @@ export default function PupBotChat({ isOpen, onToggle }: PupBotChatProps) {
       <div className="pupbot-chat-trigger">
         <Button
           variant="primary"
-          iconSvg={rocketIcon}
           onClick={onToggle}
           ariaLabel="Open PupBot chat"
-        />
+        >
+          💬
+        </Button>
       </div>
     );
   }

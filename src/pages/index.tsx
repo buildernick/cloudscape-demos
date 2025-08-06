@@ -166,7 +166,7 @@ export default function Home() {
                   </Button>
                 }
               >
-                Cloudscape Design System Demos
+                Cloudscape Design System Demos&nbsp;
               </Header>
 
               <Flashbar

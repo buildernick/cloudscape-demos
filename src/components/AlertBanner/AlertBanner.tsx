@@ -9,7 +9,6 @@ export interface AlertBannerProps {
   variant?: AlertBannerVariant;
   title?: string;
   description?: string;
-  showTitle?: boolean;
   showDescription?: boolean;
   onClose?: () => void;
   className?: string;
@@ -46,7 +45,6 @@ export const AlertBanner: React.FC<AlertBannerProps> = ({
   variant = 'filled',
   title,
   description,
-  showTitle = true,
   showDescription = true,
   onClose,
   className = '',
@@ -68,7 +66,7 @@ export const AlertBanner: React.FC<AlertBannerProps> = ({
       </div>
       
       <div className="alert-banner__content">
-        {showTitle && title && (
+        {title && (
           <div className="alert-banner__title">
             {title}
           </div>

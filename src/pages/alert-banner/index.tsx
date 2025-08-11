@@ -307,7 +307,6 @@ export default function AlertBannerDemo() {
                     <li><strong>variant</strong>: 'filled' | 'outlined' | 'standard' - Visual style variant</li>
                     <li><strong>title</strong>: string - Optional title text</li>
                     <li><strong>description</strong>: string - Optional description text</li>
-                    <li><strong>showTitle</strong>: boolean - Whether to display the title</li>
                     <li><strong>showDescription</strong>: boolean - Whether to display the description</li>
                     <li><strong>onClose</strong>: function - Callback when close button is clicked</li>
                     <li><strong>className</strong>: string - Additional CSS classes</li>

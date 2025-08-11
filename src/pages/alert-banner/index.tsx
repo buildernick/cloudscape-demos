@@ -19,7 +19,6 @@ export default function AlertBannerDemo() {
   const [variant, setVariant] = useState<AlertBannerVariant>('filled');
   const [title, setTitle] = useState('Sample Title');
   const [description, setDescription] = useState('This is a sample description for the alert banner component.');
-  const [showTitle, setShowTitle] = useState(true);
   const [showDescription, setShowDescription] = useState(true);
   const [showCloseButton, setShowCloseButton] = useState(true);
   const [customContent, setCustomContent] = useState('');
@@ -63,9 +62,8 @@ export default function AlertBannerDemo() {
                 <AlertBanner
                   severity={severity}
                   variant={variant}
-                  title={showTitle ? title : undefined}
+                  title={title}
                   description={showDescription ? description : undefined}
-                  showTitle={showTitle}
                   showDescription={showDescription}
                   onClose={showCloseButton ? handleClose : undefined}
                 >
@@ -103,12 +101,6 @@ export default function AlertBannerDemo() {
 
                   <FormField label="Options">
                     <SpaceBetween size="s">
-                      <Checkbox
-                        checked={showTitle}
-                        onChange={({ detail }) => setShowTitle(detail.checked)}
-                      >
-                        Show Title
-                      </Checkbox>
                       <Checkbox
                         checked={showDescription}
                         onChange={({ detail }) => setShowDescription(detail.checked)}
@@ -280,7 +272,6 @@ export default function AlertBannerDemo() {
                       severity="warning"
                       variant="outlined"
                       description="Description only, no title displayed."
-                      showTitle={false}
                       onClose={handleClose}
                     />
                     <AlertBanner

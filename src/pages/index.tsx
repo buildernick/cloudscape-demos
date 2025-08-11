@@ -21,6 +21,7 @@ import Link from '@cloudscape-design/components/link';
 
 // Demo definitions with category information
 const demos = [
+  { route: '/alert-banner', title: 'Alert Banner', description: 'Customizable alert banner component with multiple variants and severity levels.', category: 'Components' },
   { route: '/cards', title: 'Card View', description: 'Demo of Cloudscape Cards component.', category: 'Components' },
   { route: '/chat', title: 'Chat', description: 'Chat UI demo.', category: 'Applications' },
   {

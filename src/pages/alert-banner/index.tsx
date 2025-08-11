@@ -27,13 +27,13 @@ export default function AlertBannerDemo() {
     { label: 'Error', value: 'error' },
     { label: 'Warning', value: 'warning' },
     { label: 'Info', value: 'info' },
-    { label: 'Success', value: 'success' }
+    { label: 'Success', value: 'success' },
   ];
 
   const variantOptions = [
     { label: 'Filled', value: 'filled' },
     { label: 'Outlined', value: 'outlined' },
-    { label: 'Standard', value: 'standard' }
+    { label: 'Standard', value: 'standard' },
   ];
 
   const handleClose = () => {
@@ -80,7 +80,7 @@ export default function AlertBannerDemo() {
                     { colspan: { default: 12, xs: 12, s: 6, m: 4, l: 3, xl: 3 } },
                     { colspan: { default: 12, xs: 12, s: 6, m: 4, l: 3, xl: 3 } },
                     { colspan: { default: 12, xs: 12, s: 6, m: 4, l: 3, xl: 3 } },
-                    { colspan: { default: 12, xs: 12, s: 6, m: 4, l: 3, xl: 3 } }
+                    { colspan: { default: 12, xs: 12, s: 6, m: 4, l: 3, xl: 3 } },
                   ]}
                 >
                   <FormField label="Severity">
@@ -101,16 +101,10 @@ export default function AlertBannerDemo() {
 
                   <FormField label="Options">
                     <SpaceBetween size="s">
-                      <Checkbox
-                        checked={showDescription}
-                        onChange={({ detail }) => setShowDescription(detail.checked)}
-                      >
+                      <Checkbox checked={showDescription} onChange={({ detail }) => setShowDescription(detail.checked)}>
                         Show Description
                       </Checkbox>
-                      <Checkbox
-                        checked={showCloseButton}
-                        onChange={({ detail }) => setShowCloseButton(detail.checked)}
-                      >
+                      <Checkbox checked={showCloseButton} onChange={({ detail }) => setShowCloseButton(detail.checked)}>
                         Show Close Button
                       </Checkbox>
                     </SpaceBetween>
@@ -120,7 +114,7 @@ export default function AlertBannerDemo() {
                 <Grid
                   gridDefinition={[
                     { colspan: { default: 12, xs: 12, s: 6, m: 6, l: 6, xl: 6 } },
-                    { colspan: { default: 12, xs: 12, s: 6, m: 6, l: 6, xl: 6 } }
+                    { colspan: { default: 12, xs: 12, s: 6, m: 6, l: 6, xl: 6 } },
                   ]}
                 >
                   <FormField label="Title">
@@ -151,10 +145,7 @@ export default function AlertBannerDemo() {
             </Container>
 
             {/* All Variants Showcase */}
-            <ExpandableSection
-              headerText="All Variants Showcase"
-              defaultExpanded={false}
-            >
+            <ExpandableSection headerText="All Variants Showcase" defaultExpanded={false}>
               <SpaceBetween size="l">
                 {/* Filled Variants */}
                 <Container header={<Header variant="h3">Filled Variants</Header>}>
@@ -303,14 +294,30 @@ export default function AlertBannerDemo() {
                 <Box variant="h3">Properties</Box>
                 <Box>
                   <ul>
-                    <li><strong>severity</strong>: 'error' | 'warning' | 'info' | 'success' - The type of alert</li>
-                    <li><strong>variant</strong>: 'filled' | 'outlined' | 'standard' - Visual style variant</li>
-                    <li><strong>title</strong>: string - Optional title text</li>
-                    <li><strong>description</strong>: string - Optional description text</li>
-                    <li><strong>showDescription</strong>: boolean - Whether to display the description</li>
-                    <li><strong>onClose</strong>: function - Callback when close button is clicked</li>
-                    <li><strong>className</strong>: string - Additional CSS classes</li>
-                    <li><strong>children</strong>: ReactNode - Custom content to display</li>
+                    <li>
+                      <strong>severity</strong>: 'error' | 'warning' | 'info' | 'success' - The type of alert
+                    </li>
+                    <li>
+                      <strong>variant</strong>: 'filled' | 'outlined' | 'standard' - Visual style variant
+                    </li>
+                    <li>
+                      <strong>title</strong>: string - Optional title text
+                    </li>
+                    <li>
+                      <strong>description</strong>: string - Optional description text
+                    </li>
+                    <li>
+                      <strong>showDescription</strong>: boolean - Whether to display the description
+                    </li>
+                    <li>
+                      <strong>onClose</strong>: function - Callback when close button is clicked
+                    </li>
+                    <li>
+                      <strong>className</strong>: string - Additional CSS classes
+                    </li>
+                    <li>
+                      <strong>children</strong>: ReactNode - Custom content to display
+                    </li>
                   </ul>
                 </Box>
 

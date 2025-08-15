@@ -53,13 +53,17 @@ export function NetworkTrafficChart() {
         errorText="Error loading data"
         recoveryText="Retry"
         ariaLabel="Network traffic over time showing data for Site 1 and Site 2"
-        ariaDescription="A chart displaying network traffic patterns across two sites over a 12-day period. Site 1 shows higher traffic volumes compared to Site 2."
+        ariaDescription="A chart displaying network traffic patterns across two sites over a 12-day period. Site 1 shows higher traffic volumes compared to Site 2. Use arrow keys to navigate through data points. Press Tab to access the data table below for detailed values."
         i18nStrings={{
-          legendAriaLabel: 'Legend',
-          chartAriaRoleDescription: 'area chart',
+          legendAriaLabel: 'Chart legend showing data series',
+          chartAriaRoleDescription: 'Interactive area chart',
+          xAxisAriaRoleDescription: 'Time axis showing days',
+          yAxisAriaRoleDescription: 'Traffic volume axis',
           xTickFormatter: (e) => e.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' }),
           yTickFormatter: (e) => e.toString(),
         }}
+        detailPopoverSize="large"
+        emphasizeBaselineAxis={true}
       />
     </Container>
   );

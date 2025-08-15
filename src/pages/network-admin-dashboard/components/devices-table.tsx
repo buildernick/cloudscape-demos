@@ -311,8 +311,11 @@ export function DevicesTable() {
             cell: item => item.bandwidth,
             sortingField: 'bandwidth',
           },
-        ]}
-        items={devicesData}
+        ].filter(column => preferences.visibleColumns.includes(column.id))}
+        items={paginatedData}
+        visibleColumns={preferences.visibleColumns}
+        wrapLines={preferences.wrapLines}
+        stripedRows={preferences.stripedRows}
         loadingText="Loading devices"
         selectedItems={selectedItems}
         onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}

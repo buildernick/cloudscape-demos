@@ -334,16 +334,16 @@ export function DevicesTable() {
         }
         header={
           <Header
-            counter={selectedItems.length ? `(${selectedItems.length}/${devicesData.length})` : `(${devicesData.length})`}
+            counter={selectedItems.length ? `(${selectedItems.length}/${filteredData.length})` : `(${filteredData.length})`}
           >
             Devices
           </Header>
         }
         pagination={
           <Pagination
-            currentPageIndex={1}
-            pagesCount={Math.ceil(devicesData.length / 10)}
-            onChange={() => {}}
+            currentPageIndex={currentPageIndex}
+            pagesCount={Math.ceil(filteredData.length / preferences.pageSize)}
+            onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
             ariaLabels={{
               nextPageLabel: 'Next page',
               previousPageLabel: 'Previous page',

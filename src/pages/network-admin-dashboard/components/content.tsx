@@ -11,18 +11,22 @@ import { DevicesTable } from './devices-table';
 export function DashboardContent() {
   return (
     <SpaceBetween size="l">
-      <Flashbar
-        items={[
-          {
-            type: 'error',
-            content: 'This is a warning message',
-            dismissible: true,
-            dismissLabel: 'Dismiss',
-          },
-        ]}
-      />
-      
-      <div style={{ padding: '40px 0 50px 0' }}>
+      <section role="alert" aria-label="Dashboard notifications">
+        <Flashbar
+          items={[
+            {
+              type: 'error',
+              content: 'This is a warning message',
+              dismissible: true,
+              dismissLabel: 'Dismiss alert',
+              id: 'dashboard-alert-1',
+              onDismiss: () => console.log('Alert dismissed'),
+            },
+          ]}
+        />
+      </section>
+
+      <section aria-label="Dashboard charts" style={{ padding: '40px 0 50px 0' }}>
         <Grid
           gridDefinition={[
             { colspan: { default: 12, s: 6 } },
@@ -32,9 +36,11 @@ export function DashboardContent() {
           <NetworkTrafficChart />
           <CreditUsageChart />
         </Grid>
-      </div>
-      
-      <DevicesTable />
+      </section>
+
+      <section aria-label="Device management">
+        <DevicesTable />
+      </section>
     </SpaceBetween>
   );
 }

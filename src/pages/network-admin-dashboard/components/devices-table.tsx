@@ -6,6 +6,7 @@ import Header from '@cloudscape-design/components/header';
 import Button from '@cloudscape-design/components/button';
 import Table from '@cloudscape-design/components/table';
 import Box from '@cloudscape-design/components/box';
+import Pagination from '@cloudscape-design/components/pagination';
 
 // Sample device data matching the design
 const devicesData = [

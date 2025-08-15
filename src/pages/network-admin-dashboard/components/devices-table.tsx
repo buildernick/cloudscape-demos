@@ -95,8 +95,107 @@ const devicesData = [
   },
 ];
 
+// Property filter definitions
+const FILTER_PROPERTIES = [
+  {
+    propertyLabel: 'Device Name',
+    key: 'name',
+    groupValuesLabel: 'Device names',
+    operators: [':', '!:', '=', '!='],
+  },
+  {
+    propertyLabel: 'Type',
+    key: 'type',
+    groupValuesLabel: 'Device types',
+    operators: [':', '!:', '=', '!='],
+  },
+  {
+    propertyLabel: 'Status',
+    key: 'status',
+    groupValuesLabel: 'Statuses',
+    operators: [':', '!:', '=', '!='],
+  },
+  {
+    propertyLabel: 'IP Address',
+    key: 'ipAddress',
+    groupValuesLabel: 'IP addresses',
+    operators: [':', '!:', '=', '!='],
+  },
+  {
+    propertyLabel: 'Location',
+    key: 'location',
+    groupValuesLabel: 'Locations',
+    operators: [':', '!:', '=', '!='],
+  },
+  {
+    propertyLabel: 'Bandwidth',
+    key: 'bandwidth',
+    groupValuesLabel: 'Bandwidth values',
+    operators: [':', '!:', '=', '!='],
+  },
+];
+
 export function DevicesTable() {
   const [selectedItems, setSelectedItems] = useState([]);
+  const [textFilter, setTextFilter] = useState('');
+  const [propertyFilter, setPropertyFilter] = useState({ tokens: [], operation: 'and' });
+  const [currentPageIndex, setCurrentPageIndex] = useState(1);
+  const [preferences, setPreferences] = useState({
+    pageSize: 10,
+    visibleColumns: ['name', 'type', 'status', 'ipAddress', 'location', 'lastSeen', 'bandwidth'],
+    wrapLines: false,
+    stripedRows: false,
+  });
+
+  // Filter data based on text and property filters
+  const filteredData = useMemo(() => {
+    let filtered = devicesData;
+
+    // Apply text filter
+    if (textFilter) {
+      filtered = filtered.filter(item =>
+        Object.values(item).some(value =>
+          value.toString().toLowerCase().includes(textFilter.toLowerCase())
+        )
+      );
+    }
+
+    // Apply property filter
+    if (propertyFilter.tokens.length > 0) {
+      filtered = filtered.filter(item => {
+        const tokenMatches = propertyFilter.tokens.map(token => {
+          const { propertyKey, operator, value } = token;
+          const itemValue = item[propertyKey]?.toString().toLowerCase() || '';
+          const filterValue = value.toLowerCase();
+
+          switch (operator) {
+            case ':':
+              return itemValue.includes(filterValue);
+            case '!:':
+              return !itemValue.includes(filterValue);
+            case '=':
+              return itemValue === filterValue;
+            case '!=':
+              return itemValue !== filterValue;
+            default:
+              return true;
+          }
+        });
+
+        return propertyFilter.operation === 'and'
+          ? tokenMatches.every(Boolean)
+          : tokenMatches.some(Boolean);
+      });
+    }
+
+    return filtered;
+  }, [textFilter, propertyFilter]);
+
+  // Paginate filtered data
+  const paginatedData = useMemo(() => {
+    const startIndex = (currentPageIndex - 1) * preferences.pageSize;
+    return filteredData.slice(startIndex, startIndex + preferences.pageSize);
+  }, [filteredData, currentPageIndex, preferences.pageSize]);
 
   return (
     <SpaceBetween size="l">

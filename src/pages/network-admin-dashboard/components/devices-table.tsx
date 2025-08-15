@@ -212,6 +212,62 @@ export function DevicesTable() {
       </Header>
 
       <Table
+        filter={
+          <SpaceBetween size="s">
+            <TextFilter
+              filteringText={textFilter}
+              onChange={({ detail }) => setTextFilter(detail.filteringText)}
+              filteringPlaceholder="Search devices"
+              countText={`${filteredData.length} ${filteredData.length === 1 ? 'match' : 'matches'}`}
+            />
+            <PropertyFilter
+              query={propertyFilter}
+              onChange={({ detail }) => setPropertyFilter(detail)}
+              filteringProperties={FILTER_PROPERTIES}
+              filteringPlaceholder="Filter devices by property"
+              countText={`${filteredData.length} ${filteredData.length === 1 ? 'match' : 'matches'}`}
+              expandToViewport
+            />
+          </SpaceBetween>
+        }
+        preferences={
+          <CollectionPreferences
+            title="Preferences"
+            confirmLabel="Confirm"
+            cancelLabel="Cancel"
+            onConfirm={({ detail }) => setPreferences(detail)}
+            preferences={preferences}
+            pageSizePreference={{
+              title: 'Page size',
+              options: [
+                { value: 5, label: '5 devices' },
+                { value: 10, label: '10 devices' },
+                { value: 20, label: '20 devices' },
+                { value: 50, label: '50 devices' },
+              ],
+            }}
+            visibleContentPreference={{
+              title: 'Select visible columns',
+              options: [
+                { id: 'name', label: 'Device Name' },
+                { id: 'type', label: 'Type' },
+                { id: 'status', label: 'Status' },
+                { id: 'ipAddress', label: 'IP Address' },
+                { id: 'location', label: 'Location' },
+                { id: 'lastSeen', label: 'Last Seen' },
+                { id: 'bandwidth', label: 'Bandwidth' },
+              ],
+            }}
+            wrapLinesPreference={{
+              label: 'Wrap lines',
+              description: 'Wrap table cell content',
+            }}
+            stripedRowsPreference={{
+              label: 'Striped rows',
+              description: 'Add alternating row colors',
+            }}
+          />
+        }
         columnDefinitions={[
           {
             id: 'name',

@@ -40,13 +40,16 @@ export function CreditUsageChart() {
         errorText="Error loading data"
         recoveryText="Retry"
         ariaLabel="Credit usage over time showing data for Site 1"
-        ariaDescription="A bar chart displaying credit usage patterns across 5 time periods. Shows varying usage levels with peak usage at x2."
+        ariaDescription="A bar chart displaying credit usage patterns across 5 time periods. Shows varying usage levels with peak usage at x2. Use arrow keys to navigate through data points. Each bar represents credit consumption for a specific time period."
         i18nStrings={{
-          legendAriaLabel: 'Legend',
-          chartAriaRoleDescription: 'bar chart',
+          legendAriaLabel: 'Chart legend showing data series',
+          chartAriaRoleDescription: 'Interactive bar chart',
+          xAxisAriaRoleDescription: 'Time periods axis',
+          yAxisAriaRoleDescription: 'Credit usage amount axis',
           xTickFormatter: (e) => e,
           yTickFormatter: (e) => e.toString(),
         }}
+        detailPopoverSize="large"
       />
     </Container>
   );

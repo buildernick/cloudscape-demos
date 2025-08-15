@@ -17,7 +17,6 @@ export function CreditUsageChart() {
   return (
     <Container
       header={<Header variant="h2">Credit Usage</Header>}
-      fitHeight
     >
       <BarChart
         series={[
@@ -31,7 +30,7 @@ export function CreditUsageChart() {
         xDomain={creditUsageData.map(d => d.x)}
         yDomain={[0, 120]}
         xTitle="Day"
-        yTitle="Credit Usage"
+        yTitle=""
         height={300}
         hideFilter
         hideLegend={false}
@@ -40,30 +39,14 @@ export function CreditUsageChart() {
         loadingText="Loading chart"
         errorText="Error loading data"
         recoveryText="Retry"
-        fitHeight={false}
         ariaLabel="Credit usage over time showing data for Site 1"
         ariaDescription="A bar chart displaying credit usage patterns across 5 time periods. Shows varying usage levels with peak usage at x2."
         i18nStrings={{
           legendAriaLabel: 'Legend',
           chartAriaRoleDescription: 'bar chart',
-          xTickFormatter: e => e,
-          yTickFormatter: e => e.toString(),
+          xTickFormatter: (e) => e,
+          yTickFormatter: (e) => e.toString(),
         }}
-        additionalFilters={
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontSize: '14px', color: '#000716' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <div style={{ width: '14px', height: '14px', borderRadius: '2px', backgroundColor: '#688AE8' }} />
-              <span>Site 1</span>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <div style={{ width: '12px', height: '3px', display: 'flex', gap: '2px' }}>
-                <div style={{ width: '6px', height: '3px', borderRadius: '1px', backgroundColor: '#5F6B7A' }} />
-                <div style={{ width: '6px', height: '3px', borderRadius: '1px', backgroundColor: '#5F6B7A' }} />
-              </div>
-              <span>Performance goal</span>
-            </div>
-          </div>
-        }
       />
     </Container>
   );

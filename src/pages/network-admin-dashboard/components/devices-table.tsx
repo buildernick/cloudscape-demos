@@ -178,11 +178,18 @@ export function DevicesTable() {
             Devices
           </Header>
         }
-        pagination={{
-          currentPageIndex: 1,
-          pagesCount: Math.ceil(devicesData.length / 10),
-          onChange: () => {},
-        }}
+        pagination={
+          <Pagination
+            currentPageIndex={1}
+            pagesCount={Math.ceil(devicesData.length / 10)}
+            onChange={() => {}}
+            ariaLabels={{
+              nextPageLabel: 'Next page',
+              previousPageLabel: 'Previous page',
+              pageLabel: (pageNumber) => `Page ${pageNumber}`,
+            }}
+          />
+        }
         sortingDisabled={false}
         variant="full-page"
       />

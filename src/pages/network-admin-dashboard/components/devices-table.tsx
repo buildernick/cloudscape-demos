@@ -1,12 +1,15 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import Header from '@cloudscape-design/components/header';
 import Button from '@cloudscape-design/components/button';
 import Table from '@cloudscape-design/components/table';
 import Box from '@cloudscape-design/components/box';
 import Pagination from '@cloudscape-design/components/pagination';
+import TextFilter from '@cloudscape-design/components/text-filter';
+import PropertyFilter from '@cloudscape-design/components/property-filter';
+import CollectionPreferences from '@cloudscape-design/components/collection-preferences';
 
 // Sample device data matching the design
 const devicesData = [

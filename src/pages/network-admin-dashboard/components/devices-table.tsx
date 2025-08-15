@@ -154,9 +154,7 @@ export function DevicesTable() {
     // Apply text filter
     if (textFilter) {
       filtered = filtered.filter(item =>
-        Object.values(item).some(value =>
-          value.toString().toLowerCase().includes(textFilter.toLowerCase())
-        )
+        Object.values(item).some(value => value.toString().toLowerCase().includes(textFilter.toLowerCase())),
       );
     }
 
@@ -182,9 +180,7 @@ export function DevicesTable() {
           }
         });
 
-        return propertyFilter.operation === 'and'
-          ? tokenMatches.every(Boolean)
-          : tokenMatches.some(Boolean);
+        return propertyFilter.operation === 'and' ? tokenMatches.every(Boolean) : tokenMatches.some(Boolean);
       });
     }
 
@@ -334,7 +330,9 @@ export function DevicesTable() {
         }
         header={
           <Header
-            counter={selectedItems.length ? `(${selectedItems.length}/${filteredData.length})` : `(${filteredData.length})`}
+            counter={
+              selectedItems.length ? `(${selectedItems.length}/${filteredData.length})` : `(${filteredData.length})`
+            }
           >
             Devices
           </Header>
@@ -347,7 +345,7 @@ export function DevicesTable() {
             ariaLabels={{
               nextPageLabel: 'Next page',
               previousPageLabel: 'Previous page',
-              pageLabel: (pageNumber) => `Page ${pageNumber}`,
+              pageLabel: pageNumber => `Page ${pageNumber}`,
             }}
           />
         }

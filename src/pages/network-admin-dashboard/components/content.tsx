@@ -27,12 +27,7 @@ export function DashboardContent() {
       </section>
 
       <section aria-label="Dashboard charts" style={{ padding: '40px 0 50px 0' }}>
-        <Grid
-          gridDefinition={[
-            { colspan: { default: 12, s: 6 } },
-            { colspan: { default: 12, s: 6 } },
-          ]}
-        >
+        <Grid gridDefinition={[{ colspan: { default: 12, s: 6 } }, { colspan: { default: 12, s: 6 } }]}>
           <NetworkTrafficChart />
           <CreditUsageChart />
         </Grid>

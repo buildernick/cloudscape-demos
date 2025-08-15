@@ -22,7 +22,7 @@ export function DashboardHeader() {
       >
         Network Administration Dashboard
       </Header>
-      
+
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '113px' }}>
         <div style={{ flex: 1 }}>
           <TextFilter
@@ -48,11 +48,7 @@ export function DashboardHeader() {
             role="separator"
             aria-orientation="vertical"
           />
-          <Button
-            variant="icon"
-            iconName="settings"
-            ariaLabel="Dashboard settings"
-          />
+          <Button variant="icon" iconName="settings" ariaLabel="Dashboard settings" />
         </div>
       </div>
     </SpaceBetween>

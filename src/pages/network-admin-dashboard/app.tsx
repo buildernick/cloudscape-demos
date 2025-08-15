@@ -24,7 +24,7 @@ export function App() {
           height: '1px',
           overflow: 'hidden',
         }}
-        onFocus={(e) => {
+        onFocus={e => {
           e.target.style.position = 'static';
           e.target.style.left = 'auto';
           e.target.style.width = 'auto';
@@ -36,7 +36,7 @@ export function App() {
           e.target.style.textDecoration = 'none';
           e.target.style.zIndex = '9999';
         }}
-        onBlur={(e) => {
+        onBlur={e => {
           e.target.style.position = 'absolute';
           e.target.style.left = '-10000px';
           e.target.style.width = '1px';
@@ -50,9 +50,7 @@ export function App() {
 
       <AppLayout
         content={
-          <ContentLayout
-            header={<DashboardHeader />}
-          >
+          <ContentLayout header={<DashboardHeader />}>
             <main id="main-content" role="main">
               <SpaceBetween size="l">
                 <DashboardContent />

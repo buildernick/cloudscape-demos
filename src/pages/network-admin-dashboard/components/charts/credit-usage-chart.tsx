@@ -15,9 +15,7 @@ const creditUsageData = [
 
 export function CreditUsageChart() {
   return (
-    <Container
-      header={<Header variant="h2">Credit Usage</Header>}
-    >
+    <Container header={<Header variant="h2">Credit Usage</Header>}>
       <BarChart
         series={[
           {
@@ -46,8 +44,8 @@ export function CreditUsageChart() {
           chartAriaRoleDescription: 'Interactive bar chart',
           xAxisAriaRoleDescription: 'Time periods axis',
           yAxisAriaRoleDescription: 'Credit usage amount axis',
-          xTickFormatter: (e) => e,
-          yTickFormatter: (e) => e.toString(),
+          xTickFormatter: e => e,
+          yTickFormatter: e => e.toString(),
         }}
         detailPopoverSize="large"
       />

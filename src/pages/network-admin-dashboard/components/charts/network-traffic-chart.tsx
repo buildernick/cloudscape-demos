@@ -22,9 +22,7 @@ const networkTrafficData = [
 
 export function NetworkTrafficChart() {
   return (
-    <Container
-      header={<Header variant="h2">Network traffic</Header>}
-    >
+    <Container header={<Header variant="h2">Network traffic</Header>}>
       <LineChart
         series={[
           {
@@ -59,8 +57,8 @@ export function NetworkTrafficChart() {
           chartAriaRoleDescription: 'Interactive area chart',
           xAxisAriaRoleDescription: 'Time axis showing days',
           yAxisAriaRoleDescription: 'Traffic volume axis',
-          xTickFormatter: (e) => e.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' }),
-          yTickFormatter: (e) => e.toString(),
+          xTickFormatter: e => e.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' }),
+          yTickFormatter: e => e.toString(),
         }}
         detailPopoverSize="large"
         emphasizeBaselineAxis={true}

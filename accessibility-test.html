@@ -1,130 +1,150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Accessibility Test - Network Administration Dashboard</title>
     <style>
-        body { font-family: Arial, sans-serif; padding: 20px; }
-        .test-result { margin: 10px 0; padding: 10px; border-radius: 4px; }
-        .pass { background-color: #d4edda; border: 1px solid #c3e6cb; color: #155724; }
-        .fail { background-color: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; }
-        .warning { background-color: #fff3cd; border: 1px solid #ffeaa7; color: #856404; }
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .test-result {
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      .pass {
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+      }
+      .fail {
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+      }
+      .warning {
+        background-color: #fff3cd;
+        border: 1px solid #ffeaa7;
+        color: #856404;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Accessibility Test Results</h1>
     <div id="results"></div>
 
     <script>
-        // Accessibility test functions
-        function testPageStructure() {
-            const results = [];
-            
-            // Check for proper heading hierarchy
-            const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-            if (headings.length > 0) {
-                results.push({ test: 'Heading Structure', status: 'pass', message: `Found ${headings.length} headings` });
-            } else {
-                results.push({ test: 'Heading Structure', status: 'fail', message: 'No headings found' });
-            }
-            
-            // Check for main landmark
-            const main = document.querySelector('main');
-            if (main) {
-                results.push({ test: 'Main Landmark', status: 'pass', message: 'Main landmark found' });
-            } else {
-                results.push({ test: 'Main Landmark', status: 'fail', message: 'No main landmark found' });
-            }
-            
-            // Check for skip links
-            const skipLink = document.querySelector('a[href="#main-content"]');
-            if (skipLink) {
-                results.push({ test: 'Skip Links', status: 'pass', message: 'Skip link found' });
-            } else {
-                results.push({ test: 'Skip Links', status: 'fail', message: 'No skip link found' });
-            }
-            
-            return results;
+      // Accessibility test functions
+      function testPageStructure() {
+        const results = [];
+
+        // Check for proper heading hierarchy
+        const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        if (headings.length > 0) {
+          results.push({ test: 'Heading Structure', status: 'pass', message: `Found ${headings.length} headings` });
+        } else {
+          results.push({ test: 'Heading Structure', status: 'fail', message: 'No headings found' });
         }
 
-        function testARIA() {
-            const results = [];
-            
-            // Check for aria-labels on buttons
-            const iconButtons = document.querySelectorAll('button[aria-label]');
-            results.push({ 
-                test: 'Button ARIA Labels', 
-                status: iconButtons.length > 0 ? 'pass' : 'warning', 
-                message: `Found ${iconButtons.length} buttons with aria-labels` 
-            });
-            
-            // Check for proper form labels
-            const inputs = document.querySelectorAll('input');
-            let labeledInputs = 0;
-            inputs.forEach(input => {
-                if (input.getAttribute('aria-label') || input.getAttribute('aria-labelledby') || 
-                    document.querySelector(`label[for="${input.id}"]`)) {
-                    labeledInputs++;
-                }
-            });
-            
-            if (inputs.length > 0) {
-                results.push({ 
-                    test: 'Input Labels', 
-                    status: labeledInputs === inputs.length ? 'pass' : 'warning', 
-                    message: `${labeledInputs}/${inputs.length} inputs properly labeled` 
-                });
-            }
-            
-            return results;
+        // Check for main landmark
+        const main = document.querySelector('main');
+        if (main) {
+          results.push({ test: 'Main Landmark', status: 'pass', message: 'Main landmark found' });
+        } else {
+          results.push({ test: 'Main Landmark', status: 'fail', message: 'No main landmark found' });
         }
 
-        function testKeyboardNavigation() {
-            const results = [];
-            
-            // Check for focusable elements
-            const focusableElements = document.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
-            results.push({ 
-                test: 'Focusable Elements', 
-                status: focusableElements.length > 0 ? 'pass' : 'fail', 
-                message: `Found ${focusableElements.length} focusable elements` 
-            });
-            
-            return results;
+        // Check for skip links
+        const skipLink = document.querySelector('a[href="#main-content"]');
+        if (skipLink) {
+          results.push({ test: 'Skip Links', status: 'pass', message: 'Skip link found' });
+        } else {
+          results.push({ test: 'Skip Links', status: 'fail', message: 'No skip link found' });
         }
 
-        function displayResults() {
-            const allResults = [
-                ...testPageStructure(),
-                ...testARIA(),
-                ...testKeyboardNavigation()
-            ];
-            
-            const resultsContainer = document.getElementById('results');
-            resultsContainer.innerHTML = '';
-            
-            allResults.forEach(result => {
-                const div = document.createElement('div');
-                div.className = `test-result ${result.status}`;
-                div.innerHTML = `<strong>${result.test}:</strong> ${result.message}`;
-                resultsContainer.appendChild(div);
-            });
-            
-            // Summary
-            const passCount = allResults.filter(r => r.status === 'pass').length;
-            const totalCount = allResults.length;
-            
-            const summary = document.createElement('div');
-            summary.className = 'test-result';
-            summary.style.backgroundColor = '#e2e3e5';
-            summary.style.border = '1px solid #d6d8db';
-            summary.innerHTML = `<strong>Summary:</strong> ${passCount}/${totalCount} tests passed`;
-            resultsContainer.insertBefore(summary, resultsContainer.firstChild);
+        return results;
+      }
+
+      function testARIA() {
+        const results = [];
+
+        // Check for aria-labels on buttons
+        const iconButtons = document.querySelectorAll('button[aria-label]');
+        results.push({
+          test: 'Button ARIA Labels',
+          status: iconButtons.length > 0 ? 'pass' : 'warning',
+          message: `Found ${iconButtons.length} buttons with aria-labels`,
+        });
+
+        // Check for proper form labels
+        const inputs = document.querySelectorAll('input');
+        let labeledInputs = 0;
+        inputs.forEach(input => {
+          if (
+            input.getAttribute('aria-label') ||
+            input.getAttribute('aria-labelledby') ||
+            document.querySelector(`label[for="${input.id}"]`)
+          ) {
+            labeledInputs++;
+          }
+        });
+
+        if (inputs.length > 0) {
+          results.push({
+            test: 'Input Labels',
+            status: labeledInputs === inputs.length ? 'pass' : 'warning',
+            message: `${labeledInputs}/${inputs.length} inputs properly labeled`,
+          });
         }
 
-        // Run tests when page loads
-        setTimeout(displayResults, 1000);
+        return results;
+      }
+
+      function testKeyboardNavigation() {
+        const results = [];
+
+        // Check for focusable elements
+        const focusableElements = document.querySelectorAll(
+          'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])',
+        );
+        results.push({
+          test: 'Focusable Elements',
+          status: focusableElements.length > 0 ? 'pass' : 'fail',
+          message: `Found ${focusableElements.length} focusable elements`,
+        });
+
+        return results;
+      }
+
+      function displayResults() {
+        const allResults = [...testPageStructure(), ...testARIA(), ...testKeyboardNavigation()];
+
+        const resultsContainer = document.getElementById('results');
+        resultsContainer.innerHTML = '';
+
+        allResults.forEach(result => {
+          const div = document.createElement('div');
+          div.className = `test-result ${result.status}`;
+          div.innerHTML = `<strong>${result.test}:</strong> ${result.message}`;
+          resultsContainer.appendChild(div);
+        });
+
+        // Summary
+        const passCount = allResults.filter(r => r.status === 'pass').length;
+        const totalCount = allResults.length;
+
+        const summary = document.createElement('div');
+        summary.className = 'test-result';
+        summary.style.backgroundColor = '#e2e3e5';
+        summary.style.border = '1px solid #d6d8db';
+        summary.innerHTML = `<strong>Summary:</strong> ${passCount}/${totalCount} tests passed`;
+        resultsContainer.insertBefore(summary, resultsContainer.firstChild);
+      }
+
+      // Run tests when page loads
+      setTimeout(displayResults, 1000);
     </script>
-</body>
+  </body>
 </html>

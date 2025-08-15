@@ -27,11 +27,12 @@ export function DashboardHeader() {
         <div style={{ flex: 1 }}>
           <TextFilter
             filteringText=""
-            filteringPlaceholder="Placeholder"
+            filteringPlaceholder="Search dashboard content"
+            ariaLabel="Search dashboard content"
             onChange={() => {}}
           />
         </div>
-        
+
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <Pagination
             currentPageIndex={1}
@@ -42,8 +43,16 @@ export function DashboardHeader() {
               pageLabel: pageNumber => `Page ${pageNumber}`,
             }}
           />
-          <div style={{ width: '2px', height: '32px', backgroundColor: '#414D5C' }} />
-          <Button variant="icon" iconName="settings" />
+          <div
+            style={{ width: '2px', height: '32px', backgroundColor: '#414D5C' }}
+            role="separator"
+            aria-orientation="vertical"
+          />
+          <Button
+            variant="icon"
+            iconName="settings"
+            ariaLabel="Dashboard settings"
+          />
         </div>
       </div>
     </SpaceBetween>

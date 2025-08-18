@@ -245,7 +245,8 @@ export function NetworkDashboard() {
               </Header>
 
               {/* Search and Pagination Controls */}
-              <SpaceBetween size="s" direction="horizontal">
+              <div className="pagination-controls">
+                <SpaceBetween size="s" direction="horizontal">
                 <TextFilter
                   filteringText={filterText}
                   filteringPlaceholder="Placeholder"
@@ -265,7 +266,8 @@ export function NetworkDashboard() {
                     pageLabel: pageNumber => `Page ${pageNumber}`,
                   }}
                 />
-              </SpaceBetween>
+                </SpaceBetween>
+              </div>
 
               {/* Warning Message */}
               {showWarning && (

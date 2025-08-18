@@ -3,83 +3,83 @@
 .network-dashboard {
   .chart-container {
     min-height: 300px;
-    
+
     .awsui-area-chart {
       width: 100%;
     }
-    
+
     .awsui-bar-chart {
       width: 100%;
     }
   }
-  
+
   .device-status-badge {
     font-weight: 600;
-    
+
     &.online {
       background-color: #d1f7c4;
       color: #037f0c;
     }
-    
+
     &.warning {
       background-color: #fef0cd;
       color: #8c4a03;
     }
-    
+
     &.offline {
       background-color: #fdb5a1;
       color: #d91515;
     }
   }
-  
+
   .devices-table {
     .awsui-table {
       border-radius: 8px;
       overflow: hidden;
     }
   }
-  
+
   .warning-banner {
     margin-bottom: 16px;
-    
+
     .awsui-flashbar-item {
       border-left: 4px solid #ff9900;
       background-color: #fff4b4;
     }
   }
-  
+
   .dashboard-header {
     .awsui-header-description {
-      color: #8D99A8;
+      color: #8d99a8;
       font-size: 14px;
       margin-top: 4px;
     }
   }
-  
+
   .pagination-controls {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 16px;
     margin-bottom: 16px;
-    
+
     .search-filter {
       flex: 1;
       max-width: 400px;
     }
   }
-  
+
   // Responsive adjustments
   @media (max-width: 768px) {
     .chart-container {
       min-height: 250px;
     }
-    
+
     .pagination-controls {
       flex-direction: column;
       align-items: stretch;
       gap: 12px;
-      
+
       .search-filter {
         max-width: none;
       }
@@ -92,11 +92,11 @@
   .recharts-area {
     fill-opacity: 0.4;
   }
-  
+
   .recharts-line {
     stroke-width: 2;
   }
-  
+
   .recharts-dot {
     stroke-width: 2;
     r: 4;
@@ -105,7 +105,7 @@
 
 .custom-bar-chart {
   .recharts-bar {
-    fill: #688AE8;
+    fill: #688ae8;
   }
 }
 
@@ -115,11 +115,11 @@
     background-color: #fafbfc;
     font-weight: 600;
   }
-  
+
   .awsui-table-cell {
     vertical-align: middle;
   }
-  
+
   .status-cell {
     display: flex;
     align-items: center;

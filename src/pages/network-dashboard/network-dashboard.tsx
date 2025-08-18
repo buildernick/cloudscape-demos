@@ -143,15 +143,7 @@ const tableColumns = [
     id: 'status',
     header: 'Status',
     cell: (item: any) => (
-      <Badge
-        color={
-          item.status === 'Online'
-            ? 'green'
-            : item.status === 'Warning'
-            ? 'red'
-            : 'grey'
-        }
-      >
+      <Badge color={item.status === 'Online' ? 'green' : item.status === 'Warning' ? 'red' : 'grey'}>
         {item.status}
       </Badge>
     ),
@@ -197,13 +189,13 @@ export function NetworkDashboard() {
       device.ipAddress.includes(filterText) ||
       device.status.toLowerCase().includes(filterText.toLowerCase()) ||
       device.deviceType.toLowerCase().includes(filterText.toLowerCase()) ||
-      device.location.toLowerCase().includes(filterText.toLowerCase())
+      device.location.toLowerCase().includes(filterText.toLowerCase()),
   );
 
   // Paginate filtered devices
   const paginatedDevices = filteredDevices.slice(
     (currentPageIndex - 1) * itemsPerPage,
-    currentPageIndex * itemsPerPage
+    currentPageIndex * itemsPerPage,
   );
 
   const breadcrumbs = [
@@ -219,171 +211,155 @@ export function NetworkDashboard() {
   return (
     <div className="network-dashboard">
       <AppLayout
-      navigationHide
-      toolsHide
-      content={
-        <ContentLayout
-          header={
-            <SpaceBetween size="m">
-              <BreadcrumbGroup items={breadcrumbs} />
-              
-              <Header
-                variant="h1"
-                description="Network Traffic, Credit Usage, and Your Devices"
-                actions={
-                  <Button 
-                    variant="primary" 
-                    iconAlign="right" 
-                    iconName="external"
-                    onClick={refreshData}
-                  >
-                    Refresh Data
-                  </Button>
-                }
-              >
-                Network Administration Dashboard
-              </Header>
+        navigationHide
+        toolsHide
+        content={
+          <ContentLayout
+            header={
+              <SpaceBetween size="m">
+                <BreadcrumbGroup items={breadcrumbs} />
 
-              {/* Search and Pagination Controls */}
-              <div className="pagination-controls">
-                <SpaceBetween size="s" direction="horizontal">
-                <TextFilter
-                  filteringText={filterText}
-                  filteringPlaceholder="Placeholder"
-                  onChange={({ detail }) => {
-                    setFilterText(detail.filteringText);
-                    setCurrentPageIndex(1);
-                  }}
-                />
-                
-                <Pagination
-                  currentPageIndex={currentPageIndex}
-                  onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
-                  pagesCount={Math.ceil(filteredDevices.length / itemsPerPage)}
-                  ariaLabels={{
-                    nextPageLabel: 'Next page',
-                    previousPageLabel: 'Previous page',
-                    pageLabel: pageNumber => `Page ${pageNumber}`,
-                  }}
-                />
-                </SpaceBetween>
-              </div>
-
-              {/* Warning Message */}
-              {showWarning && (
-                <Flashbar
-                  items={[
-                    {
-                      type: 'warning',
-                      content: 'This is a warning message',
-                      dismissible: true,
-                      onDismiss: () => setShowWarning(false),
-                      action: (
-                        <Button onClick={() => setShowWarning(false)}>
-                          Dismiss
-                        </Button>
-                      ),
-                    },
-                  ]}
-                />
-              )}
-            </SpaceBetween>
-          }
-        >
-          <SpaceBetween size="l">
-            {/* Charts Section */}
-            <Grid gridDefinition={[{ colspan: 6 }, { colspan: 6 }]}>
-              <Container header={<Header variant="h2">Network traffic</Header>} className="chart-container">
-                <AreaChart
-                  series={networkTrafficData}
-                  height={300}
-                  xDomain={[
-                    new Date('2024-01-01T00:00:00Z'),
-                    new Date('2024-01-01T11:00:00Z'),
-                  ]}
-                  yDomain={[0, 50]}
-                  xTitle="Day"
-                  yTitle=""
-                  legendTitle="Performance goal"
-                  hideFilter
-                  hideLegend={false}
-                  i18nStrings={{
-                    chartAriaRoleDescription: 'Area chart showing network traffic',
-                    xAxisAriaRoleDescription: 'Time axis',
-                    yAxisAriaRoleDescription: 'Traffic axis',
-                  }}
-                />
-              </Container>
-
-              <Container header={<Header variant="h2">Credit Usage</Header>} className="chart-container">
-                <BarChart
-                  series={[
-                    {
-                      title: 'Site 1',
-                      type: 'bar',
-                      data: creditUsageData,
-                      color: '#688AE8',
-                    },
-                  ]}
-                  height={300}
-                  xTitle="Day"
-                  yTitle=""
-                  hideFilter
-                  hideLegend={false}
-                  i18nStrings={{
-                    chartAriaRoleDescription: 'Bar chart showing credit usage',
-                    xAxisAriaRoleDescription: 'Time axis',
-                    yAxisAriaRoleDescription: 'Usage axis',
-                  }}
-                />
-              </Container>
-            </Grid>
-
-            {/* My Devices Section */}
-            <Container
-              header={
                 <Header
-                  variant="h2"
-                  description="Devices on your local network"
+                  variant="h1"
+                  description="Network Traffic, Credit Usage, and Your Devices"
                   actions={
-                    <Button variant="primary" iconAlign="right" iconName="external">
-                      Add Device
+                    <Button variant="primary" iconAlign="right" iconName="external" onClick={refreshData}>
+                      Refresh Data
                     </Button>
                   }
                 >
-                  My Devices
+                  Network Administration Dashboard
                 </Header>
-              }
-            >
-              <Table
-                className="devices-table"
-                columnDefinitions={tableColumns}
-                items={paginatedDevices}
-                loading={false}
-                selectionType="multi"
-                selectedItems={selectedItems}
-                onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
-                sortingColumn={tableColumns[0]}
-                empty={
-                  <Box textAlign="center" color="inherit">
-                    <Box variant="strong" textAlign="center" color="inherit">
-                      No devices found
-                    </Box>
-                    <Box variant="p" padding={{ bottom: 's' }} color="inherit">
-                      No devices match the current search criteria.
-                    </Box>
-                  </Box>
-                }
+
+                {/* Search and Pagination Controls */}
+                <div className="pagination-controls">
+                  <SpaceBetween size="s" direction="horizontal">
+                    <TextFilter
+                      filteringText={filterText}
+                      filteringPlaceholder="Placeholder"
+                      onChange={({ detail }) => {
+                        setFilterText(detail.filteringText);
+                        setCurrentPageIndex(1);
+                      }}
+                    />
+
+                    <Pagination
+                      currentPageIndex={currentPageIndex}
+                      onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
+                      pagesCount={Math.ceil(filteredDevices.length / itemsPerPage)}
+                      ariaLabels={{
+                        nextPageLabel: 'Next page',
+                        previousPageLabel: 'Previous page',
+                        pageLabel: pageNumber => `Page ${pageNumber}`,
+                      }}
+                    />
+                  </SpaceBetween>
+                </div>
+
+                {/* Warning Message */}
+                {showWarning && (
+                  <Flashbar
+                    items={[
+                      {
+                        type: 'warning',
+                        content: 'This is a warning message',
+                        dismissible: true,
+                        onDismiss: () => setShowWarning(false),
+                        action: <Button onClick={() => setShowWarning(false)}>Dismiss</Button>,
+                      },
+                    ]}
+                  />
+                )}
+              </SpaceBetween>
+            }
+          >
+            <SpaceBetween size="l">
+              {/* Charts Section */}
+              <Grid gridDefinition={[{ colspan: 6 }, { colspan: 6 }]}>
+                <Container header={<Header variant="h2">Network traffic</Header>} className="chart-container">
+                  <AreaChart
+                    series={networkTrafficData}
+                    height={300}
+                    xDomain={[new Date('2024-01-01T00:00:00Z'), new Date('2024-01-01T11:00:00Z')]}
+                    yDomain={[0, 50]}
+                    xTitle="Day"
+                    yTitle=""
+                    legendTitle="Performance goal"
+                    hideFilter
+                    hideLegend={false}
+                    i18nStrings={{
+                      chartAriaRoleDescription: 'Area chart showing network traffic',
+                      xAxisAriaRoleDescription: 'Time axis',
+                      yAxisAriaRoleDescription: 'Traffic axis',
+                    }}
+                  />
+                </Container>
+
+                <Container header={<Header variant="h2">Credit Usage</Header>} className="chart-container">
+                  <BarChart
+                    series={[
+                      {
+                        title: 'Site 1',
+                        type: 'bar',
+                        data: creditUsageData,
+                        color: '#688AE8',
+                      },
+                    ]}
+                    height={300}
+                    xTitle="Day"
+                    yTitle=""
+                    hideFilter
+                    hideLegend={false}
+                    i18nStrings={{
+                      chartAriaRoleDescription: 'Bar chart showing credit usage',
+                      xAxisAriaRoleDescription: 'Time axis',
+                      yAxisAriaRoleDescription: 'Usage axis',
+                    }}
+                  />
+                </Container>
+              </Grid>
+
+              {/* My Devices Section */}
+              <Container
                 header={
-                  <Header counter={`(${filteredDevices.length})`}>
-                    Network Devices
+                  <Header
+                    variant="h2"
+                    description="Devices on your local network"
+                    actions={
+                      <Button variant="primary" iconAlign="right" iconName="external">
+                        Add Device
+                      </Button>
+                    }
+                  >
+                    My Devices
                   </Header>
                 }
-              />
-            </Container>
-          </SpaceBetween>
-        </ContentLayout>
-      }
+              >
+                <Table
+                  className="devices-table"
+                  columnDefinitions={tableColumns}
+                  items={paginatedDevices}
+                  loading={false}
+                  selectionType="multi"
+                  selectedItems={selectedItems}
+                  onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
+                  sortingColumn={tableColumns[0]}
+                  empty={
+                    <Box textAlign="center" color="inherit">
+                      <Box variant="strong" textAlign="center" color="inherit">
+                        No devices found
+                      </Box>
+                      <Box variant="p" padding={{ bottom: 's' }} color="inherit">
+                        No devices match the current search criteria.
+                      </Box>
+                    </Box>
+                  }
+                  header={<Header counter={`(${filteredDevices.length})`}>Network Devices</Header>}
+                />
+              </Container>
+            </SpaceBetween>
+          </ContentLayout>
+        }
       />
     </div>
   );

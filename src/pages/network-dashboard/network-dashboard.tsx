@@ -19,6 +19,8 @@ import Table from '@cloudscape-design/components/table';
 import Box from '@cloudscape-design/components/box';
 import Badge from '@cloudscape-design/components/badge';
 
+import '../../styles/network-dashboard.scss';
+
 // Mock data for the charts
 const networkTrafficData = [
   {

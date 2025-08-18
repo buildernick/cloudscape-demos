@@ -315,7 +315,7 @@ export function NetworkDashboard() {
                 />
               </Container>
 
-              <Container header={<Header variant="h2">Credit Usage</Header>}>
+              <Container header={<Header variant="h2">Credit Usage</Header>} className="chart-container">
                 <BarChart
                   series={[
                     {

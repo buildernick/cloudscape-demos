@@ -356,6 +356,7 @@ export function NetworkDashboard() {
               }
             >
               <Table
+                className="devices-table"
                 columnDefinitions={tableColumns}
                 items={paginatedDevices}
                 loading={false}

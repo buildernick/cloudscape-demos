@@ -293,7 +293,7 @@ export function NetworkDashboard() {
           <SpaceBetween size="l">
             {/* Charts Section */}
             <Grid gridDefinition={[{ colspan: 6 }, { colspan: 6 }]}>
-              <Container header={<Header variant="h2">Network traffic</Header>}>
+              <Container header={<Header variant="h2">Network traffic</Header>} className="chart-container">
                 <AreaChart
                   series={networkTrafficData}
                   height={300}

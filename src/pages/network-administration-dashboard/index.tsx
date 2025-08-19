@@ -233,27 +233,40 @@ export default function NetworkAdministrationDashboard() {
                       color: CHART_COLORS[1]
                     }
                   ]}
-                  xDomain={[
-                    areaChartData[0].x,
-                    areaChartData[areaChartData.length - 1].x
-                  ]}
-                  yDomain={[0, 250]}
+                  xDomain={areaChartData.map(d => d.x)}
+                  yDomain={[0, 220]}
                   i18nStrings={{
                     filterLabel: 'Filter displayed data',
                     filterPlaceholder: 'Filter data',
                     filterSelectedAriaLabel: 'selected',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'area chart',
-                    xTickFormatter: (e) => e.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                    xTickFormatter: (e) => e.toString(),
                     yTickFormatter: (e) => e.toString()
                   }}
                   ariaLabel="Network traffic area chart"
                   height={300}
                   hideLegend={false}
                   hideFilter={true}
-                  xScaleType="time"
-                  yTitle="Traffic (GB)"
+                  xScaleType="categorical"
+                  yTitle=""
                   xTitle="Day"
+                  statusType="finished"
+                  additionalFilters={
+                    <Box>
+                      <SpaceBetween direction="horizontal" size="s">
+                        <Box fontSize="body-s" color="text-status-inactive">
+                          ■ Site 1
+                        </Box>
+                        <Box fontSize="body-s" color="text-status-inactive">
+                          ■ Site 2
+                        </Box>
+                        <Box fontSize="body-s" color="text-status-inactive">
+                          --- Performance goal
+                        </Box>
+                      </SpaceBetween>
+                    </Box>
+                  }
                 />
               </Container>
 

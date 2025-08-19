@@ -46,15 +46,22 @@ const barChartData = [
 ];
 
 // Sample data for devices table
+const deviceTypes = ['Workstation', 'Server', 'Router', 'Switch', 'Printer', 'Access Point'];
+const deviceNames = [
+  'Office-PC-01', 'Marketing-Laptop', 'Dev-Server-01', 'Router-Main', 'Switch-Floor2',
+  'Printer-HP-01', 'AP-Conference', 'Database-Server', 'File-Server', 'Backup-Server',
+  'Security-Camera-01', 'VoIP-Phone-01', 'Tablet-Meeting', 'Laptop-Sales', 'Desktop-HR'
+];
+
 const deviceData = Array.from({ length: 15 }, (_, i) => ({
   id: i + 1,
-  name: `Device ${i + 1}`,
-  type: 'Workstation',
-  status: i % 3 === 0 ? 'Online' : i % 3 === 1 ? 'Offline' : 'Maintenance',
-  ip: `192.168.1.${100 + i}`,
-  lastSeen: `${Math.floor(Math.random() * 24)}h ago`,
-  usage: `${Math.floor(Math.random() * 100)}%`,
-  bandwidth: `${Math.floor(Math.random() * 500 + 100)} Mbps`
+  name: deviceNames[i] || `Device-${i + 1}`,
+  type: deviceTypes[i % deviceTypes.length],
+  status: i % 4 === 0 ? 'Online' : i % 4 === 1 ? 'Offline' : i % 4 === 2 ? 'Maintenance' : 'Online',
+  ip: `192.168.${Math.floor(i / 10) + 1}.${(i % 10) + 100}`,
+  lastSeen: i % 4 === 1 ? `${Math.floor(Math.random() * 48 + 1)}h ago` : 'Active',
+  usage: `${Math.floor(Math.random() * 80 + 10)}%`,
+  bandwidth: `${Math.floor(Math.random() * 400 + 50)} Mbps`
 }));
 
 const tableColumnDefinitions = [

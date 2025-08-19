@@ -296,8 +296,21 @@ export default function NetworkAdministrationDashboard() {
                   hideLegend={false}
                   hideFilter={true}
                   xScaleType="categorical"
-                  yTitle="Credits"
+                  yTitle=""
                   xTitle="Day"
+                  statusType="finished"
+                  additionalFilters={
+                    <Box>
+                      <SpaceBetween direction="horizontal" size="s">
+                        <Box fontSize="body-s" color="text-status-inactive">
+                          ■ Site 1
+                        </Box>
+                        <Box fontSize="body-s" color="text-status-inactive">
+                          --- Performance goal
+                        </Box>
+                      </SpaceBetween>
+                    </Box>
+                  }
                 />
               </Container>
             </Grid>

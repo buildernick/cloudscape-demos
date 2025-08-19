@@ -182,33 +182,30 @@ export default function NetworkAdministrationDashboard() {
                 Network Administration Dashboard
               </Header>
 
-              <Grid gridDefinition={[{ colspan: { default: 12, xs: 12, s: 8, m: 6, l: 6, xl: 6 } }]}>
+              <Grid gridDefinition={[
+                { colspan: { default: 12, xs: 12, s: 8, m: 8, l: 8, xl: 8 } },
+                { colspan: { default: 12, xs: 12, s: 4, m: 4, l: 4, xl: 4 } }
+              ]}>
                 <TextFilter
                   filteringText={filterText}
-                  filteringPlaceholder="Search devices..."
+                  filteringPlaceholder="Placeholder"
                   filteringAriaLabel="Filter devices"
                   onChange={({ detail }) => {
                     setFilterText(detail.filteringText);
                     setCurrentPageIndex(1);
                   }}
                 />
-              </Grid>
-
-              <Grid gridDefinition={[
-                { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
-                { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } }
-              ]}>
-                <Pagination
-                  currentPageIndex={currentPageIndex}
-                  onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
-                  pagesCount={Math.ceil(filteredDevices.length / itemsPerPage)}
-                  ariaLabels={{
-                    nextPageLabel: 'Next page',
-                    previousPageLabel: 'Previous page',
-                    pageLabel: pageNumber => `Page ${pageNumber}`,
-                  }}
-                />
-                <Box textAlign="right">
+                <Box display="flex" justifyContent="space-between" alignItems="center">
+                  <Pagination
+                    currentPageIndex={currentPageIndex}
+                    onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
+                    pagesCount={Math.ceil(filteredDevices.length / itemsPerPage)}
+                    ariaLabels={{
+                      nextPageLabel: 'Next page',
+                      previousPageLabel: 'Previous page',
+                      pageLabel: pageNumber => `Page ${pageNumber}`,
+                    }}
+                  />
                   <Button iconName="settings" variant="icon" />
                 </Box>
               </Grid>

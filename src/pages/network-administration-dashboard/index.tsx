@@ -159,8 +159,8 @@ export default function NetworkAdministrationDashboard() {
             <SpaceBetween size="m">
               <BreadcrumbGroup
                 items={[
-                  { text: 'Service', href: '#' },
-                  { text: 'Administrative Dashboard', href: '#' }
+                  { text: 'Service', href: '/' },
+                  { text: 'Administrative Dashboard', href: '/network-administration-dashboard' }
                 ]}
                 ariaLabel="Breadcrumbs"
               />

@@ -21,20 +21,20 @@ import Modal from '@cloudscape-design/components/modal';
 
 const CHART_COLORS = ['#688AE8', '#C33D69'];
 
-// Sample data for charts
+// Sample data for charts matching the Figma design
 const areaChartData = [
-  { x: new Date('2024-01-01'), y1: 120, y2: 80 },
-  { x: new Date('2024-01-02'), y1: 135, y2: 95 },
-  { x: new Date('2024-01-03'), y1: 142, y2: 105 },
-  { x: new Date('2024-01-04'), y1: 138, y2: 110 },
-  { x: new Date('2024-01-05'), y1: 155, y2: 120 },
-  { x: new Date('2024-01-06'), y1: 168, y2: 135 },
-  { x: new Date('2024-01-07'), y1: 172, y2: 140 },
-  { x: new Date('2024-01-08'), y1: 165, y2: 125 },
-  { x: new Date('2024-01-09'), y1: 180, y2: 145 },
-  { x: new Date('2024-01-10'), y1: 185, y2: 150 },
-  { x: new Date('2024-01-11'), y1: 195, y2: 165 },
-  { x: new Date('2024-01-12'), y1: 210, y2: 175 }
+  { x: 'x1', y1: 95, y2: 85 },
+  { x: 'x2', y1: 105, y2: 95 },
+  { x: 'x3', y1: 120, y2: 110 },
+  { x: 'x4', y1: 115, y2: 105 },
+  { x: 'x5', y1: 130, y2: 115 },
+  { x: 'x6', y1: 145, y2: 125 },
+  { x: 'x7', y1: 155, y2: 135 },
+  { x: 'x8', y1: 150, y2: 130 },
+  { x: 'x9', y1: 165, y2: 140 },
+  { x: 'x10', y1: 175, y2: 150 },
+  { x: 'x11', y1: 185, y2: 160 },
+  { x: 'x12', y1: 195, y2: 170 }
 ];
 
 const barChartData = [

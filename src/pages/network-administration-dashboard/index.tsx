@@ -81,7 +81,17 @@ const tableColumnDefinitions = [
   {
     id: 'status',
     header: 'Status',
-    cell: (item: any) => item.status,
+    cell: (item: any) => (
+      <Badge
+        color={
+          item.status === 'Online' ? 'green' :
+          item.status === 'Offline' ? 'red' :
+          'blue'
+        }
+      >
+        {item.status}
+      </Badge>
+    ),
     sortingField: 'status'
   },
   {

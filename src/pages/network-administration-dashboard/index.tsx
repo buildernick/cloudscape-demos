@@ -121,7 +121,7 @@ const tableColumnDefinitions = [
   }
 ];
 
-export default function NetworkAdministrationDashboard() {
+function NetworkAdministrationDashboard() {
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
   const [filterText, setFilterText] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);

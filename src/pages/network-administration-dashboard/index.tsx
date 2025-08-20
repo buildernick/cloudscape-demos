@@ -187,15 +187,17 @@ export default function NetworkAdministrationDashboard() {
                 { colspan: { default: 12, xs: 12, s: 8, m: 8, l: 8, xl: 8 } },
                 { colspan: { default: 12, xs: 12, s: 4, m: 4, l: 4, xl: 4 } }
               ]}>
-                <TextFilter
-                  filteringText={filterText}
-                  filteringPlaceholder="Placeholder"
-                  filteringAriaLabel="Filter devices"
-                  onChange={({ detail }) => {
-                    setFilterText(detail.filteringText);
-                    setCurrentPageIndex(1);
-                  }}
-                />
+                <div className="network-dashboard-search">
+                  <TextFilter
+                    filteringText={filterText}
+                    filteringPlaceholder="Placeholder"
+                    filteringAriaLabel="Filter devices"
+                    onChange={({ detail }) => {
+                      setFilterText(detail.filteringText);
+                      setCurrentPageIndex(1);
+                    }}
+                  />
+                </div>
                 <Box display="flex" justifyContent="space-between" alignItems="center">
                   <Pagination
                     currentPageIndex={currentPageIndex}

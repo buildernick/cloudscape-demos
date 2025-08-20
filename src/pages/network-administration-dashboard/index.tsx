@@ -50,7 +50,7 @@ const barChartData = [
 // Sample data for devices table
 const deviceTypes = ['Workstation', 'Server', 'Router', 'Switch', 'Printer', 'Access Point'];
 const deviceNames = [
-  'Office-PC-01', 'Marketing-Laptop', 'Dev-Server-01', 'Router-Main', 'Switch-Floor2',
+  'Office-PC-01', 'Marketing-Laptop', 'Dev-Server-01', 'Router-Main', 'Switch-Floor2', 
   'Printer-HP-01', 'AP-Conference', 'Database-Server', 'File-Server', 'Backup-Server',
   'Security-Camera-01', 'VoIP-Phone-01', 'Tablet-Meeting', 'Laptop-Sales', 'Desktop-HR'
 ];
@@ -83,10 +83,10 @@ const tableColumnDefinitions = [
     id: 'status',
     header: 'Status',
     cell: (item: any) => (
-      <Badge
+      <Badge 
         color={
-          item.status === 'Online' ? 'green' :
-          item.status === 'Offline' ? 'red' :
+          item.status === 'Online' ? 'green' : 
+          item.status === 'Offline' ? 'red' : 
           'blue'
         }
       >
@@ -121,7 +121,7 @@ const tableColumnDefinitions = [
   }
 ];
 
-function NetworkAdministrationDashboard() {
+export default function NetworkAdministrationDashboard() {
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
   const [filterText, setFilterText] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
@@ -212,7 +212,6 @@ function NetworkAdministrationDashboard() {
                   <Button iconName="settings" variant="icon" />
                 </Box>
               </Grid>
-
             </SpaceBetween>
           }
         >
@@ -429,5 +428,3 @@ function NetworkAdministrationDashboard() {
     />
   );
 }
-
-export default NetworkAdministrationDashboard;

@@ -210,22 +210,22 @@ export default function NetworkAdministrationDashboard() {
                 </Box>
               </Grid>
 
-              {showWarning && (
-                <Flashbar
-                  items={[
-                    {
-                      type: 'warning',
-                      content: 'This is a warning message',
-                      dismissible: true,
-                      onDismiss: () => setShowWarning(false),
-                      buttonText: 'Dismiss'
-                    }
-                  ]}
-                />
-              )}
             </SpaceBetween>
           }
         >
+          {showWarning && (
+            <Flashbar
+              items={[
+                {
+                  type: 'error',
+                  content: 'This is a warning message',
+                  dismissible: true,
+                  onDismiss: () => setShowWarning(false),
+                  buttonText: 'Dismiss'
+                }
+              ]}
+            />
+          )}
           <SpaceBetween size="l">
             {/* Charts Section */}
             <Grid gridDefinition={[

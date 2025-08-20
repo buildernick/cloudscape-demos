@@ -18,14 +18,18 @@ export default function WarningBanner({
   message,
   onDismiss,
   dismissible = true,
-  type = 'warning'
+  type = 'warning',
 }: WarningBannerProps) {
   const getIconName = () => {
     switch (type) {
-      case 'error': return 'status-negative';
-      case 'warning': return 'status-warning';
-      case 'info': return 'status-info';
-      default: return 'status-warning';
+      case 'error':
+        return 'status-negative';
+      case 'warning':
+        return 'status-warning';
+      case 'info':
+        return 'status-info';
+      default:
+        return 'status-warning';
     }
   };
 
@@ -33,9 +37,7 @@ export default function WarningBanner({
     <div className={`warning-banner ${type}`}>
       <SpaceBetween direction="horizontal" size="s" alignItems="center">
         <Icon name={getIconName()} />
-        <Box fontSize="body-m">
-          {message}
-        </Box>
+        <Box fontSize="body-m">{message}</Box>
       </SpaceBetween>
 
       {dismissible && (
@@ -43,12 +45,7 @@ export default function WarningBanner({
           <Button variant="link" onClick={onDismiss}>
             Dismiss
           </Button>
-          <Button
-            variant="icon"
-            iconName="close"
-            onClick={onDismiss}
-            ariaLabel="Close warning banner"
-          />
+          <Button variant="icon" iconName="close" onClick={onDismiss} ariaLabel="Close warning banner" />
         </SpaceBetween>
       )}
     </div>

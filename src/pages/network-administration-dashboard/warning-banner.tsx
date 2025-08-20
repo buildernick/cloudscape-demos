@@ -7,7 +7,7 @@ import Button from '@cloudscape-design/components/button';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import Icon from '@cloudscape-design/components/icon';
 
-interface WarningBannerProps {
+export interface WarningBannerProps {
   message: string;
   onDismiss: () => void;
   dismissible?: boolean;

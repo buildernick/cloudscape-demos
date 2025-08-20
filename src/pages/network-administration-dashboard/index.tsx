@@ -10,7 +10,7 @@ import Button from '@cloudscape-design/components/button';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import TextFilter from '@cloudscape-design/components/text-filter';
 import Pagination from '@cloudscape-design/components/pagination';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import WarningBanner from './warning-banner';
 import Grid from '@cloudscape-design/components/grid';
 import Box from '@cloudscape-design/components/box';
 import Table from '@cloudscape-design/components/table';

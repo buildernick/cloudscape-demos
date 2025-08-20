@@ -19,6 +19,7 @@ import AreaChart from '@cloudscape-design/components/area-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
 import Modal from '@cloudscape-design/components/modal';
 import Badge from '@cloudscape-design/components/badge';
+import '../styles/network-dashboard.scss';
 
 const CHART_COLORS = ['#688AE8', '#C33D69'];
 

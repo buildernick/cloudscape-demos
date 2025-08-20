@@ -14,18 +14,49 @@ interface WarningBannerProps {
   type?: 'warning' | 'error' | 'info';
 }
 
-export default function WarningBanner({ 
-  message, 
-  onDismiss, 
-  dismissible = true, 
-  type = 'warning' 
+export default function WarningBanner({
+  message,
+  onDismiss,
+  dismissible = true,
+  type = 'warning'
 }: WarningBannerProps) {
-  const getBackgroundColor = () => {
+  const getBannerStyles = () => {
+    const baseStyles = {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '13px 34px 13px 33px',
+      borderRadius: '12px',
+      border: '1px solid #000',
+      marginBottom: '16px',
+      boxShadow: 'rgba(0, 7, 22, 0.1) 0px 4px 8px 0px'
+    };
+
     switch (type) {
-      case 'error': return '#d02';
-      case 'warning': return '#FFF4B4';
-      case 'info': return '#e1f5fe';
-      default: return '#FFF4B4';
+      case 'error':
+        return {
+          ...baseStyles,
+          backgroundColor: 'rgba(208, 2, 27, 1)',
+          color: '#fff'
+        };
+      case 'warning':
+        return {
+          ...baseStyles,
+          backgroundColor: '#FFF4B4',
+          color: '#946C00'
+        };
+      case 'info':
+        return {
+          ...baseStyles,
+          backgroundColor: '#e1f5fe',
+          color: '#1976d2'
+        };
+      default:
+        return {
+          ...baseStyles,
+          backgroundColor: '#FFF4B4',
+          color: '#946C00'
+        };
     }
   };
 
@@ -38,45 +69,30 @@ export default function WarningBanner({
     }
   };
 
-  const getTextColor = () => {
-    switch (type) {
-      case 'error': return '#fff';
-      case 'warning': return '#946C00';
-      case 'info': return '#1976d2';
-      default: return '#946C00';
-    }
-  };
+  const bannerStyles = getBannerStyles();
 
   return (
-    <Box
-      padding="s"
-      margin={{ bottom: 'm' }}
-      borderRadius="12px"
-      backgroundColor={getBackgroundColor()}
-      display="flex"
-      alignItems="center"
-      justifyContent="space-between"
-    >
+    <div style={bannerStyles}>
       <SpaceBetween direction="horizontal" size="s" alignItems="center">
-        <Icon name={getIconName()} size="medium" />
-        <Box color={getTextColor()} fontSize="body-m">
+        <Icon name={getIconName()} />
+        <Box fontSize="body-m">
           {message}
         </Box>
       </SpaceBetween>
-      
+
       {dismissible && (
         <SpaceBetween direction="horizontal" size="s">
           <Button variant="link" onClick={onDismiss}>
             Dismiss
           </Button>
-          <Button 
-            variant="icon" 
+          <Button
+            variant="icon"
             iconName="close"
             onClick={onDismiss}
             ariaLabel="Close warning banner"
           />
         </SpaceBetween>
       )}
-    </Box>
+    </div>
   );
 }

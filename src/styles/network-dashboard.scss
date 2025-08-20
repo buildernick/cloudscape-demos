@@ -6,3 +6,29 @@
     border-width: 6px !important;
   }
 }
+
+.warning-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 34px 13px 33px;
+  border-radius: 12px;
+  border: 1px solid #000;
+  margin-bottom: 16px;
+  box-shadow: rgba(0, 7, 22, 0.1) 0px 4px 8px 0px;
+
+  &.error {
+    background-color: rgba(208, 2, 27, 1);
+    color: #fff;
+  }
+
+  &.warning {
+    background-color: #FFF4B4;
+    color: #946C00;
+  }
+
+  &.info {
+    background-color: #e1f5fe;
+    color: #1976d2;
+  }
+}

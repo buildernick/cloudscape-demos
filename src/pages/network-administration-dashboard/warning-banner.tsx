@@ -22,7 +22,7 @@ export default function WarningBanner({
 }: WarningBannerProps) {
   const getBackgroundColor = () => {
     switch (type) {
-      case 'error': return '#d02;
+      case 'error': return '#d02';
       case 'warning': return '#FFF4B4';
       case 'info': return '#e1f5fe';
       default: return '#FFF4B4';

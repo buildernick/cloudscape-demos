@@ -220,16 +220,11 @@ export default function NetworkAdministrationDashboard() {
           }
         >
           {showWarning && (
-            <Flashbar
-              items={[
-                {
-                  type: 'error',
-                  content: 'This is a warning message',
-                  dismissible: true,
-                  onDismiss: () => setShowWarning(false),
-                  buttonText: 'Dismiss',
-                },
-              ]}
+            <WarningBanner
+              message="This is a warning message"
+              type="error"
+              onDismiss={() => setShowWarning(false)}
+              dismissible={true}
             />
           )}
           <SpaceBetween size="l">

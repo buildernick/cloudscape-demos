@@ -95,8 +95,8 @@ export function App() {
           <SpaceBetween size="l">
             <Grid
               gridDefinition={[
-                { colspan: { default: 12, l: 6 } },
-                { colspan: { default: 12, l: 6 } }
+                { colspan: { default: 12, s: 12, m: 6, l: 6, xl: 6 } },
+                { colspan: { default: 12, s: 12, m: 6, l: 6, xl: 6 } }
               ]}
             >
               <NetworkTrafficChart />

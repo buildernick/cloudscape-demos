@@ -19,10 +19,7 @@ export function NotificationAlert() {
       <SpaceBetween direction="horizontal" size="s" alignItems="center">
         <Icon name="status-warning" variant="warning" />
         <Box variant="span">This is a warning message</Box>
-        <Button 
-          variant="inline-link" 
-          onClick={() => setDismissed(true)}
-        >
+        <Button variant="inline-link" onClick={() => setDismissed(true)}>
           Dismiss
         </Button>
       </SpaceBetween>

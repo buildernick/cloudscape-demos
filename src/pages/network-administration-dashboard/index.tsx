@@ -211,17 +211,21 @@ export default function NetworkAdministrationDashboard() {
               </Grid>
 
               {showWarning && (
-                <Flashbar
-                  items={[
-                    {
-                      type: 'warning',
-                      content: 'This is a warning message',
-                      dismissible: true,
-                      onDismiss: () => setShowWarning(false),
-                      buttonText: 'Dismiss'
-                    }
-                  ]}
-                />
+                <div style={{
+                  '--awsui-color-background-notification-warning': 'rgba(208, 2, 27, 1)'
+                } as React.CSSProperties}>
+                  <Flashbar
+                    items={[
+                      {
+                        type: 'warning',
+                        content: 'This is a warning message',
+                        dismissible: true,
+                        onDismiss: () => setShowWarning(false),
+                        buttonText: 'Dismiss'
+                      }
+                    ]}
+                  />
+                </div>
               )}
             </SpaceBetween>
           }

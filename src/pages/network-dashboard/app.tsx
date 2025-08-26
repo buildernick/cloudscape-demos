@@ -32,7 +32,7 @@ export function App() {
           }
         >
           <SpaceBetween size="l">
-            <WarningBanner />
+            <NotificationAlert />
             <NetworkDashboardContent />
           </SpaceBetween>
         </ContentLayout>

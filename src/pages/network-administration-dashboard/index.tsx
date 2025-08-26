@@ -211,9 +211,20 @@ export default function NetworkAdministrationDashboard() {
               </Grid>
 
               {showWarning && (
-                <div style={{
-                  '--awsui-color-background-notification-warning': 'rgba(208, 2, 27, 1)'
-                } as React.CSSProperties}>
+                <div
+                  className="custom-warning-flashbar"
+                  style={{
+                    '--awsui-color-background-notification-warning': 'rgba(208, 2, 27, 1)'
+                  } as React.CSSProperties}
+                >
+                  <style jsx>{`
+                    .custom-warning-flashbar :global(.awsui_flash-type-warning_*) {
+                      background-color: rgba(208, 2, 27, 1) !important;
+                    }
+                    .custom-warning-flashbar :global([data-analytics-flashbar="warning"]) {
+                      background-color: rgba(208, 2, 27, 1) !important;
+                    }
+                  `}</style>
                   <Flashbar
                     items={[
                       {

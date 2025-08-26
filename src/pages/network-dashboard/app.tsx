@@ -11,6 +11,7 @@ import { Breadcrumbs } from '../commons';
 import { NetworkDashboardContent } from './components/content';
 import { NetworkDashboardHeader } from './components/header';
 import { NotificationAlert } from './components/notification-alert';
+import './styles.scss';
 
 export function App() {
   return (

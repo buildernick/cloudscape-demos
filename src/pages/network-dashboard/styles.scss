@@ -1,0 +1,33 @@
+// Network Dashboard specific styles
+
+.notification-alert {
+  background-color: #fff4b4;
+  border: 1px solid #946c00;
+  border-radius: 8px;
+  padding: 13px 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #946c00;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.network-dashboard-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-and-pagination {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

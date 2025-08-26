@@ -10,7 +10,7 @@ import SpaceBetween from '@cloudscape-design/components/space-between';
 import { Breadcrumbs } from '../commons';
 import { NetworkDashboardContent } from './components/content';
 import { NetworkDashboardHeader } from './components/header';
-import { WarningBanner } from './components/warning-banner';
+import { NotificationAlert } from './components/notification-alert';
 
 export function App() {
   return (

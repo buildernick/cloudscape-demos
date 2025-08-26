@@ -93,12 +93,7 @@ export function App() {
                   </div>
                 </Grid>
 
-                <Alert
-                  type="error"
-                  dismissible
-                  buttonText="Dismiss"
-                  onDismiss={() => {}}
-                >
+                <Alert type="error" dismissible buttonText="Dismiss" onDismiss={() => {}}>
                   This is a warning message
                 </Alert>
               </SpaceBetween>

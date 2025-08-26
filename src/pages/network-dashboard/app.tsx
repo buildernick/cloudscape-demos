@@ -7,7 +7,7 @@ import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Box from '@cloudscape-design/components/box';
 import Button from '@cloudscape-design/components/button';
 import ContentLayout from '@cloudscape-design/components/content-layout';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import Alert from '@cloudscape-design/components/alert';
 import Header from '@cloudscape-design/components/header';
 import Grid from '@cloudscape-design/components/grid';
 import Modal from '@cloudscape-design/components/modal';
@@ -93,17 +93,14 @@ export function App() {
                   </div>
                 </Grid>
 
-                <Flashbar
-                  items={[
-                    {
-                      type: 'error',
-                      content: 'This is a warning message',
-                      dismissible: true,
-                      buttonText: 'Dismiss',
-                      onButtonClick: () => {},
-                    },
-                  ]}
-                />
+                <Alert
+                  type="error"
+                  dismissible
+                  buttonText="Dismiss"
+                  onDismiss={() => {}}
+                >
+                  This is a warning message
+                </Alert>
               </SpaceBetween>
             }
           >

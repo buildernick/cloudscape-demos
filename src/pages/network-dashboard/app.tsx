@@ -21,11 +21,11 @@ export function App() {
         <ContentLayout
           header={
             <SpaceBetween size="s">
-              <Breadcrumbs 
+              <Breadcrumbs
                 items={[
                   { text: 'Service', href: '#' },
-                  { text: 'Administrative Dashboard', href: '#' }
-                ]} 
+                  { text: 'Administrative Dashboard', href: '#' },
+                ]}
               />
               <NetworkDashboardHeader />
             </SpaceBetween>

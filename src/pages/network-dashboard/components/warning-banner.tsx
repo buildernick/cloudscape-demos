@@ -8,16 +8,7 @@ import Button from '@cloudscape-design/components/button';
 
 export function WarningBanner() {
   return (
-    <Alert
-      type="warning"
-      dismissible
-      action={
-        <Button variant="link">
-          Dismiss
-        </Button>
-      }
-      header="Warning"
-    >
+    <Alert type="warning" dismissible action={<Button variant="link">Dismiss</Button>} header="Warning">
       This is a warning message
     </Alert>
   );

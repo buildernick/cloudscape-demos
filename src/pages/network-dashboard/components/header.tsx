@@ -22,7 +22,7 @@ export function NetworkDashboardHeader() {
       >
         Network Administration Dashboard
       </Header>
-      
+
       <div className="network-dashboard-header-controls">
         <div className="search-and-pagination">
           <TextFilter

@@ -26,13 +26,7 @@ const series = [
 
 export function CreditUsageChart() {
   return (
-    <Container
-      header={
-        <Header variant="h2">
-          Credit Usage
-        </Header>
-      }
-    >
+    <Container header={<Header variant="h2">Credit Usage</Header>}>
       <BarChart
         series={series}
         xDomain={creditUsageData.map(item => item.x)}

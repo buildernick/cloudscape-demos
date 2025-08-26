@@ -278,7 +278,7 @@ export function DevicesTable() {
         >
           My Devices
         </Header>
-        
+
         <Table
           columnDefinitions={columnDefinitions}
           items={deviceData}
@@ -305,14 +305,8 @@ export function DevicesTable() {
             setSortingColumn(detail.sortingColumn);
             setIsDescending(detail.isDescending);
           }}
-          header={
-            <Header counter={`(${deviceData.length})`}>
-              Devices
-            </Header>
-          }
-          preferences={
-            <div />
-          }
+          header={<Header counter={`(${deviceData.length})`}>Devices</Header>}
+          preferences={<div />}
         />
       </SpaceBetween>
     </Container>

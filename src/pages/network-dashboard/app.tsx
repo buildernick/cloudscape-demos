@@ -68,7 +68,7 @@ export function App() {
                 <Grid
                   gridDefinition={[
                     { colspan: { default: 12, xs: 12, s: 8, m: 8, l: 8, xl: 8 } },
-                    { colspan: { default: 12, xs: 12, s: 4, m: 4, l: 4, xl: 4 } }
+                    { colspan: { default: 12, xs: 12, s: 4, m: 4, l: 4, xl: 4 } },
                   ]}
                 >
                   <TextFilter
@@ -111,7 +111,7 @@ export function App() {
               <Grid
                 gridDefinition={[
                   { colspan: { default: 12, s: 12, m: 6, l: 6, xl: 6 } },
-                  { colspan: { default: 12, s: 12, m: 6, l: 6, xl: 6 } }
+                  { colspan: { default: 12, s: 12, m: 6, l: 6, xl: 6 } },
                 ]}
               >
                 <NetworkTrafficChart />
@@ -131,16 +131,10 @@ export function App() {
         footer={
           <Box float="right">
             <SpaceBetween direction="horizontal" size="xs">
-              <Button
-                variant="link"
-                onClick={() => setIsRefreshModalVisible(false)}
-              >
+              <Button variant="link" onClick={() => setIsRefreshModalVisible(false)}>
                 Cancel
               </Button>
-              <Button
-                variant="primary"
-                onClick={handleRefreshData}
-              >
+              <Button variant="primary" onClick={handleRefreshData}>
                 Refresh Data
               </Button>
             </SpaceBetween>
@@ -150,8 +144,8 @@ export function App() {
       >
         <SpaceBetween size="m">
           <Box variant="span">
-            Are you sure you want to refresh all data? This will reload network traffic,
-            credit usage, and device information.
+            Are you sure you want to refresh all data? This will reload network traffic, credit usage, and device
+            information.
           </Box>
         </SpaceBetween>
       </Modal>

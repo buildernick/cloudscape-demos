@@ -31,7 +31,7 @@ const series = [
   },
   {
     type: 'area' as const,
-    title: 'Site 2', 
+    title: 'Site 2',
     data: networkTrafficData.map(item => ({ x: item.x, y: item.y2 })),
     color: '#C33D69',
   },
@@ -39,13 +39,7 @@ const series = [
 
 export function NetworkTrafficChart() {
   return (
-    <Container
-      header={
-        <Header variant="h2">
-          Network traffic
-        </Header>
-      }
-    >
+    <Container header={<Header variant="h2">Network traffic</Header>}>
       <AreaChart
         series={series}
         xDomain={networkTrafficData.map(item => item.x)}

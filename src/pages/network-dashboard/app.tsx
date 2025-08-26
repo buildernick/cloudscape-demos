@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 import AppLayout from '@cloudscape-design/components/app-layout';
-import Breadcrumb from '@cloudscape-design/components/breadcrumb';
+import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Button from '@cloudscape-design/components/button';
 import ContentLayout from '@cloudscape-design/components/content-layout';
 import Flashbar from '@cloudscape-design/components/flashbar';
@@ -29,11 +29,13 @@ export function App() {
         <ContentLayout
           header={
             <SpaceBetween size="m">
-              <Breadcrumb
+              <BreadcrumbGroup
                 items={[
                   { text: 'Service', href: '#' },
                   { text: 'Administrative Dashboard', href: '#' },
                 ]}
+                expandAriaLabel="Show path"
+                ariaLabel="Breadcrumbs"
               />
               
               <Header

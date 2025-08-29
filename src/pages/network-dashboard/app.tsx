@@ -78,9 +78,7 @@ export default function App() {
             </Grid>
           </Container>
 
-          {showWarning && (
-            <AlertBanner onDismiss={() => setShowWarning(false)} />
-          )}
+          {showWarning && <AlertBanner onDismiss={() => setShowWarning(false)} />}
 
           <Grid
             gridDefinition={[

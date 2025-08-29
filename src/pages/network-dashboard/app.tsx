@@ -39,7 +39,7 @@ export default function App() {
             ]}
             ariaLabel="Breadcrumbs"
           />
-          
+
           <Header
             variant="h1"
             description="Network Traffic, Credit Usage, and Your Devices"
@@ -56,7 +56,7 @@ export default function App() {
             <Grid
               gridDefinition={[
                 { colspan: { default: 12, xs: 12, s: 8, m: 8, l: 8, xl: 8 } },
-                { colspan: { default: 12, xs: 12, s: 4, m: 4, l: 4, xl: 4 } }
+                { colspan: { default: 12, xs: 12, s: 4, m: 4, l: 4, xl: 4 } },
               ]}
             >
               <TextFilter
@@ -90,10 +90,7 @@ export default function App() {
                     <SpaceBetween size="xs">
                       <Box>
                         This is a warning message{' '}
-                        <Link
-                          variant="primary"
-                          onFollow={() => setShowDetails(!showDetails)}
-                        >
+                        <Link variant="primary" onFollow={() => setShowDetails(!showDetails)}>
                           {showDetails ? 'Show less' : 'More details'}
                         </Link>
                       </Box>
@@ -101,7 +98,9 @@ export default function App() {
                         <Box>
                           <div>Additional detail line 1: Network connectivity issues detected in zone us-east-1a.</div>
                           <div>Additional detail line 2: Automatic failover to backup systems has been initiated.</div>
-                          <div>Additional detail line 3: Please monitor your applications for any performance impact.</div>
+                          <div>
+                            Additional detail line 3: Please monitor your applications for any performance impact.
+                          </div>
                         </Box>
                       )}
                     </SpaceBetween>
@@ -118,7 +117,7 @@ export default function App() {
           <Grid
             gridDefinition={[
               { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
-              { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } }
+              { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
             ]}
           >
             <NetworkTrafficChart />

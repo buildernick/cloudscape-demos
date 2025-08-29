@@ -70,12 +70,10 @@ export function AlertBanner({ onDismiss }: AlertBannerProps) {
       </div>
       <Button
         variant="link"
-        iconName="close"
-        ariaLabel="Dismiss alert"
         onClick={onDismiss}
         formAction="none"
       >
-        <span style={{ color: '#FFF', fontWeight: '600', fontSize: '14px' }}>
+        <span style={{ color: '#946C00', fontWeight: '600', fontSize: '14px', fontFamily: 'Inter, -apple-system, Roboto, Helvetica, sans-serif', textAlign: 'center', lineHeight: '22px' }}>
           Dismiss
         </span>
       </Button>

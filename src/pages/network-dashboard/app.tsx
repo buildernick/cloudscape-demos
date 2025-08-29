@@ -79,36 +79,7 @@ export default function App() {
           </Container>
 
           {showWarning && (
-            <Flashbar
-              items={[
-                {
-                  type: 'error',
-                  content: (
-                    <SpaceBetween size="xs">
-                      <Box>
-                        This is a warning message{' '}
-                        <Link variant="primary" onFollow={() => setShowDetails(!showDetails)}>
-                          {showDetails ? 'Show less' : 'More details'}
-                        </Link>
-                      </Box>
-                      {showDetails && (
-                        <Box>
-                          <div>Additional detail line 1: Network connectivity issues detected in zone us-east-1a.</div>
-                          <div>Additional detail line 2: Automatic failover to backup systems has been initiated.</div>
-                          <div>
-                            Additional detail line 3: Please monitor your applications for any performance impact.
-                          </div>
-                        </Box>
-                      )}
-                    </SpaceBetween>
-                  ),
-                  dismissible: true,
-                  onDismiss: () => setShowWarning(false),
-                  buttonText: 'Dismiss',
-                  onButtonClick: () => setShowWarning(false),
-                },
-              ]}
-            />
+            <AlertBanner onDismiss={() => setShowWarning(false)} />
           )}
 
           <Grid

@@ -20,9 +20,7 @@ export function AlertBanner({ onDismiss }: AlertBannerProps) {
       style={{
         display: 'flex',
         alignItems: 'flex-start',
-        backgroundColor: 'rgba(208, 2, 27, 1)',
-        borderRadius: '12px',
-        boxShadow: 'rgba(0, 7, 22, 0.1) 0px 4px 8px 0px',
+        backgroundColor: '#FFF4B4',
         padding: '13px 34px 13px 33px',
         justifyContent: 'space-between',
         border: '1px solid #000',

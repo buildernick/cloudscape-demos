@@ -14,6 +14,8 @@ import Pagination from '@cloudscape-design/components/pagination';
 import Table from '@cloudscape-design/components/table';
 import Checkbox from '@cloudscape-design/components/checkbox';
 import CollectionPreferences from '@cloudscape-design/components/collection-preferences';
+import Link from '@cloudscape-design/components/link';
+import Box from '@cloudscape-design/components/box';
 
 import { CustomAppLayout } from '../commons/common-components';
 import { NetworkTrafficChart } from './components/network-traffic-chart';

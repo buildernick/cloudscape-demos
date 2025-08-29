@@ -4,7 +4,6 @@
 import React, { useState } from 'react';
 import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Button from '@cloudscape-design/components/button';
-import Flashbar from '@cloudscape-design/components/flashbar';
 import Header from '@cloudscape-design/components/header';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import Grid from '@cloudscape-design/components/grid';
@@ -14,13 +13,12 @@ import Pagination from '@cloudscape-design/components/pagination';
 import Table from '@cloudscape-design/components/table';
 import Checkbox from '@cloudscape-design/components/checkbox';
 import CollectionPreferences from '@cloudscape-design/components/collection-preferences';
-import Link from '@cloudscape-design/components/link';
-import Box from '@cloudscape-design/components/box';
 
 import { CustomAppLayout } from '../commons/common-components';
 import { NetworkTrafficChart } from './components/network-traffic-chart';
 import { CreditUsageChart } from './components/credit-usage-chart';
 import { DevicesTable } from './components/devices-table';
+import { AlertBanner } from './components/alert-banner';
 
 export default function App() {
   const [filterText, setFilterText] = useState('');

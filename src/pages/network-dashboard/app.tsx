@@ -24,6 +24,7 @@ export default function App() {
   const [filterText, setFilterText] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const [showWarning, setShowWarning] = useState(true);
+  const [showDetails, setShowDetails] = useState(false);
 
   return (
     <CustomAppLayout

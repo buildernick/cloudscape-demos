@@ -32,7 +32,7 @@ const series = [
     color: '#688AE8',
   },
   {
-    title: 'Site 2', 
+    title: 'Site 2',
     type: 'area' as const,
     data: networkTrafficData.map(point => ({ x: point.x, y: point.y2 })),
     color: '#C33D69',
@@ -40,11 +40,7 @@ const series = [
 ];
 
 function NetworkTrafficHeader() {
-  return (
-    <Header variant="h2">
-      Network traffic
-    </Header>
-  );
+  return <Header variant="h2">Network traffic</Header>;
 }
 
 function NetworkTrafficContent() {
@@ -58,8 +54,8 @@ function NetworkTrafficContent() {
         detailPopoverDismissAriaLabel: 'Dismiss',
         legendAriaLabel: 'Legend',
         chartAriaRoleDescription: 'area chart',
-        xTickFormatter: (e) => new Date(e).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-        yTickFormatter: (e) => e.toString(),
+        xTickFormatter: e => new Date(e).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        yTickFormatter: e => e.toString(),
       }}
       ariaLabel="Network traffic area chart"
       errorText="Error loading data."
@@ -94,17 +90,38 @@ function NetworkTrafficFooter() {
     <Box>
       <Box display="flex" alignItems="center" fontSize="body-s" color="text-status-inactive">
         <Box marginRight="xs">
-          <Box display="inline-block" width="14px" height="14px" borderRadius="2px" backgroundColor="#688AE8" marginRight="xxs" />
+          <Box
+            display="inline-block"
+            width="14px"
+            height="14px"
+            borderRadius="2px"
+            backgroundColor="#688AE8"
+            marginRight="xxs"
+          />
           Site 1
         </Box>
         <Box marginRight="xs" marginLeft="s">
-          <Box display="inline-block" width="14px" height="14px" borderRadius="2px" backgroundColor="#C33D69" marginRight="xxs" />
+          <Box
+            display="inline-block"
+            width="14px"
+            height="14px"
+            borderRadius="2px"
+            backgroundColor="#C33D69"
+            marginRight="xxs"
+          />
           Site 2
         </Box>
         <Box marginLeft="s">
-          <Box display="inline-block" width="12px" height="3px" marginRight="xxs" style={{ 
-            background: 'repeating-linear-gradient(to right, #5F6B7A 0, #5F6B7A 3px, transparent 3px, transparent 6px)'
-          }} />
+          <Box
+            display="inline-block"
+            width="12px"
+            height="3px"
+            marginRight="xxs"
+            style={{
+              background:
+                'repeating-linear-gradient(to right, #5F6B7A 0, #5F6B7A 3px, transparent 3px, transparent 6px)',
+            }}
+          />
           Performance goal
         </Box>
       </Box>

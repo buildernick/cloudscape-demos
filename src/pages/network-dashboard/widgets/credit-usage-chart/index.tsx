@@ -27,11 +27,7 @@ const series = [
 ];
 
 function CreditUsageHeader() {
-  return (
-    <Header variant="h2">
-      Credit Usage
-    </Header>
-  );
+  return <Header variant="h2">Credit Usage</Header>;
 }
 
 function CreditUsageContent() {
@@ -45,8 +41,8 @@ function CreditUsageContent() {
         detailPopoverDismissAriaLabel: 'Dismiss',
         legendAriaLabel: 'Legend',
         chartAriaRoleDescription: 'bar chart',
-        xTickFormatter: (e) => e.toString(),
-        yTickFormatter: (e) => e.toString(),
+        xTickFormatter: e => e.toString(),
+        yTickFormatter: e => e.toString(),
       }}
       ariaLabel="Credit usage bar chart"
       errorText="Error loading data."
@@ -81,13 +77,27 @@ function CreditUsageFooter() {
     <Box>
       <Box display="flex" alignItems="center" fontSize="body-s" color="text-status-inactive">
         <Box marginRight="xs">
-          <Box display="inline-block" width="14px" height="14px" borderRadius="2px" backgroundColor="#688AE8" marginRight="xxs" />
+          <Box
+            display="inline-block"
+            width="14px"
+            height="14px"
+            borderRadius="2px"
+            backgroundColor="#688AE8"
+            marginRight="xxs"
+          />
           Site 1
         </Box>
         <Box marginLeft="s">
-          <Box display="inline-block" width="12px" height="3px" marginRight="xxs" style={{ 
-            background: 'repeating-linear-gradient(to right, #5F6B7A 0, #5F6B7A 3px, transparent 3px, transparent 6px)'
-          }} />
+          <Box
+            display="inline-block"
+            width="12px"
+            height="3px"
+            marginRight="xxs"
+            style={{
+              background:
+                'repeating-linear-gradient(to right, #5F6B7A 0, #5F6B7A 3px, transparent 3px, transparent 6px)',
+            }}
+          />
           Performance goal
         </Box>
       </Box>

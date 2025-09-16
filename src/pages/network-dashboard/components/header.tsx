@@ -28,9 +28,9 @@ export function NetworkDashboardMainInfo() {
       }
     >
       <p>
-        The Network Administration Dashboard provides comprehensive monitoring and management capabilities for your 
-        network infrastructure. Track network traffic patterns, monitor credit usage, and manage devices across 
-        your network environment.
+        The Network Administration Dashboard provides comprehensive monitoring and management capabilities for your
+        network infrastructure. Track network traffic patterns, monitor credit usage, and manage devices across your
+        network environment.
       </p>
     </HelpPanel>
   );
@@ -44,7 +44,7 @@ interface NetworkDashboardHeaderProps {
 
 export function NetworkDashboardHeader({ actions, searchValue, onSearchChange }: NetworkDashboardHeaderProps) {
   const loadHelpPanelContent = useHelpPanel();
-  
+
   return (
     <SpaceBetween size="m">
       <Header
@@ -55,12 +55,12 @@ export function NetworkDashboardHeader({ actions, searchValue, onSearchChange }:
       >
         Network Administration Dashboard
       </Header>
-      
+
       {/* Search and Pagination Controls */}
       <Grid
         gridDefinition={[
           { colspan: { default: 12, xs: 12, s: 8, m: 8, l: 8, xl: 8 } },
-          { colspan: { default: 12, xs: 12, s: 4, m: 4, l: 4, xl: 4 } }
+          { colspan: { default: 12, xs: 12, s: 4, m: 4, l: 4, xl: 4 } },
         ]}
       >
         <Input
@@ -70,7 +70,7 @@ export function NetworkDashboardHeader({ actions, searchValue, onSearchChange }:
           onChange={({ detail }) => onSearchChange(detail.value)}
           clearAriaLabel="Clear search"
         />
-        
+
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '8px' }}>
           <Pagination
             currentPageIndex={1}

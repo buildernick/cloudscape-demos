@@ -12,71 +12,71 @@ import { WidgetConfig } from '../interfaces';
 
 // Sample device data for the table
 const deviceData = [
-  { 
-    id: '1', 
-    name: 'Device-001', 
-    type: 'Router', 
-    status: 'Active', 
+  {
+    id: '1',
+    name: 'Device-001',
+    type: 'Router',
+    status: 'Active',
     ipAddress: '192.168.1.1',
     location: 'Building A',
     uptime: '99.9%',
-    lastSeen: '2 minutes ago'
+    lastSeen: '2 minutes ago',
   },
-  { 
-    id: '2', 
-    name: 'Device-002', 
-    type: 'Switch', 
-    status: 'Active', 
+  {
+    id: '2',
+    name: 'Device-002',
+    type: 'Switch',
+    status: 'Active',
     ipAddress: '192.168.1.2',
     location: 'Building A',
     uptime: '98.5%',
-    lastSeen: '5 minutes ago'
+    lastSeen: '5 minutes ago',
   },
-  { 
-    id: '3', 
-    name: 'Device-003', 
-    type: 'Access Point', 
-    status: 'Inactive', 
+  {
+    id: '3',
+    name: 'Device-003',
+    type: 'Access Point',
+    status: 'Inactive',
     ipAddress: '192.168.1.3',
     location: 'Building B',
     uptime: '95.2%',
-    lastSeen: '1 hour ago'
+    lastSeen: '1 hour ago',
   },
-  { 
-    id: '4', 
-    name: 'Device-004', 
-    type: 'Router', 
-    status: 'Active', 
+  {
+    id: '4',
+    name: 'Device-004',
+    type: 'Router',
+    status: 'Active',
     ipAddress: '192.168.1.4',
     location: 'Building B',
     uptime: '99.1%',
-    lastSeen: '1 minute ago'
+    lastSeen: '1 minute ago',
   },
-  { 
-    id: '5', 
-    name: 'Device-005', 
-    type: 'Switch', 
-    status: 'Active', 
+  {
+    id: '5',
+    name: 'Device-005',
+    type: 'Switch',
+    status: 'Active',
     ipAddress: '192.168.1.5',
     location: 'Building C',
     uptime: '97.8%',
-    lastSeen: '3 minutes ago'
+    lastSeen: '3 minutes ago',
   },
-  { 
-    id: '6', 
-    name: 'Device-006', 
-    type: 'Access Point', 
-    status: 'Maintenance', 
+  {
+    id: '6',
+    name: 'Device-006',
+    type: 'Access Point',
+    status: 'Maintenance',
     ipAddress: '192.168.1.6',
     location: 'Building C',
     uptime: '88.3%',
-    lastSeen: '2 hours ago'
+    lastSeen: '2 hours ago',
   },
 ];
 
 function MyDevicesHeader() {
   return (
-    <Header 
+    <Header
       variant="h2"
       description="Devices on your local network"
       actions={

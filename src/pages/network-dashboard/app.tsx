@@ -34,7 +34,7 @@ export function App() {
         ref={appLayout}
         content={
           <SpaceBetween size="m">
-            <NetworkDashboardHeader 
+            <NetworkDashboardHeader
               actions={
                 <Button variant="primary" iconAlign="right" iconName="external">
                   Refresh Data
@@ -43,7 +43,7 @@ export function App() {
               searchValue={searchValue}
               onSearchChange={setSearchValue}
             />
-            
+
             {/* Warning Banner */}
             <Flashbar
               items={[
@@ -55,16 +55,16 @@ export function App() {
                 },
               ]}
             />
-            
+
             <Content />
           </SpaceBetween>
         }
         breadcrumbs={
-          <Breadcrumbs 
+          <Breadcrumbs
             items={[
               { text: 'Service', href: '#/service' },
-              { text: 'Administrative Dashboard', href: '#/network-dashboard' }
-            ]} 
+              { text: 'Administrative Dashboard', href: '#/network-dashboard' },
+            ]}
           />
         }
         navigation={<NetworkDashboardSideNavigation />}

@@ -45,16 +45,13 @@ export function App() {
             />
 
             {/* Warning Banner */}
-            <Flashbar
-              items={[
-                {
-                  type: 'warning',
-                  content: 'This is a warning message',
-                  dismissible: true,
-                  dismissLabel: 'Dismiss',
-                },
-              ]}
-            />
+            <Alert
+              type="warning"
+              dismissible
+              dismissAriaLabel="Dismiss warning"
+            >
+              This is a warning message
+            </Alert>
 
             <Content />
           </SpaceBetween>

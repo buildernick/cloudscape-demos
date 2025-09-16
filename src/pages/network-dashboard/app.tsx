@@ -29,15 +29,17 @@ export function App() {
     { text: 'Administrative Dashboard', href: '#/network-dashboard' },
   ];
 
-  const alertItems = showAlert ? [
-    {
-      type: 'warning' as const,
-      content: 'This is a warning message',
-      dismissible: true,
-      onDismiss: () => setShowAlert(false),
-      dismissLabel: 'Dismiss',
-    },
-  ] : [];
+  const alertItems = showAlert
+    ? [
+        {
+          type: 'warning' as const,
+          content: 'This is a warning message',
+          dismissible: true,
+          onDismiss: () => setShowAlert(false),
+          dismissLabel: 'Dismiss',
+        },
+      ]
+    : [];
 
   return (
     <AppLayout
@@ -64,12 +66,7 @@ export function App() {
               </Header>
               <Flashbar items={alertItems} />
               <div className="search-and-pagination">
-                <Grid
-                  gridDefinition={[
-                    { colspan: { default: 12, s: 8 } },
-                    { colspan: { default: 12, s: 4 } },
-                  ]}
-                >
+                <Grid gridDefinition={[{ colspan: { default: 12, s: 8 } }, { colspan: { default: 12, s: 4 } }]}>
                   <TextFilter
                     filteringText={searchText}
                     filteringPlaceholder="Placeholder"
@@ -96,12 +93,7 @@ export function App() {
         >
           <SpaceBetween size="l">
             {/* Charts Section */}
-            <Grid
-              gridDefinition={[
-                { colspan: { default: 12, m: 6 } },
-                { colspan: { default: 12, m: 6 } },
-              ]}
-            >
+            <Grid gridDefinition={[{ colspan: { default: 12, m: 6 } }, { colspan: { default: 12, m: 6 } }]}>
               <NetworkTrafficChart />
               <CreditUsageChart />
             </Grid>
@@ -113,11 +105,7 @@ export function App() {
                   variant="h2"
                   description="Devices on your local network"
                   actions={
-                    <Button
-                      variant="primary"
-                      iconName="external"
-                      iconAlign="right"
-                    >
+                    <Button variant="primary" iconName="external" iconAlign="right">
                       Add Device
                     </Button>
                   }

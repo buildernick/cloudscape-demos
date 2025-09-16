@@ -112,8 +112,8 @@ export function DevicesTable() {
             item.status === 'Active'
               ? 'text-status-success'
               : item.status === 'Idle'
-              ? 'text-status-warning'
-              : 'text-status-error'
+                ? 'text-status-warning'
+                : 'text-status-error'
           }
         >
           {item.status}

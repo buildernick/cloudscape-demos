@@ -31,7 +31,7 @@ export function NetworkTrafficChart() {
       color: '#688AE8',
     },
     {
-      title: 'Site 2', 
+      title: 'Site 2',
       type: 'area' as const,
       data: chartData.map(d => ({ x: d.x, y: d.y2 })),
       color: '#C33D69',
@@ -39,13 +39,7 @@ export function NetworkTrafficChart() {
   ];
 
   return (
-    <Container
-      header={
-        <Header variant="h3">
-          Network traffic
-        </Header>
-      }
-    >
+    <Container header={<Header variant="h3">Network traffic</Header>}>
       <AreaChart
         series={series}
         height={300}
@@ -67,11 +61,11 @@ export function NetworkTrafficChart() {
           filterSelectedAriaLabel: 'selected',
           legendAriaLabel: 'Legend',
           chartAriaRoleDescription: 'area chart',
-          xTickFormatter: (e) => {
+          xTickFormatter: e => {
             const date = new Date(e);
             return `x${date.getDate()}`;
           },
-          yTickFormatter: (e) => `y${Math.round(e)}`,
+          yTickFormatter: e => `y${Math.round(e)}`,
         }}
         additionalFilters={
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '16px' }}>

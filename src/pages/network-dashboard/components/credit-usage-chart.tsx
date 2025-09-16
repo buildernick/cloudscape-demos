@@ -26,13 +26,7 @@ export function CreditUsageChart() {
   ];
 
   return (
-    <Container
-      header={
-        <Header variant="h3">
-          Credit Usage
-        </Header>
-      }
-    >
+    <Container header={<Header variant="h3">Credit Usage</Header>}>
       <BarChart
         series={series}
         height={300}
@@ -53,8 +47,8 @@ export function CreditUsageChart() {
           filterSelectedAriaLabel: 'selected',
           legendAriaLabel: 'Legend',
           chartAriaRoleDescription: 'bar chart',
-          xTickFormatter: (e) => e,
-          yTickFormatter: (e) => `y${Math.round(e)}`,
+          xTickFormatter: e => e,
+          yTickFormatter: e => `y${Math.round(e)}`,
         }}
         additionalFilters={
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '16px' }}>

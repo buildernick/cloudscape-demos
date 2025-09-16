@@ -45,11 +45,7 @@ export function App() {
             />
 
             {/* Warning Banner */}
-            <Alert
-              type="warning"
-              dismissible
-              dismissAriaLabel="Dismiss warning"
-            >
+            <Alert type="warning" dismissible dismissAriaLabel="Dismiss warning">
               This is a warning message
             </Alert>
 

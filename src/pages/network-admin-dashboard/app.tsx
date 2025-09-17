@@ -49,34 +49,50 @@ export function App() {
       content={
         <ContentLayout
           header={
-            <Header
-              variant="h1"
-              description="Network Traffic, Credit Usage, and Your Devices"
-              actions={
-                <Button variant="primary" iconAlign="right" iconName="external">
-                  Refresh Data
-                </Button>
-              }
-            >
-              Network Administration Dashboard
-            </Header>
+            <div style={{ borderWidth: '6px', borderStyle: 'solid', borderColor: 'transparent' }}>
+              <Header
+                variant="h1"
+                description="Network Traffic, Credit Usage, and Your Devices"
+                actions={
+                  <Button
+                    variant="primary"
+                    iconAlign="right"
+                    iconName="external"
+                    onClick={() => setShowRefreshModal(true)}
+                  >
+                    Refresh Data
+                  </Button>
+                }
+              >
+                Network Administration Dashboard
+              </Header>
+            </div>
           }
         >
           <SpaceBetween size="l">
             {/* Charts Section */}
-            <Grid
-              gridDefinition={[
-                { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
-                { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
-              ]}
-            >
-              <Container>
-                <NetworkTrafficChart />
-              </Container>
-              <Container>
-                <CreditUsageChart />
-              </Container>
-            </Grid>
+            <div style={{
+              borderWidth: '5px',
+              borderStyle: 'solid',
+              borderColor: 'transparent',
+              gap: '9px',
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
+              <Grid
+                gridDefinition={[
+                  { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
+                  { colspan: { default: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
+                ]}
+              >
+                <Container>
+                  <NetworkTrafficChart />
+                </Container>
+                <Container>
+                  <CreditUsageChart />
+                </Container>
+              </Grid>
+            </div>
 
             {/* Devices Section */}
             <Container

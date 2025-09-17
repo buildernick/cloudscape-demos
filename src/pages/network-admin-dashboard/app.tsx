@@ -14,6 +14,7 @@ import TextFilter from '@cloudscape-design/components/text-filter';
 import Pagination from '@cloudscape-design/components/pagination';
 import Table from '@cloudscape-design/components/table';
 import Box from '@cloudscape-design/components/box';
+import Modal from '@cloudscape-design/components/modal';
 
 import { Breadcrumbs } from '../commons';
 import { NetworkTrafficChart } from './components/network-traffic-chart';
@@ -25,6 +26,7 @@ export function App() {
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const [selectedItems, setSelectedItems] = useState([]);
   const [dismissedWarning, setDismissedWarning] = useState(false);
+  const [showRefreshModal, setShowRefreshModal] = useState(false);
   const itemsPerPage = 10;
 
   // Filter devices based on search text

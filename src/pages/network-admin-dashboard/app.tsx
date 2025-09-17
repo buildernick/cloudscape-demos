@@ -44,21 +44,6 @@ export function App() {
     <AppLayout
       navigationHide
       toolsHide
-      notifications={
-        !dismissedWarning ? (
-          <Flashbar
-            items={[
-              {
-                type: 'warning',
-                content: 'This is a warning message',
-                dismissible: true,
-                onDismiss: () => setDismissedWarning(true),
-                buttonText: 'Dismiss',
-              },
-            ]}
-          />
-        ) : undefined
-      }
       content={
         <ContentLayout
           header={
@@ -184,12 +169,77 @@ export function App() {
         </ContentLayout>
       }
       breadcrumbs={
-        <Breadcrumbs
-          items={[
-            { text: 'Service', href: '#/' },
-            { text: 'Administrative Dashboard', href: '#/network-admin-dashboard' },
-          ]}
-        />
+        <>
+          <Breadcrumbs
+            items={[
+              { text: 'Service', href: '#/' },
+              { text: 'Administrative Dashboard', href: '#/network-admin-dashboard' },
+            ]}
+          />
+          {!dismissedWarning && (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                backgroundColor: 'rgba(208, 2, 27, 1)',
+                borderRadius: '12px',
+                boxShadow: 'rgba(0, 7, 22, 0.1) 0px 4px 8px 0px',
+                justifyContent: 'space-between',
+                overflowWrap: 'break-word',
+                position: 'relative',
+                wordWrap: 'break-word',
+                padding: '8px 16px',
+                margin: '12px 0',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  color: 'white',
+                }}
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  style={{ flexShrink: 0 }}
+                >
+                  <path
+                    d="M8 5v4M8 10v2M6.52 1.88l-5.33 9.76c-.13.23-.19.5-.19.76 0 .88.71 1.59 1.59 1.59H13.4c.88 0 1.59-.71 1.59-1.59 0-.27-.07-.53-.19-.76L9.48 1.88C9.18 1.34 8.62 1 8 1s-1.18.34-1.48.88Z"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    fill="none"
+                  />
+                </svg>
+                <span style={{ color: 'white', fontSize: '14px', fontWeight: '400' }}>
+                  This is a warning message
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => setDismissedWarning(true)}
+                style={{
+                  backgroundColor: 'transparent',
+                  border: 'none',
+                  borderRadius: '20px',
+                  color: 'white',
+                  fontWeight: '700',
+                  fontSize: '14px',
+                  padding: '4px 20px',
+                  cursor: 'pointer',
+                }}
+              >
+                Dismiss
+              </button>
+            </div>
+          )}
+        </>
       }
     />
   );

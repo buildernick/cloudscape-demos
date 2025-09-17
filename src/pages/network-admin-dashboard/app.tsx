@@ -188,7 +188,7 @@ export function App() {
         </ContentLayout>
       }
       breadcrumbs={
-        <>
+        <div>
           <Breadcrumbs
             items={[
               { text: 'Service', href: '#/' },
@@ -258,7 +258,7 @@ export function App() {
               </button>
             </div>
           )}
-        </>
+        </div>
       }
       />
       <Modal

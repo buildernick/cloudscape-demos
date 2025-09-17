@@ -43,7 +43,8 @@ export function App() {
   );
 
   return (
-    <AppLayout
+    <>
+      <AppLayout
       navigationHide
       toolsHide
       content={
@@ -259,6 +260,38 @@ export function App() {
           )}
         </>
       }
-    />
+      />
+      <Modal
+        onDismiss={() => setShowRefreshModal(false)}
+        visible={showRefreshModal}
+        closeAriaLabel="Close modal"
+        footer={
+          <Box float="right">
+            <SpaceBetween direction="horizontal" size="xs">
+              <Button variant="link" onClick={() => setShowRefreshModal(false)}>
+                Cancel
+              </Button>
+              <Button
+                variant="primary"
+                onClick={() => {
+                  setShowRefreshModal(false);
+                  // Add refresh logic here
+                  console.log('Data refreshed!');
+                }}
+              >
+                Confirm Refresh
+              </Button>
+            </SpaceBetween>
+          </Box>
+        }
+        header="Confirm Data Refresh"
+      >
+        <SpaceBetween size="m">
+          <Box variant="span">
+            Are you sure you want to refresh the dashboard data? This will update all charts and device information.
+          </Box>
+        </SpaceBetween>
+      </Modal>
+    </>
   );
 }

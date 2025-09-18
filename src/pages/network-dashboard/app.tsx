@@ -199,7 +199,18 @@ export function App() {
       navigationHide
       toolsHide
       breadcrumbs={<BreadcrumbGroup items={breadcrumbItems} />}
-      notifications={<Flashbar items={flashbarItems} />}
+      notifications={
+        !warningDismissed && (
+          <Alert
+            type="error"
+            dismissible
+            onDismiss={() => setWarningDismissed(true)}
+            buttonText="Dismiss"
+          >
+            This is a warning message
+          </Alert>
+        )
+      }
       content={
         <ContentLayout
           header={

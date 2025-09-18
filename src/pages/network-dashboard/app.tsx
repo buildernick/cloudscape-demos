@@ -193,17 +193,6 @@ export function App() {
     { text: 'Administrative Dashboard', href: '#' },
   ];
 
-  const flashbarItems = warningDismissed
-    ? []
-    : [
-        {
-          type: 'error' as const,
-          content: 'This is a warning message',
-          dismissible: true,
-          onDismiss: () => setWarningDismissed(true),
-          buttonText: 'Dismiss',
-        },
-      ];
 
   return (
     <AppLayout

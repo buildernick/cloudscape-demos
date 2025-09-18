@@ -20,7 +20,7 @@ import TextFilter from '@cloudscape-design/components/text-filter';
 
 // Mock data for network traffic (area chart)
 const networkTrafficData = [
-  { 
+  {
     title: 'Site 1',
     type: 'area',
     data: [
@@ -35,10 +35,10 @@ const networkTrafficData = [
       { x: new Date('2024-01-09'), y: 60 },
       { x: new Date('2024-01-10'), y: 80 },
       { x: new Date('2024-01-11'), y: 75 },
-      { x: new Date('2024-01-12'), y: 85 }
-    ]
+      { x: new Date('2024-01-12'), y: 85 },
+    ],
   },
-  { 
+  {
     title: 'Site 2',
     type: 'area',
     data: [
@@ -53,9 +53,9 @@ const networkTrafficData = [
       { x: new Date('2024-01-09'), y: 35 },
       { x: new Date('2024-01-10'), y: 45 },
       { x: new Date('2024-01-11'), y: 40 },
-      { x: new Date('2024-01-12'), y: 50 }
-    ]
-  }
+      { x: new Date('2024-01-12'), y: 50 },
+    ],
+  },
 ];
 
 // Mock data for credit usage (bar chart)
@@ -64,7 +64,7 @@ const creditUsageData = [
   { x: 'Day 2', y: 100 },
   { x: 'Day 3', y: 85 },
   { x: 'Day 4', y: 45 },
-  { x: 'Day 5', y: 90 }
+  { x: 'Day 5', y: 90 },
 ];
 
 // Mock data for devices table
@@ -77,17 +77,17 @@ const devicesData = [
     status: 'Online',
     lastSeen: '2 minutes ago',
     bandwidth: '1 Gbps',
-    location: 'Data Center A'
+    location: 'Data Center A',
   },
   {
-    id: '2', 
+    id: '2',
     deviceName: 'Switch-Floor1',
     ipAddress: '192.168.1.10',
     deviceType: 'Switch',
     status: 'Online',
     lastSeen: '5 minutes ago',
     bandwidth: '10 Gbps',
-    location: 'Floor 1'
+    location: 'Floor 1',
   },
   {
     id: '3',
@@ -97,7 +97,7 @@ const devicesData = [
     status: 'Offline',
     lastSeen: '2 hours ago',
     bandwidth: '300 Mbps',
-    location: 'Office Wing'
+    location: 'Office Wing',
   },
   {
     id: '4',
@@ -107,7 +107,7 @@ const devicesData = [
     status: 'Online',
     lastSeen: '1 minute ago',
     bandwidth: '10 Gbps',
-    location: 'Data Center A'
+    location: 'Data Center A',
   },
   {
     id: '5',
@@ -117,8 +117,8 @@ const devicesData = [
     status: 'Online',
     lastSeen: '3 minutes ago',
     bandwidth: '5 Gbps',
-    location: 'DMZ'
-  }
+    location: 'DMZ',
+  },
 ];
 
 const columnDefinitions = [
@@ -126,44 +126,44 @@ const columnDefinitions = [
     id: 'deviceName',
     header: 'Device Name',
     cell: (item: any) => item.deviceName,
-    sortingField: 'deviceName'
+    sortingField: 'deviceName',
   },
   {
     id: 'ipAddress',
     header: 'IP Address',
     cell: (item: any) => item.ipAddress,
-    sortingField: 'ipAddress'
+    sortingField: 'ipAddress',
   },
   {
     id: 'deviceType',
     header: 'Device Type',
     cell: (item: any) => item.deviceType,
-    sortingField: 'deviceType'
+    sortingField: 'deviceType',
   },
   {
     id: 'status',
     header: 'Status',
     cell: (item: any) => item.status,
-    sortingField: 'status'
+    sortingField: 'status',
   },
   {
     id: 'lastSeen',
     header: 'Last Seen',
     cell: (item: any) => item.lastSeen,
-    sortingField: 'lastSeen'
+    sortingField: 'lastSeen',
   },
   {
     id: 'bandwidth',
     header: 'Bandwidth',
     cell: (item: any) => item.bandwidth,
-    sortingField: 'bandwidth'
+    sortingField: 'bandwidth',
   },
   {
     id: 'location',
     header: 'Location',
     cell: (item: any) => item.location,
-    sortingField: 'location'
-  }
+    sortingField: 'location',
+  },
 ];
 
 export function App() {
@@ -174,33 +174,36 @@ export function App() {
   const itemsPerPage = 10;
 
   // Filter devices based on search text
-  const filteredDevices = devicesData.filter(device =>
-    device.deviceName.toLowerCase().includes(filterText.toLowerCase()) ||
-    device.ipAddress.includes(filterText) ||
-    device.deviceType.toLowerCase().includes(filterText.toLowerCase()) ||
-    device.status.toLowerCase().includes(filterText.toLowerCase())
+  const filteredDevices = devicesData.filter(
+    device =>
+      device.deviceName.toLowerCase().includes(filterText.toLowerCase()) ||
+      device.ipAddress.includes(filterText) ||
+      device.deviceType.toLowerCase().includes(filterText.toLowerCase()) ||
+      device.status.toLowerCase().includes(filterText.toLowerCase()),
   );
 
   // Paginate filtered devices
   const paginatedDevices = filteredDevices.slice(
     (currentPageIndex - 1) * itemsPerPage,
-    currentPageIndex * itemsPerPage
+    currentPageIndex * itemsPerPage,
   );
 
   const breadcrumbItems = [
     { text: 'Service', href: '#' },
-    { text: 'Administrative Dashboard', href: '#' }
+    { text: 'Administrative Dashboard', href: '#' },
   ];
 
-  const flashbarItems = warningDismissed ? [] : [
-    {
-      type: 'error' as const,
-      content: 'This is a warning message',
-      dismissible: true,
-      onDismiss: () => setWarningDismissed(true),
-      buttonText: 'Dismiss'
-    }
-  ];
+  const flashbarItems = warningDismissed
+    ? []
+    : [
+        {
+          type: 'error' as const,
+          content: 'This is a warning message',
+          dismissible: true,
+          onDismiss: () => setWarningDismissed(true),
+          buttonText: 'Dismiss',
+        },
+      ];
 
   return (
     <AppLayout
@@ -215,9 +218,9 @@ export function App() {
               variant="h1"
               description="Network Traffic, Credit Usage, and Your Devices"
               actions={
-                <Button 
-                  variant="primary" 
-                  iconAlign="right" 
+                <Button
+                  variant="primary"
+                  iconAlign="right"
                   iconName="external"
                   onClick={() => window.location.reload()}
                 >
@@ -250,17 +253,11 @@ export function App() {
             <Grid
               gridDefinition={[
                 { colspan: { default: 12, xxs: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
-                { colspan: { default: 12, xxs: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } }
+                { colspan: { default: 12, xxs: 12, xs: 12, s: 12, m: 6, l: 6, xl: 6 } },
               ]}
             >
               {/* Network Traffic Chart */}
-              <Container
-                header={
-                  <Header variant="h2">
-                    Network traffic
-                  </Header>
-                }
-              >
+              <Container header={<Header variant="h2">Network traffic</Header>}>
                 <AreaChart
                   series={networkTrafficData}
                   xDomain={[new Date('2024-01-01'), new Date('2024-01-12')]}
@@ -273,7 +270,7 @@ export function App() {
                     filterLabel: 'Filter displayed data',
                     filterPlaceholder: 'Filter data',
                     legendAriaLabel: 'Legend',
-                    chartAriaRoleDescription: 'area chart'
+                    chartAriaRoleDescription: 'area chart',
                   }}
                   hideFilter
                   fitHeight
@@ -281,19 +278,15 @@ export function App() {
               </Container>
 
               {/* Credit Usage Chart */}
-              <Container
-                header={
-                  <Header variant="h2">
-                    Credit Usage
-                  </Header>
-                }
-              >
+              <Container header={<Header variant="h2">Credit Usage</Header>}>
                 <BarChart
-                  series={[{
-                    title: 'Site 1',
-                    type: 'bar',
-                    data: creditUsageData
-                  }]}
+                  series={[
+                    {
+                      title: 'Site 1',
+                      type: 'bar',
+                      data: creditUsageData,
+                    },
+                  ]}
                   xDomain={creditUsageData.map(d => d.x)}
                   yDomain={[0, 120]}
                   height={300}
@@ -304,7 +297,7 @@ export function App() {
                     filterLabel: 'Filter displayed data',
                     filterPlaceholder: 'Filter data',
                     legendAriaLabel: 'Legend',
-                    chartAriaRoleDescription: 'bar chart'
+                    chartAriaRoleDescription: 'bar chart',
                   }}
                   hideFilter
                   fitHeight
@@ -315,15 +308,11 @@ export function App() {
             {/* Devices Table */}
             <Container
               header={
-                <Header 
+                <Header
                   variant="h2"
                   description="Devices on your local network"
                   actions={
-                    <Button 
-                      variant="primary" 
-                      iconAlign="right" 
-                      iconName="external"
-                    >
+                    <Button variant="primary" iconAlign="right" iconName="external">
                       Add Device
                     </Button>
                   }
@@ -338,7 +327,7 @@ export function App() {
                 selection={{
                   type: 'multi',
                   selectedItems,
-                  onSelectionChange: ({ detail }) => setSelectedItems(detail.selectedItems)
+                  onSelectionChange: ({ detail }) => setSelectedItems(detail.selectedItems),
                 }}
                 sortingDisabled
                 variant="borderless"

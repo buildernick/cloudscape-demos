@@ -193,7 +193,6 @@ export function App() {
     { text: 'Administrative Dashboard', href: '#' },
   ];
 
-
   return (
     <AppLayout
       navigationHide
@@ -201,12 +200,7 @@ export function App() {
       breadcrumbs={<BreadcrumbGroup items={breadcrumbItems} />}
       notifications={
         !warningDismissed && (
-          <Alert
-            type="error"
-            dismissible
-            onDismiss={() => setWarningDismissed(true)}
-            buttonText="Dismiss"
-          >
+          <Alert type="error" dismissible onDismiss={() => setWarningDismissed(true)} buttonText="Dismiss">
             This is a warning message
           </Alert>
         )

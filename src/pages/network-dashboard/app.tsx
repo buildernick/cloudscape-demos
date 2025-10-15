@@ -217,16 +217,10 @@ export function App() {
                 </div>
               </Grid>
 
-              <Flashbar
-                items={[
-                  {
-                    type: 'error',
-                    content: 'This is a warning message',
-                    dismissible: true,
-                    dismissLabel: 'Dismiss',
-                    id: 'warning-message',
-                  },
-                ]}
+              <CustomAlert
+                type="error"
+                content="This is a warning message"
+                dismissible={true}
               />
             </SpaceBetween>
           }

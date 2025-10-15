@@ -77,6 +77,85 @@ const deviceData = Array.from({ length: 12 }, (_, i) => ({
   lastSeen: 'Cell Value',
 }));
 
+function CustomAlert({ type, content, dismissible, onDismiss }) {
+  const [isVisible, setIsVisible] = useState(true);
+
+  const getTypeStyles = () => {
+    switch (type) {
+      case 'error':
+        return {
+          backgroundColor: 'rgba(212, 6, 10, 1)',
+          color: '#ffffff',
+          borderColor: 'rgba(212, 6, 10, 1)',
+        };
+      case 'warning':
+        return {
+          backgroundColor: 'rgb(255, 243, 180)',
+          color: '#946C00',
+          borderColor: '#946C00',
+        };
+      default:
+        return {
+          backgroundColor: 'rgb(229, 243, 255)',
+          color: '#0972d3',
+          borderColor: '#0972d3',
+        };
+    }
+  };
+
+  const handleDismiss = () => {
+    setIsVisible(false);
+    if (onDismiss) {
+      onDismiss();
+    }
+  };
+
+  if (!isVisible) {
+    return null;
+  }
+
+  const typeStyles = getTypeStyles();
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'flex-start',
+        backgroundColor: typeStyles.backgroundColor,
+        borderRadius: '12px',
+        boxShadow: 'rgba(0, 7, 22, 0.1) 0px 4px 8px 0px',
+        padding: '13px 34px 13px 33px',
+        border: `1px solid ${typeStyles.borderColor}`,
+        justifyContent: 'space-between',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <Icon name="status-warning" variant="normal" />
+        <span style={{ color: typeStyles.color, fontSize: '14px', lineHeight: '22px' }}>
+          {content}
+        </span>
+      </div>
+      {dismissible && (
+        <button
+          onClick={handleDismiss}
+          style={{
+            background: 'none',
+            border: 'none',
+            color: typeStyles.color,
+            cursor: 'pointer',
+            fontSize: '14px',
+            fontWeight: '600',
+            lineHeight: '22px',
+            padding: 0,
+          }}
+        >
+          Dismiss
+        </button>
+      )}
+    </div>
+  );
+}
+
 export function App() {
   const [searchValue, setSearchValue] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);

@@ -131,9 +131,7 @@ function CustomAlert({ type, content, dismissible, onDismiss }) {
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
         <Icon name="status-warning" variant="normal" />
-        <span style={{ color: typeStyles.color, fontSize: '14px', lineHeight: '22px' }}>
-          {content}
-        </span>
+        <span style={{ color: typeStyles.color, fontSize: '14px', lineHeight: '22px' }}>{content}</span>
       </div>
       {dismissible && (
         <button
@@ -217,11 +215,7 @@ export function App() {
                 </div>
               </Grid>
 
-              <CustomAlert
-                type="error"
-                content="This is a warning message"
-                dismissible={true}
-              />
+              <CustomAlert type="error" content="This is a warning message" dismissible={true} />
             </SpaceBetween>
           }
         >

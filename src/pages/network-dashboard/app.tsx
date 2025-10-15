@@ -119,7 +119,10 @@ export function App() {
                   type="search"
                   ariaLabel="Search"
                 />
-                <div className="pagination-container" style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'flex-end' }}>
+                <div
+                  className="pagination-container"
+                  style={{ display: 'flex', alignItems: 'center', gap: '8px', justifyContent: 'flex-end' }}
+                >
                   <Pagination
                     currentPageIndex={currentPageIndex}
                     onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
@@ -155,10 +158,7 @@ export function App() {
               <Container>
                 <AreaChart
                   series={networkTrafficData}
-                  xDomain={[
-                    new Date(2023, 0, 1),
-                    new Date(2023, 0, 12),
-                  ]}
+                  xDomain={[new Date(2023, 0, 1), new Date(2023, 0, 12)]}
                   yDomain={[0, 250]}
                   i18nStrings={{
                     filterLabel: 'Filter displayed data',
@@ -166,11 +166,11 @@ export function App() {
                     filterSelectedAriaLabel: 'selected',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'area chart',
-                    xTickFormatter: (value) => {
+                    xTickFormatter: value => {
                       const date = new Date(value);
                       return `x${date.getDate()}`;
                     },
-                    yTickFormatter: (value) => `y${Math.round(value / 50)}`,
+                    yTickFormatter: value => `y${Math.round(value / 50)}`,
                   }}
                   ariaLabel="Network traffic area chart"
                   height={300}
@@ -220,7 +220,7 @@ export function App() {
                     filterSelectedAriaLabel: 'selected',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'bar chart',
-                    yTickFormatter: (value) => `y${Math.round(value / 50)}`,
+                    yTickFormatter: value => `y${Math.round(value / 50)}`,
                   }}
                   ariaLabel="Credit usage bar chart"
                   height={300}

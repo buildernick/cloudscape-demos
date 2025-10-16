@@ -130,12 +130,7 @@ export default function NetworkAdminDashboard() {
             Network Adminstration Dashboard
           </Header>
 
-          <Grid
-            gridDefinition={[
-              { colspan: { default: 12, s: 6 } },
-              { colspan: { default: 12, s: 6 } },
-            ]}
-          >
+          <Grid gridDefinition={[{ colspan: { default: 12, s: 6 } }, { colspan: { default: 12, s: 6 } }]}>
             <Input
               type="search"
               placeholder="Placeholder"
@@ -156,12 +151,7 @@ export default function NetworkAdminDashboard() {
                   }}
                 />
                 <Box color="text-status-inactive" display="inline">
-                  <Box
-                    variant="span"
-                    padding={{ horizontal: 'xs' }}
-                    color="text-body-secondary"
-                    fontSize="body-s"
-                  >
+                  <Box variant="span" padding={{ horizontal: 'xs' }} color="text-body-secondary" fontSize="body-s">
                     |
                   </Box>
                 </Box>
@@ -181,12 +171,7 @@ export default function NetworkAdminDashboard() {
             </Alert>
           )}
 
-          <Grid
-            gridDefinition={[
-              { colspan: { default: 12, m: 6 } },
-              { colspan: { default: 12, m: 6 } },
-            ]}
-          >
+          <Grid gridDefinition={[{ colspan: { default: 12, m: 6 } }, { colspan: { default: 12, m: 6 } }]}>
             <Container>
               <AreaChart
                 series={[
@@ -218,11 +203,7 @@ export default function NetworkAdminDashboard() {
                   <SpaceBetween direction="horizontal" size="xs">
                     <Box fontSize="body-s" color="text-body-secondary">
                       <Box variant="span" fontWeight="normal">
-                        <Box
-                          variant="span"
-                          display="inline-block"
-                          padding={{ right: 'xxs' }}
-                        >
+                        <Box variant="span" display="inline-block" padding={{ right: 'xxs' }}>
                           <svg width="12" height="3" aria-hidden="true">
                             <rect width="6" height="3" rx="1" fill="#5F6B7A" />
                             <rect x="8" width="6" height="3" rx="1" fill="#5F6B7A" />
@@ -262,11 +243,7 @@ export default function NetworkAdminDashboard() {
                   <SpaceBetween direction="horizontal" size="xs">
                     <Box fontSize="body-s" color="text-body-secondary">
                       <Box variant="span" fontWeight="normal">
-                        <Box
-                          variant="span"
-                          display="inline-block"
-                          padding={{ right: 'xxs' }}
-                        >
+                        <Box variant="span" display="inline-block" padding={{ right: 'xxs' }}>
                           <svg width="12" height="3" aria-hidden="true">
                             <rect width="6" height="3" rx="1" fill="#5F6B7A" />
                             <rect x="8" width="6" height="3" rx="1" fill="#5F6B7A" />

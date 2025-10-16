@@ -42,7 +42,11 @@ Use the /public/UserDataApi.json file as the sample User Data API
 #######
 # Component Usage
 
-- When importing from figma, if a design element isn't mapped to a code component attempt to find a suitable one.
-- If no component there, use components from @cloudscape-design/components package. 
-- Don't ever update existing components.  
-- - When changing background colors of components, check to see if there are variants of that component that you should use instead.
+- When importing from figma, uuse components from @cloudscape-design/components package when possible
+- Don't ever update existing components.  If you think updating an existing component would be helpful, put that in the summary output after building a design.
+- Alert and Flashbar components are very similar in cloudscape-design. We have a strong preference to use Flashbar unless the user asks for the Alert component.
+
+
+########
+# Other Demo notes to look out for
+- When changing  colors of components, check to see if there are variants of that component that you should use instead.

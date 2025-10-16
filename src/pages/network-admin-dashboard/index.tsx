@@ -7,7 +7,6 @@ import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Header from '@cloudscape-design/components/header';
 import Button from '@cloudscape-design/components/button';
 import SpaceBetween from '@cloudscape-design/components/space-between';
-import Alert from '@cloudscape-design/components/alert';
 import Grid from '@cloudscape-design/components/grid';
 import Container from '@cloudscape-design/components/container';
 import AreaChart from '@cloudscape-design/components/area-chart';
@@ -161,14 +160,85 @@ export default function NetworkAdminDashboard() {
           </Grid>
 
           {alertVisible && (
-            <Alert
-              type="error"
-              dismissible
-              onDismiss={() => setAlertVisible(false)}
-              dismissAriaLabel="Dismiss warning message"
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'flex-start',
+                backgroundColor: 'rgba(219, 10, 13, 1)',
+                borderRadius: '12px',
+                boxShadow: 'rgba(0, 7, 22, 0.1) 0px 4px 8px 0px',
+                padding: '8px 16px',
+                marginBottom: '16px',
+              }}
             >
-              This is a warning message
-            </Alert>
+              <div
+                style={{
+                  display: 'flex',
+                  flexGrow: 1,
+                  flexWrap: 'wrap',
+                  gap: '12px',
+                  alignItems: 'center',
+                }}
+              >
+                <div
+                  role="group"
+                  aria-labelledby="warning-icon warning-message"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    color: 'white',
+                  }}
+                >
+                  <svg
+                    id="warning-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M8.125 5.64703V8.78428M8.125 10.6666H8.13128M14.3995 7.99997C14.3995 11.4653 11.5903 14.2745 8.125 14.2745C4.65969 14.2745 1.85049 11.4653 1.85049 7.99997C1.85049 4.53466 4.65969 1.72546 8.125 1.72546C11.5903 1.72546 14.3995 4.53466 14.3995 7.99997Z"
+                      stroke="white"
+                      strokeWidth="1.88235"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span
+                    id="warning-message"
+                    style={{
+                      color: 'white',
+                      fontFamily: 'Inter, -apple-system, Roboto, Helvetica, sans-serif',
+                      fontSize: '14px',
+                      fontWeight: 400,
+                      lineHeight: '22px',
+                    }}
+                  >
+                    This is a warning message
+                  </span>
+                </div>
+              </div>
+              <button
+                onClick={() => setAlertVisible(false)}
+                aria-label="Dismiss warning message"
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'white',
+                  cursor: 'pointer',
+                  padding: '0',
+                  marginLeft: '12px',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  fontFamily: 'Inter, -apple-system, Roboto, Helvetica, sans-serif',
+                }}
+              >
+                Dismiss
+              </button>
+            </div>
           )}
 
           <Grid gridDefinition={[{ colspan: { default: 12, m: 6 } }, { colspan: { default: 12, m: 6 } }]}>

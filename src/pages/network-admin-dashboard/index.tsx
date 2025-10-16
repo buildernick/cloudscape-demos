@@ -7,7 +7,7 @@ import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Header from '@cloudscape-design/components/header';
 import Button from '@cloudscape-design/components/button';
 import SpaceBetween from '@cloudscape-design/components/space-between';
-import Alert from '@cloudscape-design/components/alert';
+import Flashbar from '@cloudscape-design/components/flashbar';
 import Grid from '@cloudscape-design/components/grid';
 import Container from '@cloudscape-design/components/container';
 import AreaChart from '@cloudscape-design/components/area-chart';
@@ -170,16 +170,17 @@ export default function NetworkAdminDashboard() {
             </Box>
           </Grid>
 
-          {alertVisible && (
-            <Alert
-              dismissible
-              type="warning"
-              onDismiss={() => setAlertVisible(false)}
-              dismissAriaLabel="Close warning"
-            >
-              This is a warning message
-            </Alert>
-          )}
+          <Flashbar
+            items={[
+              {
+                type: 'warning',
+                content: 'This is a warning message',
+                dismissible: true,
+                onDismiss: () => setAlertVisible(false),
+                id: 'warning-message',
+              },
+            ].filter(() => alertVisible)}
+          />
 
           <Grid
             gridDefinition={[

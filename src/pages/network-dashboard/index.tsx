@@ -88,11 +88,7 @@ export default function NetworkDashboard() {
         >
           <SpaceBetween size="l">
             {alertVisible && (
-              <Alert
-                type="warning"
-                dismissible
-                onDismiss={() => setAlertVisible(false)}
-              >
+              <Alert type="warning" dismissible onDismiss={() => setAlertVisible(false)}>
                 This is a warning message
               </Alert>
             )}

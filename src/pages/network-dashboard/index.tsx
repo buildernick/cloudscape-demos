@@ -7,7 +7,7 @@ import Button from '@cloudscape-design/components/button';
 import Box from '@cloudscape-design/components/box';
 import Container from '@cloudscape-design/components/container';
 import ContentLayout from '@cloudscape-design/components/content-layout';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import Alert from '@cloudscape-design/components/alert';
 import Grid from '@cloudscape-design/components/grid';
 import Header from '@cloudscape-design/components/header';
 import Input from '@cloudscape-design/components/input';
@@ -54,14 +54,7 @@ export default function NetworkDashboard() {
   const [selectedItems, setSelectedItems] = useState<typeof devices>([]);
   const [searchValue, setSearchValue] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
-  const [flashbarItems, setFlashbarItems] = useState([
-    {
-      type: 'warning' as const,
-      dismissible: true,
-      content: 'This is a warning message',
-      id: 'warning-1',
-    },
-  ]);
+  const [alertVisible, setAlertVisible] = useState(true);
 
   return (
     <AppLayout
@@ -94,7 +87,15 @@ export default function NetworkDashboard() {
           }
         >
           <SpaceBetween size="l">
-            <Flashbar items={flashbarItems} />
+            {alertVisible && (
+              <Alert
+                type="warning"
+                dismissible
+                onDismiss={() => setAlertVisible(false)}
+              >
+                This is a warning message
+              </Alert>
+            )}
 
             <div className="charts-header-container">
               <Grid gridDefinition={[{ colspan: { default: 12, s: 6 } }, { colspan: { default: 12, s: 6 } }]}>

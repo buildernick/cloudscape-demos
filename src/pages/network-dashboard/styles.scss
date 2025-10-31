@@ -1,0 +1,157 @@
+.charts-header-container {
+  margin-bottom: 1rem;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.chart-container {
+  padding: 1rem;
+}
+
+.area-chart,
+.bar-chart {
+  width: 100%;
+  height: 300px;
+  margin: 1rem 0;
+}
+
+.chart-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.axis-label {
+  font-family: 'Open Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  fill: #5f6b7a;
+}
+
+.grid-line {
+  stroke: #e9ebed;
+  stroke-width: 1;
+}
+
+.tick {
+  stroke: #d1d5db;
+  stroke-width: 1;
+}
+
+.area-fill {
+  opacity: 0.4;
+}
+
+.area-site1 {
+  fill: #7492e7;
+}
+
+.area-site2 {
+  fill: #c33d69;
+}
+
+.area-stroke {
+  fill: none;
+  stroke-width: 2;
+}
+
+.area-site1-stroke {
+  stroke: #688ae8;
+}
+
+.area-site2-stroke {
+  stroke: #c33d69;
+}
+
+.threshold-line {
+  stroke: #5f6b7a;
+  stroke-width: 2;
+}
+
+.bar-fill {
+  fill: #688ae8;
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 1rem;
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.legend-box {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.legend-site1 {
+  background: rgba(116, 146, 231, 0.4);
+  border: 1px solid #688ae8;
+}
+
+.legend-site2 {
+  background: rgba(195, 61, 105, 0.4);
+  border: 1px solid #c33d69;
+}
+
+.legend-bar {
+  background: #688ae8;
+}
+
+.legend-dashed {
+  width: 12px;
+  height: 3px;
+  display: inline-block;
+  position: relative;
+}
+
+.legend-dashed::before,
+.legend-dashed::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 3px;
+  background: #5f6b7a;
+  border-radius: 1px;
+}
+
+.legend-dashed::before {
+  left: 0;
+}
+
+.legend-dashed::after {
+  right: 0;
+}
+
+.legend-text {
+  font-family: 'Open Sans', -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #000716;
+}
+
+@media (max-width: 768px) {
+  .pagination-controls {
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+
+  .charts-header-container {
+    .awsui-grid {
+      gap: 0.5rem;
+    }
+  }
+}

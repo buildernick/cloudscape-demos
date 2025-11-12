@@ -182,11 +182,11 @@ const networkTrafficData = [
 ];
 
 const creditUsageData = [
-  { x: 'x1', y: 3 },
-  { x: 'x2', y: 4.2 },
-  { x: 'x3', y: 3.5 },
-  { x: 'x4', y: 2 },
-  { x: 'x5', y: 3.4 },
+  { x: 'Mon', y: 2.8 },
+  { x: 'Tue', y: 3.9 },
+  { x: 'Wed', y: 4.2 },
+  { x: 'Thu', y: 3.1 },
+  { x: 'Fri', y: 4.8 },
 ];
 
 export function App() {

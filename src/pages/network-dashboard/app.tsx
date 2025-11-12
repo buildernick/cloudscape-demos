@@ -21,29 +21,148 @@ import { CustomAppLayout } from '../commons/common-components';
 
 interface Device {
   id: string;
-  column1: string;
-  column2: string;
-  column3: string;
-  column4: string;
-  column5: string;
-  column6: string;
-  column7: string;
+  name: string;
+  ipAddress: string;
+  status: string;
+  bandwidth: string;
+  packets: string;
+  errors: string;
+  lastSeen: string;
 }
 
 const generateDeviceData = (): Device[] => {
-  const devices: Device[] = [];
-  for (let i = 1; i <= 13; i++) {
-    devices.push({
-      id: `device-${i}`,
-      column1: 'Cell Value',
-      column2: 'Cell Value',
-      column3: 'Cell Value',
-      column4: 'Cell Value',
-      column5: 'Cell Value',
-      column6: 'Cell Value',
-      column7: 'Cell Value',
-    });
-  }
+  const devices: Device[] = [
+    {
+      id: 'device-1',
+      name: 'Server-01',
+      ipAddress: '192.168.1.10',
+      status: 'Online',
+      bandwidth: '125.4 Mbps',
+      packets: '2.4M',
+      errors: '0',
+      lastSeen: '2 mins ago',
+    },
+    {
+      id: 'device-2',
+      name: 'Server-02',
+      ipAddress: '192.168.1.11',
+      status: 'Online',
+      bandwidth: '89.7 Mbps',
+      packets: '1.8M',
+      errors: '0',
+      lastSeen: '1 min ago',
+    },
+    {
+      id: 'device-3',
+      name: 'Router-Main',
+      ipAddress: '192.168.1.1',
+      status: 'Online',
+      bandwidth: '542.1 Mbps',
+      packets: '8.9M',
+      errors: '2',
+      lastSeen: 'Now',
+    },
+    {
+      id: 'device-4',
+      name: 'Gateway-01',
+      ipAddress: '192.168.1.254',
+      status: 'Online',
+      bandwidth: '234.5 Mbps',
+      packets: '3.2M',
+      errors: '0',
+      lastSeen: '30 secs ago',
+    },
+    {
+      id: 'device-5',
+      name: 'Workstation-01',
+      ipAddress: '192.168.1.100',
+      status: 'Online',
+      bandwidth: '45.2 Mbps',
+      packets: '890K',
+      errors: '1',
+      lastSeen: '5 mins ago',
+    },
+    {
+      id: 'device-6',
+      name: 'Workstation-02',
+      ipAddress: '192.168.1.101',
+      status: 'Online',
+      bandwidth: '67.8 Mbps',
+      packets: '1.2M',
+      errors: '0',
+      lastSeen: '3 mins ago',
+    },
+    {
+      id: 'device-7',
+      name: 'NAS-Storage',
+      ipAddress: '192.168.1.50',
+      status: 'Online',
+      bandwidth: '320.6 Mbps',
+      packets: '5.1M',
+      errors: '0',
+      lastSeen: 'Now',
+    },
+    {
+      id: 'device-8',
+      name: 'Printer-01',
+      ipAddress: '192.168.1.200',
+      status: 'Online',
+      bandwidth: '2.1 Mbps',
+      packets: '45K',
+      errors: '0',
+      lastSeen: '45 mins ago',
+    },
+    {
+      id: 'device-9',
+      name: 'Switch-01',
+      ipAddress: '192.168.1.2',
+      status: 'Online',
+      bandwidth: '890.3 Mbps',
+      packets: '15.2M',
+      errors: '5',
+      lastSeen: 'Now',
+    },
+    {
+      id: 'device-10',
+      name: 'AP-WiFi-01',
+      ipAddress: '192.168.1.20',
+      status: 'Online',
+      bandwidth: '156.4 Mbps',
+      packets: '2.8M',
+      errors: '1',
+      lastSeen: '1 min ago',
+    },
+    {
+      id: 'device-11',
+      name: 'VPN-Server',
+      ipAddress: '192.168.1.30',
+      status: 'Online',
+      bandwidth: '203.5 Mbps',
+      packets: '4.1M',
+      errors: '0',
+      lastSeen: '10 secs ago',
+    },
+    {
+      id: 'device-12',
+      name: 'Backup-01',
+      ipAddress: '192.168.1.51',
+      status: 'Online',
+      bandwidth: '421.2 Mbps',
+      packets: '6.7M',
+      errors: '0',
+      lastSeen: '2 mins ago',
+    },
+    {
+      id: 'device-13',
+      name: 'Laptop-Mobile',
+      ipAddress: '192.168.1.120',
+      status: 'Idle',
+      bandwidth: '0 Mbps',
+      packets: '0',
+      errors: '0',
+      lastSeen: '2 hours ago',
+    },
+  ];
   return devices;
 };
 

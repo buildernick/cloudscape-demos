@@ -119,78 +119,78 @@ export function App() {
         >
           <SpaceBetween size="l">
             <Grid gridDefinition={[{ colspan: 6 }, { colspan: 6 }]}>
-              <Container header={<Header variant="h2">Network traffic</Header>}>
-                <AreaChart
-                  height={300}
-                  series={[
-                    {
-                      title: 'Site 1',
-                      type: 'area',
-                      data: networkTrafficData.map(d => ({ x: d.x, y: d.y1 })),
-                      color: '#688AE8',
-                    },
-                    {
-                      title: 'Site 2',
-                      type: 'area',
-                      data: networkTrafficData.map(d => ({ x: d.x, y: d.y2 })),
-                      color: '#C33D69',
-                    },
-                  ]}
-                  xDomain={networkTrafficData.map(d => d.x)}
-                  yDomain={[0, 6]}
-                  xTitle="Day"
-                  yTitle=""
-                  ariaLabel="Network traffic area chart"
-                  hideFilter
-                  legendTitle="Legend"
-                  additionalFilters={
-                    <Box color="text-status-info" fontSize="body-s">
-                      Performance goal
-                    </Box>
-                  }
-                  i18nStrings={{
-                    filterLabel: 'Filter displayed data',
-                    filterPlaceholder: 'Filter data',
-                    legendAriaLabel: 'Legend',
-                    chartAriaRoleDescription: 'area chart',
-                    xTickFormatter: (value) => value.toString(),
-                    yTickFormatter: (value) => value.toString(),
-                  }}
-                />
+              <Container>
+                <SpaceBetween size="l">
+                  <Box variant="h3" fontWeight="bold">
+                    Network traffic
+                  </Box>
+                  <AreaChart
+                    height={300}
+                    series={[
+                      {
+                        title: 'Site 1',
+                        type: 'area',
+                        data: networkTrafficData.map(d => ({ x: d.x, y: d.y1 })),
+                        color: '#688AE8',
+                      },
+                      {
+                        title: 'Site 2',
+                        type: 'area',
+                        data: networkTrafficData.map(d => ({ x: d.x, y: d.y2 })),
+                        color: '#C33D69',
+                      },
+                    ]}
+                    xDomain={networkTrafficData.map(d => d.x)}
+                    yDomain={[0, 6]}
+                    xTitle="Day"
+                    yTitle=""
+                    ariaLabel="Network traffic area chart"
+                    hideFilter
+                    statusType="finished"
+                    i18nStrings={{
+                      filterLabel: 'Filter displayed data',
+                      filterPlaceholder: 'Filter data',
+                      legendAriaLabel: 'Legend',
+                      chartAriaRoleDescription: 'area chart',
+                      xTickFormatter: (value) => value.toString(),
+                      yTickFormatter: (value) => value.toString(),
+                    }}
+                  />
+                </SpaceBetween>
               </Container>
 
-              <Container header={<Header variant="h2">Credit Usage</Header>}>
-                <BarChart
-                  height={300}
-                  series={[
-                    {
-                      title: 'Site 1',
-                      type: 'bar',
-                      data: creditUsageData,
-                      color: '#688AE8',
-                    },
-                  ]}
-                  xDomain={creditUsageData.map(d => d.x)}
-                  yDomain={[0, 6]}
-                  xTitle="Day"
-                  yTitle=""
-                  ariaLabel="Credit usage bar chart"
-                  hideFilter
-                  legendTitle="Legend"
-                  additionalFilters={
-                    <Box color="text-status-info" fontSize="body-s">
-                      Performance goal
-                    </Box>
-                  }
-                  i18nStrings={{
-                    filterLabel: 'Filter displayed data',
-                    filterPlaceholder: 'Filter data',
-                    legendAriaLabel: 'Legend',
-                    chartAriaRoleDescription: 'bar chart',
-                    xTickFormatter: (value) => value.toString(),
-                    yTickFormatter: (value) => value.toString(),
-                  }}
-                />
+              <Container>
+                <SpaceBetween size="l">
+                  <Box variant="h3" fontWeight="bold">
+                    Credit Usage
+                  </Box>
+                  <BarChart
+                    height={300}
+                    series={[
+                      {
+                        title: 'Site 1',
+                        type: 'bar',
+                        data: creditUsageData,
+                        color: '#688AE8',
+                      },
+                    ]}
+                    xDomain={creditUsageData.map(d => d.x)}
+                    yDomain={[0, 6]}
+                    xTitle="Day"
+                    yTitle=""
+                    ariaLabel="Credit usage bar chart"
+                    hideFilter
+                    statusType="finished"
+                    i18nStrings={{
+                      filterLabel: 'Filter displayed data',
+                      filterPlaceholder: 'Filter data',
+                      legendAriaLabel: 'Legend',
+                      chartAriaRoleDescription: 'bar chart',
+                      xTickFormatter: (value) => value.toString(),
+                      yTickFormatter: (value) => value.toString(),
+                    }}
+                  />
+                </SpaceBetween>
               </Container>
             </Grid>
 

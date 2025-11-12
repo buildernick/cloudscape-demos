@@ -224,7 +224,7 @@ export function App() {
                 <Flashbar
                   items={[
                     {
-                      type: 'warning',
+                      type: 'error',
                       dismissible: true,
                       onDismiss: () => setShowNotification(false),
                       content: 'This is a warning message',

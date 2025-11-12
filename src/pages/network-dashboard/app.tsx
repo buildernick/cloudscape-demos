@@ -271,8 +271,8 @@ export function App() {
                       filterPlaceholder: 'Filter data',
                       legendAriaLabel: 'Legend',
                       chartAriaRoleDescription: 'area chart',
-                      xTickFormatter: (value) => `${value}`,
-                      yTickFormatter: (value) => `${value} Gbps`,
+                      xTickFormatter: value => `${value}`,
+                      yTickFormatter: value => `${value} Gbps`,
                     }}
                   />
                 </SpaceBetween>
@@ -305,8 +305,8 @@ export function App() {
                       filterPlaceholder: 'Filter data',
                       legendAriaLabel: 'Legend',
                       chartAriaRoleDescription: 'bar chart',
-                      xTickFormatter: (value) => `${value}`,
-                      yTickFormatter: (value) => `${value} Units`,
+                      xTickFormatter: value => `${value}`,
+                      yTickFormatter: value => `${value} Units`,
                     }}
                   />
                 </SpaceBetween>
@@ -333,43 +333,43 @@ export function App() {
                 {
                   id: 'name',
                   header: 'Device Name',
-                  cell: (item) => item.name,
+                  cell: item => item.name,
                   sortingField: 'name',
                 },
                 {
                   id: 'ipAddress',
                   header: 'IP Address',
-                  cell: (item) => item.ipAddress,
+                  cell: item => item.ipAddress,
                   sortingField: 'ipAddress',
                 },
                 {
                   id: 'status',
                   header: 'Status',
-                  cell: (item) => item.status,
+                  cell: item => item.status,
                   sortingField: 'status',
                 },
                 {
                   id: 'bandwidth',
                   header: 'Bandwidth',
-                  cell: (item) => item.bandwidth,
+                  cell: item => item.bandwidth,
                   sortingField: 'bandwidth',
                 },
                 {
                   id: 'packets',
                   header: 'Packets',
-                  cell: (item) => item.packets,
+                  cell: item => item.packets,
                   sortingField: 'packets',
                 },
                 {
                   id: 'errors',
                   header: 'Errors',
-                  cell: (item) => item.errors,
+                  cell: item => item.errors,
                   sortingField: 'errors',
                 },
                 {
                   id: 'lastSeen',
                   header: 'Last Seen',
-                  cell: (item) => item.lastSeen,
+                  cell: item => item.lastSeen,
                   sortingField: 'lastSeen',
                 },
               ]}
@@ -393,7 +393,7 @@ export function App() {
                   ariaLabels={{
                     nextPageLabel: 'Next page',
                     previousPageLabel: 'Previous page',
-                    pageLabel: (pageNumber) => `Page ${pageNumber}`,
+                    pageLabel: pageNumber => `Page ${pageNumber}`,
                   }}
                 />
               }

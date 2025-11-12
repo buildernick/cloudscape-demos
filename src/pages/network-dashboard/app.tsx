@@ -271,8 +271,8 @@ export function App() {
                       filterPlaceholder: 'Filter data',
                       legendAriaLabel: 'Legend',
                       chartAriaRoleDescription: 'area chart',
-                      xTickFormatter: (value) => value.toString(),
-                      yTickFormatter: (value) => value.toString(),
+                      xTickFormatter: (value) => `${value}`,
+                      yTickFormatter: (value) => `${value} Gbps`,
                     }}
                   />
                 </SpaceBetween>

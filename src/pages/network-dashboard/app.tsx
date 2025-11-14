@@ -16,6 +16,7 @@ import TextFilter from '@cloudscape-design/components/text-filter';
 import AreaChart from '@cloudscape-design/components/area-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
 import Box from '@cloudscape-design/components/box';
+import Modal from '@cloudscape-design/components/modal';
 
 // Sample data for the area chart (Network Traffic)
 const networkTrafficData = [
@@ -84,6 +85,7 @@ export function App() {
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const [filterText, setFilterText] = useState('');
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
+  const [showRefreshModal, setShowRefreshModal] = useState(false);
   const [flashbarItems, setFlashbarItems] = useState([
     {
       type: 'error' as const,
@@ -95,11 +97,38 @@ export function App() {
     },
   ]);
 
+  const handleRefreshConfirm = () => {
+    setShowRefreshModal(false);
+    // Add your refresh logic here
+    console.log('Data refreshed');
+  };
+
   return (
-    <AppLayout
-      navigationHide
-      toolsHide
-      breadcrumbs={
+    <>
+      <Modal
+        onDismiss={() => setShowRefreshModal(false)}
+        visible={showRefreshModal}
+        header="Confirm refresh"
+        footer={
+          <Box float="right">
+            <SpaceBetween direction="horizontal" size="xs">
+              <Button variant="link" onClick={() => setShowRefreshModal(false)}>
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={handleRefreshConfirm}>
+                Refresh
+              </Button>
+            </SpaceBetween>
+          </Box>
+        }
+      >
+        Are you sure you want to refresh the data? This will reload all network traffic, credit usage, and device
+        information.
+      </Modal>
+      <AppLayout
+        navigationHide
+        toolsHide
+        breadcrumbs={
         <BreadcrumbGroup
           items={[
             { text: 'Service', href: '/' },
@@ -117,7 +146,12 @@ export function App() {
                   variant="h1"
                   description="Network Traffic, Credit Usage, and Your Devices"
                   actions={
-                    <Button variant="primary" iconAlign="right" iconName="external">
+                    <Button
+                      variant="primary"
+                      iconAlign="right"
+                      iconName="external"
+                      onClick={() => setShowRefreshModal(true)}
+                    >
                       Refresh Data
                     </Button>
                   }
@@ -354,6 +388,7 @@ export function App() {
           </SpaceBetween>
         </ContentLayout>
       }
-    />
+      />
+    </>
   );
 }

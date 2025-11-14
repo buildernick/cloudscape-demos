@@ -86,7 +86,7 @@ export function App() {
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
   const [flashbarItems, setFlashbarItems] = useState([
     {
-      type: 'warning' as const,
+      type: 'error' as const,
       content: 'This is a warning message',
       dismissible: true,
       dismissLabel: 'Dismiss message',
@@ -112,17 +112,19 @@ export function App() {
         <ContentLayout
           header={
             <SpaceBetween size="m">
-              <Header
-                variant="h1"
-                description="Network Traffic, Credit Usage, and Your Devices"
-                actions={
-                  <Button variant="primary" iconAlign="right" iconName="external">
-                    Refresh Data
-                  </Button>
-                }
-              >
-                Network Adminstration Dashboard
-              </Header>
+              <div style={{ borderWidth: '3px', borderStyle: 'solid' }}>
+                <Header
+                  variant="h1"
+                  description="Network Traffic, Credit Usage, and Your Devices"
+                  actions={
+                    <Button variant="primary" iconAlign="right" iconName="external">
+                      Refresh Data
+                    </Button>
+                  }
+                >
+                  Network Adminstration Dashboard
+                </Header>
+              </div>
               <Grid
                 gridDefinition={[
                   { colspan: { default: 12, xs: 12, s: 8 } },

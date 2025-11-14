@@ -129,265 +129,265 @@ export function App() {
         navigationHide
         toolsHide
         breadcrumbs={
-        <BreadcrumbGroup
-          items={[
-            { text: 'Service', href: '/' },
-            { text: 'Administrative Dashboard', href: '#' },
-          ]}
-          ariaLabel="Breadcrumbs"
-        />
-      }
-      content={
-        <ContentLayout
-          header={
-            <SpaceBetween size="m">
-              <div style={{ borderWidth: '3px', borderStyle: 'solid' }}>
-                <Header
-                  variant="h1"
-                  description="Network Traffic, Credit Usage, and Your Devices"
-                  actions={
-                    <Button
-                      variant="primary"
-                      iconAlign="right"
-                      iconName="external"
-                      onClick={() => setShowRefreshModal(true)}
-                    >
-                      Refresh Data
-                    </Button>
-                  }
+          <BreadcrumbGroup
+            items={[
+              { text: 'Service', href: '/' },
+              { text: 'Administrative Dashboard', href: '#' },
+            ]}
+            ariaLabel="Breadcrumbs"
+          />
+        }
+        content={
+          <ContentLayout
+            header={
+              <SpaceBetween size="m">
+                <div style={{ borderWidth: '3px', borderStyle: 'solid' }}>
+                  <Header
+                    variant="h1"
+                    description="Network Traffic, Credit Usage, and Your Devices"
+                    actions={
+                      <Button
+                        variant="primary"
+                        iconAlign="right"
+                        iconName="external"
+                        onClick={() => setShowRefreshModal(true)}
+                      >
+                        Refresh Data
+                      </Button>
+                    }
+                  >
+                    Network Adminstration Dashboard
+                  </Header>
+                </div>
+                <Grid
+                  gridDefinition={[
+                    { colspan: { default: 12, xs: 12, s: 8 } },
+                    { colspan: { default: 12, xs: 12, s: 4 } },
+                  ]}
                 >
-                  Network Adminstration Dashboard
-                </Header>
-              </div>
+                  <TextFilter
+                    filteringText={filterText}
+                    filteringPlaceholder="Placeholder"
+                    filteringAriaLabel="Filter resources"
+                    onChange={({ detail }) => setFilterText(detail.filteringText)}
+                  />
+                  <Box float="right">
+                    <SpaceBetween size="xs" direction="horizontal" alignItems="center">
+                      <Pagination
+                        currentPageIndex={currentPageIndex}
+                        onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
+                        pagesCount={5}
+                        ariaLabels={{
+                          nextPageLabel: 'Next page',
+                          previousPageLabel: 'Previous page',
+                          pageLabel: pageNumber => `Page ${pageNumber}`,
+                        }}
+                      />
+                      <Button iconName="settings" variant="icon" ariaLabel="Settings" />
+                    </SpaceBetween>
+                  </Box>
+                </Grid>
+              </SpaceBetween>
+            }
+          >
+            <SpaceBetween size="l">
+              <Flashbar items={flashbarItems} />
+
               <Grid
                 gridDefinition={[
-                  { colspan: { default: 12, xs: 12, s: 8 } },
-                  { colspan: { default: 12, xs: 12, s: 4 } },
+                  { colspan: { default: 12, xs: 12, s: 12, m: 6 } },
+                  { colspan: { default: 12, xs: 12, s: 12, m: 6 } },
                 ]}
               >
-                <TextFilter
-                  filteringText={filterText}
-                  filteringPlaceholder="Placeholder"
-                  filteringAriaLabel="Filter resources"
-                  onChange={({ detail }) => setFilterText(detail.filteringText)}
-                />
-                <Box float="right">
-                  <SpaceBetween size="xs" direction="horizontal" alignItems="center">
-                    <Pagination
-                      currentPageIndex={currentPageIndex}
-                      onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
-                      pagesCount={5}
-                      ariaLabels={{
-                        nextPageLabel: 'Next page',
-                        previousPageLabel: 'Previous page',
-                        pageLabel: pageNumber => `Page ${pageNumber}`,
-                      }}
-                    />
-                    <Button iconName="settings" variant="icon" ariaLabel="Settings" />
-                  </SpaceBetween>
-                </Box>
+                <Container>
+                  <AreaChart
+                    series={networkTrafficData}
+                    xDomain={[1, 12]}
+                    yDomain={[0, 200]}
+                    height={300}
+                    i18nStrings={{
+                      filterLabel: 'Filter displayed data',
+                      filterPlaceholder: 'Filter data',
+                      filterSelectedAriaLabel: 'selected',
+                      detailPopoverDismissAriaLabel: 'Dismiss',
+                      legendAriaLabel: 'Legend',
+                      chartAriaRoleDescription: 'area chart',
+                      xTickFormatter: (value: number) => `x${value}`,
+                      yTickFormatter: (value: number) => `y${value}`,
+                    }}
+                    ariaLabel="Network traffic area chart"
+                    ariaDescription="Area chart showing network traffic across two sites with performance goal threshold"
+                    xTitle="Day"
+                    yTitle="Network traffic"
+                    empty={
+                      <Box textAlign="center" color="inherit">
+                        <b>No data available</b>
+                        <Box variant="p" color="inherit">
+                          There is no data available
+                        </Box>
+                      </Box>
+                    }
+                    noMatch={
+                      <Box textAlign="center" color="inherit">
+                        <b>No matching data</b>
+                        <Box variant="p" color="inherit">
+                          There is no matching data to display
+                        </Box>
+                      </Box>
+                    }
+                    legendTitle="Legend"
+                    additionalFilters={
+                      <SpaceBetween size="xs" direction="horizontal">
+                        <Box variant="span" fontSize="body-s" color="text-status-inactive">
+                          Performance goal
+                        </Box>
+                      </SpaceBetween>
+                    }
+                  />
+                </Container>
+
+                <Container>
+                  <BarChart
+                    series={[
+                      {
+                        title: 'Site 1',
+                        type: 'bar',
+                        data: creditUsageData,
+                        valueFormatter: (value: number) => `${value}`,
+                      },
+                    ]}
+                    xDomain={[1, 2, 3, 4, 5]}
+                    yDomain={[0, 100]}
+                    height={300}
+                    i18nStrings={{
+                      filterLabel: 'Filter displayed data',
+                      filterPlaceholder: 'Filter data',
+                      filterSelectedAriaLabel: 'selected',
+                      detailPopoverDismissAriaLabel: 'Dismiss',
+                      legendAriaLabel: 'Legend',
+                      chartAriaRoleDescription: 'bar chart',
+                      xTickFormatter: (value: number) => `x${value}`,
+                      yTickFormatter: (value: number) => `y${value}`,
+                    }}
+                    ariaLabel="Credit usage bar chart"
+                    ariaDescription="Bar chart showing credit usage over five days with performance goal threshold"
+                    xTitle="Day"
+                    yTitle="Credit Usage"
+                    empty={
+                      <Box textAlign="center" color="inherit">
+                        <b>No data available</b>
+                        <Box variant="p" color="inherit">
+                          There is no data available
+                        </Box>
+                      </Box>
+                    }
+                    noMatch={
+                      <Box textAlign="center" color="inherit">
+                        <b>No matching data</b>
+                        <Box variant="p" color="inherit">
+                          There is no matching data to display
+                        </Box>
+                      </Box>
+                    }
+                    legendTitle="Legend"
+                    additionalFilters={
+                      <SpaceBetween size="xs" direction="horizontal">
+                        <Box variant="span" fontSize="body-s" color="text-status-inactive">
+                          Performance goal
+                        </Box>
+                      </SpaceBetween>
+                    }
+                  />
+                </Container>
               </Grid>
-            </SpaceBetween>
-          }
-        >
-          <SpaceBetween size="l">
-            <Flashbar items={flashbarItems} />
 
-            <Grid
-              gridDefinition={[
-                { colspan: { default: 12, xs: 12, s: 12, m: 6 } },
-                { colspan: { default: 12, xs: 12, s: 12, m: 6 } },
-              ]}
-            >
-              <Container>
-                <AreaChart
-                  series={networkTrafficData}
-                  xDomain={[1, 12]}
-                  yDomain={[0, 200]}
-                  height={300}
-                  i18nStrings={{
-                    filterLabel: 'Filter displayed data',
-                    filterPlaceholder: 'Filter data',
-                    filterSelectedAriaLabel: 'selected',
-                    detailPopoverDismissAriaLabel: 'Dismiss',
-                    legendAriaLabel: 'Legend',
-                    chartAriaRoleDescription: 'area chart',
-                    xTickFormatter: (value: number) => `x${value}`,
-                    yTickFormatter: (value: number) => `y${value}`,
-                  }}
-                  ariaLabel="Network traffic area chart"
-                  ariaDescription="Area chart showing network traffic across two sites with performance goal threshold"
-                  xTitle="Day"
-                  yTitle="Network traffic"
-                  empty={
-                    <Box textAlign="center" color="inherit">
-                      <b>No data available</b>
-                      <Box variant="p" color="inherit">
-                        There is no data available
-                      </Box>
+              <Table
+                columnDefinitions={[
+                  {
+                    id: 'column1',
+                    header: 'Column header',
+                    cell: item => item.column1,
+                    sortingField: 'column1',
+                    isRowHeader: true,
+                  },
+                  {
+                    id: 'column2',
+                    header: 'Column header',
+                    cell: item => item.column2,
+                    sortingField: 'column2',
+                  },
+                  {
+                    id: 'column3',
+                    header: 'Column header',
+                    cell: item => item.column3,
+                    sortingField: 'column3',
+                  },
+                  {
+                    id: 'column4',
+                    header: 'Column header',
+                    cell: item => item.column4,
+                    sortingField: 'column4',
+                  },
+                  {
+                    id: 'column5',
+                    header: 'Column header',
+                    cell: item => item.column5,
+                    sortingField: 'column5',
+                  },
+                  {
+                    id: 'column6',
+                    header: 'Column header',
+                    cell: item => item.column6,
+                    sortingField: 'column6',
+                  },
+                  {
+                    id: 'column7',
+                    header: 'Column header',
+                    cell: item => item.column7,
+                    sortingField: 'column7',
+                  },
+                ]}
+                items={deviceTableItems}
+                loadingText="Loading devices"
+                selectionType="multi"
+                trackBy="id"
+                selectedItems={selectedItems}
+                onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
+                empty={
+                  <Box textAlign="center" color="inherit">
+                    <b>No devices</b>
+                    <Box padding={{ bottom: 's' }} variant="p" color="inherit">
+                      No devices to display.
                     </Box>
-                  }
-                  noMatch={
-                    <Box textAlign="center" color="inherit">
-                      <b>No matching data</b>
-                      <Box variant="p" color="inherit">
-                        There is no matching data to display
-                      </Box>
-                    </Box>
-                  }
-                  legendTitle="Legend"
-                  additionalFilters={
-                    <SpaceBetween size="xs" direction="horizontal">
-                      <Box variant="span" fontSize="body-s" color="text-status-inactive">
-                        Performance goal
-                      </Box>
-                    </SpaceBetween>
-                  }
-                />
-              </Container>
-
-              <Container>
-                <BarChart
-                  series={[
-                    {
-                      title: 'Site 1',
-                      type: 'bar',
-                      data: creditUsageData,
-                      valueFormatter: (value: number) => `${value}`,
-                    },
-                  ]}
-                  xDomain={[1, 2, 3, 4, 5]}
-                  yDomain={[0, 100]}
-                  height={300}
-                  i18nStrings={{
-                    filterLabel: 'Filter displayed data',
-                    filterPlaceholder: 'Filter data',
-                    filterSelectedAriaLabel: 'selected',
-                    detailPopoverDismissAriaLabel: 'Dismiss',
-                    legendAriaLabel: 'Legend',
-                    chartAriaRoleDescription: 'bar chart',
-                    xTickFormatter: (value: number) => `x${value}`,
-                    yTickFormatter: (value: number) => `y${value}`,
-                  }}
-                  ariaLabel="Credit usage bar chart"
-                  ariaDescription="Bar chart showing credit usage over five days with performance goal threshold"
-                  xTitle="Day"
-                  yTitle="Credit Usage"
-                  empty={
-                    <Box textAlign="center" color="inherit">
-                      <b>No data available</b>
-                      <Box variant="p" color="inherit">
-                        There is no data available
-                      </Box>
-                    </Box>
-                  }
-                  noMatch={
-                    <Box textAlign="center" color="inherit">
-                      <b>No matching data</b>
-                      <Box variant="p" color="inherit">
-                        There is no matching data to display
-                      </Box>
-                    </Box>
-                  }
-                  legendTitle="Legend"
-                  additionalFilters={
-                    <SpaceBetween size="xs" direction="horizontal">
-                      <Box variant="span" fontSize="body-s" color="text-status-inactive">
-                        Performance goal
-                      </Box>
-                    </SpaceBetween>
-                  }
-                />
-              </Container>
-            </Grid>
-
-            <Table
-              columnDefinitions={[
-                {
-                  id: 'column1',
-                  header: 'Column header',
-                  cell: item => item.column1,
-                  sortingField: 'column1',
-                  isRowHeader: true,
-                },
-                {
-                  id: 'column2',
-                  header: 'Column header',
-                  cell: item => item.column2,
-                  sortingField: 'column2',
-                },
-                {
-                  id: 'column3',
-                  header: 'Column header',
-                  cell: item => item.column3,
-                  sortingField: 'column3',
-                },
-                {
-                  id: 'column4',
-                  header: 'Column header',
-                  cell: item => item.column4,
-                  sortingField: 'column4',
-                },
-                {
-                  id: 'column5',
-                  header: 'Column header',
-                  cell: item => item.column5,
-                  sortingField: 'column5',
-                },
-                {
-                  id: 'column6',
-                  header: 'Column header',
-                  cell: item => item.column6,
-                  sortingField: 'column6',
-                },
-                {
-                  id: 'column7',
-                  header: 'Column header',
-                  cell: item => item.column7,
-                  sortingField: 'column7',
-                },
-              ]}
-              items={deviceTableItems}
-              loadingText="Loading devices"
-              selectionType="multi"
-              trackBy="id"
-              selectedItems={selectedItems}
-              onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
-              empty={
-                <Box textAlign="center" color="inherit">
-                  <b>No devices</b>
-                  <Box padding={{ bottom: 's' }} variant="p" color="inherit">
-                    No devices to display.
+                    <Button>Add Device</Button>
                   </Box>
-                  <Button>Add Device</Button>
-                </Box>
-              }
-              header={
-                <Header
-                  variant="h2"
-                  description="Devices on your local network"
-                  actions={
-                    <Button variant="primary" iconAlign="right" iconName="external">
-                      Add Device
-                    </Button>
-                  }
-                >
-                  My Devices
-                </Header>
-              }
-              ariaLabels={{
-                selectionGroupLabel: 'Items selection',
-                allItemsSelectionLabel: ({ selectedItems }) =>
-                  `${selectedItems.length} ${selectedItems.length === 1 ? 'item' : 'items'} selected`,
-                itemSelectionLabel: ({ selectedItems }, item) => {
-                  const isItemSelected = selectedItems.filter(i => i.id === item.id).length;
-                  return `${item.column1} is ${isItemSelected ? '' : 'not'} selected`;
-                },
-              }}
-            />
-          </SpaceBetween>
-        </ContentLayout>
-      }
+                }
+                header={
+                  <Header
+                    variant="h2"
+                    description="Devices on your local network"
+                    actions={
+                      <Button variant="primary" iconAlign="right" iconName="external">
+                        Add Device
+                      </Button>
+                    }
+                  >
+                    My Devices
+                  </Header>
+                }
+                ariaLabels={{
+                  selectionGroupLabel: 'Items selection',
+                  allItemsSelectionLabel: ({ selectedItems }) =>
+                    `${selectedItems.length} ${selectedItems.length === 1 ? 'item' : 'items'} selected`,
+                  itemSelectionLabel: ({ selectedItems }, item) => {
+                    const isItemSelected = selectedItems.filter(i => i.id === item.id).length;
+                    return `${item.column1} is ${isItemSelected ? '' : 'not'} selected`;
+                  },
+                }}
+              />
+            </SpaceBetween>
+          </ContentLayout>
+        }
       />
     </>
   );

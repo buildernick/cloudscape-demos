@@ -183,11 +183,7 @@ export function App() {
           >
             <SpaceBetween size="l">
               {showAlert && (
-                <Alert
-                  type="error"
-                  dismissible
-                  onDismiss={() => setShowAlert(false)}
-                >
+                <Alert type="error" dismissible onDismiss={() => setShowAlert(false)}>
                   This is a warning message
                 </Alert>
               )}

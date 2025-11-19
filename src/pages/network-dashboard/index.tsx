@@ -222,12 +222,7 @@ export default function NetworkDashboard() {
         >
           <SpaceBetween size="l">
             {showWarning && (
-              <Alert
-                type="error"
-                dismissible={true}
-                onDismiss={() => setShowWarning(false)}
-                dismissAriaLabel="Dismiss"
-              >
+              <Alert type="error" dismissible={true} onDismiss={() => setShowWarning(false)} dismissAriaLabel="Dismiss">
                 This is a warning message
               </Alert>
             )}

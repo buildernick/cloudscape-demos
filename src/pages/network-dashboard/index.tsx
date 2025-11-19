@@ -202,7 +202,12 @@ export default function NetworkDashboard() {
                 variant="h1"
                 description="Network Traffic, Credit Usage, and Your Devices"
                 actions={
-                  <Button variant="primary" iconName="external" iconAlign="right">
+                  <Button
+                    variant="primary"
+                    iconName="external"
+                    iconAlign="right"
+                    onClick={() => setShowConfirmModal(true)}
+                  >
                     Refresh Data
                   </Button>
                 }
@@ -397,6 +402,89 @@ export default function NetworkDashboard() {
           </SpaceBetween>
         </ContentLayout>
       }
-    />
+    >
+      <Modal
+        visible={showConfirmModal}
+        onDismiss={() => setShowConfirmModal(false)}
+        header="Confirm Data Refresh"
+        footer={
+          <Box float="right">
+            <SpaceBetween direction="horizontal" size="xs">
+              <Button variant="link" onClick={() => setShowConfirmModal(false)}>
+                Cancel
+              </Button>
+              <Button
+                variant="primary"
+                onClick={() => {
+                  setShowConfirmModal(false);
+                  setShowRatingModal(true);
+                }}
+              >
+                Confirm
+              </Button>
+            </SpaceBetween>
+          </Box>
+        }
+      >
+        <SpaceBetween size="m">
+          <Box variant="p">Are you sure you want to refresh the data? This will reload all network traffic, credit usage, and device information.</Box>
+        </SpaceBetween>
+      </Modal>
+
+      <Modal
+        visible={showRatingModal}
+        onDismiss={() => {
+          setShowRatingModal(false);
+          setRating('');
+        }}
+        header="Rate Your Experience"
+        footer={
+          <Box float="right">
+            <SpaceBetween direction="horizontal" size="xs">
+              <Button
+                variant="link"
+                onClick={() => {
+                  setShowRatingModal(false);
+                  setRating('');
+                }}
+              >
+                Skip
+              </Button>
+              <Button
+                variant="primary"
+                disabled={!rating}
+                onClick={() => {
+                  setShowRatingModal(false);
+                  setRating('');
+                }}
+              >
+                Submit
+              </Button>
+            </SpaceBetween>
+          </Box>
+        }
+      >
+        <SpaceBetween size="m">
+          <Box variant="p">How would you rate your experience refreshing the data?</Box>
+          <RadioGroup
+            value={rating}
+            onChange={({ detail }) => setRating(detail.value)}
+            items={[
+              { value: '1', label: '1 - Very Poor' },
+              { value: '2', label: '2 - Poor' },
+              { value: '3', label: '3 - Below Average' },
+              { value: '4', label: '4 - Fair' },
+              { value: '5', label: '5 - Average' },
+              { value: '6', label: '6 - Good' },
+              { value: '7', label: '7 - Very Good' },
+              { value: '8', label: '8 - Great' },
+              { value: '9', label: '9 - Excellent' },
+              { value: '10', label: '10 - Outstanding' },
+            ]}
+            ariaLabel="Rate your experience from 1 to 10"
+          />
+        </SpaceBetween>
+      </Modal>
+    </AppLayout>
   );
 }

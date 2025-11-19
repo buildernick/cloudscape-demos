@@ -179,7 +179,10 @@ export default function NetworkDashboard() {
       device.macAddress.toLowerCase().includes(filteringText.toLowerCase()),
   );
 
-  const paginatedDevices = filteredDevices.slice((currentPageIndex - 1) * itemsPerPage, currentPageIndex * itemsPerPage);
+  const paginatedDevices = filteredDevices.slice(
+    (currentPageIndex - 1) * itemsPerPage,
+    currentPageIndex * itemsPerPage,
+  );
 
   return (
     <AppLayout
@@ -263,7 +266,9 @@ export default function NetworkDashboard() {
               </div>
             </Container>
 
-            <Grid gridDefinition={[{ colspan: { default: 12, s: 12, m: 6 } }, { colspan: { default: 12, s: 12, m: 6 } }]}>
+            <Grid
+              gridDefinition={[{ colspan: { default: 12, s: 12, m: 6 } }, { colspan: { default: 12, s: 12, m: 6 } }]}
+            >
               <Container>
                 <SpaceBetween size="m">
                   <Header variant="h3">Network traffic</Header>
@@ -427,7 +432,10 @@ export default function NetworkDashboard() {
         }
       >
         <SpaceBetween size="m">
-          <Box variant="p">Are you sure you want to refresh the data? This will reload all network traffic, credit usage, and device information.</Box>
+          <Box variant="p">
+            Are you sure you want to refresh the data? This will reload all network traffic, credit usage, and device
+            information.
+          </Box>
         </SpaceBetween>
       </Modal>
 

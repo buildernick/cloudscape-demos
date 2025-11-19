@@ -9,7 +9,9 @@ import ContentLayout from '@cloudscape-design/components/content-layout';
 import Flashbar from '@cloudscape-design/components/flashbar';
 import Grid from '@cloudscape-design/components/grid';
 import Header from '@cloudscape-design/components/header';
+import Modal from '@cloudscape-design/components/modal';
 import Pagination from '@cloudscape-design/components/pagination';
+import RadioGroup from '@cloudscape-design/components/radio-group';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import Table from '@cloudscape-design/components/table';
 import TextFilter from '@cloudscape-design/components/text-filter';
@@ -163,6 +165,9 @@ export default function NetworkDashboard() {
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
   const [showWarning, setShowWarning] = useState(true);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showRatingModal, setShowRatingModal] = useState(false);
+  const [rating, setRating] = useState('');
 
   const devices = generateDeviceData();
   const itemsPerPage = 10;

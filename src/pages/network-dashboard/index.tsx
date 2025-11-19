@@ -66,13 +66,12 @@ const creditUsageData = [
     title: 'Site 1',
     type: 'bar',
     data: [
-      { x: new Date(2024, 0, 1), y: 60 },
-      { x: new Date(2024, 0, 2), y: 85 },
-      { x: new Date(2024, 0, 3), y: 70 },
-      { x: new Date(2024, 0, 4), y: 40 },
-      { x: new Date(2024, 0, 5), y: 75 },
+      { x: 'x1', y: 60 },
+      { x: 'x2', y: 85 },
+      { x: 'x3', y: 70 },
+      { x: 'x4', y: 40 },
+      { x: 'x5', y: 75 },
     ],
-    color: '#688AE8',
   },
 ];
 
@@ -307,7 +306,7 @@ export default function NetworkDashboard() {
                   <Header variant="h3">Credit Usage</Header>
                   <BarChart
                     series={creditUsageData}
-                    xScaleType="time"
+                    xDomain={['x1', 'x2', 'x3', 'x4', 'x5']}
                     yDomain={[0, 100]}
                     i18nStrings={{
                       filterLabel: 'Filter displayed data',
@@ -315,14 +314,7 @@ export default function NetworkDashboard() {
                       filterSelectedAriaLabel: 'selected',
                       legendAriaLabel: 'Legend',
                       chartAriaRoleDescription: 'bar chart',
-                      xTickFormatter: e =>
-                        e
-                          .toLocaleDateString('en-US', {
-                            month: 'numeric',
-                            day: 'numeric',
-                          })
-                          .split('/')
-                          .join('/'),
+                      xTickFormatter: e => e,
                       yTickFormatter: e => `${e}`,
                     }}
                     ariaLabel="Credit usage bar chart showing daily usage"
@@ -330,7 +322,6 @@ export default function NetworkDashboard() {
                     hideFilter
                     xTitle="Day"
                     yTitle=""
-                    statusType="finished"
                     empty={
                       <Box textAlign="center" color="inherit" padding={{ top: 'xxl', bottom: 'xxl' }}>
                         <b>No data available</b>

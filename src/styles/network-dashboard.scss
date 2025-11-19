@@ -1,0 +1,83 @@
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// SPDX-License-Identifier: MIT-0
+@use '@cloudscape-design/design-tokens' as cs;
+
+// Ensure charts are responsive
+.network-dashboard-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: cs.$space-scaled-l;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Custom styling for warning banner
+.awsui-flashbar-item-type-warning {
+  background-color: #fff4b4;
+}
+
+// Ensure table is responsive
+.awsui-table {
+  overflow-x: auto;
+}
+
+// Improve readability on mobile
+@media (max-width: 576px) {
+  .awsui-table-cell {
+    font-size: 12px;
+  }
+  
+  .awsui-header-variant-h1 {
+    font-size: 24px;
+  }
+  
+  .awsui-header-variant-h2 {
+    font-size: 18px;
+  }
+}
+
+// Ensure charts maintain aspect ratio
+.awsui-area-chart,
+.awsui-bar-chart {
+  width: 100%;
+  height: auto;
+  min-height: 300px;
+}
+
+// Grid container for charts
+.chart-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: cs.$space-scaled-l;
+  
+  > * {
+    flex: 1;
+    min-width: 300px;
+  }
+}
+
+// Ensure proper spacing
+.awsui-content-layout {
+  padding: cs.$space-scaled-l;
+  
+  @media (max-width: 768px) {
+    padding: cs.$space-scaled-m;
+  }
+}
+
+// Search and pagination container
+.search-pagination-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: cs.$space-scaled-m;
+  flex-wrap: wrap;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

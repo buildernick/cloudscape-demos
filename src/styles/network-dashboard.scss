@@ -2,82 +2,233 @@
 // SPDX-License-Identifier: MIT-0
 @use '@cloudscape-design/design-tokens' as cs;
 
+// Search and pagination wrapper
+.search-pagination-wrapper {
+  width: 100%;
+  
+  @media (max-width: 688px) {
+    .awsui-pagination {
+      margin-top: cs.$space-scaled-s;
+    }
+  }
+}
+
 // Ensure charts are responsive
-.network-dashboard-charts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: cs.$space-scaled-l;
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Custom styling for warning banner
-.awsui-flashbar-item-type-warning {
-  background-color: #fff4b4;
-}
-
-// Ensure table is responsive
-.awsui-table {
-  overflow-x: auto;
-}
-
-// Improve readability on mobile
-@media (max-width: 576px) {
-  .awsui-table-cell {
-    font-size: 12px;
-  }
-  
-  .awsui-header-variant-h1 {
-    font-size: 24px;
-  }
-  
-  .awsui-header-variant-h2 {
-    font-size: 18px;
-  }
-}
-
-// Ensure charts maintain aspect ratio
 .awsui-area-chart,
 .awsui-bar-chart {
   width: 100%;
-  height: auto;
-  min-height: 300px;
-}
-
-// Grid container for charts
-.chart-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: cs.$space-scaled-l;
   
-  > * {
-    flex: 1;
-    min-width: 300px;
+  canvas {
+    max-width: 100%;
+    height: auto !important;
   }
 }
 
-// Ensure proper spacing
-.awsui-content-layout {
-  padding: cs.$space-scaled-l;
+// Chart container styling
+.awsui-area-chart-container,
+.awsui-bar-chart-container {
+  min-height: 300px;
   
+  @media (max-width: 576px) {
+    min-height: 250px;
+  }
+}
+
+// Grid responsiveness
+.awsui-grid {
+  gap: cs.$space-scaled-m;
+  
+  @media (max-width: 992px) {
+    gap: cs.$space-scaled-s;
+  }
+}
+
+// Table responsiveness
+.awsui-table {
+  overflow-x: auto;
+  
+  &-container {
+    max-width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 13px;
+    
+    th,
+    td {
+      padding: cs.$space-scaled-xs cs.$space-scaled-s;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 12px;
+    
+    th,
+    td {
+      padding: cs.$space-scaled-xxs cs.$space-scaled-xs;
+    }
+  }
+}
+
+// Header responsiveness
+.awsui-header {
+  &-variant-h1 {
+    @media (max-width: 768px) {
+      font-size: 28px;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 24px;
+    }
+  }
+  
+  &-variant-h2 {
+    @media (max-width: 768px) {
+      font-size: 20px;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 18px;
+    }
+  }
+  
+  &-variant-h3 {
+    @media (max-width: 576px) {
+      font-size: 16px;
+    }
+  }
+}
+
+// Content layout spacing
+.awsui-content-layout {
   @media (max-width: 768px) {
     padding: cs.$space-scaled-m;
   }
+  
+  @media (max-width: 576px) {
+    padding: cs.$space-scaled-s;
+  }
 }
 
-// Search and pagination container
-.search-pagination-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: cs.$space-scaled-m;
-  flex-wrap: wrap;
+// Container spacing
+.awsui-container {
+  margin-bottom: cs.$space-scaled-m;
   
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: stretch;
+  @media (max-width: 576px) {
+    margin-bottom: cs.$space-scaled-s;
+  }
+}
+
+// Flashbar styling
+.awsui-flashbar {
+  margin-bottom: cs.$space-scaled-m;
+  
+  &-item {
+    border-radius: cs.$border-radius-container;
+  }
+}
+
+// Button responsiveness
+.awsui-button {
+  @media (max-width: 576px) {
+    font-size: 13px;
+    padding: cs.$space-scaled-xs cs.$space-scaled-s;
+  }
+}
+
+// Pagination
+.awsui-pagination {
+  @media (max-width: 576px) {
+    font-size: 12px;
+    
+    button {
+      padding: cs.$space-scaled-xxs cs.$space-scaled-xs;
+    }
+  }
+}
+
+// Text filter
+.awsui-text-filter {
+  width: 100%;
+  
+  input {
+    width: 100%;
+  }
+}
+
+// Space between
+.awsui-space-between {
+  &-size-l {
+    gap: cs.$space-scaled-l;
+    
+    @media (max-width: 768px) {
+      gap: cs.$space-scaled-m;
+    }
+    
+    @media (max-width: 576px) {
+      gap: cs.$space-scaled-s;
+    }
+  }
+  
+  &-size-m {
+    gap: cs.$space-scaled-m;
+    
+    @media (max-width: 576px) {
+      gap: cs.$space-scaled-s;
+    }
+  }
+}
+
+// Breadcrumb responsiveness
+.awsui-breadcrumb-group {
+  @media (max-width: 576px) {
+    font-size: 13px;
+  }
+}
+
+// Ensure proper layout flow
+.awsui-app-layout {
+  min-height: 100vh;
+}
+
+// Box padding adjustments
+.awsui-box {
+  @media (max-width: 576px) {
+    &[padding] {
+      padding: cs.$space-scaled-xs !important;
+    }
+  }
+}
+
+// Chart legend responsiveness
+.awsui-chart-legend {
+  @media (max-width: 576px) {
+    font-size: 12px;
+  }
+}
+
+// Ensure focus states are visible (WCAG 2.1)
+*:focus-visible {
+  outline: 2px solid cs.$color-border-item-focused;
+  outline-offset: 2px;
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .awsui-table {
+    border: 2px solid cs.$color-border-divider-default;
+  }
+  
+  .awsui-button {
+    border-width: 2px;
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

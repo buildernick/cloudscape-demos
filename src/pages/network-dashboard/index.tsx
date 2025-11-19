@@ -192,17 +192,19 @@ export default function NetworkDashboard() {
       content={
         <ContentLayout
           header={
-            <Header
-              variant="h1"
-              description="Network Traffic, Credit Usage, and Your Devices"
-              actions={
-                <Button variant="primary" iconName="external" iconAlign="right">
-                  Refresh Data
-                </Button>
-              }
-            >
-              Network Administration Dashboard
-            </Header>
+            <div style={{ gap: '14px', borderWidth: '5px', borderStyle: 'solid' }}>
+              <Header
+                variant="h1"
+                description="Network Traffic, Credit Usage, and Your Devices"
+                actions={
+                  <Button variant="primary" iconName="external" iconAlign="right">
+                    Refresh Data
+                  </Button>
+                }
+              >
+                Network Administration Dashboard
+              </Header>
+            </div>
           }
         >
           <SpaceBetween size="l">
@@ -210,7 +212,7 @@ export default function NetworkDashboard() {
               <Flashbar
                 items={[
                   {
-                    type: 'warning',
+                    type: 'error',
                     dismissible: true,
                     onDismiss: () => setShowWarning(false),
                     dismissLabel: 'Dismiss',

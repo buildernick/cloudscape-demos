@@ -6,7 +6,7 @@ import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Button from '@cloudscape-design/components/button';
 import Container from '@cloudscape-design/components/container';
 import ContentLayout from '@cloudscape-design/components/content-layout';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import Alert from '@cloudscape-design/components/alert';
 import Grid from '@cloudscape-design/components/grid';
 import Header from '@cloudscape-design/components/header';
 import Modal from '@cloudscape-design/components/modal';
@@ -222,18 +222,14 @@ export default function NetworkDashboard() {
         >
           <SpaceBetween size="l">
             {showWarning && (
-              <Flashbar
-                items={[
-                  {
-                    type: 'error',
-                    dismissible: true,
-                    onDismiss: () => setShowWarning(false),
-                    dismissLabel: 'Dismiss',
-                    content: 'This is a warning message',
-                    ariaRole: 'status',
-                  },
-                ]}
-              />
+              <Alert
+                type="error"
+                dismissible={true}
+                onDismiss={() => setShowWarning(false)}
+                dismissAriaLabel="Dismiss"
+              >
+                This is a warning message
+              </Alert>
             )}
 
             <Container>

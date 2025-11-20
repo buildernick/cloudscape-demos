@@ -131,7 +131,10 @@ export default function NetworkDashboard() {
       : true,
   );
 
-  const paginatedDevices = filteredDevices.slice((currentPageIndex - 1) * itemsPerPage, currentPageIndex * itemsPerPage);
+  const paginatedDevices = filteredDevices.slice(
+    (currentPageIndex - 1) * itemsPerPage,
+    currentPageIndex * itemsPerPage,
+  );
 
   return (
     <AppLayout
@@ -294,7 +297,9 @@ export default function NetworkDashboard() {
                 <Header
                   variant="h2"
                   description="Devices on your local network"
-                  counter={selectedItems.length > 0 ? `(${selectedItems.length}/${devices.length})` : `(${devices.length})`}
+                  counter={
+                    selectedItems.length > 0 ? `(${selectedItems.length}/${devices.length})` : `(${devices.length})`
+                  }
                   actions={
                     <Button variant="primary" iconAlign="right" iconName="external">
                       Add Device
@@ -318,7 +323,8 @@ export default function NetworkDashboard() {
               }
               ariaLabels={{
                 selectionGroupLabel: 'Items selection',
-                allItemsSelectionLabel: ({ selectedItems }) => `${selectedItems.length} ${selectedItems.length === 1 ? 'item' : 'items'} selected`,
+                allItemsSelectionLabel: ({ selectedItems }) =>
+                  `${selectedItems.length} ${selectedItems.length === 1 ? 'item' : 'items'} selected`,
                 itemSelectionLabel: ({ selectedItems }, item) => {
                   const isItemSelected = selectedItems.filter(i => i.id === item.id).length > 0;
                   return `${item.name} is ${isItemSelected ? '' : 'not '}selected`;

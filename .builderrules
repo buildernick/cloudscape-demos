@@ -1,4 +1,7 @@
-When adding new pages make sure to link to them from the homepage in src/pages/index.tsx
+# Adding new pages
+- When adding new pages make sure to link to them from the homepage in src/pages/index.tsx
+- Always include the dark/light theme toggle that's on the home page whenever creating new pages.
+- If there are tables or charts, make sure they are displaying data that is relevant to the use case. If there's an API, use that, otherwise make up data that seems logical.
 
 # These are the rules for Builder AI to follow
 
@@ -38,10 +41,6 @@ Testing Requirements:
 
 Use the /public/UserDataApi.json file as the sample User Data API
 
-########
-# Theming
-
-Always include the dark/light theme toggle that's on the home page whenever creating new pages.
 
 #######
 # Component Usage

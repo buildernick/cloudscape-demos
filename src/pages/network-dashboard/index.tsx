@@ -7,7 +7,7 @@ import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Button from '@cloudscape-design/components/button';
 import Container from '@cloudscape-design/components/container';
 import ContentLayout from '@cloudscape-design/components/content-layout';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import Alert from '@cloudscape-design/components/alert';
 import Header from '@cloudscape-design/components/header';
 import Input from '@cloudscape-design/components/input';
 import Pagination from '@cloudscape-design/components/pagination';
@@ -56,16 +56,7 @@ export default function NetworkDashboard() {
   const [searchValue, setSearchValue] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const [selectedItems, setSelectedItems] = useState<typeof DEVICE_DATA>([]);
-  const [flashbarItems, setFlashbarItems] = useState([
-    {
-      type: 'warning' as const,
-      content: 'This is a warning message',
-      dismissible: true,
-      dismissLabel: 'Dismiss',
-      onDismiss: () => setFlashbarItems([]),
-      id: 'warning-message',
-    },
-  ]);
+  const [showAlert, setShowAlert] = useState(true);
 
   return (
     <AppLayout
@@ -97,7 +88,15 @@ export default function NetworkDashboard() {
           }
         >
           <SpaceBetween size="l">
-            <Flashbar items={flashbarItems} />
+            {showAlert && (
+              <Alert
+                type="warning"
+                dismissible
+                onDismiss={() => setShowAlert(false)}
+              >
+                This is a warning message
+              </Alert>
+            )}
 
             <Container
               header={

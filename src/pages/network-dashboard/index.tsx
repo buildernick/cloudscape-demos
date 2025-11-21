@@ -238,12 +238,7 @@ export default function NetworkDashboard() {
           <SpaceBetween size="l">
             <Flashbar items={flashbarItems} />
 
-            <Grid
-              gridDefinition={[
-                { colspan: { default: 12, s: 6 } },
-                { colspan: { default: 12, s: 6 } },
-              ]}
-            >
+            <Grid gridDefinition={[{ colspan: { default: 12, s: 6 } }, { colspan: { default: 12, s: 6 } }]}>
               <Container>
                 <AreaChart
                   series={[

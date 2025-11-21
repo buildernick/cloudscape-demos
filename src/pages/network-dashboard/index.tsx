@@ -22,6 +22,7 @@ import Toggle from '@cloudscape-design/components/toggle';
 import * as localStorage from '../../common/local-storage';
 
 import '@cloudscape-design/global-styles/dark-mode-utils.css';
+import './styles.scss';
 
 interface DeviceItem {
   id: string;

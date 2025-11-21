@@ -177,9 +177,18 @@ export default function Home() {
               <Header
                 variant="h1"
                 actions={
-                  <Button variant="primary" iconAlign="right" iconName="external">
-                    Launch new demo
-                  </Button>
+                  <SpaceBetween direction="horizontal" size="xs">
+                    <Toggle
+                      checked={darkMode}
+                      onChange={({ detail }) => setDarkMode(detail.checked)}
+                      ariaLabel="Toggle dark mode"
+                    >
+                      Dark mode
+                    </Toggle>
+                    <Button variant="primary" iconAlign="right" iconName="external">
+                      Launch new demo
+                    </Button>
+                  </SpaceBetween>
                 }
               >
                 Cloudscape Design System Demos&nbsp;

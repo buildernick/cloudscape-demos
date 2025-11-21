@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppLayout from '@cloudscape-design/components/app-layout';
 import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Button from '@cloudscape-design/components/button';
@@ -17,6 +17,11 @@ import Box from '@cloudscape-design/components/box';
 import AreaChart from '@cloudscape-design/components/area-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
 import Grid from '@cloudscape-design/components/grid';
+import Toggle from '@cloudscape-design/components/toggle';
+
+import * as localStorage from '../../common/local-storage';
+
+import '@cloudscape-design/global-styles/dark-mode-utils.css';
 
 // Sample data for Network Traffic chart
 const networkTrafficData = [
@@ -84,6 +89,17 @@ export default function NetworkDashboard() {
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const [selectedItems, setSelectedItems] = useState([]);
 
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    return localStorage.load<boolean>('Awsui-Theme-Mode') ?? false;
+  });
+
+  useEffect(() => {
+    const theme = darkMode ? 'awsui-dark-mode' : 'awsui-light-mode';
+    document.body.classList.remove('awsui-dark-mode', 'awsui-light-mode');
+    document.body.classList.add(theme);
+    localStorage.save('Awsui-Theme-Mode', darkMode);
+  }, [darkMode]);
+
   return (
     <AppLayout
       navigationHide
@@ -104,9 +120,18 @@ export default function NetworkDashboard() {
                 variant="h1"
                 description="Network Traffic, Credit Usage, and Your Devices"
                 actions={
-                  <Button variant="primary" iconName="external" iconAlign="right">
-                    Refresh Data
-                  </Button>
+                  <SpaceBetween direction="horizontal" size="xs">
+                    <Toggle
+                      checked={darkMode}
+                      onChange={({ detail }) => setDarkMode(detail.checked)}
+                      ariaLabel="Toggle dark mode"
+                    >
+                      Dark mode
+                    </Toggle>
+                    <Button variant="primary" iconName="external" iconAlign="right">
+                      Refresh Data
+                    </Button>
+                  </SpaceBetween>
                 }
               >
                 Network Adminstration Dashboard

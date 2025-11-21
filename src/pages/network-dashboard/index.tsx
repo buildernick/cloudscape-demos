@@ -169,7 +169,7 @@ export default function NetworkDashboard() {
   });
   const [flashbarItems, setFlashbarItems] = useState([
     {
-      type: 'warning' as const,
+      type: 'error' as const,
       content: 'This is a warning message',
       dismissible: true,
       dismissLabel: 'Dismiss',
@@ -214,7 +214,7 @@ export default function NetworkDashboard() {
               variant="h1"
               description="Network Traffic, Credit Usage, and Your Devices"
               actions={
-                <SpaceBetween direction="horizontal" size="xs">
+                <SpaceBetween direction="horizontal" size="s">
                   <Toggle
                     checked={darkMode}
                     onChange={({ detail }) => setDarkMode(detail.checked)}
@@ -355,15 +355,7 @@ export default function NetworkDashboard() {
               selectedItems={selectedItems}
               onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
               header={
-                <Header
-                  variant="h2"
-                  description="Devices on your local network"
-                  actions={
-                    <Button variant="primary" iconName="external" iconAlign="right">
-                      Add Device
-                    </Button>
-                  }
-                >
+                <Header variant="h2" description="Devices on your local network">
                   My Devices
                 </Header>
               }

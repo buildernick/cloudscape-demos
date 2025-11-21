@@ -211,26 +211,28 @@ export default function NetworkDashboard() {
       content={
         <ContentLayout
           header={
-            <Header
-              variant="h1"
-              description="Network Traffic, Credit Usage, and Your Devices"
-              actions={
-                <SpaceBetween direction="horizontal" size="s">
-                  <Toggle
-                    checked={darkMode}
-                    onChange={({ detail }) => setDarkMode(detail.checked)}
-                    ariaLabel="Toggle dark mode"
-                  >
-                    Dark mode
-                  </Toggle>
-                  <Button variant="primary" iconName="external" iconAlign="right">
-                    Refresh Data
-                  </Button>
-                </SpaceBetween>
-              }
-            >
-              Network Administration Dashboard
-            </Header>
+            <div className="network-dashboard-header">
+              <Header
+                variant="h1"
+                description="Network Traffic, Credit Usage, and Your Devices"
+                actions={
+                  <SpaceBetween direction="horizontal" size="s">
+                    <Toggle
+                      checked={darkMode}
+                      onChange={({ detail }) => setDarkMode(detail.checked)}
+                      ariaLabel="Toggle dark mode"
+                    >
+                      Dark mode
+                    </Toggle>
+                    <Button variant="primary" iconName="external" iconAlign="right">
+                      Refresh Data
+                    </Button>
+                  </SpaceBetween>
+                }
+              >
+                Network Administration Dashboard
+              </Header>
+            </div>
           }
         >
           <SpaceBetween size="l">

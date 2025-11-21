@@ -144,6 +144,17 @@ export default function Home() {
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const itemsPerPage = 12;
 
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    return localStorage.load<boolean>('Awsui-Theme-Mode') ?? false;
+  });
+
+  useEffect(() => {
+    const theme = darkMode ? 'awsui-dark-mode' : 'awsui-light-mode';
+    document.body.classList.remove('awsui-dark-mode', 'awsui-light-mode');
+    document.body.classList.add(theme);
+    localStorage.save('Awsui-Theme-Mode', darkMode);
+  }, [darkMode]);
+
   // Filter demos based on filter text and selected category
   const filteredDemos = demos.filter(
     demo =>

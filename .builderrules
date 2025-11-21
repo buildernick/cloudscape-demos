@@ -38,6 +38,10 @@ Testing Requirements:
 
 Use the /public/UserDataApi.json file as the sample User Data API
 
+########
+# Theming
+
+Always include the dark/light theme toggle that's on the home page whenever creating new pages.
 
 #######
 # Component Usage

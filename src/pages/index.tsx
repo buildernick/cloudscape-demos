@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppLayout from '@cloudscape-design/components/app-layout';
 import ContentLayout from '@cloudscape-design/components/content-layout';
 import Header from '@cloudscape-design/components/header';
@@ -18,6 +18,11 @@ import Container from '@cloudscape-design/components/container';
 import Icon from '@cloudscape-design/components/icon';
 import Flashbar from '@cloudscape-design/components/flashbar';
 import Link from '@cloudscape-design/components/link';
+import Toggle from '@cloudscape-design/components/toggle';
+
+import * as localStorage from '../common/local-storage';
+
+import '@cloudscape-design/global-styles/dark-mode-utils.css';
 
 // Demo definitions with category information
 const demos = [
@@ -61,6 +66,12 @@ const demos = [
   },
   { route: '/form-validation', title: 'Form Validation', description: 'Form validation demo.', category: 'Forms' },
   { route: '/manage-tags', title: 'Manage Tags', description: 'Tag management demo.', category: 'Components' },
+  {
+    route: '/network-dashboard',
+    title: 'Network Administration Dashboard',
+    description: 'Network monitoring dashboard with charts and device management.',
+    category: 'Dashboards',
+  },
   {
     route: '/non-console',
     title: 'Top Navigation',
@@ -139,6 +150,17 @@ export default function Home() {
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const itemsPerPage = 12;
 
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    return localStorage.load<boolean>('Awsui-Theme-Mode') ?? false;
+  });
+
+  useEffect(() => {
+    const theme = darkMode ? 'awsui-dark-mode' : 'awsui-light-mode';
+    document.body.classList.remove('awsui-dark-mode', 'awsui-light-mode');
+    document.body.classList.add(theme);
+    localStorage.save('Awsui-Theme-Mode', darkMode);
+  }, [darkMode]);
+
   // Filter demos based on filter text and selected category
   const filteredDemos = demos.filter(
     demo =>
@@ -161,9 +183,18 @@ export default function Home() {
               <Header
                 variant="h1"
                 actions={
-                  <Button variant="primary" iconAlign="right" iconName="external">
-                    Launch new demo
-                  </Button>
+                  <SpaceBetween direction="horizontal" size="xs">
+                    <Toggle
+                      checked={darkMode}
+                      onChange={({ detail }) => setDarkMode(detail.checked)}
+                      ariaLabel="Toggle dark mode"
+                    >
+                      Dark mode
+                    </Toggle>
+                    <Button variant="primary" iconAlign="right" iconName="external">
+                      Launch new demo
+                    </Button>
+                  </SpaceBetween>
                 }
               >
                 Cloudscape Design System Demos&nbsp;

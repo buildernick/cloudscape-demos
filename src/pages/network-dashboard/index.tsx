@@ -177,13 +177,7 @@ export default function NetworkDashboard() {
                     filterSelectedAriaLabel: 'selected',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'area chart',
-                    xTickFormatter: e =>
-                      e
-                        .toString()
-                        .split('T')[0]
-                        .split('-')
-                        .reverse()
-                        .join('/'),
+                    xTickFormatter: e => e.toString().split('T')[0].split('-').reverse().join('/'),
                     yTickFormatter: undefined,
                   }}
                   legendTitle="Legend"
@@ -229,13 +223,7 @@ export default function NetworkDashboard() {
                     filterSelectedAriaLabel: 'selected',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'bar chart',
-                    xTickFormatter: e =>
-                      e
-                        .toString()
-                        .split('T')[0]
-                        .split('-')
-                        .reverse()
-                        .join('/'),
+                    xTickFormatter: e => e.toString().split('T')[0].split('-').reverse().join('/'),
                     yTickFormatter: undefined,
                   }}
                   legendTitle="Legend"

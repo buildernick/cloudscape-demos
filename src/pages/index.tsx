@@ -1,7 +1,7 @@
 // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AppLayout from '@cloudscape-design/components/app-layout';
 import ContentLayout from '@cloudscape-design/components/content-layout';
 import Header from '@cloudscape-design/components/header';
@@ -18,6 +18,11 @@ import Container from '@cloudscape-design/components/container';
 import Icon from '@cloudscape-design/components/icon';
 import Flashbar from '@cloudscape-design/components/flashbar';
 import Link from '@cloudscape-design/components/link';
+import Toggle from '@cloudscape-design/components/toggle';
+
+import * as localStorage from '../common/local-storage';
+
+import '@cloudscape-design/global-styles/dark-mode-utils.css';
 
 // Demo definitions with category information
 const demos = [

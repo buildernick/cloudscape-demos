@@ -8,7 +8,6 @@ import SpaceBetween from '@cloudscape-design/components/space-between';
 import Button from '@cloudscape-design/components/button';
 import Input from '@cloudscape-design/components/input';
 import Pagination from '@cloudscape-design/components/pagination';
-import ButtonDropdown from '@cloudscape-design/components/button-dropdown';
 import Flashbar from '@cloudscape-design/components/flashbar';
 import Container from '@cloudscape-design/components/container';
 import Grid from '@cloudscape-design/components/grid';

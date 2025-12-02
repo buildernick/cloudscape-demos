@@ -180,8 +180,8 @@ export function App() {
                     filterSelectedAriaLabel: 'selected',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'area chart',
-                    xTickFormatter: (value: number) => `x${value}`,
-                    yTickFormatter: (value: number) => `y${Math.round(value / 50)}`,
+                    xTickFormatter: (value) => `x${value}`,
+                    yTickFormatter: (value) => `y${Math.round(value / 50)}`,
                   }}
                   ariaLabel="Network traffic area chart"
                   empty={
@@ -199,19 +199,6 @@ export function App() {
                         There is no matching data to display
                       </Box>
                     </Box>
-                  }
-                  additionalFilters={
-                    <SpaceBetween direction="horizontal" size="xs">
-                      <Box fontSize="body-s" color="text-body-secondary">
-                        <Icon name="status-info" /> Site 1
-                      </Box>
-                      <Box fontSize="body-s" color="text-body-secondary">
-                        <Icon name="status-info" /> Site 2
-                      </Box>
-                      <Box fontSize="body-s" color="text-body-secondary">
-                        -- Performance goal
-                      </Box>
-                    </SpaceBetween>
                   }
                 />
               </SpaceBetween>
@@ -242,8 +229,8 @@ export function App() {
                     filterSelectedAriaLabel: 'selected',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'bar chart',
-                    xTickFormatter: (value: number) => `x${value}`,
-                    yTickFormatter: (value: number) => `y${Math.round(value / 50)}`,
+                    xTickFormatter: (value) => `x${value}`,
+                    yTickFormatter: (value) => `y${Math.round(value / 50)}`,
                   }}
                   ariaLabel="Credit usage bar chart"
                   empty={
@@ -261,16 +248,6 @@ export function App() {
                         There is no matching data to display
                       </Box>
                     </Box>
-                  }
-                  additionalFilters={
-                    <SpaceBetween direction="horizontal" size="xs">
-                      <Box fontSize="body-s" color="text-body-secondary">
-                        <Icon name="status-info" /> Site 1
-                      </Box>
-                      <Box fontSize="body-s" color="text-body-secondary">
-                        -- Performance goal
-                      </Box>
-                    </SpaceBetween>
                   }
                 />
               </SpaceBetween>

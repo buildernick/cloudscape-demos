@@ -8,7 +8,7 @@ import SpaceBetween from '@cloudscape-design/components/space-between';
 import Button from '@cloudscape-design/components/button';
 import Input from '@cloudscape-design/components/input';
 import Pagination from '@cloudscape-design/components/pagination';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import Alert from '@cloudscape-design/components/alert';
 import Container from '@cloudscape-design/components/container';
 import Grid from '@cloudscape-design/components/grid';
 import AreaChart from '@cloudscape-design/components/area-chart';
@@ -86,15 +86,7 @@ export function App() {
   const [searchValue, setSearchValue] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedItems, setSelectedItems] = useState<typeof devicesData>([]);
-  const [flashbarItems, setFlashbarItems] = useState([
-    {
-      type: 'warning' as const,
-      dismissible: true,
-      onDismiss: () => setFlashbarItems([]),
-      content: 'This is a warning message',
-      id: 'warning-message',
-    },
-  ]);
+  const [alertVisible, setAlertVisible] = useState(true);
 
   return (
     <AppLayout
@@ -124,7 +116,16 @@ export function App() {
             Network Administration Dashboard
           </Header>
 
-          <Flashbar items={flashbarItems} />
+          {alertVisible && (
+            <Alert
+              type="warning"
+              dismissible
+              onDismiss={() => setAlertVisible(false)}
+              buttonText="Dismiss"
+            >
+              This is a warning message
+            </Alert>
+          )}
 
           <SpaceBetween size="m">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}>

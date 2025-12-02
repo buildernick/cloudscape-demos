@@ -154,12 +154,7 @@ export function App() {
             </div>
           </SpaceBetween>
 
-          <Grid
-            gridDefinition={[
-              { colspan: { default: 12, s: 6 } },
-              { colspan: { default: 12, s: 6 } },
-            ]}
-          >
+          <Grid gridDefinition={[{ colspan: { default: 12, s: 6 } }, { colspan: { default: 12, s: 6 } }]}>
             <Container>
               <SpaceBetween size="l">
                 <Box variant="h3">Network traffic</Box>
@@ -178,8 +173,8 @@ export function App() {
                     filterSelectedAriaLabel: 'selected',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'area chart',
-                    xTickFormatter: (value) => `x${value}`,
-                    yTickFormatter: (value) => `y${Math.round(value / 50)}`,
+                    xTickFormatter: value => `x${value}`,
+                    yTickFormatter: value => `y${Math.round(value / 50)}`,
                   }}
                   ariaLabel="Network traffic area chart"
                   empty={
@@ -227,8 +222,8 @@ export function App() {
                     filterSelectedAriaLabel: 'selected',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'bar chart',
-                    xTickFormatter: (value) => `x${value}`,
-                    yTickFormatter: (value) => `y${Math.round(value / 50)}`,
+                    xTickFormatter: value => `x${value}`,
+                    yTickFormatter: value => `y${Math.round(value / 50)}`,
                   }}
                   ariaLabel="Credit usage bar chart"
                   empty={

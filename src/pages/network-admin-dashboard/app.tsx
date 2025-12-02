@@ -117,12 +117,7 @@ export function App() {
           </Header>
 
           {alertVisible && (
-            <Alert
-              type="warning"
-              dismissible
-              onDismiss={() => setAlertVisible(false)}
-              buttonText="Dismiss"
-            >
+            <Alert type="warning" dismissible onDismiss={() => setAlertVisible(false)} buttonText="Dismiss">
               This is a warning message
             </Alert>
           )}

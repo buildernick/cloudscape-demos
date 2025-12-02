@@ -16,7 +16,6 @@ import AreaChart from '@cloudscape-design/components/area-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
 import Table from '@cloudscape-design/components/table';
 import Box from '@cloudscape-design/components/box';
-import Icon from '@cloudscape-design/components/icon';
 
 import '@cloudscape-design/global-styles/dark-mode-utils.css';
 

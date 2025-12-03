@@ -18,6 +18,7 @@ import AreaChart from '@cloudscape-design/components/area-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
 
 import '@cloudscape-design/global-styles/dark-mode-utils.css';
+import './styles.scss';
 
 // Mock data for Network Traffic chart
 const networkTrafficData = [

@@ -99,8 +99,10 @@ export function App() {
               >
                 Network Administration Dashboard
               </Header>
-              
-              <Grid gridDefinition={[{ colspan: { default: 12, xs: 8, s: 6 } }, { colspan: { default: 12, xs: 4, s: 6 } }]}>
+
+              <Grid
+                gridDefinition={[{ colspan: { default: 12, xs: 8, s: 6 } }, { colspan: { default: 12, xs: 4, s: 6 } }]}
+              >
                 <Input
                   type="search"
                   placeholder="Placeholder"
@@ -146,8 +148,8 @@ export function App() {
                     filterSelectedAriaLabel: 'selected',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'area chart',
-                    xTickFormatter: (value) => `x${value}`,
-                    yTickFormatter: (value) => `y${value}`,
+                    xTickFormatter: value => `x${value}`,
+                    yTickFormatter: value => `y${value}`,
                   }}
                   ariaLabel="Network traffic area chart"
                   height={300}
@@ -191,8 +193,8 @@ export function App() {
                     filterSelectedAriaLabel: 'selected',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'bar chart',
-                    xTickFormatter: (value) => `x${value}`,
-                    yTickFormatter: (value) => `y${value}`,
+                    xTickFormatter: value => `x${value}`,
+                    yTickFormatter: value => `y${value}`,
                   }}
                   ariaLabel="Credit usage bar chart"
                   height={300}

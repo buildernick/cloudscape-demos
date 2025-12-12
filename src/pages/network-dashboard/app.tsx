@@ -94,13 +94,13 @@ export function App() {
     {
       title: 'Site 1',
       type: 'area' as const,
-      data: networkTrafficData.map((d) => ({ x: d.x, y: d.y1 })),
+      data: networkTrafficData.map(d => ({ x: d.x, y: d.y1 })),
       color: '#688AE8',
     },
     {
       title: 'Site 2',
       type: 'area' as const,
-      data: networkTrafficData.map((d) => ({ x: d.x, y: d.y2 })),
+      data: networkTrafficData.map(d => ({ x: d.x, y: d.y2 })),
       color: '#C33D69',
     },
   ];
@@ -203,7 +203,7 @@ export function App() {
                       ariaLabels={{
                         nextPageLabel: 'Next page',
                         previousPageLabel: 'Previous page',
-                        pageLabel: (pageNumber) => `Page ${pageNumber}`,
+                        pageLabel: pageNumber => `Page ${pageNumber}`,
                       }}
                     />
                     <Button iconName="settings" variant="icon" ariaLabel="Settings" />
@@ -217,9 +217,7 @@ export function App() {
             <Flashbar items={flashbarItems} />
 
             <Grid gridDefinition={[{ colspan: 6 }, { colspan: 6 }]}>
-              <Container
-                header={<Header variant="h2">Network traffic</Header>}
-              >
+              <Container header={<Header variant="h2">Network traffic</Header>}>
                 <AreaChart
                   series={networkTrafficSeries}
                   xDomain={[1, 12]}
@@ -231,8 +229,8 @@ export function App() {
                     detailPopoverDismissAriaLabel: 'Dismiss',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'area chart',
-                    xTickFormatter: (value) => `x${Math.round(value as number)}`,
-                    yTickFormatter: (value) => `y${Math.ceil((value as number) / 16.67)}`,
+                    xTickFormatter: value => `x${Math.round(value as number)}`,
+                    yTickFormatter: value => `y${Math.ceil((value as number) / 16.67)}`,
                   }}
                   ariaLabel="Network traffic area chart"
                   height={300}
@@ -268,9 +266,7 @@ export function App() {
                 </Box>
               </Container>
 
-              <Container
-                header={<Header variant="h2">Credit Usage</Header>}
-              >
+              <Container header={<Header variant="h2">Credit Usage</Header>}>
                 <BarChart
                   series={creditUsageSeries}
                   xDomain={['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5']}
@@ -282,8 +278,8 @@ export function App() {
                     detailPopoverDismissAriaLabel: 'Dismiss',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'bar chart',
-                    xTickFormatter: (value) => value.toString().replace('Day ', 'x'),
-                    yTickFormatter: (value) => `y${Math.ceil((value as number) / 50)}`,
+                    xTickFormatter: value => value.toString().replace('Day ', 'x'),
+                    yTickFormatter: value => `y${Math.ceil((value as number) / 50)}`,
                   }}
                   ariaLabel="Credit usage bar chart"
                   height={300}

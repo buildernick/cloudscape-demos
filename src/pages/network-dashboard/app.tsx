@@ -74,7 +74,7 @@ const generateDevicesData = () => {
 export function App() {
   const [filteringText, setFilteringText] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<any[]>([]);
   const [flashbarItems, setFlashbarItems] = useState<FlashbarProps.MessageDefinition[]>([
     {
       type: 'warning',

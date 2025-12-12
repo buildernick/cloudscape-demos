@@ -21,6 +21,7 @@ import Icon from '@cloudscape-design/components/icon';
 import { CustomAppLayout } from '../commons/common-components';
 
 import '@cloudscape-design/global-styles/dark-mode-utils.css';
+import '../../styles/network-dashboard.scss';
 
 // Generate sample data for network traffic (area chart)
 const generateNetworkTrafficData = () => {

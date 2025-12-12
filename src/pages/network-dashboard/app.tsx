@@ -77,7 +77,7 @@ export function App() {
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
   const [flashbarItems, setFlashbarItems] = useState<FlashbarProps.MessageDefinition[]>([
     {
-      type: 'warning',
+      type: 'error',
       dismissible: true,
       dismissLabel: 'Dismiss',
       onDismiss: () => setFlashbarItems([]),

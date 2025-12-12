@@ -22,28 +22,31 @@ import { CustomAppLayout } from '../commons/common-components';
 
 import '@cloudscape-design/global-styles/dark-mode-utils.css';
 
-// Generate sample data for network traffic
+// Generate sample data for network traffic (area chart)
 const generateNetworkTrafficData = () => {
+  // Creating data that resembles the Figma design pattern
   const data = [];
+  const site1Values = [65, 72, 78, 85, 88, 82, 75, 70, 65, 60, 58, 55];
+  const site2Values = [45, 58, 62, 68, 75, 80, 78, 72, 68, 62, 58, 52];
+
   for (let i = 1; i <= 12; i++) {
     data.push({
       x: i,
-      y1: Math.floor(Math.random() * 30) + 50,
-      y2: Math.floor(Math.random() * 40) + 30,
+      y1: site1Values[i - 1],
+      y2: site2Values[i - 1],
     });
   }
   return data;
 };
 
-// Generate sample data for credit usage
+// Generate sample data for credit usage (bar chart)
 const generateCreditUsageData = () => {
-  const heights = [183, 257, 213, 122, 210];
   return [
-    { x: 'x1', y: heights[0] },
-    { x: 'x2', y: heights[1] },
-    { x: 'x3', y: heights[2] },
-    { x: 'x4', y: heights[3] },
-    { x: 'x5', y: heights[4] },
+    { x: 'Day 1', y: 183 },
+    { x: 'Day 2', y: 257 },
+    { x: 'Day 3', y: 213 },
+    { x: 'Day 4', y: 122 },
+    { x: 'Day 5', y: 210 },
   ];
 };
 
@@ -197,14 +200,17 @@ export function App() {
                     detailPopoverDismissAriaLabel: 'Dismiss',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'area chart',
-                    xTickFormatter: (value) => `x${value}`,
-                    yTickFormatter: (value) => `y${Math.round(value / 20) + 1}`,
+                    xTickFormatter: (value) => `x${Math.round(value as number)}`,
+                    yTickFormatter: (value) => `y${Math.ceil((value as number) / 16.67)}`,
                   }}
                   ariaLabel="Network traffic area chart"
                   height={300}
                   xScaleType="linear"
                   xTitle="Day"
                   yTitle=""
+                  hideFilter
+                  hideLegend={false}
+                  statusType="finished"
                   empty={
                     <Box textAlign="center" color="inherit">
                       <b>No data available</b>
@@ -223,9 +229,11 @@ export function App() {
                   }
                 />
                 <Box textAlign="center" padding={{ top: 's' }}>
-                  <Box variant="small" color="text-body-secondary">
-                    <Icon name="status-info" /> Performance goal
-                  </Box>
+                  <SpaceBetween direction="horizontal" size="xs">
+                    <Box variant="small" color="text-body-secondary">
+                      <span style={{ marginRight: '4px' }}>--</span> Performance goal
+                    </Box>
+                  </SpaceBetween>
                 </Box>
               </Container>
 
@@ -234,7 +242,7 @@ export function App() {
               >
                 <BarChart
                   series={creditUsageSeries}
-                  xDomain={['x1', 'x2', 'x3', 'x4', 'x5']}
+                  xDomain={['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5']}
                   yDomain={[0, 300]}
                   i18nStrings={{
                     filterLabel: 'Filter displayed data',
@@ -243,13 +251,17 @@ export function App() {
                     detailPopoverDismissAriaLabel: 'Dismiss',
                     legendAriaLabel: 'Legend',
                     chartAriaRoleDescription: 'bar chart',
-                    yTickFormatter: (value) => `y${Math.round(value / 50) + 1}`,
+                    xTickFormatter: (value) => value.toString().replace('Day ', 'x'),
+                    yTickFormatter: (value) => `y${Math.ceil((value as number) / 50)}`,
                   }}
                   ariaLabel="Credit usage bar chart"
                   height={300}
                   xScaleType="categorical"
                   xTitle="Day"
                   yTitle=""
+                  hideFilter
+                  hideLegend={false}
+                  statusType="finished"
                   empty={
                     <Box textAlign="center" color="inherit">
                       <b>No data available</b>
@@ -268,9 +280,11 @@ export function App() {
                   }
                 />
                 <Box textAlign="center" padding={{ top: 's' }}>
-                  <Box variant="small" color="text-body-secondary">
-                    <Icon name="status-info" /> Performance goal
-                  </Box>
+                  <SpaceBetween direction="horizontal" size="xs">
+                    <Box variant="small" color="text-body-secondary">
+                      <span style={{ marginRight: '4px' }}>--</span> Performance goal
+                    </Box>
+                  </SpaceBetween>
                 </Box>
               </Container>
             </Grid>

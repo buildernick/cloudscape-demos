@@ -186,6 +186,29 @@ export function App() {
               >
                 Network Administration Dashboard
               </Header>
+              <Grid gridDefinition={[{ colspan: 8 }, { colspan: 4 }]}>
+                <TextFilter
+                  filteringText={filteringText}
+                  filteringPlaceholder="Placeholder"
+                  filteringAriaLabel="Filter content"
+                  onChange={({ detail }) => setFilteringText(detail.filteringText)}
+                />
+                <Box float="right">
+                  <SpaceBetween direction="horizontal" size="xs" alignItems="center">
+                    <Pagination
+                      currentPageIndex={currentPageIndex}
+                      onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
+                      pagesCount={5}
+                      ariaLabels={{
+                        nextPageLabel: 'Next page',
+                        previousPageLabel: 'Previous page',
+                        pageLabel: (pageNumber) => `Page ${pageNumber}`,
+                      }}
+                    />
+                    <Button iconName="settings" variant="icon" ariaLabel="Settings" />
+                  </SpaceBetween>
+                </Box>
+              </Grid>
             </SpaceBetween>
           }
         >
@@ -314,24 +337,6 @@ export function App() {
                 >
                   My Devices
                 </Header>
-              }
-              pagination={
-                <Pagination
-                  currentPageIndex={currentPageIndex}
-                  onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
-                  pagesCount={5}
-                />
-              }
-              filter={
-                <TextFilter
-                  filteringText={filteringText}
-                  filteringPlaceholder="Placeholder"
-                  filteringAriaLabel="Filter devices"
-                  onChange={({ detail }) => setFilteringText(detail.filteringText)}
-                />
-              }
-              preferences={
-                <Button iconName="settings" variant="icon" />
               }
             />
           </SpaceBetween>

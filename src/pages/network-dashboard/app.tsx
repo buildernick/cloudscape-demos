@@ -53,6 +53,7 @@ const generateCreditUsageData = () => {
 // Generate sample devices data
 const generateDevicesData = () => {
   const devices = [];
+  const locations = ['Office', 'Home', 'Guest Room', 'Basement', 'Kitchen'];
   for (let i = 1; i <= 12; i++) {
     devices.push({
       id: `device-${i}`,
@@ -63,6 +64,7 @@ const generateDevicesData = () => {
       status: i % 4 === 0 ? 'Offline' : 'Online',
       bandwidth: `${Math.floor(Math.random() * 100)} Mbps`,
       lastSeen: `${Math.floor(Math.random() * 24)} hours ago`,
+      location: locations[i % locations.length],
     });
   }
   return devices;
@@ -150,6 +152,11 @@ export function App() {
       id: 'lastSeen',
       header: 'Last Seen',
       cell: (item: any) => item.lastSeen,
+    },
+    {
+      id: 'location',
+      header: 'Location',
+      cell: (item: any) => item.location || 'N/A',
     },
   ];
 

@@ -6,7 +6,7 @@ import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Button from '@cloudscape-design/components/button';
 import Container from '@cloudscape-design/components/container';
 import ContentLayout from '@cloudscape-design/components/content-layout';
-import Flashbar, { FlashbarProps } from '@cloudscape-design/components/flashbar';
+import Alert from '@cloudscape-design/components/alert';
 import Grid from '@cloudscape-design/components/grid';
 import Header from '@cloudscape-design/components/header';
 import Pagination from '@cloudscape-design/components/pagination';
@@ -75,16 +75,7 @@ export function App() {
   const [filteringText, setFilteringText] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const [selectedItems, setSelectedItems] = useState<any[]>([]);
-  const [flashbarItems, setFlashbarItems] = useState<FlashbarProps.MessageDefinition[]>([
-    {
-      type: 'error',
-      dismissible: true,
-      dismissLabel: 'Dismiss',
-      onDismiss: () => setFlashbarItems([]),
-      content: 'This is a warning message',
-      id: 'warning-message',
-    },
-  ]);
+  const [alertVisible, setAlertVisible] = useState(true);
 
   const networkTrafficData = generateNetworkTrafficData();
   const creditUsageData = generateCreditUsageData();
@@ -214,7 +205,15 @@ export function App() {
           }
         >
           <SpaceBetween size="l">
-            <Flashbar items={flashbarItems} />
+            {alertVisible && (
+              <Alert
+                type="error"
+                dismissible
+                onDismiss={() => setAlertVisible(false)}
+              >
+                This is a warning message
+              </Alert>
+            )}
 
             <Grid gridDefinition={[{ colspan: 6 }, { colspan: 6 }]}>
               <Container header={<Header variant="h2">Network traffic</Header>}>

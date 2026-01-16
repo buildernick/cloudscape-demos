@@ -72,6 +72,12 @@ const demos = [
     description: 'Non-console top navigation.',
     category: 'Navigation',
   },
+  {
+    route: '/network-dashboard',
+    title: 'Network Dashboard',
+    description: 'Network administration dashboard with charts and device table.',
+    category: 'Dashboards',
+  },
   { route: '/onboarding', title: 'Onboarding', description: 'Hands-on tutorials.', category: 'Onboarding' },
   {
     route: '/product-detail-page',

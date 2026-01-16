@@ -27,7 +27,7 @@ export function App() {
   const flashbarItems = showWarning
     ? [
         {
-          type: 'warning' as const,
+          type: 'error' as const,
           dismissible: true,
           content: 'This is a warning message',
           onDismiss: () => setShowWarning(false),

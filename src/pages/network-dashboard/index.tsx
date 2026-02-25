@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: MIT-0
 import React, { useEffect, useState } from 'react';
 
+import Alert from '@cloudscape-design/components/alert';
 import AppLayout from '@cloudscape-design/components/app-layout';
 import AreaChart from '@cloudscape-design/components/area-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
@@ -10,7 +11,6 @@ import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Button from '@cloudscape-design/components/button';
 import Container from '@cloudscape-design/components/container';
 import ContentLayout from '@cloudscape-design/components/content-layout';
-import Flashbar from '@cloudscape-design/components/flashbar';
 import Grid from '@cloudscape-design/components/grid';
 import Header from '@cloudscape-design/components/header';
 import { I18nProvider } from '@cloudscape-design/components/i18n';
@@ -190,16 +190,6 @@ export default function NetworkDashboard() {
     currentPageIndex * ITEMS_PER_PAGE,
   );
 
-  const flashItems = warningVisible
-    ? [
-        {
-          type: 'warning' as const,
-          content: 'This is a warning message',
-          dismissible: true,
-          onDismiss: () => setWarningVisible(false),
-        },
-      ]
-    : [];
 
   return (
     <I18nProvider locale="en" messages={[enMessages]}>
@@ -269,7 +259,11 @@ export default function NetworkDashboard() {
                   </Box>
                 </Grid>
 
-                {warningVisible && <Flashbar items={flashItems} />}
+                {warningVisible && (
+                  <Alert type="warning" dismissible onDismiss={() => setWarningVisible(false)}>
+                    This is a warning message
+                  </Alert>
+                )}
               </SpaceBetween>
             }
           >

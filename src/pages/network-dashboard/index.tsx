@@ -221,7 +221,11 @@ export default function NetworkDashboard() {
             </Grid>
 
             {/* Warning flashbar */}
-            {!warningDismissed && <Flashbar items={flashItems} />}
+            {!warningDismissed && (
+              <div style={{ '--awsui-color-background-notification-warning': 'rgba(213, 18, 58, 1)' } as React.CSSProperties}>
+                <Flashbar items={flashItems} />
+              </div>
+            )}
 
             {/* Charts */}
             <Grid

@@ -1,0 +1,143 @@
+{
+  "devices": [
+    {
+      "id": "dev-001",
+      "deviceName": "Router-Core-01",
+      "ipAddress": "192.168.1.1",
+      "macAddress": "A4:C3:F0:12:34:56",
+      "deviceType": "Router",
+      "status": "Online",
+      "lastSeen": "2024-01-15T10:30:00Z",
+      "bandwidthUsage": "1.2 GB"
+    },
+    {
+      "id": "dev-002",
+      "deviceName": "Switch-Floor2",
+      "ipAddress": "192.168.1.2",
+      "macAddress": "B8:27:EB:45:67:89",
+      "deviceType": "Switch",
+      "status": "Online",
+      "lastSeen": "2024-01-15T10:29:00Z",
+      "bandwidthUsage": "856 MB"
+    },
+    {
+      "id": "dev-003",
+      "deviceName": "AP-Lobby",
+      "ipAddress": "192.168.1.10",
+      "macAddress": "DC:A6:32:78:9A:BC",
+      "deviceType": "Access Point",
+      "status": "Online",
+      "lastSeen": "2024-01-15T10:28:00Z",
+      "bandwidthUsage": "432 MB"
+    },
+    {
+      "id": "dev-004",
+      "deviceName": "Server-Prod-01",
+      "ipAddress": "192.168.2.100",
+      "macAddress": "E4:5F:01:AB:CD:EF",
+      "deviceType": "Server",
+      "status": "Online",
+      "lastSeen": "2024-01-15T10:30:00Z",
+      "bandwidthUsage": "3.7 GB"
+    },
+    {
+      "id": "dev-005",
+      "deviceName": "NAS-Storage-01",
+      "ipAddress": "192.168.2.101",
+      "macAddress": "F0:18:98:CD:EF:12",
+      "deviceType": "NAS",
+      "status": "Online",
+      "lastSeen": "2024-01-15T10:27:00Z",
+      "bandwidthUsage": "5.1 GB"
+    },
+    {
+      "id": "dev-006",
+      "deviceName": "Firewall-Edge",
+      "ipAddress": "10.0.0.1",
+      "macAddress": "00:1A:2B:3C:4D:5E",
+      "deviceType": "Firewall",
+      "status": "Online",
+      "lastSeen": "2024-01-15T10:30:00Z",
+      "bandwidthUsage": "8.3 GB"
+    },
+    {
+      "id": "dev-007",
+      "deviceName": "Workstation-Dev01",
+      "ipAddress": "192.168.3.50",
+      "macAddress": "3C:5A:B4:56:78:90",
+      "deviceType": "Workstation",
+      "status": "Offline",
+      "lastSeen": "2024-01-14T18:45:00Z",
+      "bandwidthUsage": "245 MB"
+    },
+    {
+      "id": "dev-008",
+      "deviceName": "Printer-HR",
+      "ipAddress": "192.168.3.75",
+      "macAddress": "AC:BC:32:90:AB:CD",
+      "deviceType": "Printer",
+      "status": "Idle",
+      "lastSeen": "2024-01-15T09:15:00Z",
+      "bandwidthUsage": "12 MB"
+    },
+    {
+      "id": "dev-009",
+      "deviceName": "AP-Conference",
+      "ipAddress": "192.168.1.11",
+      "macAddress": "C8:D7:19:BC:DE:F0",
+      "deviceType": "Access Point",
+      "status": "Online",
+      "lastSeen": "2024-01-15T10:29:00Z",
+      "bandwidthUsage": "678 MB"
+    },
+    {
+      "id": "dev-010",
+      "deviceName": "Camera-Entrance",
+      "ipAddress": "192.168.4.20",
+      "macAddress": "5C:CF:7F:DE:F0:12",
+      "deviceType": "IP Camera",
+      "status": "Online",
+      "lastSeen": "2024-01-15T10:30:00Z",
+      "bandwidthUsage": "920 MB"
+    },
+    {
+      "id": "dev-011",
+      "deviceName": "VoIP-Phone-101",
+      "ipAddress": "192.168.5.101",
+      "macAddress": "00:11:22:EF:12:34",
+      "deviceType": "VoIP Phone",
+      "status": "Online",
+      "lastSeen": "2024-01-15T10:20:00Z",
+      "bandwidthUsage": "8 MB"
+    },
+    {
+      "id": "dev-012",
+      "deviceName": "Switch-Server-Room",
+      "ipAddress": "192.168.2.2",
+      "macAddress": "70:4D:7B:12:34:56",
+      "deviceType": "Switch",
+      "status": "Online",
+      "lastSeen": "2024-01-15T10:30:00Z",
+      "bandwidthUsage": "2.4 GB"
+    },
+    {
+      "id": "dev-013",
+      "deviceName": "Server-Backup-01",
+      "ipAddress": "192.168.2.102",
+      "macAddress": "8C:EC:4B:34:56:78",
+      "deviceType": "Server",
+      "status": "Warning",
+      "lastSeen": "2024-01-15T10:25:00Z",
+      "bandwidthUsage": "1.8 GB"
+    }
+  ],
+  "networkTraffic": {
+    "site1": [30, 38, 45, 50, 42, 55, 60, 58, 63, 70, 65, 68],
+    "site2": [20, 28, 35, 40, 50, 45, 55, 60, 52, 58, 62, 55],
+    "performanceGoal": 45
+  },
+  "creditUsage": {
+    "site1": [42, 58, 48, 32, 47],
+    "performanceGoal": 40
+  }
+}

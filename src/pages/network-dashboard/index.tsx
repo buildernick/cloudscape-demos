@@ -142,7 +142,7 @@ export default function NetworkDashboard() {
     ? []
     : [
         {
-          type: 'warning' as const,
+          type: 'error' as const,
           content: 'This is a warning message',
           dismissible: true,
           dismissLabel: 'Dismiss',
@@ -221,11 +221,7 @@ export default function NetworkDashboard() {
             </Grid>
 
             {/* Warning flashbar */}
-            {!warningDismissed && (
-              <div style={{ '--awsui-color-background-notification-warning': 'rgba(213, 18, 58, 1)' } as React.CSSProperties}>
-                <Flashbar items={flashItems} />
-              </div>
-            )}
+            {!warningDismissed && <Flashbar items={flashItems} />}
 
             {/* Charts */}
             <Grid

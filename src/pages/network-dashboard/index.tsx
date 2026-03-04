@@ -211,6 +211,7 @@ export default function NetworkDashboard() {
                   series={areaChartSeries}
                   xDomain={networkDays}
                   yDomain={[0, 600]}
+                  xScaleType="categorical"
                   xTitle="Day"
                   yTitle="Bandwidth (Mbps)"
                   ariaLabel="Network traffic area chart"
@@ -248,6 +249,7 @@ export default function NetworkDashboard() {
                   series={barChartSeries}
                   xDomain={creditDays}
                   yDomain={[0, 650]}
+                  xScaleType="categorical"
                   xTitle="Day"
                   yTitle="Credits"
                   ariaLabel="Credit usage bar chart"

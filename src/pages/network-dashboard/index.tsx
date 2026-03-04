@@ -24,14 +24,14 @@ import * as localStorage from '../../common/local-storage';
 import '@cloudscape-design/global-styles/dark-mode-utils.css';
 
 // --- Chart Data ---
-const networkDays = ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8', 'Day 9', 'Day 10', 'Day 11', 'Day 12'];
+const networkDays = ['x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x9', 'x10', 'x11', 'x12'];
 
 const networkTrafficSite1 = [320, 380, 350, 420, 400, 460, 430, 480, 410, 390, 440, 470];
 const networkTrafficSite2 = [280, 310, 370, 340, 390, 420, 450, 400, 370, 410, 380, 500];
 const networkPerformanceGoal = 350;
 
 const creditUsageData = [420, 560, 490, 310, 480];
-const creditDays = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
+const creditDays = ['x1', 'x2', 'x3', 'x4', 'x5'];
 const creditPerformanceGoal = 400;
 
 // --- Device Table Data ---

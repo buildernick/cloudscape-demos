@@ -200,7 +200,7 @@ export default function NetworkDashboard() {
     ? []
     : [
         {
-          type: 'warning' as const,
+          type: 'error' as const,
           content: 'This is a warning message',
           dismissible: true,
           dismissLabel: 'Dismiss',
@@ -210,13 +210,7 @@ export default function NetworkDashboard() {
       ];
 
   return (
-    <>
-      <style>{`
-        [data-itemid="network-warning"] {
-          background-color: rgba(235, 2, 2, 1) !important;
-        }
-      `}</style>
-      <AppLayout
+    <AppLayout
       navigationHide
       toolsHide
       breadcrumbs={
@@ -439,6 +433,5 @@ export default function NetworkDashboard() {
         </ContentLayout>
       }
     />
-    </>
   );
 }

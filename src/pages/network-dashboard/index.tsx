@@ -285,6 +285,7 @@ export default function NetworkDashboard() {
                   series={networkTrafficSeries}
                   xDomain={[new Date(2024, 0, 1), new Date(2024, 0, 12)]}
                   yDomain={[0, 100]}
+                  xScaleType="time"
                   i18nStrings={{
                     xTickFormatter: (value: number) =>
                       new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),

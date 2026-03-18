@@ -1,0 +1,133 @@
+---
+description: Always use Flashbar type variants instead of custom colors/styles
+globs:
+  - "src/**/*.tsx"
+  - "src/**/*.ts"
+alwaysApply: false
+---
+
+# Flashbar Component - Use Built-in Variants
+
+## Critical Rule
+
+**ALWAYS check and use Flashbar's built-in `type` variants BEFORE attempting to customize colors or styles.**
+
+Flashbar provides semantic type variants that handle colors, icons, and accessibility automatically.
+
+## Built-in Type Variants
+
+Flashbar has 4 built-in type variants:
+
+
+type: 'success' | 'error' | 'warning' | 'info'
+```
+
+Each type variant provides:
+- ✅ Appropriate color scheme (green, red, orange, blue)
+- ✅ Correct semantic icon
+- ✅ Proper ARIA announcements for screen readers
+- ✅ Theme-aware styling (light/dark mode support)
+
+## Correct Usage
+
+```typescript
+// ✅ CORRECT - Use type variants
+<Flashbar
+  items={[
+    {
+      type: 'success',  // Green styling, success icon, announced as success
+      content: 'Resource created successfully'
+    },
+    {
+      type: 'error',    // Red styling, error icon, announced as error
+      content: 'Failed to save changes'
+    },
+    {
+      type: 'warning',  // Orange styling, warning icon, announced as warning
+      content: 'Your session will expire soon'
+    },
+    {
+      type: 'info',     // Blue styling, info icon, announced as info
+      content: 'New features available'
+    }
+  ]}
+/>
+```
+
+## Incorrect Usage
+
+```typescript
+// ❌ WRONG - Don't customize colors manually
+<Flashbar
+  items={[
+    {
+      content: <div style={{ color: 'green' }}>Success message</div>  // BAD
+    }
+  ]}
+/>
+
+// ❌ WRONG - Don't wrap in custom styled components
+<Flashbar
+  items={[
+    {
+      content: <Box color="text-status-success">Message</Box>  // BAD - just use type
+    }
+  ]}
+/>
+```
+
+## Decision Tree
+
+Before customizing Flashbar appearance, ask:
+
+1. **Is this a success message?** → Use `type: 'success'`
+2. **Is this an error or failure?** → Use `type: 'error'`
+3. **Is this a warning or caution?** → Use `type: 'warning'`
+4. **Is this informational?** → Use `type: 'info'`
+
+## Additional Variant Options
+
+Beyond `type`, Flashbar supports other built-in options:
+
+```typescript
+{
+  type: 'info',
+  loading: true,           // Shows loading spinner instead of icon
+  dismissible: true,       // Adds dismiss button
+  header: 'Optional Header',
+  action: <Button>Action</Button>,  // Optional action button
+  buttonText: 'Learn more',
+  onButtonClick: () => {}
+}
+```
+
+## When Custom Styling IS Allowed
+
+Only customize content WITHIN the message, not the Flashbar styling itself:
+
+```typescript
+// ✅ OK - Custom content formatting inside the message
+<Flashbar
+  items={[
+    {
+      type: 'error',  // Still using the variant!
+      header: 'Validation Failed',
+      content: (
+        <SpaceBetween size="xs">
+          <div>Please fix the following errors:</div>
+          <ul>
+            <li>Email is required</li>
+            <li>Password must be at least 8 characters</li>
+          </ul>
+        </SpaceBetween>
+      )
+    }
+  ]}
+/>
+```
+
+## Summary
+
+**Never override Flashbar colors/styles. Always use the `type` prop.**
+
+The built-in variants ensure consistency, accessibility, and theme compatibility across your entire application.

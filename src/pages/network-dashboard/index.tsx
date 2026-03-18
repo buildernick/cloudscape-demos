@@ -286,8 +286,8 @@ export default function NetworkDashboard() {
                   xDomain={[new Date(2024, 0, 1), new Date(2024, 0, 12)]}
                   yDomain={[0, 100]}
                   i18nStrings={{
-                    xTickFormatter: (value: Date) =>
-                      value.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                    xTickFormatter: (value: number) =>
+                      new Date(value).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
                     yTickFormatter: (value: number) => `${value}`,
                     filterLabel: 'Filter displayed data',
                     filterPlaceholder: 'Filter data',

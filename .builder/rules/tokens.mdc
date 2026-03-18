@@ -1,0 +1,106 @@
+---
+description: Design token usage guidelines for Cloudscape Design System
+globs:
+  - "src/**/*.tsx"
+  - "src/**/*.ts"
+  - "src/**/*.css"
+  - "src/**/*.scss"
+alwaysApply: false
+---
+
+# Design Tokens Usage
+
+## Token Import Patterns
+
+Always import design tokens from the official package:
+
+
+// ✅ Correct - Import specific tokens
+import { 
+  colorBackgroundContainerContent,
+  colorTextBodyDefault,
+  spaceScaledM,
+  spaceScaledS
+} from '@cloudscape-design/design-tokens';
+
+// ❌ Avoid - Hardcoded values
+const backgroundColor = '#ffffff';
+const textColor = '#0f141a';
+```
+
+## Color Tokens
+
+- **ALWAYS use semantic color tokens** instead of hardcoded hex values
+- Use `colorBackground*` tokens for backgrounds
+- Use `colorText*` tokens for text
+- Use `colorBorder*` tokens for borders
+- Use status colors (`colorTextStatus*`, `colorBackgroundStatus*`, `colorBorderStatus*`) for error, warning, success, info states
+
+```typescript
+// ✅ Good - Semantic tokens
+style={{
+  backgroundColor: colorBackgroundContainerContent,
+  color: colorTextBodyDefault,
+  border: `1px solid ${colorBorderDividerDefault}`
+}}
+
+// ❌ Avoid - Hardcoded colors
+style={{
+  backgroundColor: '#ffffff',
+  color: '#0f141a',
+  border: '1px solid #dedee3'
+}}
+```
+
+## Spacing Tokens
+
+- Use `spaceScaled*` tokens for most UI spacing (responds to user accessibility preferences)
+- Use `spaceStatic*` tokens only when fixed spacing is required
+- Use `spaceContainerHorizontal` for container padding
+- Use `spaceFieldHorizontal` for form field spacing
+
+**Available sizes**: `xxxs` (2px), `xxs` (4px), `xs` (8px), `s` (12px), `m` (16px), `l` (20px), `xl` (24px), `xxl` (32px), `xxxl` (40px)
+
+```typescript
+// ✅ Good - Scaled spacing
+<SpaceBetween size="m">  // Uses design system component
+<Box padding={{ vertical: 'm', horizontal: 'l' }}>
+
+// ✅ Good - Token in custom styles
+style={{ padding: spaceScaledM, gap: spaceScaledS }}
+
+// ❌ Avoid - Hardcoded pixel values
+style={{ padding: '16px', gap: '12px' }}
+```
+
+## CSS/SCSS Usage
+
+```scss
+// ✅ Good - SCSS variables
+@use '@cloudscape-design/design-tokens' as tokens;
+
+.custom-component {
+  padding: tokens.$space-scaled-m;
+  background-color: tokens.$color-background-container-content;
+  color: tokens.$color-text-body-default;
+}
+
+// ✅ Good - CSS custom properties
+.custom-component {
+  padding: var(--space-scaled-m);
+  background-color: var(--color-background-container-content);
+}
+```
+
+## Chart Colors
+
+- Use `colorChartsPaletteCategorical*` tokens (1-50) for categorical data
+- Use `colorChartsStatus*` tokens for status indicators in charts
+- Use `colorChartsThreshold*` tokens for threshold lines
+- Chart components automatically use design tokens
+
+## Theme Support
+
+- All color tokens automatically adapt between light and dark themes
+- Never add theme-specific logic when using design tokens
+- The system handles theme switching automatically

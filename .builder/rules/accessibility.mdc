@@ -1,0 +1,196 @@
+---
+description: Accessibility requirements and patterns for WCAG compliance
+globs:
+  - "src/**/*.tsx"
+  - "src/**/*.ts"
+alwaysApply: true
+---
+
+# Accessibility Guidelines
+
+## ARIA Labels - Required Patterns
+
+Always provide ARIA labels for interactive elements:
+
+
+// ✅ Form inputs
+<Input
+  value={value}
+  onChange={onChange}
+  ariaLabel="Email address"
+/>
+
+<Toggle
+  checked={darkMode}
+  onChange={onChange}
+  ariaLabel="Toggle dark mode"
+>
+  Dark mode
+</Toggle>
+
+// ✅ Buttons without visible text
+<Button iconName="settings" ariaLabel="Open settings" />
+
+// ✅ Tables and collections
+<Table
+  ariaLabels={{
+    itemSelectionLabel: (data, row) => `Select ${row.name}`,
+    allItemsSelectionLabel: () => 'Select all items',
+    selectionGroupLabel: 'Item selection'
+  }}
+  items={items}
+/>
+
+// ✅ Search and filter
+<TextFilter
+  filteringText={filterText}
+  filteringPlaceholder="Find resources"
+  filteringAriaLabel="Filter resources"
+  onChange={onChange}
+/>
+```
+
+## Keyboard Navigation
+
+All interactive elements must be keyboard accessible:
+
+- **Tab order**: Ensure logical tab order through page elements
+- **Focus indicators**: Never disable outline or focus styles
+- **Enter/Space**: Buttons and links should respond to keyboard activation
+- **Escape**: Modals and dropdowns should close on Escape key
+
+```typescript
+// ✅ Cloudscape components handle keyboard navigation automatically
+<Button onClick={handleClick}>Action</Button>
+<Modal visible={visible} onDismiss={handleDismiss}>
+
+// ✅ Custom interactive elements need onKeyDown
+<div
+  role="button"
+  tabIndex={0}
+  onClick={handleClick}
+  onKeyDown={(e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleClick();
+    }
+  }}
+>
+```
+
+## Semantic HTML
+
+Use appropriate HTML elements and ARIA roles:
+
+```typescript
+// ✅ Good - Semantic structure
+<main>
+  <Header variant="h1">Page Title</Header>
+  <section>
+    <Header variant="h2">Section Title</Header>
+  </section>
+</main>
+
+// ✅ Good - ARIA landmarks
+<ContentLayout
+  header={<Header variant="h1">Dashboard</Header>}
+>
+
+// ❌ Avoid - Generic divs without semantic meaning
+<div>
+  <div className="title">Page Title</div>
+</div>
+```
+
+## Form Accessibility
+
+```typescript
+// ✅ Always use FormField wrapper
+<FormField
+  label="Email address"
+  description="We'll never share your email"
+  errorText={errors.email}
+>
+  <Input
+    value={email}
+    onChange={onChange}
+    ariaRequired={true}
+  />
+</FormField>
+
+// ✅ Group related inputs
+<FormField label="Name">
+  <SpaceBetween direction="horizontal" size="xs">
+    <Input ariaLabel="First name" />
+    <Input ariaLabel="Last name" />
+  </SpaceBetween>
+</FormField>
+```
+
+## Live Regions for Dynamic Content
+
+Use LiveRegion for announcing dynamic updates:
+
+```typescript
+import LiveRegion from '@cloudscape-design/components/live-region';
+
+// ✅ Announce loading states
+<LiveRegion assertive>
+  {loading ? 'Loading data' : 'Data loaded'}
+</LiveRegion>
+
+// ✅ Announce errors
+<LiveRegion assertive>
+  {error ? `Error: ${error.message}` : ''}
+</LiveRegion>
+```
+
+## Color and Contrast
+
+- **Never rely solely on color** to convey information
+- Use design tokens (they guarantee WCAG contrast ratios)
+- Combine color with icons, text, or patterns
+
+```typescript
+// ✅ Good - Status with icon AND color
+<StatusIndicator type="error">Failed</StatusIndicator>
+<Badge color="red">Error</Badge>
+
+// ❌ Avoid - Color only
+<div style={{ color: 'red' }}>Failed</div>
+```
+
+## Navigation Components
+
+```typescript
+// ✅ AppLayout with proper ARIA
+<AppLayout
+  navigation={<SideNavigation activeHref={activeHref} items={navItems} />}
+  navigationWidth={280}
+  ariaLabels={{
+    navigation: 'Main navigation',
+    navigationClose: 'Close navigation',
+    navigationToggle: 'Open navigation'
+  }}
+/>
+
+// ✅ Breadcrumbs for location awareness
+<BreadcrumbGroup
+  items={[
+    { text: 'Home', href: '/' },
+    { text: 'Resources', href: '/resources' },
+    { text: 'Details', href: '/resources/123' }
+  ]}
+  ariaLabel="Breadcrumb navigation"
+/>
+```
+
+## Testing Checklist
+
+Before submitting code, verify:
+- [ ] All interactive elements have appropriate ARIA labels
+- [ ] Forms use FormField components with labels
+- [ ] Keyboard navigation works (tab through all interactive elements)
+- [ ] Focus indicators are visible
+- [ ] No information conveyed by color alone
+- [ ] Heading hierarchy is logical (h1 → h2 → h3)

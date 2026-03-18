@@ -1,0 +1,201 @@
+---
+description: Component usage patterns and best practices for Cloudscape Design System
+globs:
+  - "src/**/*.tsx"
+  - "src/**/*.ts"
+alwaysApply: false
+---
+
+# Component Usage Guidelines
+
+## Import Pattern
+
+
+import Button from '@cloudscape-design/components/button';
+import Header from '@cloudscape-design/components/header';
+import SpaceBetween from '@cloudscape-design/components/space-between';
+
+
+## Page Layout
+
+
+<AppLayout
+  navigation={<SideNavigation items={navItems} />}
+  content={
+    <ContentLayout
+      header={
+        <Header variant="h1" actions={<Button variant="primary">Action</Button>}>
+          Page Title
+        </Header>
+      }
+    >
+      <SpaceBetween size="l">
+        {/* Page content */}
+      </SpaceBetween>
+    </ContentLayout>
+  }
+/>
+
+
+## Spacing
+
+Use `SpaceBetween` for consistent gaps between elements:
+
+```typescript
+// Vertical
+<SpaceBetween size="l">
+  <Container>...</Container>
+  <Container>...</Container>
+</SpaceBetween>
+
+// Horizontal (for button groups, etc)
+<SpaceBetween direction="horizontal" size="xs">
+  <Button>Cancel</Button>
+  <Button variant="primary">Submit</Button>
+</SpaceBetween>
+```
+
+## Tables
+
+```typescript
+<Table
+  columnDefinitions={[
+    { id: 'name', header: 'Name', cell: item => item.name, sortingField: 'name' }
+  ]}
+  items={items}
+  selectionType="multi"
+  selectedItems={selectedItems}
+  onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
+  empty={<Box textAlign="center"><b>No resources</b></Box>}
+  filter={<TextFilter filteringText={text} onChange={onChange} />}
+  header={<Header counter={`(${items.length})`}>Resources</Header>}
+/>
+```
+
+## Cards
+
+```typescript
+<Cards
+  cardDefinition={{
+    header: item => <Link href={item.href}>{item.title}</Link>,
+    sections: [{ id: 'description', content: item => item.description }]
+  }}
+  cardsPerRow={[{ cards: 1 }, { minWidth: 500, cards: 2 }]}
+  items={items}
+/>
+```
+
+## Forms
+
+```typescript
+<Form
+  actions={
+    <SpaceBetween direction="horizontal" size="xs">
+      <Button variant="link">Cancel</Button>
+      <Button variant="primary">Submit</Button>
+    </SpaceBetween>
+  }
+>
+  <Container header={<Header variant="h2">Form Section</Header>}>
+    <SpaceBetween size="l">
+      <FormField label="Name" errorText={errors.name}>
+        <Input value={name} onChange={onChange} ariaRequired />
+      </FormField>
+      
+      <FormField label="Description">
+        <Textarea value={desc} onChange={onChange} />
+      </FormField>
+      
+      <FormField label="Enable feature">
+        <Checkbox checked={enabled} onChange={onChange}>
+          Enable this feature
+        </Checkbox>
+      </FormField>
+    </SpaceBetween>
+  </Container>
+</Form>
+```
+
+## Notifications - Prefer Flashbar
+
+```typescript
+// ✅ Good - Use Flashbar
+<Flashbar
+  items={[
+    {
+      type: 'success',
+      content: 'Resource created successfully',
+      dismissible: true,
+      onDismiss: () => setItems([])
+    }
+  ]}
+/>
+
+// ⚠️ Only use Alert if user specifically requests it
+```
+
+## Modals
+
+```typescript
+<Modal
+  visible={visible}
+  onDismiss={() => setVisible(false)}
+  header="Delete resource"
+  footer={
+    <Box float="right">
+      <SpaceBetween direction="horizontal" size="xs">
+        <Button variant="link" onClick={() => setVisible(false)}>Cancel</Button>
+        <Button variant="primary">Delete</Button>
+      </SpaceBetween>
+    </Box>
+  }
+>
+  Confirm deletion message
+</Modal>
+```
+
+## Navigation
+
+```typescript
+<SideNavigation
+  activeHref={activeHref}
+  header={{ text: 'Service Name', href: '/' }}
+  items={[
+    { type: 'link', text: 'Dashboard', href: '/dashboard' },
+    { type: 'link', text: 'Resources', href: '/resources' },
+    {
+      type: 'section',
+      text: 'Settings',
+      items: [
+        { type: 'link', text: 'Account', href: '/settings/account' }
+      ]
+    }
+  ]}
+/>
+```
+
+## Quick Reference
+
+- **Flashbar** (not Alert) → notifications
+- **StatusIndicator** → inline status
+- **Badge** → counts, labels
+- **Button** → actions | **Link** → navigation
+- **Container** → content with header | **Box** → simple blocks
+- **Modal** → confirmations | **SplitPanel** → side info
+
+## Grid Layouts
+
+```typescript
+<ColumnLayout columns={3} variant="text-grid">
+  <div>
+    <Box variant="awsui-key-label">Status</Box>
+    <StatusIndicator type="success">Active</StatusIndicator>
+  </div>
+</ColumnLayout>
+```
+
+## Don't Modify Components
+
+- Never edit `node_modules/@cloudscape-design/`
+- Check component variants/props before creating custom solutions
+- Use composition and wrapping for custom behavior

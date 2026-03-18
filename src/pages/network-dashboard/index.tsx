@@ -200,7 +200,7 @@ export default function NetworkDashboard() {
     ? []
     : [
         {
-          type: 'warning' as const,
+          type: 'error' as const,
           content: 'This is a warning message',
           dismissible: true,
           dismissLabel: 'Dismiss',
@@ -230,7 +230,7 @@ export default function NetworkDashboard() {
                 variant="h1"
                 description="Network Traffic, Credit Usage, and Your Devices"
                 actions={
-                  <SpaceBetween direction="horizontal" size="xs">
+                  <SpaceBetween direction="horizontal" size="m">
                     <Toggle
                       checked={darkMode}
                       onChange={({ detail }) => setDarkMode(detail.checked)}

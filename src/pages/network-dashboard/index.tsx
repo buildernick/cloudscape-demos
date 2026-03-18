@@ -210,7 +210,13 @@ export default function NetworkDashboard() {
       ];
 
   return (
-    <AppLayout
+    <>
+      <style>{`
+        [data-itemid="network-warning"] {
+          background-color: rgba(235, 2, 2, 1) !important;
+        }
+      `}</style>
+      <AppLayout
       navigationHide
       toolsHide
       breadcrumbs={
@@ -433,5 +439,6 @@ export default function NetworkDashboard() {
         </ContentLayout>
       }
     />
+    </>
   );
 }

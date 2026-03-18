@@ -1,0 +1,167 @@
+---
+description: Routing patterns and navigation structure for this React demo application
+globs:
+  - "src/pages/**/*.tsx"
+  - "src/pages/**/*.ts"
+alwaysApply: false
+---
+
+# Routing Guidelines
+
+## File-Based Routing Structure
+
+Each page is a directory under `src/pages/` with an `index.tsx` file:
+
+
+src/pages/
+├── index.tsx              # Homepage
+├── dashboard/index.tsx    # /dashboard
+├── table/index.tsx        # /table
+└── form/index.tsx         # /form
+```
+
+## Adding New Pages
+
+**Step 1**: Create directory and file
+
+```typescript
+// src/pages/my-new-page/index.tsx
+import AppLayout from '@cloudscape-design/components/app-layout';
+import ContentLayout from '@cloudscape-design/components/content-layout';
+import Header from '@cloudscape-design/components/header';
+
+export default function MyNewPage() {
+  return (
+    <AppLayout
+      navigationHide
+      toolsHide
+      content={
+        <ContentLayout header={<Header variant="h1">My New Page</Header>}>
+          {/* Content */}
+        </ContentLayout>
+      }
+    />
+  );
+}
+```
+
+**Step 2**: Add to homepage catalog
+
+```typescript
+// src/pages/index.tsx - Update demos array
+const demos = [
+  // ... existing
+  { 
+    route: '/my-new-page', 
+    title: 'My New Page', 
+    description: 'What this page demonstrates', 
+    category: 'Components' 
+  },
+];
+```
+
+## Navigation Patterns
+
+### Internal Navigation
+
+```typescript
+// Button navigation
+<Button href="/dashboard" variant="primary">Dashboard</Button>
+
+// Link navigation
+<Link href="/details">View details</Link>
+
+// Cards navigation
+<Cards
+  cardDefinition={{
+    header: item => <Link href={item.route}>{item.title}</Link>
+  }}
+/>
+```
+
+### External Links
+
+```typescript
+<Button
+  href="https://cloudscape.design"
+  iconAlign="right"
+  iconName="external"
+  target="_blank"
+>
+  Documentation
+</Button>
+
+<Link external href="https://example.com">External Resource</Link>
+```
+
+### Breadcrumbs
+
+```typescript
+<BreadcrumbGroup
+  items={[
+    { text: 'Home', href: '/' },
+    { text: 'Resources', href: '/table' },
+    { text: 'Details', href: '/details' }
+  ]}
+/>
+```
+
+## Demo Categories
+
+Use these categories when adding to homepage:
+
+- `Applications` - Full app examples
+- `Components` - Component demos
+- `Dashboards` - Dashboard layouts
+- `Details` - Detail page patterns
+- `Forms` - Create/edit/delete patterns
+- `Navigation` - Nav patterns
+- `Tables` - Table demos
+- `Panels` - Split panel demos
+- `Integration` - Third-party integrations
+
+## Theme Toggle (Required on All Pages)
+
+```typescript
+import Toggle from '@cloudscape-design/components/toggle';
+import * as localStorage from '../common/local-storage';
+import '@cloudscape-design/global-styles/dark-mode-utils.css';
+
+const [darkMode, setDarkMode] = useState<boolean>(() => {
+  return localStorage.load<boolean>('Awsui-Theme-Mode') ?? false;
+});
+
+useEffect(() => {
+  const theme = darkMode ? 'awsui-dark-mode' : 'awsui-light-mode';
+  document.body.classList.remove('awsui-dark-mode', 'awsui-light-mode');
+  document.body.classList.add(theme);
+  localStorage.save('Awsui-Theme-Mode', darkMode);
+}, [darkMode]);
+
+// In header actions:
+<Toggle
+  checked={darkMode}
+  onChange={({ detail }) => setDarkMode(detail.checked)}
+  ariaLabel="Toggle dark mode"
+>
+  Dark mode
+</Toggle>
+```
+
+## Active Navigation State
+
+```typescript
+import { useLocation } from 'react-router-dom';
+
+const location = useLocation();
+const activeHref = location.pathname;
+
+<SideNavigation activeHref={activeHref} items={navItems} />
+```
+
+## Route Naming Best Practices
+
+- Use **kebab-case**: `/my-new-page` not `/myNewPage`
+- Keep routes **flat** (avoid deep nesting)
+- Use **descriptive names** matching page purpose
+- Group related demos under same category

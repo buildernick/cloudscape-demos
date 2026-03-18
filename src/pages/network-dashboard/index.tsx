@@ -19,6 +19,7 @@ import Box from '@cloudscape-design/components/box';
 import AreaChart from '@cloudscape-design/components/area-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
 import CollectionPreferences from '@cloudscape-design/components/collection-preferences';
+import Modal from '@cloudscape-design/components/modal';
 
 import * as localStorage from '../../common/local-storage';
 import '@cloudscape-design/global-styles/dark-mode-utils.css';
@@ -177,6 +178,7 @@ export default function NetworkDashboard() {
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const [selectedItems, setSelectedItems] = useState<Device[]>([]);
   const [preferences, setPreferences] = useState({ pageSize: 10 });
+  const [showRefreshModal, setShowRefreshModal] = useState(false);
 
   useEffect(() => {
     const theme = darkMode ? 'awsui-dark-mode' : 'awsui-light-mode';
@@ -227,7 +229,12 @@ export default function NetworkDashboard() {
                     >
                       Dark mode
                     </Toggle>
-                    <Button variant="primary" iconAlign="right" iconName="external">
+                    <Button
+                      variant="primary"
+                      iconAlign="right"
+                      iconName="external"
+                      onClick={() => setShowRefreshModal(true)}
+                    >
                       Refresh Data
                     </Button>
                   </SpaceBetween>
@@ -430,6 +437,32 @@ export default function NetworkDashboard() {
           </SpaceBetween>
         </ContentLayout>
       }
-    />
+    >
+      <Modal
+        visible={showRefreshModal}
+        onDismiss={() => setShowRefreshModal(false)}
+        header="Confirm Refresh"
+        footer={
+          <Box float="right">
+            <SpaceBetween direction="horizontal" size="xs">
+              <Button variant="link" onClick={() => setShowRefreshModal(false)}>
+                Cancel
+              </Button>
+              <Button
+                variant="primary"
+                onClick={() => {
+                  setShowRefreshModal(false);
+                  // Add your refresh logic here
+                }}
+              >
+                Confirm
+              </Button>
+            </SpaceBetween>
+          </Box>
+        }
+      >
+        Are you sure you want to refresh the network data? This will reload all traffic statistics and device information.
+      </Modal>
+    </AppLayout>
   );
 }

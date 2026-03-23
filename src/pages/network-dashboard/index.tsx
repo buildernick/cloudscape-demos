@@ -10,7 +10,7 @@ import Button from '@cloudscape-design/components/button';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import TextFilter from '@cloudscape-design/components/text-filter';
 import Pagination from '@cloudscape-design/components/pagination';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import Alert from '@cloudscape-design/components/alert';
 import Toggle from '@cloudscape-design/components/toggle';
 import Grid from '@cloudscape-design/components/grid';
 import Container from '@cloudscape-design/components/container';
@@ -198,18 +198,6 @@ export default function NetworkDashboard() {
   const pageSize = preferences.pageSize;
   const paginatedDevices = filteredDevices.slice((currentPageIndex - 1) * pageSize, currentPageIndex * pageSize);
 
-  const flashbarItems = warningDismissed
-    ? []
-    : [
-        {
-          type: 'error' as const,
-          content: 'This is a warning message',
-          dismissible: true,
-          dismissLabel: 'Dismiss',
-          onDismiss: () => setWarningDismissed(true),
-          id: 'network-warning',
-        },
-      ];
 
   return (
     <AppLayout
@@ -275,7 +263,16 @@ export default function NetworkDashboard() {
                 />
               </SpaceBetween>
 
-              <Flashbar items={flashbarItems} />
+              {!warningDismissed && (
+                <Alert
+                  type="error"
+                  dismissible
+                  dismissAriaLabel="Dismiss"
+                  onDismiss={() => setWarningDismissed(true)}
+                >
+                  This is a warning message
+                </Alert>
+              )}
             </SpaceBetween>
           }
         >

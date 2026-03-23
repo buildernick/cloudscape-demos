@@ -1,8 +1,10 @@
 ---
-description: Always use Flashbar type variants instead of custom colors/styles
+description: When using the Flashbar component, always use its built-in type variants instead of custom colors or styles
 globs:
-  - "src/**/*.tsx"
-  - "src/**/*.ts"
+  - "src/**/*flashbar*"
+  - "src/**/*Flashbar*"
+  - "src/**/*notification*"
+  - "src/**/*Notification*"
 alwaysApply: false
 ---
 
@@ -20,7 +22,7 @@ Flashbar has 4 built-in type variants:
 
 
 type: 'success' | 'error' | 'warning' | 'info'
-```
+
 
 Each type variant provides:
 - ✅ Appropriate color scheme (green, red, orange, blue)

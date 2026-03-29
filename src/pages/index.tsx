@@ -65,6 +65,12 @@ const demos = [
     category: 'Forms',
   },
   { route: '/form-validation', title: 'Form Validation', description: 'Form validation demo.', category: 'Forms' },
+  {
+    route: '/jobs-directory',
+    title: 'Jobs Directory',
+    description: 'Job board with filtering and pagination.',
+    category: 'Applications',
+  },
   { route: '/manage-tags', title: 'Manage Tags', description: 'Tag management demo.', category: 'Components' },
   {
     route: '/non-console',

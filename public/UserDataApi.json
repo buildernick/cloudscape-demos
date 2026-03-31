@@ -1,0 +1,168 @@
+{
+  "networkTraffic": {
+    "site1": [
+      { "day": "x1", "value": 35 },
+      { "day": "x2", "value": 42 },
+      { "day": "x3", "value": 38 },
+      { "day": "x4", "value": 40 },
+      { "day": "x5", "value": 35 },
+      { "day": "x6", "value": 48 },
+      { "day": "x7", "value": 52 },
+      { "day": "x8", "value": 50 },
+      { "day": "x9", "value": 55 },
+      { "day": "x10", "value": 58 },
+      { "day": "x11", "value": 60 },
+      { "day": "x12", "value": 45 }
+    ],
+    "site2": [
+      { "day": "x1", "value": 25 },
+      { "day": "x2", "value": 22 },
+      { "day": "x3", "value": 20 },
+      { "day": "x4", "value": 18 },
+      { "day": "x5", "value": 15 },
+      { "day": "x6", "value": 10 },
+      { "day": "x7", "value": 12 },
+      { "day": "x8", "value": 8 },
+      { "day": "x9", "value": 10 },
+      { "day": "x10", "value": 6 },
+      { "day": "x11", "value": 5 },
+      { "day": "x12", "value": 18 }
+    ]
+  },
+  "creditUsage": [
+    { "day": "x1", "value": 60 },
+    { "day": "x2", "value": 85 },
+    { "day": "x3", "value": 70 },
+    { "day": "x4", "value": 40 },
+    { "day": "x5", "value": 75 }
+  ],
+  "devices": [
+    {
+      "id": "device-1",
+      "name": "Desktop-Main",
+      "ipAddress": "192.168.1.11",
+      "macAddress": "00:1B:44:11:3A:01",
+      "status": "Online",
+      "type": "Desktop",
+      "lastSeen": "2024-01-11",
+      "bandwidth": "87 Mbps"
+    },
+    {
+      "id": "device-2",
+      "name": "Laptop-Office",
+      "ipAddress": "192.168.1.12",
+      "macAddress": "00:1B:44:11:3A:02",
+      "status": "Online",
+      "type": "Laptop",
+      "lastSeen": "2024-01-12",
+      "bandwidth": "65 Mbps"
+    },
+    {
+      "id": "device-3",
+      "name": "Server-001",
+      "ipAddress": "192.168.1.13",
+      "macAddress": "00:1B:44:11:3A:03",
+      "status": "Offline",
+      "type": "Server",
+      "lastSeen": "2024-01-13",
+      "bandwidth": "0 Mbps"
+    },
+    {
+      "id": "device-4",
+      "name": "Workstation-Dev",
+      "ipAddress": "192.168.1.14",
+      "macAddress": "00:1B:44:11:3A:04",
+      "status": "Online",
+      "type": "Desktop",
+      "lastSeen": "2024-01-14",
+      "bandwidth": "92 Mbps"
+    },
+    {
+      "id": "device-5",
+      "name": "Laptop-Remote",
+      "ipAddress": "192.168.1.15",
+      "macAddress": "00:1B:44:11:3A:05",
+      "status": "Online",
+      "type": "Laptop",
+      "lastSeen": "2024-01-15",
+      "bandwidth": "45 Mbps"
+    },
+    {
+      "id": "device-6",
+      "name": "Server-002",
+      "ipAddress": "192.168.1.16",
+      "macAddress": "00:1B:44:11:3A:06",
+      "status": "Offline",
+      "type": "Server",
+      "lastSeen": "2024-01-16",
+      "bandwidth": "0 Mbps"
+    },
+    {
+      "id": "device-7",
+      "name": "Desktop-Conference",
+      "ipAddress": "192.168.1.17",
+      "macAddress": "00:1B:44:11:3A:07",
+      "status": "Online",
+      "type": "Desktop",
+      "lastSeen": "2024-01-17",
+      "bandwidth": "78 Mbps"
+    },
+    {
+      "id": "device-8",
+      "name": "Laptop-Sales",
+      "ipAddress": "192.168.1.18",
+      "macAddress": "00:1B:44:11:3A:08",
+      "status": "Online",
+      "type": "Laptop",
+      "lastSeen": "2024-01-18",
+      "bandwidth": "56 Mbps"
+    },
+    {
+      "id": "device-9",
+      "name": "NAS-Storage",
+      "ipAddress": "192.168.1.19",
+      "macAddress": "00:1B:44:11:3A:09",
+      "status": "Offline",
+      "type": "NAS",
+      "lastSeen": "2024-01-19",
+      "bandwidth": "0 Mbps"
+    },
+    {
+      "id": "device-10",
+      "name": "Desktop-Design",
+      "ipAddress": "192.168.1.20",
+      "macAddress": "00:1B:44:11:3A:10",
+      "status": "Online",
+      "type": "Desktop",
+      "lastSeen": "2024-01-20",
+      "bandwidth": "95 Mbps"
+    },
+    {
+      "id": "device-11",
+      "name": "Laptop-Marketing",
+      "ipAddress": "192.168.1.21",
+      "macAddress": "00:1B:44:11:3A:11",
+      "status": "Online",
+      "type": "Laptop",
+      "lastSeen": "2024-01-21",
+      "bandwidth": "61 Mbps"
+    },
+    {
+      "id": "device-12",
+      "name": "Server-Backup",
+      "ipAddress": "192.168.1.22",
+      "macAddress": "00:1B:44:11:3A:12",
+      "status": "Offline",
+      "type": "Server",
+      "lastSeen": "2024-01-22",
+      "bandwidth": "0 Mbps"
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2024-01-22T10:30:00Z",
+    "performanceGoal": 50,
+    "totalDevices": 12,
+    "onlineDevices": 8,
+    "offlineDevices": 4
+  }
+}

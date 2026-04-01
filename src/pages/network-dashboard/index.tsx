@@ -12,7 +12,7 @@ import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Button from '@cloudscape-design/components/button';
 import Container from '@cloudscape-design/components/container';
 import ContentLayout from '@cloudscape-design/components/content-layout';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import Alert from '@cloudscape-design/components/alert';
 import Grid from '@cloudscape-design/components/grid';
 import Header from '@cloudscape-design/components/header';
 import { I18nProvider } from '@cloudscape-design/components/i18n';
@@ -181,17 +181,6 @@ export default function NetworkDashboard() {
     currentPageIndex * DEVICES_PER_PAGE,
   );
 
-  const flashbarItems = warningDismissed
-    ? []
-    : [
-        {
-          type: 'error' as const,
-          content: 'This is a warning message',
-          dismissible: true,
-          dismissLabel: 'Dismiss warning',
-          onDismiss: () => setWarningDismissed(true),
-        },
-      ];
 
   const Layout = isVisualRefresh ? AppLayoutToolbar : AppLayout;
 
@@ -234,7 +223,16 @@ export default function NetworkDashboard() {
                   Network Administration Dashboard
                 </Header>
 
-                <Flashbar items={flashbarItems} />
+                {!warningDismissed && (
+                  <Alert
+                    type="error"
+                    dismissible
+                    dismissAriaLabel="Dismiss"
+                    onDismiss={() => setWarningDismissed(true)}
+                  >
+                    This is a warning message
+                  </Alert>
+                )}
               </SpaceBetween>
             }
           >

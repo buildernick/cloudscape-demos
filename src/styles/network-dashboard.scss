@@ -1,0 +1,18 @@
+.network-dashboard__header-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.network-dashboard__header-search {
+  flex: 1;
+  min-width: 0;
+}
+
+.network-dashboard__header-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}

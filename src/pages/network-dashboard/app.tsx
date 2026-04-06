@@ -22,6 +22,7 @@ import Container from '@cloudscape-design/components/container';
 import * as localStorage from '../../common/local-storage';
 
 import '@cloudscape-design/global-styles/dark-mode-utils.css';
+import '../../styles/network-dashboard.scss';
 
 // --- Device data ---
 interface Device {
@@ -65,6 +66,9 @@ export function App() {
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const [selectedDevices, setSelectedDevices] = useState<Device[]>([]);
   const [warningDismissed, setWarningDismissed] = useState(false);
+  const [headerSearch, setHeaderSearch] = useState('');
+  const [headerPage, setHeaderPage] = useState(1);
+  const headerTotalPages = 5;
   const itemsPerPage = 10;
 
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -138,6 +142,31 @@ export function App() {
           }
         >
           <SpaceBetween size="l">
+            {/* Header search + pagination bar */}
+            <div className="network-dashboard__header-bar">
+              <div className="network-dashboard__header-search">
+                <TextFilter
+                  filteringText={headerSearch}
+                  filteringPlaceholder="Placeholder"
+                  filteringAriaLabel="Search dashboard"
+                  onChange={({ detail }) => setHeaderSearch(detail.filteringText)}
+                />
+              </div>
+              <div className="network-dashboard__header-controls">
+                <Pagination
+                  currentPageIndex={headerPage}
+                  onChange={({ detail }) => setHeaderPage(detail.currentPageIndex)}
+                  pagesCount={headerTotalPages}
+                  ariaLabels={{
+                    nextPageLabel: 'Next page',
+                    previousPageLabel: 'Previous page',
+                    pageLabel: pageNumber => `Page ${pageNumber} of ${headerTotalPages}`,
+                  }}
+                />
+                <Button iconName="settings" variant="icon" ariaLabel="Preferences" />
+              </div>
+            </div>
+
             {/* Warning flashbar */}
             <Flashbar items={flashbarItems} />
 

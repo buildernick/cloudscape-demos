@@ -22,24 +22,24 @@ import CollectionPreferences from '@cloudscape-design/components/collection-pref
 import * as localStorage from '../../common/local-storage';
 import '@cloudscape-design/global-styles/dark-mode-utils.css';
 
-// Network traffic data
+// Network traffic data — AreaChart requires numeric x values
 const networkTrafficSeries = [
   {
     title: 'Site 1',
     type: 'area' as const,
     data: [
-      { x: 'x1', y: 3.2 },
-      { x: 'x2', y: 3.6 },
-      { x: 'x3', y: 3.9 },
-      { x: 'x4', y: 4.1 },
-      { x: 'x5', y: 4.3 },
-      { x: 'x6', y: 4.0 },
-      { x: 'x7', y: 4.2 },
-      { x: 'x8', y: 4.4 },
-      { x: 'x9', y: 4.5 },
-      { x: 'x10', y: 4.3 },
-      { x: 'x11', y: 4.1 },
-      { x: 'x12', y: 3.8 },
+      { x: 1, y: 3.2 },
+      { x: 2, y: 3.6 },
+      { x: 3, y: 3.9 },
+      { x: 4, y: 4.1 },
+      { x: 5, y: 4.3 },
+      { x: 6, y: 4.0 },
+      { x: 7, y: 4.2 },
+      { x: 8, y: 4.4 },
+      { x: 9, y: 4.5 },
+      { x: 10, y: 4.3 },
+      { x: 11, y: 4.1 },
+      { x: 12, y: 3.8 },
     ],
     color: '#688AE8',
   },
@@ -47,18 +47,18 @@ const networkTrafficSeries = [
     title: 'Site 2',
     type: 'area' as const,
     data: [
-      { x: 'x1', y: 2.8 },
-      { x: 'x2', y: 3.1 },
-      { x: 'x3', y: 3.3 },
-      { x: 'x4', y: 4.6 },
-      { x: 'x5', y: 5.0 },
-      { x: 'x6', y: 4.7 },
-      { x: 'x7', y: 4.9 },
-      { x: 'x8', y: 4.8 },
-      { x: 'x9', y: 5.1 },
-      { x: 'x10', y: 4.9 },
-      { x: 'x11', y: 5.0 },
-      { x: 'x12', y: 4.6 },
+      { x: 1, y: 2.0 },
+      { x: 2, y: 2.7 },
+      { x: 3, y: 3.0 },
+      { x: 4, y: 3.6 },
+      { x: 5, y: 4.7 },
+      { x: 6, y: 4.5 },
+      { x: 7, y: 4.4 },
+      { x: 8, y: 4.2 },
+      { x: 9, y: 5.2 },
+      { x: 10, y: 5.0 },
+      { x: 11, y: 5.0 },
+      { x: 12, y: 3.1 },
     ],
     color: '#C33D69',
   },
@@ -267,7 +267,8 @@ export default function NetworkAdminDashboard() {
               {/* Network Traffic Area Chart */}
               <AreaChart
                 series={networkTrafficSeries}
-                xDomain={['x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x9', 'x10', 'x11', 'x12']}
+                xScaleType="linear"
+                xDomain={[1, 12]}
                 yDomain={[0, 6]}
                 xTitle="Day"
                 yTitle=""
@@ -283,6 +284,7 @@ export default function NetworkAdminDashboard() {
                   detailPopoverDismissAriaLabel: 'Dismiss',
                   legendAriaLabel: 'Legend',
                   chartAriaRoleDescription: 'area chart',
+                  xTickFormatter: (v: number) => `x${v}`,
                   yTickFormatter: (v: number) => `y${v}`,
                 }}
               />

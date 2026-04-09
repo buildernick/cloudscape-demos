@@ -55,9 +55,9 @@ const networkTrafficSeries = [
       { x: 6, y: 4.5 },
       { x: 7, y: 4.4 },
       { x: 8, y: 4.2 },
-      { x: 9, y: 5.2 },
-      { x: 10, y: 5.0 },
-      { x: 11, y: 5.0 },
+      { x: 9, y: 4.9 },
+      { x: 10, y: 4.7 },
+      { x: 11, y: 4.8 },
       { x: 12, y: 3.1 },
     ],
     color: '#C33D69',
@@ -268,10 +268,10 @@ export default function NetworkAdminDashboard() {
               <AreaChart
                 series={networkTrafficSeries}
                 xScaleType="linear"
-                xDomain={[1, 12]}
+                xDomain={[0, 13]}
                 yDomain={[0, 6]}
                 xTitle="Day"
-                yTitle=""
+                yTitle="Traffic (Gbps)"
                 ariaLabel="Network traffic chart"
                 ariaDescription="Area chart showing network traffic for Site 1 and Site 2 over 12 days"
                 height={300}
@@ -284,7 +284,7 @@ export default function NetworkAdminDashboard() {
                   detailPopoverDismissAriaLabel: 'Dismiss',
                   legendAriaLabel: 'Legend',
                   chartAriaRoleDescription: 'area chart',
-                  xTickFormatter: (v: number) => `x${v}`,
+                  xTickFormatter: (v: number) => (v > 0 && v <= 12 ? `x${v}` : ''),
                   yTickFormatter: (v: number) => `y${v}`,
                 }}
               />
@@ -295,7 +295,7 @@ export default function NetworkAdminDashboard() {
                 xDomain={['x1', 'x2', 'x3', 'x4', 'x5']}
                 yDomain={[0, 7]}
                 xTitle="Day"
-                yTitle=""
+                yTitle="Credits Used"
                 ariaLabel="Credit usage chart"
                 ariaDescription="Bar chart showing credit usage for Site 1 over 5 periods"
                 height={300}

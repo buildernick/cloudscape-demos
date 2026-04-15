@@ -110,7 +110,7 @@ export default function NetworkDashboard() {
 
   const flashbarItems = warningDismissed ? [] : [
     {
-      type: 'warning' as const,
+      type: 'error' as const,
       content: 'This is a warning message',
       dismissible: true,
       onDismiss: () => setWarningDismissed(true),
@@ -139,7 +139,7 @@ export default function NetworkDashboard() {
               variant="h1"
               description="Network Traffic, Credit Usage, and Your Devices"
               actions={
-                <SpaceBetween direction="horizontal" size="xs">
+                <SpaceBetween direction="horizontal" size="s">
                   <Toggle
                     checked={darkMode}
                     onChange={({ detail }) => setDarkMode(detail.checked)}
@@ -173,6 +173,7 @@ export default function NetworkDashboard() {
             >
               {/* Network Traffic Area Chart */}
               <Container>
+                <div style={{ display: 'flex', flexDirection: 'column', border: '3px solid #688AE8', padding: '4px' }}>
                 <AreaChart
                   series={[
                     {
@@ -221,6 +222,7 @@ export default function NetworkDashboard() {
                   xTitle="Day"
                   yTitle="Network traffic"
                 />
+                </div>
               </Container>
 
               {/* Credit Usage Bar Chart */}

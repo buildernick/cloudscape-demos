@@ -200,8 +200,10 @@ export default function NetworkDashboard() {
                   ]}
                   yDomain={[0, 7]}
                   i18nStrings={{
-                    xTickFormatter: (d: Date) =>
-                      d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                    xTickFormatter: (d: Date | number) => {
+                      const date = d instanceof Date ? d : new Date(d);
+                      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                    },
                     yTickFormatter: (v: number) => `${v}`,
                     filterLabel: 'Filter series',
                     filterPlaceholder: 'Filter series',

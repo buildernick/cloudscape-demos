@@ -204,12 +204,14 @@ export default function NetworkDashboard() {
                     },
                     {
                       title: 'Performance goal',
-                      type: 'threshold',
-                      y: 400,
+                      type: 'line',
+                      data: networkDays.map(day => ({ x: day, y: 400 })),
                       color: '#5F6B7A',
+                      valueFormatter: () => '400 Mbps',
                     },
                   ]}
                   xDomain={networkDays}
+                  xScaleType="categorical"
                   yDomain={[0, 700]}
                   height={300}
                   xTitle="Day"

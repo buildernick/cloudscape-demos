@@ -212,7 +212,7 @@ export default function NetworkDashboard() {
                   ]}
                   xDomain={networkDays}
                   xScaleType="categorical"
-                  yDomain={[0, 800]}
+                  yDomain={[0, 1000]}
                   height={300}
                   xTitle="Day"
                   yTitle="Network traffic (Mbps)"

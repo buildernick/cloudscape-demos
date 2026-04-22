@@ -193,12 +193,12 @@ export default function NetworkDashboard() {
                   <AreaChart
                     series={networkTrafficSeries}
                     xDomain={networkTrafficDays}
-                    yDomain={[0, 7]}
-                    xScaleType="categorical"
-                    xTitle="Day"
-                    height={280}
-                    hideFilter
-                    ariaLabel="Network traffic chart"
+                    yDomain={[0, 15]}
+    xScaleType="categorical"
+    xTitle="Day"
+    height={280}
+    hideFilter
+    ariaLabel="Network traffic chart"
                     ariaDescription="Area chart showing network traffic for Site 1 and Site 2 over 12 days"
                     i18nStrings={{
                       filterLabel: 'Filter series',

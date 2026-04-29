@@ -10,7 +10,7 @@ import Button from '@cloudscape-design/components/button';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import TextFilter from '@cloudscape-design/components/text-filter';
 import Pagination from '@cloudscape-design/components/pagination';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import Alert from '@cloudscape-design/components/alert';
 import Table from '@cloudscape-design/components/table';
 import Box from '@cloudscape-design/components/box';
 import Grid from '@cloudscape-design/components/grid';
@@ -110,17 +110,6 @@ export default function NetworkDashboard() {
   const [selectedItems, setSelectedItems] = useState<typeof allDevices>([]);
   const [warningDismissed, setWarningDismissed] = useState(false);
 
-  const flashbarItems = warningDismissed
-    ? []
-    : [
-        {
-          type: 'error' as const,
-          content: 'This is a warning message',
-          dismissible: true,
-          onDismiss: () => setWarningDismissed(true),
-          id: 'network-warning',
-        },
-      ];
 
   React.useEffect(() => {
     const theme = darkMode ? 'awsui-dark-mode' : 'awsui-light-mode';
@@ -183,7 +172,15 @@ export default function NetworkDashboard() {
                 Network Administration Dashboard
               </Header>
 
-              {!warningDismissed && <Flashbar items={flashbarItems} />}
+              {!warningDismissed && (
+                <Alert
+                  type="warning"
+                  dismissible
+                  onDismiss={() => setWarningDismissed(true)}
+                >
+                  This is a warning message
+                </Alert>
+              )}
 
               <Grid
                 gridDefinition={[

@@ -169,7 +169,7 @@ export default function NetworkDashboard() {
                     ? []
                     : [
                         {
-                          type: 'warning',
+                          type: 'error',
                           dismissible: true,
                           onDismiss: () => setWarningDismissed(true),
                           content: 'This is a warning message',

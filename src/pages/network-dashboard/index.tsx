@@ -51,20 +51,7 @@ const devices: Device[] = [
   { name: 'UPS-Main', ip: '192.168.1.100', mac: 'AA:BB:CC:11:22:14', type: 'UPS', status: 'info', statusLabel: 'Maintenance', lastSeen: '15 min ago', manufacturer: 'APC' },
 ];
 
-const networkTrafficData = [
-  new Date('2024-01-01'),
-  new Date('2024-01-02'),
-  new Date('2024-01-03'),
-  new Date('2024-01-04'),
-  new Date('2024-01-05'),
-  new Date('2024-01-06'),
-  new Date('2024-01-07'),
-  new Date('2024-01-08'),
-  new Date('2024-01-09'),
-  new Date('2024-01-10'),
-  new Date('2024-01-11'),
-  new Date('2024-01-12'),
-];
+const networkTrafficDays = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const site1Values = [2.1, 2.8, 3.0, 2.6, 2.9, 3.1, 2.7, 3.2, 2.9, 3.0, 3.1, 2.9];
 const site2Values = [3.2, 3.8, 4.1, 3.7, 4.5, 4.2, 4.0, 4.4, 4.1, 4.3, 4.5, 4.2];
@@ -156,13 +143,13 @@ export default function NetworkDashboard() {
                   {
                     title: 'Site 1',
                     type: 'area',
-                    data: networkTrafficData.map((x, i) => ({ x, y: site1Values[i] })),
+                    data: networkTrafficDays.map((x, i) => ({ x, y: site1Values[i] })),
                     color: '#688AE8',
                   },
                   {
                     title: 'Site 2',
                     type: 'area',
-                    data: networkTrafficData.map((x, i) => ({ x, y: site2Values[i] })),
+                    data: networkTrafficDays.map((x, i) => ({ x, y: site2Values[i] })),
                     color: '#C33D69',
                   },
                   {
@@ -172,7 +159,7 @@ export default function NetworkDashboard() {
                     color: '#5F6B7A',
                   },
                 ]}
-                xDomain={[networkTrafficData[0], networkTrafficData[networkTrafficData.length - 1]]}
+                xDomain={[1, 12]}
                 yDomain={[0, 6]}
                 xTitle="Day"
                 yTitle="Traffic (Gbps)"
@@ -180,8 +167,7 @@ export default function NetworkDashboard() {
                 hideFilter
                 ariaLabel="Network traffic area chart"
                 i18nStrings={{
-                  xTickFormatter: d =>
-                    d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                  xTickFormatter: v => `Day ${v}`,
                   yTickFormatter: v => `${v}`,
                   filterLabel: 'Filter displayed data series',
                   filterPlaceholder: 'Filter series',

@@ -11,15 +11,18 @@ import Container from '@cloudscape-design/components/container';
 import Flashbar from '@cloudscape-design/components/flashbar';
 import Grid from '@cloudscape-design/components/grid';
 import Header from '@cloudscape-design/components/header';
+import Input from '@cloudscape-design/components/input';
 import Pagination from '@cloudscape-design/components/pagination';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import StatusIndicator from '@cloudscape-design/components/status-indicator';
 import Table from '@cloudscape-design/components/table';
 import TextFilter from '@cloudscape-design/components/text-filter';
 import Toggle from '@cloudscape-design/components/toggle';
+import TopNavigation from '@cloudscape-design/components/top-navigation';
 
 import { CustomAppLayout } from '../commons/common-components';
 import * as localStorage from '../../common/local-storage';
+import logo from '../non-console/logo.svg';
 
 import '@cloudscape-design/global-styles/dark-mode-utils.css';
 
@@ -61,10 +64,27 @@ const creditUsageValues = [4.2, 5.8, 4.8, 3.2, 5.1];
 
 const ITEMS_PER_PAGE = 10;
 
+const topNavI18nStrings = {
+  searchIconAriaLabel: 'Search',
+  searchDismissIconAriaLabel: 'Close search',
+  overflowMenuTriggerText: 'More',
+  overflowMenuTitleText: 'All',
+  overflowMenuBackIconAriaLabel: 'Back',
+  overflowMenuDismissIconAriaLabel: 'Close menu',
+};
+
+const profileActions = [
+  { id: 'profile', text: 'Profile' },
+  { id: 'preferences', text: 'Preferences' },
+  { id: 'security', text: 'Security' },
+  { id: 'signout', text: 'Sign out' },
+];
+
 export default function NetworkDashboard() {
   const [darkMode, setDarkMode] = useState<boolean>(() => localStorage.load<boolean>('Awsui-Theme-Mode') ?? false);
   const [warningDismissed, setWarningDismissed] = useState(false);
   const [filterText, setFilterText] = useState('');
+  const [navSearchValue, setNavSearchValue] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedDevices, setSelectedDevices] = useState<Device[]>([]);
 
@@ -100,7 +120,53 @@ export default function NetworkDashboard() {
       ];
 
   return (
-    <CustomAppLayout
+    <>
+      <TopNavigation
+        i18nStrings={topNavI18nStrings}
+        identity={{
+          href: '/',
+          title: 'Service name',
+          logo: { src: logo, alt: 'Service name logo' },
+        }}
+        search={
+          <Input
+            ariaLabel="Search"
+            clearAriaLabel="Clear"
+            value={navSearchValue}
+            type="search"
+            placeholder="Search"
+            onChange={({ detail }) => setNavSearchValue(detail.value)}
+          />
+        }
+        utilities={[
+          {
+            type: 'button',
+            text: 'Link',
+            href: '#',
+            external: true,
+            externalIconAriaLabel: '(opens in new tab)',
+          },
+          {
+            type: 'button',
+            iconName: 'notification',
+            ariaLabel: 'Notifications',
+            badge: true,
+          },
+          {
+            type: 'button',
+            iconName: 'settings',
+            title: 'Settings',
+            ariaLabel: 'Settings',
+          },
+          {
+            type: 'menu-dropdown',
+            text: 'Customer name',
+            iconName: 'user-profile',
+            items: profileActions,
+          },
+        ]}
+      />
+      <CustomAppLayout
       navigationHide
       toolsHide
       breadcrumbs={
@@ -332,5 +398,6 @@ export default function NetworkDashboard() {
         </SpaceBetween>
       }
     />
+    </>
   );
 }

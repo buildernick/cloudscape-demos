@@ -8,7 +8,7 @@ import Box from '@cloudscape-design/components/box';
 import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Button from '@cloudscape-design/components/button';
 import Container from '@cloudscape-design/components/container';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import Alert from '@cloudscape-design/components/alert';
 import Grid from '@cloudscape-design/components/grid';
 import Header from '@cloudscape-design/components/header';
 import Input from '@cloudscape-design/components/input';
@@ -106,18 +106,7 @@ export default function NetworkDashboard() {
   const pageCount = Math.ceil(filteredDevices.length / ITEMS_PER_PAGE);
   const paginatedDevices = filteredDevices.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
-  const flashbarItems = warningDismissed
-    ? []
-    : [
-        {
-          type: 'warning' as const,
-          content: 'This is a warning message',
-          dismissible: true,
-          dismissLabel: 'Dismiss',
-          onDismiss: () => setWarningDismissed(true),
-          id: 'network-warning',
-        },
-      ];
+
 
   return (
     <>
@@ -178,7 +167,18 @@ export default function NetworkDashboard() {
           ariaLabel="Breadcrumbs"
         />
       }
-      notifications={<Flashbar items={flashbarItems} />}
+      notifications={
+        !warningDismissed && (
+          <Alert
+            type="warning"
+            dismissible
+            dismissAriaLabel="Dismiss"
+            onDismiss={() => setWarningDismissed(true)}
+          >
+            This is a warning message
+          </Alert>
+        )
+      }
       content={
         <SpaceBetween size="l">
           <Header

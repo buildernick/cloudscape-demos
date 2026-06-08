@@ -279,8 +279,8 @@ export default function NetworkDashboard() {
                   i18nStrings={{
                     ...chartI18n,
                     chartAriaRoleDescription: 'area chart',
-                    xTickFormatter: (d: Date) =>
-                      d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                    xTickFormatter: (d: Date | number) =>
+                      new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
                   }}
                   ariaLabel="Network traffic chart"
                   height={280}

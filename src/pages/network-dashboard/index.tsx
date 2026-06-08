@@ -54,18 +54,18 @@ const networkTrafficSeries = [
     title: 'Site 1',
     type: 'area' as const,
     data: [
-      { x: new Date(2024, 0, 1), y: 320 },
-      { x: new Date(2024, 0, 2), y: 280 },
-      { x: new Date(2024, 0, 3), y: 410 },
-      { x: new Date(2024, 0, 4), y: 390 },
-      { x: new Date(2024, 0, 5), y: 450 },
-      { x: new Date(2024, 0, 6), y: 430 },
-      { x: new Date(2024, 0, 7), y: 500 },
-      { x: new Date(2024, 0, 8), y: 470 },
-      { x: new Date(2024, 0, 9), y: 510 },
-      { x: new Date(2024, 0, 10), y: 490 },
-      { x: new Date(2024, 0, 11), y: 460 },
-      { x: new Date(2024, 0, 12), y: 440 },
+      { x: 1, y: 320 },
+      { x: 2, y: 280 },
+      { x: 3, y: 410 },
+      { x: 4, y: 390 },
+      { x: 5, y: 450 },
+      { x: 6, y: 430 },
+      { x: 7, y: 500 },
+      { x: 8, y: 470 },
+      { x: 9, y: 510 },
+      { x: 10, y: 490 },
+      { x: 11, y: 460 },
+      { x: 12, y: 440 },
     ],
     color: '#688AE8',
   },
@@ -73,18 +73,18 @@ const networkTrafficSeries = [
     title: 'Site 2',
     type: 'area' as const,
     data: [
-      { x: new Date(2024, 0, 1), y: 420 },
-      { x: new Date(2024, 0, 2), y: 480 },
-      { x: new Date(2024, 0, 3), y: 390 },
-      { x: new Date(2024, 0, 4), y: 510 },
-      { x: new Date(2024, 0, 5), y: 530 },
-      { x: new Date(2024, 0, 6), y: 490 },
-      { x: new Date(2024, 0, 7), y: 540 },
-      { x: new Date(2024, 0, 8), y: 520 },
-      { x: new Date(2024, 0, 9), y: 560 },
-      { x: new Date(2024, 0, 10), y: 540 },
-      { x: new Date(2024, 0, 11), y: 510 },
-      { x: new Date(2024, 0, 12), y: 530 },
+      { x: 1, y: 420 },
+      { x: 2, y: 480 },
+      { x: 3, y: 390 },
+      { x: 4, y: 510 },
+      { x: 5, y: 530 },
+      { x: 6, y: 490 },
+      { x: 7, y: 540 },
+      { x: 8, y: 520 },
+      { x: 9, y: 560 },
+      { x: 10, y: 540 },
+      { x: 11, y: 510 },
+      { x: 12, y: 530 },
     ],
     color: '#C33D69',
   },
@@ -274,13 +274,12 @@ export default function NetworkDashboard() {
               <Container header={<Header variant="h3">Network traffic</Header>}>
                 <AreaChart
                   series={networkTrafficSeries}
-                  xDomain={[new Date(2024, 0, 1), new Date(2024, 0, 12)]}
+                  xDomain={[1, 12]}
                   yDomain={[0, 600]}
                   i18nStrings={{
                     ...chartI18n,
                     chartAriaRoleDescription: 'area chart',
-                    xTickFormatter: (d: Date | number) =>
-                      new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+                    xTickFormatter: (d: number) => `Day ${d}`,
                   }}
                   ariaLabel="Network traffic chart"
                   height={280}

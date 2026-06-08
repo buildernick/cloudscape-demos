@@ -10,7 +10,7 @@ import Button from '@cloudscape-design/components/button';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import TextFilter from '@cloudscape-design/components/text-filter';
 import Pagination from '@cloudscape-design/components/pagination';
-import Flashbar from '@cloudscape-design/components/flashbar';
+import Alert from '@cloudscape-design/components/alert';
 import Table from '@cloudscape-design/components/table';
 import Box from '@cloudscape-design/components/box';
 import Grid from '@cloudscape-design/components/grid';
@@ -144,18 +144,6 @@ export default function NetworkDashboard() {
 
   const paginatedDevices = filteredDevices.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
-  const flashbarItems = warningDismissed
-    ? []
-    : [
-        {
-          type: 'error' as const,
-          content: 'This is a warning message',
-          dismissible: true,
-          onDismiss: () => setWarningDismissed(true),
-          id: 'network-warning',
-        },
-      ];
-
   const columnDefinitions = [
     {
       id: 'name',
@@ -242,7 +230,17 @@ export default function NetworkDashboard() {
           ariaLabel="Breadcrumb navigation"
         />
       }
-      notifications={<Flashbar items={flashbarItems} />}
+      notifications={
+        !warningDismissed && (
+          <Alert
+            type="error"
+            dismissible
+            onDismiss={() => setWarningDismissed(true)}
+          >
+            This is a warning message
+          </Alert>
+        )
+      }
       content={
         <ContentLayout
           header={

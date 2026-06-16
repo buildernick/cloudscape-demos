@@ -20,6 +20,31 @@ body {
   border-bottom: solid 1px #414d5c;
 }
 
+.network-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  &__filter {
+    flex: 1;
+    max-width: 600px;
+  }
+
+  &__pagination {
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+
+    &__filter {
+      max-width: 100%;
+    }
+  }
+}
+
 ul.menu-list {
   display: flex;
   align-items: center;

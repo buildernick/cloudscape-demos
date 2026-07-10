@@ -1,0 +1,13 @@
+@use '@cloudscape-design/design-tokens' as awsui;
+
+.toolbarRow {
+  display: flex;
+  align-items: center;
+  gap: awsui.$space-scaled-xl;
+  flex-wrap: wrap;
+}
+
+.filterWrapper {
+  flex: 1 1 320px;
+  min-width: 240px;
+}

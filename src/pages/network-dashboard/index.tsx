@@ -10,7 +10,7 @@ import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import Button from '@cloudscape-design/components/button';
 import Toggle from '@cloudscape-design/components/toggle';
-import Flashbar, { FlashbarProps } from '@cloudscape-design/components/flashbar';
+import Alert, { AlertProps } from '@cloudscape-design/components/alert';
 import TextFilter from '@cloudscape-design/components/text-filter';
 import Pagination from '@cloudscape-design/components/pagination';
 import Container from '@cloudscape-design/components/container';
@@ -74,16 +74,10 @@ export default function NetworkDashboard() {
   const [filteringText, setFilteringText] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const [refreshConfirmationVisible, setRefreshConfirmationVisible] = useState(false);
-  const [flashItems, setFlashItems] = useState<FlashbarProps.MessageDefinition[]>([
-    {
-      type: 'error',
-      content: 'This is a warning message',
-      dismissible: true,
-      dismissLabel: 'Dismiss',
-      onDismiss: () => setFlashItems([]),
-      id: 'network-warning',
-    },
-  ]);
+  const [alert, setAlert] = useState<{ type: AlertProps.Type; content: string } | null>({
+    type: 'error',
+    content: 'This is a warning message',
+  });
 
   const filteredDevices = useMemo(
     () => devices.filter(device => device.name.toLowerCase().includes(filteringText.toLowerCase())),
@@ -94,16 +88,7 @@ export default function NetworkDashboard() {
 
   const confirmRefresh = () => {
     setRefreshConfirmationVisible(false);
-    setFlashItems([
-      {
-        type: 'success',
-        content: 'Network data refreshed successfully.',
-        dismissible: true,
-        dismissLabel: 'Dismiss',
-        onDismiss: () => setFlashItems([]),
-        id: 'refresh-success',
-      },
-    ]);
+    setAlert({ type: 'success', content: 'Network data refreshed successfully.' });
   };
 
   return (
@@ -199,7 +184,16 @@ export default function NetworkDashboard() {
               Are you sure you want to refresh the network traffic, credit usage, and device data?
             </Modal>
 
-            {flashItems.length > 0 && <Flashbar items={flashItems} />}
+            {alert && (
+              <Alert
+                type={alert.type}
+                dismissible={true}
+                dismissAriaLabel="Dismiss"
+                onDismiss={() => setAlert(null)}
+              >
+                {alert.content}
+              </Alert>
+            )}
 
             <Grid gridDefinition={[{ colspan: { default: 12, s: 6 } }, { colspan: { default: 12, s: 6 } }]}>
               <Container>

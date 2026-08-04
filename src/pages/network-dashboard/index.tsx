@@ -20,6 +20,7 @@ import Box from '@cloudscape-design/components/box';
 import StatusIndicator from '@cloudscape-design/components/status-indicator';
 import AreaChart from '@cloudscape-design/components/area-chart';
 import BarChart from '@cloudscape-design/components/bar-chart';
+import Modal from '@cloudscape-design/components/modal';
 
 import * as localStorage from '../../common/local-storage';
 
@@ -72,6 +73,7 @@ export default function NetworkDashboard() {
 
   const [filteringText, setFilteringText] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
+  const [refreshConfirmationVisible, setRefreshConfirmationVisible] = useState(false);
   const [flashItems, setFlashItems] = useState<FlashbarProps.MessageDefinition[]>([
     {
       type: 'error',
@@ -89,6 +91,20 @@ export default function NetworkDashboard() {
   );
   const pagesCount = Math.max(1, Math.ceil(filteredDevices.length / pageSize));
   const pagedDevices = filteredDevices.slice((currentPageIndex - 1) * pageSize, currentPageIndex * pageSize);
+
+  const confirmRefresh = () => {
+    setRefreshConfirmationVisible(false);
+    setFlashItems([
+      {
+        type: 'success',
+        content: 'Network data refreshed successfully.',
+        dismissible: true,
+        dismissLabel: 'Dismiss',
+        onDismiss: () => setFlashItems([]),
+        id: 'refresh-success',
+      },
+    ]);
+  };
 
   return (
     <AppLayout
@@ -115,7 +131,13 @@ export default function NetworkDashboard() {
                     <Toggle checked={darkMode} onChange={({ detail }) => setDarkMode(detail.checked)} ariaLabel="Toggle dark mode">
                       Dark mode
                     </Toggle>
-                    <Button variant="primary" iconName="external" iconAlign="right">
+                    <Button
+                      variant="primary"
+                      iconName="external"
+                      iconAlign="right"
+                      ariaLabel="Refresh network data"
+                      onClick={() => setRefreshConfirmationVisible(true)}
+                    >
                       Refresh Data
                     </Button>
                   </SpaceBetween>
@@ -151,6 +173,32 @@ export default function NetworkDashboard() {
           }
         >
           <SpaceBetween size="l">
+            <Modal
+              visible={refreshConfirmationVisible}
+              onDismiss={() => setRefreshConfirmationVisible(false)}
+              header="Confirm data refresh"
+              closeAriaLabel="Close refresh confirmation"
+              size="small"
+              footer={
+                <Box float="right">
+                  <SpaceBetween direction="horizontal" size="xs">
+                    <Button
+                      variant="link"
+                      ariaLabel="Cancel data refresh"
+                      onClick={() => setRefreshConfirmationVisible(false)}
+                    >
+                      Cancel
+                    </Button>
+                    <Button variant="primary" ariaLabel="Confirm data refresh" onClick={confirmRefresh}>
+                      Refresh data
+                    </Button>
+                  </SpaceBetween>
+                </Box>
+              }
+            >
+              Are you sure you want to refresh the network traffic, credit usage, and device data?
+            </Modal>
+
             {flashItems.length > 0 && <Flashbar items={flashItems} />}
 
             <Grid gridDefinition={[{ colspan: { default: 12, s: 6 } }, { colspan: { default: 12, s: 6 } }]}>

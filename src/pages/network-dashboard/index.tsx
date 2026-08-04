@@ -74,7 +74,7 @@ export default function NetworkDashboard() {
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
   const [flashItems, setFlashItems] = useState<FlashbarProps.MessageDefinition[]>([
     {
-      type: 'warning',
+      type: 'error',
       content: 'This is a warning message',
       dismissible: true,
       dismissLabel: 'Dismiss',

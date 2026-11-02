@@ -232,7 +232,7 @@ export default function NetworkDashboard() {
                 warningVisible
                   ? [
                       {
-                        type: 'error',
+                        type: 'warning',
                         content: 'This is a warning message',
                         dismissible: true,
                         dismissLabel: 'Dismiss',

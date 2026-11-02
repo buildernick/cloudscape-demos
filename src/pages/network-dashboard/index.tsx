@@ -8,6 +8,7 @@ import BarChart from '@cloudscape-design/components/bar-chart';
 import Box from '@cloudscape-design/components/box';
 import BreadcrumbGroup from '@cloudscape-design/components/breadcrumb-group';
 import Button from '@cloudscape-design/components/button';
+import CollectionPreferences from '@cloudscape-design/components/collection-preferences';
 import ColumnLayout from '@cloudscape-design/components/column-layout';
 import ContentLayout from '@cloudscape-design/components/content-layout';
 import Container from '@cloudscape-design/components/container';
@@ -123,6 +124,7 @@ export default function NetworkDashboard() {
   const [warningVisible, setWarningVisible] = useState(true);
   const [filterText, setFilterText] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
+  const [pageSize, setPageSize] = useState(10);
   const [selectedItems, setSelectedItems] = useState<Device[]>([]);
 
   useEffect(() => {
@@ -135,7 +137,6 @@ export default function NetworkDashboard() {
   const filteredDevices = devices.filter(device =>
     Object.values(device).some(value => String(value).toLowerCase().includes(filterText.toLowerCase())),
   );
-  const pageSize = 10;
   const pagesCount = Math.max(1, Math.ceil(filteredDevices.length / pageSize));
   const pageItems = filteredDevices.slice((currentPageIndex - 1) * pageSize, currentPageIndex * pageSize);
 
@@ -193,15 +194,49 @@ export default function NetworkDashboard() {
               >
                 Network Administration Dashboard
               </Header>
-              <TextFilter
-                filteringText={filterText}
-                filteringPlaceholder="Find devices"
-                filteringAriaLabel="Filter devices"
-                onChange={({ detail }) => {
-                  setFilterText(detail.filteringText);
-                  setCurrentPageIndex(1);
-                }}
-              />
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+                <div style={{ flex: '1 1 320px' }}>
+                  <TextFilter
+                    filteringText={filterText}
+                    filteringPlaceholder="Find devices"
+                    filteringAriaLabel="Filter devices"
+                    onChange={({ detail }) => {
+                      setFilterText(detail.filteringText);
+                      setCurrentPageIndex(1);
+                    }}
+                  />
+                </div>
+                <SpaceBetween direction="horizontal" size="xs" alignItems="center">
+                  <Pagination
+                    currentPageIndex={currentPageIndex}
+                    pagesCount={pagesCount}
+                    onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
+                    ariaLabels={{
+                      nextPageLabel: 'Next page',
+                      previousPageLabel: 'Previous page',
+                      pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
+                    }}
+                  />
+                  <CollectionPreferences
+                    title="Preferences"
+                    confirmLabel="Confirm"
+                    cancelLabel="Cancel"
+                    preferences={{ pageSize }}
+                    onConfirm={({ detail }) => {
+                      setPageSize(detail.pageSize ?? 10);
+                      setCurrentPageIndex(1);
+                    }}
+                    pageSizePreference={{
+                      title: 'Page size',
+                      options: [
+                        { value: 5, label: '5 devices' },
+                        { value: 10, label: '10 devices' },
+                        { value: 20, label: '20 devices' },
+                      ],
+                    }}
+                  />
+                </SpaceBetween>
+              </div>
             </SpaceBetween>
           }
         >
@@ -267,18 +302,6 @@ export default function NetworkDashboard() {
                 >
                   My Devices
                 </Header>
-              }
-              pagination={
-                <Pagination
-                  currentPageIndex={currentPageIndex}
-                  pagesCount={pagesCount}
-                  onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
-                  ariaLabels={{
-                    nextPageLabel: 'Next page',
-                    previousPageLabel: 'Previous page',
-                    pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
-                  }}
-                />
               }
               empty={
                 <Box textAlign="center" color="inherit">

@@ -40,7 +40,10 @@ const areaSeries = [
     title: 'Site 2',
     type: 'area' as const,
     color: '#c33d69',
-    data: days.map((day, i) => ({ x: i + 1, y: Math.round((site1Traffic[i] + Math.max(site2Traffic[i], 0.3)) * 10) / 10 })),
+    data: days.map((day, i) => ({
+      x: i + 1,
+      y: Math.round((site1Traffic[i] + Math.max(site2Traffic[i], 0.3)) * 10) / 10,
+    })),
   },
   {
     title: 'Performance goal',
@@ -153,23 +156,6 @@ export default function NetworkDashboard() {
           ]}
         />
       }
-      notifications={
-        <Flashbar
-          items={
-            warningVisible
-              ? [
-                  {
-                    type: 'error',
-                    content: 'This is a warning message',
-                    dismissible: true,
-                    dismissLabel: 'Dismiss',
-                    onDismiss: () => setWarningVisible(false),
-                  },
-                ]
-              : []
-          }
-        />
-      }
       content={
         <ContentLayout
           header={
@@ -241,6 +227,21 @@ export default function NetworkDashboard() {
           }
         >
           <SpaceBetween size="l">
+            <Flashbar
+              items={
+                warningVisible
+                  ? [
+                      {
+                        type: 'error',
+                        content: 'This is a warning message',
+                        dismissible: true,
+                        dismissLabel: 'Dismiss',
+                        onDismiss: () => setWarningVisible(false),
+                      },
+                    ]
+                  : []
+              }
+            />
             <ColumnLayout columns={2}>
               <Container header={<Header variant="h2">Network traffic</Header>}>
                 <AreaChart

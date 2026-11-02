@@ -7,16 +7,7 @@
   flex-wrap: wrap;
 }
 
-.warningFlashbar [data-itemid='network-admin-dashboard-warning'] {
-  background-color: rgba(208, 2, 27, 1);
-}
-
 .filterWrapper {
   flex: 1 1 320px;
   min-width: 240px;
-}
-
-.warningFlashbar [data-itemid='network-admin-dashboard-warning'] {
-  background-color: rgba(185, 37, 57, 1);
-  color: #ffffff;
 }

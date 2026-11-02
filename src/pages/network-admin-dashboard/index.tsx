@@ -257,8 +257,8 @@ export default function NetworkAdminDashboard() {
   const [toolsOpen, setToolsOpen] = useState(false);
   const [notifications, setNotifications] = useState<FlashbarProps.MessageDefinition[]>([
     {
-      type: 'warning',
-      content: 'This is a warning message',
+      type: 'error',
+      content: 'This is an error message',
       dismissLabel: 'Dismiss',
       dismissible: true,
       onDismiss: () => setNotifications([]),
@@ -354,11 +354,7 @@ export default function NetworkAdminDashboard() {
           >
             <SpaceBetween size="l">
               <DevicesToolbar filterProps={filterProps} paginationProps={paginationProps} />
-              {notifications.length > 0 && (
-                <div className={styles.warningFlashbar}>
-                  <Flashbar items={notifications} />
-                </div>
-              )}
+              {notifications.length > 0 && <Flashbar items={notifications} />}
               <Grid gridDefinition={[{ colspan: { default: 12, m: 6 } }, { colspan: { default: 12, m: 6 } }]}>
                 <NetworkTrafficChart />
                 <CreditUsageChart />

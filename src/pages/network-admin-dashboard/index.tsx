@@ -257,8 +257,8 @@ export default function NetworkAdminDashboard() {
   const [toolsOpen, setToolsOpen] = useState(false);
   const [notifications, setNotifications] = useState<FlashbarProps.MessageDefinition[]>([
     {
-      type: 'warning',
-      content: 'This is a warning message',
+      type: 'error',
+      content: 'This is an error message',
       dismissLabel: 'Dismiss',
       dismissible: true,
       onDismiss: () => setNotifications([]),

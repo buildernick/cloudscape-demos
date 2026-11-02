@@ -12,7 +12,7 @@ import CollectionPreferences from '@cloudscape-design/components/collection-pref
 import ColumnLayout from '@cloudscape-design/components/column-layout';
 import ContentLayout from '@cloudscape-design/components/content-layout';
 import Container from '@cloudscape-design/components/container';
-import Alert from '@cloudscape-design/components/alert';
+import Flashbar from '@cloudscape-design/components/flashbar';
 import Header from '@cloudscape-design/components/header';
 import Modal from '@cloudscape-design/components/modal';
 import Pagination from '@cloudscape-design/components/pagination';
@@ -235,16 +235,22 @@ export default function NetworkDashboard() {
             }
           >
             <SpaceBetween size="l">
-              {warningVisible && (
-                <Alert
-                  type="error"
-                  dismissible
-                  statusIconAriaLabel="Error"
-                  onDismiss={() => setWarningVisible(false)}
-                >
-                  This is a warning message
-                </Alert>
-              )}
+              <Flashbar
+                items={
+                  warningVisible
+                    ? [
+                        {
+                          type: 'warning',
+                          content: 'This is a warning message',
+                          dismissible: true,
+                          dismissLabel: 'Dismiss',
+                          statusIconAriaLabel: 'Warning',
+                          onDismiss: () => setWarningVisible(false),
+                        },
+                      ]
+                    : []
+                }
+              />
               <ColumnLayout columns={2}>
                 <Container header={<Header variant="h2">Network traffic</Header>}>
                   <AreaChart

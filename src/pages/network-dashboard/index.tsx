@@ -14,6 +14,7 @@ import ContentLayout from '@cloudscape-design/components/content-layout';
 import Container from '@cloudscape-design/components/container';
 import Flashbar from '@cloudscape-design/components/flashbar';
 import Header from '@cloudscape-design/components/header';
+import Modal from '@cloudscape-design/components/modal';
 import Pagination from '@cloudscape-design/components/pagination';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import StatusIndicator, { StatusIndicatorProps } from '@cloudscape-design/components/status-indicator';
@@ -124,6 +125,7 @@ const columnDefinitions = [
 
 export default function NetworkDashboard() {
   const [darkMode, setDarkMode] = useState<boolean>(() => localStorage.load<boolean>('Awsui-Theme-Mode') ?? false);
+  const [refreshModalVisible, setRefreshModalVisible] = useState(false);
   const [warningVisible, setWarningVisible] = useState(true);
   const [filterText, setFilterText] = useState('');
   const [currentPageIndex, setCurrentPageIndex] = useState(1);
@@ -144,175 +146,201 @@ export default function NetworkDashboard() {
   const pageItems = filteredDevices.slice((currentPageIndex - 1) * pageSize, currentPageIndex * pageSize);
 
   return (
-    <AppLayout
-      navigationHide
-      toolsHide
-      breadcrumbs={
-        <BreadcrumbGroup
-          ariaLabel="Breadcrumbs"
-          items={[
-            { text: 'Service', href: '/' },
-            { text: 'Administrative Dashboard', href: '/network-dashboard' },
-          ]}
-        />
-      }
-      content={
-        <ContentLayout
-          header={
-            <SpaceBetween size="m">
-              <Header
-                variant="h1"
-                description="Network Traffic, Credit Usage, and Your Devices"
-                actions={
-                  <SpaceBetween direction="horizontal" size="xs" alignItems="center">
-                    <Toggle
-                      checked={darkMode}
-                      onChange={({ detail }) => setDarkMode(detail.checked)}
-                      ariaLabel="Toggle dark mode"
-                    >
-                      Dark mode
-                    </Toggle>
-                    <Button variant="primary" iconAlign="right" iconName="external">
-                      Refresh Data
-                    </Button>
-                  </SpaceBetween>
-                }
-              >
-                Network Administration Dashboard
-              </Header>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
-                <div style={{ flex: '1 1 320px' }}>
-                  <TextFilter
-                    filteringText={filterText}
-                    filteringPlaceholder="Find devices"
-                    filteringAriaLabel="Filter devices"
-                    onChange={({ detail }) => {
-                      setFilterText(detail.filteringText);
-                      setCurrentPageIndex(1);
-                    }}
-                  />
-                </div>
-                <SpaceBetween direction="horizontal" size="xs" alignItems="center">
-                  <Pagination
-                    currentPageIndex={currentPageIndex}
-                    pagesCount={pagesCount}
-                    onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
-                    ariaLabels={{
-                      nextPageLabel: 'Next page',
-                      previousPageLabel: 'Previous page',
-                      pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
-                    }}
-                  />
-                  <CollectionPreferences
-                    title="Preferences"
-                    confirmLabel="Confirm"
-                    cancelLabel="Cancel"
-                    preferences={{ pageSize }}
-                    onConfirm={({ detail }) => {
-                      setPageSize(detail.pageSize ?? 10);
-                      setCurrentPageIndex(1);
-                    }}
-                    pageSizePreference={{
-                      title: 'Page size',
-                      options: [
-                        { value: 5, label: '5 devices' },
-                        { value: 10, label: '10 devices' },
-                        { value: 20, label: '20 devices' },
-                      ],
-                    }}
-                  />
-                </SpaceBetween>
-              </div>
-            </SpaceBetween>
-          }
-        >
-          <SpaceBetween size="l">
-            <Flashbar
-              items={
-                warningVisible
-                  ? [
-                      {
-                        type: 'warning',
-                        content: 'This is a warning message',
-                        dismissible: true,
-                        dismissLabel: 'Dismiss',
-                        onDismiss: () => setWarningVisible(false),
-                      },
-                    ]
-                  : []
-              }
-            />
-            <ColumnLayout columns={2}>
-              <Container header={<Header variant="h2">Network traffic</Header>}>
-                <AreaChart
-                  series={areaSeries}
-                  xScaleType="linear"
-                  xTitle="Day"
-                  yTitle="Traffic (TB)"
-                  height={260}
-                  hideFilter
-                  xTickFormatter={value => `x${value}`}
-                  yTickFormatter={value => `y${value}`}
-                  ariaLabel="Network traffic area chart for Site 1 and Site 2"
-                  detailPopoverFooter={() => null}
-                  i18nStrings={{
-                    xTickFormatter: value => `x${value}`,
-                    yTickFormatter: value => `y${value}`,
-                  }}
-                  empty={<Box textAlign="center">No data available</Box>}
-                  noMatch={<Box textAlign="center">No matching data</Box>}
-                />
-              </Container>
-              <Container header={<Header variant="h2">Credit Usage</Header>}>
-                <BarChart
-                  series={barSeries}
-                  xScaleType="categorical"
-                  xTitle="Day"
-                  yTitle="Credits"
-                  height={260}
-                  hideFilter
-                  ariaLabel="Credit usage bar chart for Site 1"
-                  empty={<Box textAlign="center">No data available</Box>}
-                  noMatch={<Box textAlign="center">No matching data</Box>}
-                />
-              </Container>
-            </ColumnLayout>
-
-            <Table
-              variant="borderless"
-              columnDefinitions={columnDefinitions}
-              items={pageItems}
-              selectionType="multi"
-              selectedItems={selectedItems}
-              onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
-              trackBy="id"
-              ariaLabels={{
-                selectionGroupLabel: 'Device selection',
-                allItemsSelectionLabel: () => 'Select all devices',
-                itemSelectionLabel: (_, item) => `Select ${item.name}`,
-              }}
-              header={
+    <>
+      <AppLayout
+        navigationHide
+        toolsHide
+        breadcrumbs={
+          <BreadcrumbGroup
+            ariaLabel="Breadcrumbs"
+            items={[
+              { text: 'Service', href: '/' },
+              { text: 'Administrative Dashboard', href: '/network-dashboard' },
+            ]}
+          />
+        }
+        content={
+          <ContentLayout
+            header={
+              <SpaceBetween size="m">
                 <Header
                   variant="h1"
-                  description="Devices on your local network"
+                  description="Network Traffic, Credit Usage, and Your Devices"
                   actions={
-                    <Button variant="primary" iconAlign="right" iconName="external">
-                      Add Device
-                    </Button>
+                    <SpaceBetween direction="horizontal" size="xs" alignItems="center">
+                      <Toggle
+                        checked={darkMode}
+                        onChange={({ detail }) => setDarkMode(detail.checked)}
+                        ariaLabel="Toggle dark mode"
+                      >
+                        Dark mode
+                      </Toggle>
+                      <Button
+                        variant="primary"
+                        iconAlign="right"
+                        iconName="external"
+                        onClick={() => setRefreshModalVisible(true)}
+                      >
+                        Refresh Data
+                      </Button>
+                    </SpaceBetween>
                   }
                 >
-                  My Devices
+                  Network Administration Dashboard
                 </Header>
-              }
-              empty={
-                <Box textAlign="center" color="inherit">
-                  <b>No devices</b>
-                </Box>
-              }
-            />
-          </SpaceBetween>
-        </ContentLayout>
-      }
-    />
+                <div style={{ display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
+                  <div style={{ flex: '1 1 320px' }}>
+                    <TextFilter
+                      filteringText={filterText}
+                      filteringPlaceholder="Find devices"
+                      filteringAriaLabel="Filter devices"
+                      onChange={({ detail }) => {
+                        setFilterText(detail.filteringText);
+                        setCurrentPageIndex(1);
+                      }}
+                    />
+                  </div>
+                  <SpaceBetween direction="horizontal" size="xs" alignItems="center">
+                    <Pagination
+                      currentPageIndex={currentPageIndex}
+                      pagesCount={pagesCount}
+                      onChange={({ detail }) => setCurrentPageIndex(detail.currentPageIndex)}
+                      ariaLabels={{
+                        nextPageLabel: 'Next page',
+                        previousPageLabel: 'Previous page',
+                        pageLabel: pageNumber => `Page ${pageNumber} of all pages`,
+                      }}
+                    />
+                    <CollectionPreferences
+                      title="Preferences"
+                      confirmLabel="Confirm"
+                      cancelLabel="Cancel"
+                      preferences={{ pageSize }}
+                      onConfirm={({ detail }) => {
+                        setPageSize(detail.pageSize ?? 10);
+                        setCurrentPageIndex(1);
+                      }}
+                      pageSizePreference={{
+                        title: 'Page size',
+                        options: [
+                          { value: 5, label: '5 devices' },
+                          { value: 10, label: '10 devices' },
+                          { value: 20, label: '20 devices' },
+                        ],
+                      }}
+                    />
+                  </SpaceBetween>
+                </div>
+              </SpaceBetween>
+            }
+          >
+            <SpaceBetween size="l">
+              <Flashbar
+                items={
+                  warningVisible
+                    ? [
+                        {
+                          type: 'warning',
+                          content: 'This is a warning message',
+                          dismissible: true,
+                          dismissLabel: 'Dismiss',
+                          onDismiss: () => setWarningVisible(false),
+                        },
+                      ]
+                    : []
+                }
+              />
+              <ColumnLayout columns={2}>
+                <Container header={<Header variant="h2">Network traffic</Header>}>
+                  <AreaChart
+                    series={areaSeries}
+                    xScaleType="linear"
+                    xTitle="Day"
+                    yTitle="Traffic (TB)"
+                    height={260}
+                    hideFilter
+                    xTickFormatter={value => `x${value}`}
+                    yTickFormatter={value => `y${value}`}
+                    ariaLabel="Network traffic area chart for Site 1 and Site 2"
+                    detailPopoverFooter={() => null}
+                    i18nStrings={{
+                      xTickFormatter: value => `x${value}`,
+                      yTickFormatter: value => `y${value}`,
+                    }}
+                    empty={<Box textAlign="center">No data available</Box>}
+                    noMatch={<Box textAlign="center">No matching data</Box>}
+                  />
+                </Container>
+                <Container header={<Header variant="h2">Credit Usage</Header>}>
+                  <BarChart
+                    series={barSeries}
+                    xScaleType="categorical"
+                    xTitle="Day"
+                    yTitle="Credits"
+                    height={260}
+                    hideFilter
+                    ariaLabel="Credit usage bar chart for Site 1"
+                    empty={<Box textAlign="center">No data available</Box>}
+                    noMatch={<Box textAlign="center">No matching data</Box>}
+                  />
+                </Container>
+              </ColumnLayout>
+
+              <Table
+                variant="borderless"
+                columnDefinitions={columnDefinitions}
+                items={pageItems}
+                selectionType="multi"
+                selectedItems={selectedItems}
+                onSelectionChange={({ detail }) => setSelectedItems(detail.selectedItems)}
+                trackBy="id"
+                ariaLabels={{
+                  selectionGroupLabel: 'Device selection',
+                  allItemsSelectionLabel: () => 'Select all devices',
+                  itemSelectionLabel: (_, item) => `Select ${item.name}`,
+                }}
+                header={
+                  <Header
+                    variant="h1"
+                    description="Devices on your local network"
+                    actions={
+                      <Button variant="primary" iconAlign="right" iconName="external">
+                        Add Device
+                      </Button>
+                    }
+                  >
+                    My Devices
+                  </Header>
+                }
+                empty={
+                  <Box textAlign="center" color="inherit">
+                    <b>No devices</b>
+                  </Box>
+                }
+              />
+            </SpaceBetween>
+          </ContentLayout>
+        }
+      />
+      <Modal
+        visible={refreshModalVisible}
+        onDismiss={() => setRefreshModalVisible(false)}
+        header="Refresh data"
+        footer={
+          <Box float="right">
+            <SpaceBetween direction="horizontal" size="xs">
+              <Button variant="link" onClick={() => setRefreshModalVisible(false)}>
+                Cancel
+              </Button>
+              <Button variant="primary" onClick={() => setRefreshModalVisible(false)}>
+                Confirm
+              </Button>
+            </SpaceBetween>
+          </Box>
+        }
+      >
+        Are you sure?
+      </Modal>
+    </>
   );
 }

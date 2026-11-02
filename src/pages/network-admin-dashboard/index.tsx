@@ -354,7 +354,11 @@ export default function NetworkAdminDashboard() {
           >
             <SpaceBetween size="l">
               <DevicesToolbar filterProps={filterProps} paginationProps={paginationProps} />
-              {notifications.length > 0 && <Flashbar items={notifications} />}
+              {notifications.length > 0 && (
+                <div className={styles.warningFlashbar}>
+                  <Flashbar items={notifications} />
+                </div>
+              )}
               <Grid gridDefinition={[{ colspan: { default: 12, m: 6 } }, { colspan: { default: 12, m: 6 } }]}>
                 <NetworkTrafficChart />
                 <CreditUsageChart />
